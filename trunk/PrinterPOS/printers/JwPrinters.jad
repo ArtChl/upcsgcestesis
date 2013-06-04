@@ -1,0 +1,49 @@
+// Decompiled by DJ v3.8.8.85 Copyright 2005 Atanas Neshkov  Date: 22/05/2013 11:46:58 a.m.
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   JwPrinters.java
+
+package Zeus.core.printers;
+
+import Zeus.core.Wins.JDefaultLista;
+import Zeus.core.Wins.JWins;
+
+public class JwPrinters extends JWins
+{
+
+    public JwPrinters()
+        throws Exception
+    {
+    }
+
+    public int GetNroIcono()
+        throws Exception
+    {
+        return 5;
+    }
+
+    public String GetTitle()
+        throws Exception
+    {
+        return "Impresora";
+    }
+
+    public Class GetClassWin()
+    {
+        return Zeus.core.printers.JwPrinter.class;
+    }
+
+    public void OnGenerarAcciones()
+        throws Exception
+    {
+        SetAccionAlta(1, "Nuevo Registro");
+    }
+
+    public void ConfigurarColumnasLista(JDefaultLista jdefaultlista)
+        throws Exception
+    {
+        jdefaultlista.AddIcono("");
+        jdefaultlista.AddColumnaLista("descripcion");
+        jdefaultlista.AddColumnaLista("tipo");
+    }
+}
