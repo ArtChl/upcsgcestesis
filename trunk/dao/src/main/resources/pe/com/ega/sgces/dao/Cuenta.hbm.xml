@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2013 01:38:26 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Cuenta" table="cuenta" catalog="cem44">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="pe.com.ega.sgces.model.Cliente" fetch="select">
+            <column name="IdCliente" not-null="true" />
+        </many-to-one>
+        <property name="tieneLimiteCredito" type="java.lang.Integer">
+            <column name="TieneLimiteCredito" />
+        </property>
+        <property name="tieneLimiteDiario" type="java.lang.Integer">
+            <column name="TieneLimiteDiario" />
+        </property>
+        <property name="periodoFacturacion" type="java.lang.Integer">
+            <column name="PeriodoFacturacion" />
+        </property>
+        <property name="idTipoPeriodoFacturacion" type="java.lang.Integer">
+            <column name="IdTipoPeriodoFacturacion" />
+        </property>
+        <property name="nroDiasVencimiento" type="java.lang.Integer">
+            <column name="NroDiasVencimiento" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="FechaRegistro" length="10" />
+        </property>
+        <property name="limiteCredito" type="java.lang.Integer">
+            <column name="LimiteCredito" />
+        </property>
+        <property name="limiteDiario" type="java.lang.Integer">
+            <column name="LimiteDiario" />
+        </property>
+        <set name="subcuentas" inverse="true">
+            <key>
+                <column name="IdCuenta" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Subcuenta" />
+        </set>
+    </class>
+</hibernate-mapping>

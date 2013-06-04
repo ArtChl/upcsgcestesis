@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2013 01:38:26 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Transaccion" table="transaccion" catalog="cem44">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="pe.com.ega.sgces.model.Cliente" fetch="select">
+            <column name="IdCliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="despacho" class="pe.com.ega.sgces.model.Despacho" fetch="select">
+            <column name="IdDespacho" not-null="true" />
+        </many-to-one>
+        <property name="idTipoTransaccion" type="java.lang.Integer">
+            <column name="IdTipoTransaccion" />
+        </property>
+        <property name="idEstado" type="java.lang.Integer">
+            <column name="IdEstado" />
+        </property>
+        <property name="numeroTransaccion" type="string">
+            <column name="NumeroTransaccion" length="20" />
+        </property>
+        <property name="numeroPlaca" type="string">
+            <column name="NumeroPlaca" length="20" />
+        </property>
+        <property name="numeroVale" type="string">
+            <column name="NumeroVale" length="20" />
+        </property>
+        <property name="montoTotal" type="java.lang.Long">
+            <column name="MontoTotal" precision="10" scale="0" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="FechaRegistro" length="10" />
+        </property>
+        <set name="transacciondetalles" inverse="true">
+            <key>
+                <column name="IdTransaccion" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Transacciondetalle" />
+        </set>
+        <set name="puntoacumulados" inverse="true">
+            <key>
+                <column name="IdTransaccion" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Puntoacumulado" />
+        </set>
+        <set name="movimientos" inverse="true">
+            <key>
+                <column name="IdTransaccion" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Movimiento" />
+        </set>
+    </class>
+</hibernate-mapping>

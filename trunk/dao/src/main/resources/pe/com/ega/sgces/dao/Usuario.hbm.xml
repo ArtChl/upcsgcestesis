@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2013 01:38:26 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Usuario" table="usuario" catalog="cem44">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="trabajador" class="pe.com.ega.sgces.model.Trabajador" fetch="select">
+            <column name="IdTrabajador" not-null="true" />
+        </many-to-one>
+        <property name="login" type="string">
+            <column name="Login" length="20" />
+        </property>
+        <property name="clave" type="string">
+            <column name="Clave" length="20" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="FechaRegistro" length="10" />
+        </property>
+        <set name="usuarioperfils" inverse="true">
+            <key>
+                <column name="IdUsuario" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Usuarioperfil" />
+        </set>
+    </class>
+</hibernate-mapping>
