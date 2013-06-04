@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2013 01:38:26 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Impresora" table="impresora" catalog="cem44">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="20" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="20" />
+        </property>
+        <property name="puerto" type="string">
+            <column name="Puerto" length="20" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="FechaRegistro" length="10" />
+        </property>
+        <set name="impresorapuntoventas" inverse="true">
+            <key>
+                <column name="IdImpresora" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Impresorapuntoventa" />
+        </set>
+    </class>
+</hibernate-mapping>
