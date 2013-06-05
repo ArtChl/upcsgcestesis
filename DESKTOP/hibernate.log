@@ -1409,3 +1409,1043 @@
 00:22:03,089 DEBUG StringType:172 - returning '1' as column: NumeroVale15_
 00:22:03,089 DEBUG LongType:172 - returning '1' as column: MontoTotal15_
 00:22:03,089 DEBUG DateType:172 - returning '12 diciembre 2013' as column: FechaRe10_15_
+00:34:58,829  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:34:58,842  INFO Environment:514 - Hibernate 3.2.5
+00:34:58,845  INFO Environment:547 - hibernate.properties not found
+00:34:58,846  INFO Environment:681 - Bytecode provider name : cglib
+00:34:58,849  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:34:58,899  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+00:34:58,899  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+00:34:58,984 ERROR XMLHelper:61 - Error parsing XML: /hibernate.cfg.xml(13) El atributo "name" es necesario y debe especificarse para el tipo de elemento "property".
+00:34:58,985 ERROR XMLHelper:61 - Error parsing XML: /hibernate.cfg.xml(13) El atributo "key" se debe haber declarado para el tipo de elemento "property".
+00:35:16,339  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:35:16,351  INFO Environment:514 - Hibernate 3.2.5
+00:35:16,355  INFO Environment:547 - hibernate.properties not found
+00:35:16,356  INFO Environment:681 - Bytecode provider name : cglib
+00:35:16,361  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:35:16,410  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+00:35:16,410  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+00:35:16,477  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml
+00:35:16,521  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tarjeta.hbm.xml
+00:35:16,541  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Movimiento.hbm.xml
+00:35:16,555  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caraproducto.hbm.xml
+00:35:16,566  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisor.hbm.xml
+00:35:16,575  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tanque.hbm.xml
+00:35:16,582  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuario.hbm.xml
+00:35:16,588  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Surtidor.hbm.xml
+00:35:16,594  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Provincia.hbm.xml
+00:35:16,600  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfilopcion.hbm.xml
+00:35:16,605  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turnopuntoventacaja.hbm.xml
+00:35:16,611  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Producto.hbm.xml
+00:35:16,617  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cliente.hbm.xml
+00:35:16,626  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Lista.hbm.xml
+00:35:16,632  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turno.hbm.xml
+00:35:16,637  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transaccion.hbm.xml
+00:35:16,642  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Subcuenta.hbm.xml
+00:35:16,647  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transacciondetalle.hbm.xml
+00:35:16,651  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfil.hbm.xml
+00:35:16,656  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuarioperfil.hbm.xml
+00:35:16,660  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Departamento.hbm.xml
+00:35:16,664  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Deposito.hbm.xml
+00:35:16,668  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillajeajuste.hbm.xml
+00:35:16,675  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Trabajador.hbm.xml
+00:35:16,680  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresora.hbm.xml
+00:35:16,685  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisortipocomprobante.hbm.xml
+00:35:16,688  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cara.hbm.xml
+00:35:16,693  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoventa.hbm.xml
+00:35:16,698  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caja.hbm.xml
+00:35:16,702  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Listavalor.hbm.xml
+00:35:16,706  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Distrito.hbm.xml
+00:35:16,709  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillaje.hbm.xml
+00:35:16,713  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cuenta.hbm.xml
+00:35:16,718  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoacumulado.hbm.xml
+00:35:16,723  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Despacho.hbm.xml
+00:35:16,727  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Estacionservicio.hbm.xml
+00:35:16,732  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tipocambio.hbm.xml
+00:35:16,736  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Opcion.hbm.xml
+00:35:16,739  INFO Configuration:1541 - Configured SessionFactory: null
+00:35:16,790  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresorapuntoventa -> impresorapuntoventa
+00:35:16,839  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tarjeta -> tarjeta
+00:35:16,842  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Movimiento -> movimiento
+00:35:16,843  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caraproducto -> caraproducto
+00:35:16,843  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisor -> centroemisor
+00:35:16,844  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tanque -> tanque
+00:35:16,844  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuario -> usuario
+00:35:16,845  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Surtidor -> surtidor
+00:35:16,846  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Provincia -> provincia
+00:35:16,846  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfilopcion -> perfilopcion
+00:35:16,846  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turnopuntoventacaja -> turnopuntoventacaja
+00:35:16,847  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Producto -> producto
+00:35:16,848  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cliente -> cliente
+00:35:16,848  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Lista -> lista
+00:35:16,848  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turno -> turno
+00:35:16,849  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transaccion -> transaccion
+00:35:16,849  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Subcuenta -> subcuenta
+00:35:16,850  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transacciondetalle -> transacciondetalle
+00:35:16,850  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfil -> perfil
+00:35:16,851  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuarioperfil -> usuarioperfil
+00:35:16,851  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Departamento -> departamento
+00:35:16,851  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Deposito -> deposito
+00:35:16,852  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillajeajuste -> varillajeajuste
+00:35:16,852  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Trabajador -> trabajador
+00:35:16,853  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresora -> impresora
+00:35:16,853  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisortipocomprobante -> centroemisortipocomprobante
+00:35:16,854  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cara -> cara
+00:35:16,854  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoventa -> puntoventa
+00:35:16,854  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caja -> caja
+00:35:16,855  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Listavalor -> listavalor
+00:35:16,855  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Distrito -> distrito
+00:35:16,855  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillaje -> varillaje
+00:35:16,856  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cuenta -> cuenta
+00:35:16,856  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoacumulado -> puntoacumulado
+00:35:16,857  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Despacho -> despacho
+00:35:16,857  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Estacionservicio -> estacionservicio
+00:35:16,858  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tipocambio -> tipocambio
+00:35:16,858  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Opcion -> opcion
+00:35:16,860  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.subcuentas -> subcuenta
+00:35:16,860  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.puntoacumulados -> puntoacumulado
+00:35:16,861  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caraproducto.despachos -> despacho
+00:35:16,861  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Centroemisor.centroemisortipocomprobantes -> centroemisortipocomprobante
+00:35:16,861  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tanque.varillajes -> varillaje
+00:35:16,861  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Usuario.usuarioperfils -> usuarioperfil
+00:35:16,861  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Surtidor.caras -> cara
+00:35:16,861  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Provincia.distritos -> distrito
+00:35:16,862  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.depositos -> deposito
+00:35:16,862  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.movimientos -> movimiento
+00:35:16,862  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.subcuentas -> subcuenta
+00:35:16,862  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.caraproductos -> caraproducto
+00:35:16,862  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.tanques -> tanque
+00:35:16,862  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.transacciondetalles -> transacciondetalle
+00:35:16,863  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.despachos -> despacho
+00:35:16,863  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.transaccions -> transaccion
+00:35:16,863  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.tarjetas -> tarjeta
+00:35:16,863  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.cuentas -> cuenta
+00:35:16,863  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Lista.listavalors -> listavalor
+00:35:16,863  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turno.turnopuntoventacajas -> turnopuntoventacaja
+00:35:16,868  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.transacciondetalles -> transacciondetalle
+00:35:16,868  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.puntoacumulados -> puntoacumulado
+00:35:16,868  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.movimientos -> movimiento
+00:35:16,868  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.perfilopcions -> perfilopcion
+00:35:16,869  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.usuarioperfils -> usuarioperfil
+00:35:16,869  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Departamento.provincias -> provincia
+00:35:16,869  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.usuarios -> usuario
+00:35:16,869  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.cajas -> caja
+00:35:16,870  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Impresora.impresorapuntoventas -> impresorapuntoventa
+00:35:16,870  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cara.caraproductos -> caraproducto
+00:35:16,870  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.turnopuntoventacajas -> turnopuntoventacaja
+00:35:16,870  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.impresorapuntoventas -> impresorapuntoventa
+00:35:16,870  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.centroemisors -> centroemisor
+00:35:16,870  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caja.turnopuntoventacajas -> turnopuntoventacaja
+00:35:16,871  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Listavalor.listavalors -> listavalor
+00:35:16,871  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Distrito.estacionservicios -> estacionservicio
+00:35:16,871  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Varillaje.varillajeajustes -> varillajeajuste
+00:35:16,871  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cuenta.subcuentas -> subcuenta
+00:35:16,871  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Despacho.transaccions -> transaccion
+00:35:16,872  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.turnos -> turno
+00:35:16,872  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.trabajadors -> trabajador
+00:35:16,872  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.puntoventas -> puntoventa
+00:35:16,872  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.surtidors -> surtidor
+00:35:16,873  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.tanques -> tanque
+00:35:16,873  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Opcion.perfilopcions -> perfilopcion
+00:35:16,874  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+00:35:16,905  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+00:35:16,905  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+00:35:16,906  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+00:35:16,917  INFO DriverManagerConnectionProvider:80 - using driver: org.postgresql.Driver at URL: jdbc:postgresql://localhost:5432/cem44
+00:35:16,917  INFO DriverManagerConnectionProvider:86 - connection properties: {user=postgres, password=****}
+00:35:17,004  INFO SettingsFactory:89 - RDBMS: PostgreSQL, version: 9.1.3
+00:35:17,004  INFO SettingsFactory:90 - JDBC driver: PostgreSQL Native Driver, version: PostgreSQL 9.0 JDBC4 (build 801)
+00:35:17,014  INFO Dialect:152 - Using dialect: org.hibernate.dialect.PostgreSQLDialect
+00:35:17,018  INFO TransactionFactoryFactory:34 - Transaction strategy: org.hibernate.transaction.JTATransactionFactory
+00:35:17,020  INFO NamingHelper:26 - JNDI InitialContext properties:{}
+00:35:17,033  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+00:35:17,033  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+00:35:17,033  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+00:35:17,033  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+00:35:17,033  INFO SettingsFactory:154 - JDBC batch size: 15
+00:35:17,034  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+00:35:17,034  INFO SettingsFactory:162 - Scrollable result sets: enabled
+00:35:17,034  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+00:35:17,034  INFO SettingsFactory:178 - Connection release mode: auto
+00:35:17,035  INFO SettingsFactory:205 - Default batch fetch size: 1
+00:35:17,035  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+00:35:17,035  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+00:35:17,035  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+00:35:17,035  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+00:35:17,037  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+00:35:17,037  INFO SettingsFactory:225 - Query language substitutions: {}
+00:35:17,037  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+00:35:17,037  INFO SettingsFactory:235 - Second-level cache: enabled
+00:35:17,037  INFO SettingsFactory:239 - Query cache: disabled
+00:35:17,037  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+00:35:17,037  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+00:35:17,038  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+00:35:17,040  INFO SettingsFactory:290 - Statistics: disabled
+00:35:17,040  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+00:35:17,041  INFO SettingsFactory:309 - Default entity-mode: pojo
+00:35:17,041  INFO SettingsFactory:313 - Named query checking : enabled
+00:35:17,062  INFO SessionFactoryImpl:161 - building session factory
+00:35:17,407  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+00:35:31,602  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:35:31,613  INFO Environment:514 - Hibernate 3.2.5
+00:35:31,616  INFO Environment:547 - hibernate.properties not found
+00:35:31,618  INFO Environment:681 - Bytecode provider name : cglib
+00:35:31,620  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:35:31,669  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+00:35:31,669  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+00:35:31,736  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml
+00:35:31,779  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tarjeta.hbm.xml
+00:35:31,800  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Movimiento.hbm.xml
+00:35:31,818  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caraproducto.hbm.xml
+00:35:31,826  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisor.hbm.xml
+00:35:31,833  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tanque.hbm.xml
+00:35:31,840  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuario.hbm.xml
+00:35:31,846  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Surtidor.hbm.xml
+00:35:31,853  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Provincia.hbm.xml
+00:35:31,858  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfilopcion.hbm.xml
+00:35:31,863  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turnopuntoventacaja.hbm.xml
+00:35:31,869  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Producto.hbm.xml
+00:35:31,875  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cliente.hbm.xml
+00:35:31,884  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Lista.hbm.xml
+00:35:31,890  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turno.hbm.xml
+00:35:31,896  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transaccion.hbm.xml
+00:35:31,902  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Subcuenta.hbm.xml
+00:35:31,907  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transacciondetalle.hbm.xml
+00:35:31,912  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfil.hbm.xml
+00:35:31,917  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuarioperfil.hbm.xml
+00:35:31,921  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Departamento.hbm.xml
+00:35:31,925  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Deposito.hbm.xml
+00:35:31,929  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillajeajuste.hbm.xml
+00:35:31,936  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Trabajador.hbm.xml
+00:35:31,941  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresora.hbm.xml
+00:35:31,945  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisortipocomprobante.hbm.xml
+00:35:31,949  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cara.hbm.xml
+00:35:31,953  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoventa.hbm.xml
+00:35:31,957  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caja.hbm.xml
+00:35:31,961  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Listavalor.hbm.xml
+00:35:31,965  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Distrito.hbm.xml
+00:35:31,969  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillaje.hbm.xml
+00:35:31,973  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cuenta.hbm.xml
+00:35:31,977  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoacumulado.hbm.xml
+00:35:31,983  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Despacho.hbm.xml
+00:35:31,987  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Estacionservicio.hbm.xml
+00:35:31,992  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tipocambio.hbm.xml
+00:35:31,995  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Opcion.hbm.xml
+00:35:31,999  INFO Configuration:1541 - Configured SessionFactory: null
+00:35:32,049  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresorapuntoventa -> impresorapuntoventa
+00:35:32,099  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tarjeta -> tarjeta
+00:35:32,102  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Movimiento -> movimiento
+00:35:32,102  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caraproducto -> caraproducto
+00:35:32,103  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisor -> centroemisor
+00:35:32,103  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tanque -> tanque
+00:35:32,104  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuario -> usuario
+00:35:32,105  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Surtidor -> surtidor
+00:35:32,105  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Provincia -> provincia
+00:35:32,106  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfilopcion -> perfilopcion
+00:35:32,106  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turnopuntoventacaja -> turnopuntoventacaja
+00:35:32,107  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Producto -> producto
+00:35:32,107  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cliente -> cliente
+00:35:32,108  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Lista -> lista
+00:35:32,108  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turno -> turno
+00:35:32,109  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transaccion -> transaccion
+00:35:32,109  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Subcuenta -> subcuenta
+00:35:32,110  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transacciondetalle -> transacciondetalle
+00:35:32,110  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfil -> perfil
+00:35:32,111  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuarioperfil -> usuarioperfil
+00:35:32,111  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Departamento -> departamento
+00:35:32,111  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Deposito -> deposito
+00:35:32,112  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillajeajuste -> varillajeajuste
+00:35:32,112  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Trabajador -> trabajador
+00:35:32,113  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresora -> impresora
+00:35:32,113  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisortipocomprobante -> centroemisortipocomprobante
+00:35:32,114  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cara -> cara
+00:35:32,114  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoventa -> puntoventa
+00:35:32,114  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caja -> caja
+00:35:32,115  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Listavalor -> listavalor
+00:35:32,115  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Distrito -> distrito
+00:35:32,116  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillaje -> varillaje
+00:35:32,116  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cuenta -> cuenta
+00:35:32,117  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoacumulado -> puntoacumulado
+00:35:32,117  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Despacho -> despacho
+00:35:32,117  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Estacionservicio -> estacionservicio
+00:35:32,118  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tipocambio -> tipocambio
+00:35:32,118  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Opcion -> opcion
+00:35:32,120  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.subcuentas -> subcuenta
+00:35:32,121  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.puntoacumulados -> puntoacumulado
+00:35:32,121  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caraproducto.despachos -> despacho
+00:35:32,122  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Centroemisor.centroemisortipocomprobantes -> centroemisortipocomprobante
+00:35:32,122  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tanque.varillajes -> varillaje
+00:35:32,122  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Usuario.usuarioperfils -> usuarioperfil
+00:35:32,122  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Surtidor.caras -> cara
+00:35:32,122  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Provincia.distritos -> distrito
+00:35:32,123  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.depositos -> deposito
+00:35:32,123  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.movimientos -> movimiento
+00:35:32,123  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.subcuentas -> subcuenta
+00:35:32,123  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.caraproductos -> caraproducto
+00:35:32,123  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.tanques -> tanque
+00:35:32,123  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.transacciondetalles -> transacciondetalle
+00:35:32,124  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.despachos -> despacho
+00:35:32,124  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.transaccions -> transaccion
+00:35:32,124  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.tarjetas -> tarjeta
+00:35:32,124  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.cuentas -> cuenta
+00:35:32,124  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Lista.listavalors -> listavalor
+00:35:32,125  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turno.turnopuntoventacajas -> turnopuntoventacaja
+00:35:32,129  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.transacciondetalles -> transacciondetalle
+00:35:32,129  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.puntoacumulados -> puntoacumulado
+00:35:32,129  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.movimientos -> movimiento
+00:35:32,129  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.perfilopcions -> perfilopcion
+00:35:32,130  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.usuarioperfils -> usuarioperfil
+00:35:32,130  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Departamento.provincias -> provincia
+00:35:32,130  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.usuarios -> usuario
+00:35:32,130  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.cajas -> caja
+00:35:32,130  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Impresora.impresorapuntoventas -> impresorapuntoventa
+00:35:32,130  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cara.caraproductos -> caraproducto
+00:35:32,131  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.turnopuntoventacajas -> turnopuntoventacaja
+00:35:32,131  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.impresorapuntoventas -> impresorapuntoventa
+00:35:32,131  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.centroemisors -> centroemisor
+00:35:32,131  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caja.turnopuntoventacajas -> turnopuntoventacaja
+00:35:32,131  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Listavalor.listavalors -> listavalor
+00:35:32,132  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Distrito.estacionservicios -> estacionservicio
+00:35:32,132  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Varillaje.varillajeajustes -> varillajeajuste
+00:35:32,132  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cuenta.subcuentas -> subcuenta
+00:35:32,132  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Despacho.transaccions -> transaccion
+00:35:32,132  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.turnos -> turno
+00:35:32,133  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.trabajadors -> trabajador
+00:35:32,133  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.puntoventas -> puntoventa
+00:35:32,133  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.surtidors -> surtidor
+00:35:32,133  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.tanques -> tanque
+00:35:32,133  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Opcion.perfilopcions -> perfilopcion
+00:35:32,134  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+00:35:32,165  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+00:35:32,165  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+00:35:32,166  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+00:35:32,177  INFO DriverManagerConnectionProvider:80 - using driver: org.postgresql.Driver at URL: jdbc:postgresql://localhost:5432/cem44
+00:35:32,177  INFO DriverManagerConnectionProvider:86 - connection properties: {user=postgres, password=****}
+00:35:32,265  INFO SettingsFactory:89 - RDBMS: PostgreSQL, version: 9.1.3
+00:35:32,265  INFO SettingsFactory:90 - JDBC driver: PostgreSQL Native Driver, version: PostgreSQL 9.0 JDBC4 (build 801)
+00:35:32,275  INFO Dialect:152 - Using dialect: org.hibernate.dialect.PostgreSQLDialect
+00:35:32,278  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+00:35:32,279  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+00:35:32,280  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+00:35:32,280  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+00:35:32,280  INFO SettingsFactory:154 - JDBC batch size: 15
+00:35:32,280  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+00:35:32,280  INFO SettingsFactory:162 - Scrollable result sets: enabled
+00:35:32,281  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+00:35:32,281  INFO SettingsFactory:178 - Connection release mode: auto
+00:35:32,281  INFO SettingsFactory:205 - Default batch fetch size: 1
+00:35:32,281  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+00:35:32,281  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+00:35:32,282  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+00:35:32,282  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+00:35:32,284  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+00:35:32,284  INFO SettingsFactory:225 - Query language substitutions: {}
+00:35:32,284  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+00:35:32,284  INFO SettingsFactory:235 - Second-level cache: enabled
+00:35:32,284  INFO SettingsFactory:239 - Query cache: disabled
+00:35:32,284  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+00:35:32,285  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+00:35:32,285  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+00:35:32,288  INFO SettingsFactory:290 - Statistics: disabled
+00:35:32,288  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+00:35:32,288  INFO SettingsFactory:309 - Default entity-mode: pojo
+00:35:32,289  INFO SettingsFactory:313 - Named query checking : enabled
+00:35:32,313  INFO SessionFactoryImpl:161 - building session factory
+00:35:32,774  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+00:35:32,951 DEBUG IntegerType:172 - returning '1' as column: Id6_
+00:35:32,956 DEBUG IntegerType:172 - returning '1' as column: IdTrabaj2_6_
+00:35:32,956 DEBUG StringType:172 - returning 'admin' as column: Login6_
+00:35:32,956 DEBUG StringType:172 - returning 'admin' as column: Clave6_
+00:35:32,958 DEBUG DateType:172 - returning '12 diciembre 2013' as column: FechaReg5_6_
+00:39:06,536  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:39:06,548  INFO Environment:514 - Hibernate 3.2.5
+00:39:06,551  INFO Environment:547 - hibernate.properties not found
+00:39:06,553  INFO Environment:681 - Bytecode provider name : cglib
+00:39:06,555  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:39:06,603  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+00:39:06,603  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+00:39:06,673 ERROR XMLHelper:61 - Error parsing XML: /hibernate.cfg.xml(14) El tipo de elemento "props" debe declararse.
+00:39:06,673 ERROR XMLHelper:61 - Error parsing XML: /hibernate.cfg.xml(15) El tipo de elemento "prop" debe declararse.
+00:39:06,674 ERROR XMLHelper:61 - Error parsing XML: /hibernate.cfg.xml(18) El tipo de elemento "prop" debe declararse.
+00:39:06,675 ERROR XMLHelper:61 - Error parsing XML: /hibernate.cfg.xml(28) El contenido del tipo de elemento "property" debe coincidir con "null".
+00:41:50,514  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:41:50,527  INFO Environment:514 - Hibernate 3.2.5
+00:41:50,529  INFO Environment:547 - hibernate.properties not found
+00:41:50,531  INFO Environment:681 - Bytecode provider name : cglib
+00:41:50,534  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:41:50,582  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+00:41:50,582  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+00:41:50,649  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml
+00:41:50,694  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tarjeta.hbm.xml
+00:41:50,715  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Movimiento.hbm.xml
+00:41:50,729  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caraproducto.hbm.xml
+00:41:50,740  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisor.hbm.xml
+00:41:50,748  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tanque.hbm.xml
+00:41:50,755  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuario.hbm.xml
+00:41:50,761  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Surtidor.hbm.xml
+00:41:50,767  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Provincia.hbm.xml
+00:41:50,773  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfilopcion.hbm.xml
+00:41:50,778  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turnopuntoventacaja.hbm.xml
+00:41:50,784  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Producto.hbm.xml
+00:41:50,789  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cliente.hbm.xml
+00:41:50,799  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Lista.hbm.xml
+00:41:50,805  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turno.hbm.xml
+00:41:50,810  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transaccion.hbm.xml
+00:41:50,816  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Subcuenta.hbm.xml
+00:41:50,821  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transacciondetalle.hbm.xml
+00:41:50,826  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfil.hbm.xml
+00:41:50,831  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuarioperfil.hbm.xml
+00:41:50,835  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Departamento.hbm.xml
+00:41:50,839  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Deposito.hbm.xml
+00:41:50,843  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillajeajuste.hbm.xml
+00:41:50,850  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Trabajador.hbm.xml
+00:41:50,855  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresora.hbm.xml
+00:41:50,860  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisortipocomprobante.hbm.xml
+00:41:50,863  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cara.hbm.xml
+00:41:50,867  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoventa.hbm.xml
+00:41:50,871  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caja.hbm.xml
+00:41:50,875  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Listavalor.hbm.xml
+00:41:50,879  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Distrito.hbm.xml
+00:41:50,883  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillaje.hbm.xml
+00:41:50,886  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cuenta.hbm.xml
+00:41:50,890  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoacumulado.hbm.xml
+00:41:50,896  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Despacho.hbm.xml
+00:41:50,900  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Estacionservicio.hbm.xml
+00:41:50,905  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tipocambio.hbm.xml
+00:41:50,908  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Opcion.hbm.xml
+00:41:50,912  INFO Configuration:1541 - Configured SessionFactory: null
+00:41:50,963  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresorapuntoventa -> impresorapuntoventa
+00:41:51,013  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tarjeta -> tarjeta
+00:41:51,016  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Movimiento -> movimiento
+00:41:51,016  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caraproducto -> caraproducto
+00:41:51,017  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisor -> centroemisor
+00:41:51,017  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tanque -> tanque
+00:41:51,018  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuario -> usuario
+00:41:51,018  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Surtidor -> surtidor
+00:41:51,019  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Provincia -> provincia
+00:41:51,020  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfilopcion -> perfilopcion
+00:41:51,020  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turnopuntoventacaja -> turnopuntoventacaja
+00:41:51,021  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Producto -> producto
+00:41:51,021  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cliente -> cliente
+00:41:51,023  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Lista -> lista
+00:41:51,023  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turno -> turno
+00:41:51,024  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transaccion -> transaccion
+00:41:51,025  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Subcuenta -> subcuenta
+00:41:51,025  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transacciondetalle -> transacciondetalle
+00:41:51,025  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfil -> perfil
+00:41:51,026  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuarioperfil -> usuarioperfil
+00:41:51,026  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Departamento -> departamento
+00:41:51,026  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Deposito -> deposito
+00:41:51,027  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillajeajuste -> varillajeajuste
+00:41:51,027  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Trabajador -> trabajador
+00:41:51,028  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresora -> impresora
+00:41:51,028  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisortipocomprobante -> centroemisortipocomprobante
+00:41:51,029  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cara -> cara
+00:41:51,029  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoventa -> puntoventa
+00:41:51,029  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caja -> caja
+00:41:51,030  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Listavalor -> listavalor
+00:41:51,030  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Distrito -> distrito
+00:41:51,030  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillaje -> varillaje
+00:41:51,031  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cuenta -> cuenta
+00:41:51,031  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoacumulado -> puntoacumulado
+00:41:51,032  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Despacho -> despacho
+00:41:51,032  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Estacionservicio -> estacionservicio
+00:41:51,033  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tipocambio -> tipocambio
+00:41:51,033  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Opcion -> opcion
+00:41:51,035  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.subcuentas -> subcuenta
+00:41:51,035  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.puntoacumulados -> puntoacumulado
+00:41:51,036  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caraproducto.despachos -> despacho
+00:41:51,036  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Centroemisor.centroemisortipocomprobantes -> centroemisortipocomprobante
+00:41:51,036  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tanque.varillajes -> varillaje
+00:41:51,036  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Usuario.usuarioperfils -> usuarioperfil
+00:41:51,036  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Surtidor.caras -> cara
+00:41:51,037  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Provincia.distritos -> distrito
+00:41:51,037  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.depositos -> deposito
+00:41:51,037  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.movimientos -> movimiento
+00:41:51,037  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.subcuentas -> subcuenta
+00:41:51,037  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.caraproductos -> caraproducto
+00:41:51,038  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.tanques -> tanque
+00:41:51,038  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.transacciondetalles -> transacciondetalle
+00:41:51,038  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.despachos -> despacho
+00:41:51,038  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.transaccions -> transaccion
+00:41:51,038  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.tarjetas -> tarjeta
+00:41:51,039  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.cuentas -> cuenta
+00:41:51,039  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Lista.listavalors -> listavalor
+00:41:51,039  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turno.turnopuntoventacajas -> turnopuntoventacaja
+00:41:51,043  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.transacciondetalles -> transacciondetalle
+00:41:51,044  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.puntoacumulados -> puntoacumulado
+00:41:51,044  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.movimientos -> movimiento
+00:41:51,044  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.perfilopcions -> perfilopcion
+00:41:51,044  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.usuarioperfils -> usuarioperfil
+00:41:51,044  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Departamento.provincias -> provincia
+00:41:51,045  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.usuarios -> usuario
+00:41:51,045  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.cajas -> caja
+00:41:51,045  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Impresora.impresorapuntoventas -> impresorapuntoventa
+00:41:51,045  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cara.caraproductos -> caraproducto
+00:41:51,045  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.turnopuntoventacajas -> turnopuntoventacaja
+00:41:51,045  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.impresorapuntoventas -> impresorapuntoventa
+00:41:51,046  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.centroemisors -> centroemisor
+00:41:51,046  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caja.turnopuntoventacajas -> turnopuntoventacaja
+00:41:51,046  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Listavalor.listavalors -> listavalor
+00:41:51,046  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Distrito.estacionservicios -> estacionservicio
+00:41:51,046  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Varillaje.varillajeajustes -> varillajeajuste
+00:41:51,047  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cuenta.subcuentas -> subcuenta
+00:41:51,047  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Despacho.transaccions -> transaccion
+00:41:51,047  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.turnos -> turno
+00:41:51,047  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.trabajadors -> trabajador
+00:41:51,047  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.puntoventas -> puntoventa
+00:41:51,047  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.surtidors -> surtidor
+00:41:51,048  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.tanques -> tanque
+00:41:51,048  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Opcion.perfilopcions -> perfilopcion
+00:41:51,049  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+00:41:51,082  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+00:41:51,083  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+00:41:51,083  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+00:41:51,094  INFO DriverManagerConnectionProvider:80 - using driver: org.postgresql.Driver at URL: jdbc:postgresql://localhost:5432/cem44
+00:41:51,094  INFO DriverManagerConnectionProvider:86 - connection properties: {user=postgres, password=****}
+00:41:51,180  INFO SettingsFactory:89 - RDBMS: PostgreSQL, version: 9.1.3
+00:41:51,181  INFO SettingsFactory:90 - JDBC driver: PostgreSQL Native Driver, version: PostgreSQL 9.0 JDBC4 (build 801)
+00:41:51,191  INFO Dialect:152 - Using dialect: org.hibernate.dialect.PostgreSQLDialect
+00:41:51,195  INFO TransactionFactoryFactory:34 - Transaction strategy: org.hibernate.transaction.JTATransactionFactory
+00:41:51,197  INFO NamingHelper:26 - JNDI InitialContext properties:{}
+00:41:51,200  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+00:41:51,200  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+00:41:51,200  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+00:41:51,200  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+00:41:51,200  INFO SettingsFactory:154 - JDBC batch size: 15
+00:41:51,200  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+00:41:51,201  INFO SettingsFactory:162 - Scrollable result sets: enabled
+00:41:51,201  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+00:41:51,201  INFO SettingsFactory:178 - Connection release mode: auto
+00:41:51,202  INFO SettingsFactory:205 - Default batch fetch size: 1
+00:41:51,203  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+00:41:51,203  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+00:41:51,203  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+00:41:51,203  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+00:41:51,206  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+00:41:51,207  INFO SettingsFactory:225 - Query language substitutions: {}
+00:41:51,207  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+00:41:51,207  INFO SettingsFactory:235 - Second-level cache: enabled
+00:41:51,208  INFO SettingsFactory:239 - Query cache: disabled
+00:41:51,208  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+00:41:51,209  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+00:41:51,209  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+00:41:51,212  INFO SettingsFactory:290 - Statistics: disabled
+00:41:51,212  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+00:41:51,212  INFO SettingsFactory:309 - Default entity-mode: pojo
+00:41:51,212  INFO SettingsFactory:313 - Named query checking : enabled
+00:41:51,234  INFO SessionFactoryImpl:161 - building session factory
+00:41:51,568  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+00:42:56,948  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:42:56,960  INFO Environment:514 - Hibernate 3.2.5
+00:42:56,962  INFO Environment:547 - hibernate.properties not found
+00:42:56,964  INFO Environment:681 - Bytecode provider name : cglib
+00:42:56,966  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:42:57,013  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+00:42:57,013  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+00:42:57,077  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml
+00:42:57,118  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tarjeta.hbm.xml
+00:42:57,139  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Movimiento.hbm.xml
+00:42:57,150  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caraproducto.hbm.xml
+00:42:57,158  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisor.hbm.xml
+00:42:57,167  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tanque.hbm.xml
+00:42:57,177  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuario.hbm.xml
+00:42:57,184  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Surtidor.hbm.xml
+00:42:57,191  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Provincia.hbm.xml
+00:42:57,197  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfilopcion.hbm.xml
+00:42:57,203  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turnopuntoventacaja.hbm.xml
+00:42:57,209  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Producto.hbm.xml
+00:42:57,215  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cliente.hbm.xml
+00:42:57,224  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Lista.hbm.xml
+00:42:57,229  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turno.hbm.xml
+00:42:57,234  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transaccion.hbm.xml
+00:42:57,240  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Subcuenta.hbm.xml
+00:42:57,244  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transacciondetalle.hbm.xml
+00:42:57,249  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfil.hbm.xml
+00:42:57,253  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuarioperfil.hbm.xml
+00:42:57,257  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Departamento.hbm.xml
+00:42:57,261  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Deposito.hbm.xml
+00:42:57,265  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillajeajuste.hbm.xml
+00:42:57,273  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Trabajador.hbm.xml
+00:42:57,278  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresora.hbm.xml
+00:42:57,282  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisortipocomprobante.hbm.xml
+00:42:57,285  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cara.hbm.xml
+00:42:57,289  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoventa.hbm.xml
+00:42:57,293  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caja.hbm.xml
+00:42:57,297  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Listavalor.hbm.xml
+00:42:57,300  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Distrito.hbm.xml
+00:42:57,304  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillaje.hbm.xml
+00:42:57,308  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cuenta.hbm.xml
+00:42:57,312  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoacumulado.hbm.xml
+00:42:57,318  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Despacho.hbm.xml
+00:42:57,322  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Estacionservicio.hbm.xml
+00:42:57,327  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tipocambio.hbm.xml
+00:42:57,330  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Opcion.hbm.xml
+00:42:57,334  INFO Configuration:1541 - Configured SessionFactory: null
+00:42:57,384  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresorapuntoventa -> impresorapuntoventa
+00:42:57,433  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tarjeta -> tarjeta
+00:42:57,436  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Movimiento -> movimiento
+00:42:57,437  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caraproducto -> caraproducto
+00:42:57,437  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisor -> centroemisor
+00:42:57,438  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tanque -> tanque
+00:42:57,438  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuario -> usuario
+00:42:57,439  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Surtidor -> surtidor
+00:42:57,440  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Provincia -> provincia
+00:42:57,440  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfilopcion -> perfilopcion
+00:42:57,441  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turnopuntoventacaja -> turnopuntoventacaja
+00:42:57,441  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Producto -> producto
+00:42:57,442  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cliente -> cliente
+00:42:57,442  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Lista -> lista
+00:42:57,443  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turno -> turno
+00:42:57,443  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transaccion -> transaccion
+00:42:57,444  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Subcuenta -> subcuenta
+00:42:57,444  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transacciondetalle -> transacciondetalle
+00:42:57,445  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfil -> perfil
+00:42:57,445  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuarioperfil -> usuarioperfil
+00:42:57,445  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Departamento -> departamento
+00:42:57,446  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Deposito -> deposito
+00:42:57,446  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillajeajuste -> varillajeajuste
+00:42:57,446  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Trabajador -> trabajador
+00:42:57,447  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresora -> impresora
+00:42:57,447  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisortipocomprobante -> centroemisortipocomprobante
+00:42:57,448  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cara -> cara
+00:42:57,448  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoventa -> puntoventa
+00:42:57,448  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caja -> caja
+00:42:57,449  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Listavalor -> listavalor
+00:42:57,449  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Distrito -> distrito
+00:42:57,450  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillaje -> varillaje
+00:42:57,450  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cuenta -> cuenta
+00:42:57,450  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoacumulado -> puntoacumulado
+00:42:57,451  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Despacho -> despacho
+00:42:57,451  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Estacionservicio -> estacionservicio
+00:42:57,452  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tipocambio -> tipocambio
+00:42:57,452  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Opcion -> opcion
+00:42:57,454  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.subcuentas -> subcuenta
+00:42:57,455  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.puntoacumulados -> puntoacumulado
+00:42:57,455  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caraproducto.despachos -> despacho
+00:42:57,455  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Centroemisor.centroemisortipocomprobantes -> centroemisortipocomprobante
+00:42:57,455  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tanque.varillajes -> varillaje
+00:42:57,456  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Usuario.usuarioperfils -> usuarioperfil
+00:42:57,456  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Surtidor.caras -> cara
+00:42:57,456  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Provincia.distritos -> distrito
+00:42:57,456  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.depositos -> deposito
+00:42:57,456  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.movimientos -> movimiento
+00:42:57,457  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.subcuentas -> subcuenta
+00:42:57,457  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.caraproductos -> caraproducto
+00:42:57,457  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.tanques -> tanque
+00:42:57,457  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.transacciondetalles -> transacciondetalle
+00:42:57,458  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.despachos -> despacho
+00:42:57,458  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.transaccions -> transaccion
+00:42:57,458  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.tarjetas -> tarjeta
+00:42:57,458  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.cuentas -> cuenta
+00:42:57,459  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Lista.listavalors -> listavalor
+00:42:57,459  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turno.turnopuntoventacajas -> turnopuntoventacaja
+00:42:57,462  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.transacciondetalles -> transacciondetalle
+00:42:57,463  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.puntoacumulados -> puntoacumulado
+00:42:57,463  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.movimientos -> movimiento
+00:42:57,463  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.perfilopcions -> perfilopcion
+00:42:57,463  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.usuarioperfils -> usuarioperfil
+00:42:57,463  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Departamento.provincias -> provincia
+00:42:57,464  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.usuarios -> usuario
+00:42:57,464  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.cajas -> caja
+00:42:57,464  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Impresora.impresorapuntoventas -> impresorapuntoventa
+00:42:57,464  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cara.caraproductos -> caraproducto
+00:42:57,464  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.turnopuntoventacajas -> turnopuntoventacaja
+00:42:57,464  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.impresorapuntoventas -> impresorapuntoventa
+00:42:57,465  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.centroemisors -> centroemisor
+00:42:57,465  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caja.turnopuntoventacajas -> turnopuntoventacaja
+00:42:57,465  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Listavalor.listavalors -> listavalor
+00:42:57,465  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Distrito.estacionservicios -> estacionservicio
+00:42:57,465  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Varillaje.varillajeajustes -> varillajeajuste
+00:42:57,466  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cuenta.subcuentas -> subcuenta
+00:42:57,466  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Despacho.transaccions -> transaccion
+00:42:57,466  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.turnos -> turno
+00:42:57,466  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.trabajadors -> trabajador
+00:42:57,466  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.puntoventas -> puntoventa
+00:42:57,466  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.surtidors -> surtidor
+00:42:57,467  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.tanques -> tanque
+00:42:57,467  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Opcion.perfilopcions -> perfilopcion
+00:42:57,468  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+00:42:57,497  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+00:42:57,497  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+00:42:57,497  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+00:42:57,509  INFO DriverManagerConnectionProvider:80 - using driver: org.postgresql.Driver at URL: jdbc:postgresql://localhost:5432/cem44
+00:42:57,509  INFO DriverManagerConnectionProvider:86 - connection properties: {user=postgres, password=****}
+00:42:57,594  INFO SettingsFactory:89 - RDBMS: PostgreSQL, version: 9.1.3
+00:42:57,595  INFO SettingsFactory:90 - JDBC driver: PostgreSQL Native Driver, version: PostgreSQL 9.0 JDBC4 (build 801)
+00:42:57,606  INFO Dialect:152 - Using dialect: org.hibernate.dialect.PostgreSQLDialect
+00:42:57,609  INFO TransactionFactoryFactory:34 - Transaction strategy: org.hibernate.transaction.JTATransactionFactory
+00:42:57,612  INFO NamingHelper:26 - JNDI InitialContext properties:{}
+00:42:57,615  INFO TransactionManagerLookupFactory:38 - instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+00:42:57,616  INFO TransactionManagerLookupFactory:42 - instantiated TransactionManagerLookup
+00:42:57,616  INFO TransactionManagerLookupFactory:38 - instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+00:42:57,616  INFO TransactionManagerLookupFactory:42 - instantiated TransactionManagerLookup
+00:42:57,617  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+00:42:57,617  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+00:42:57,617  INFO SettingsFactory:154 - JDBC batch size: 15
+00:42:57,617  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+00:42:57,620  INFO SettingsFactory:162 - Scrollable result sets: enabled
+00:42:57,620  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+00:42:57,621  INFO SettingsFactory:178 - Connection release mode: auto
+00:42:57,621  INFO SettingsFactory:205 - Default batch fetch size: 1
+00:42:57,622  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+00:42:57,622  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+00:42:57,623  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+00:42:57,623  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+00:42:57,624  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+00:42:57,625  INFO SettingsFactory:225 - Query language substitutions: {}
+00:42:57,625  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+00:42:57,625  INFO SettingsFactory:235 - Second-level cache: enabled
+00:42:57,625  INFO SettingsFactory:239 - Query cache: disabled
+00:42:57,625  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+00:42:57,625  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+00:42:57,625  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+00:42:57,628  INFO SettingsFactory:290 - Statistics: disabled
+00:42:57,628  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+00:42:57,629  INFO SettingsFactory:309 - Default entity-mode: pojo
+00:42:57,629  INFO SettingsFactory:313 - Named query checking : enabled
+00:42:57,651  INFO SessionFactoryImpl:161 - building session factory
+00:42:57,990  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+00:42:57,991  INFO NamingHelper:26 - JNDI InitialContext properties:{}
+00:43:15,046  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:43:15,058  INFO Environment:514 - Hibernate 3.2.5
+00:43:15,060  INFO Environment:547 - hibernate.properties not found
+00:43:15,062  INFO Environment:681 - Bytecode provider name : cglib
+00:43:15,065  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:43:15,113  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+00:43:15,113  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+00:43:15,179  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml
+00:43:15,222  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tarjeta.hbm.xml
+00:43:15,243  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Movimiento.hbm.xml
+00:43:15,262  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caraproducto.hbm.xml
+00:43:15,270  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisor.hbm.xml
+00:43:15,276  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tanque.hbm.xml
+00:43:15,283  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuario.hbm.xml
+00:43:15,289  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Surtidor.hbm.xml
+00:43:15,295  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Provincia.hbm.xml
+00:43:15,301  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfilopcion.hbm.xml
+00:43:15,306  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turnopuntoventacaja.hbm.xml
+00:43:15,312  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Producto.hbm.xml
+00:43:15,317  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cliente.hbm.xml
+00:43:15,327  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Lista.hbm.xml
+00:43:15,331  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turno.hbm.xml
+00:43:15,337  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transaccion.hbm.xml
+00:43:15,342  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Subcuenta.hbm.xml
+00:43:15,347  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transacciondetalle.hbm.xml
+00:43:15,352  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfil.hbm.xml
+00:43:15,356  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuarioperfil.hbm.xml
+00:43:15,360  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Departamento.hbm.xml
+00:43:15,364  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Deposito.hbm.xml
+00:43:15,368  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillajeajuste.hbm.xml
+00:43:15,375  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Trabajador.hbm.xml
+00:43:15,380  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresora.hbm.xml
+00:43:15,383  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisortipocomprobante.hbm.xml
+00:43:15,387  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cara.hbm.xml
+00:43:15,391  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoventa.hbm.xml
+00:43:15,395  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caja.hbm.xml
+00:43:15,399  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Listavalor.hbm.xml
+00:43:15,403  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Distrito.hbm.xml
+00:43:15,407  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillaje.hbm.xml
+00:43:15,410  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cuenta.hbm.xml
+00:43:15,415  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoacumulado.hbm.xml
+00:43:15,420  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Despacho.hbm.xml
+00:43:15,425  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Estacionservicio.hbm.xml
+00:43:15,429  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tipocambio.hbm.xml
+00:43:15,433  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Opcion.hbm.xml
+00:43:15,436  INFO Configuration:1541 - Configured SessionFactory: null
+00:43:15,487  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresorapuntoventa -> impresorapuntoventa
+00:43:15,537  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tarjeta -> tarjeta
+00:43:15,539  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Movimiento -> movimiento
+00:43:15,540  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caraproducto -> caraproducto
+00:43:15,540  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisor -> centroemisor
+00:43:15,541  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tanque -> tanque
+00:43:15,541  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuario -> usuario
+00:43:15,542  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Surtidor -> surtidor
+00:43:15,543  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Provincia -> provincia
+00:43:15,543  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfilopcion -> perfilopcion
+00:43:15,544  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turnopuntoventacaja -> turnopuntoventacaja
+00:43:15,544  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Producto -> producto
+00:43:15,545  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cliente -> cliente
+00:43:15,545  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Lista -> lista
+00:43:15,546  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turno -> turno
+00:43:15,546  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transaccion -> transaccion
+00:43:15,547  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Subcuenta -> subcuenta
+00:43:15,547  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transacciondetalle -> transacciondetalle
+00:43:15,548  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfil -> perfil
+00:43:15,548  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuarioperfil -> usuarioperfil
+00:43:15,548  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Departamento -> departamento
+00:43:15,549  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Deposito -> deposito
+00:43:15,549  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillajeajuste -> varillajeajuste
+00:43:15,549  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Trabajador -> trabajador
+00:43:15,550  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresora -> impresora
+00:43:15,551  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisortipocomprobante -> centroemisortipocomprobante
+00:43:15,551  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cara -> cara
+00:43:15,551  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoventa -> puntoventa
+00:43:15,552  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caja -> caja
+00:43:15,552  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Listavalor -> listavalor
+00:43:15,552  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Distrito -> distrito
+00:43:15,553  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillaje -> varillaje
+00:43:15,553  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cuenta -> cuenta
+00:43:15,554  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoacumulado -> puntoacumulado
+00:43:15,554  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Despacho -> despacho
+00:43:15,555  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Estacionservicio -> estacionservicio
+00:43:15,555  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tipocambio -> tipocambio
+00:43:15,555  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Opcion -> opcion
+00:43:15,557  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.subcuentas -> subcuenta
+00:43:15,558  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.puntoacumulados -> puntoacumulado
+00:43:15,558  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caraproducto.despachos -> despacho
+00:43:15,558  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Centroemisor.centroemisortipocomprobantes -> centroemisortipocomprobante
+00:43:15,558  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tanque.varillajes -> varillaje
+00:43:15,558  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Usuario.usuarioperfils -> usuarioperfil
+00:43:15,559  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Surtidor.caras -> cara
+00:43:15,559  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Provincia.distritos -> distrito
+00:43:15,559  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.depositos -> deposito
+00:43:15,559  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.movimientos -> movimiento
+00:43:15,559  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.subcuentas -> subcuenta
+00:43:15,559  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.caraproductos -> caraproducto
+00:43:15,560  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.tanques -> tanque
+00:43:15,560  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.transacciondetalles -> transacciondetalle
+00:43:15,560  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.despachos -> despacho
+00:43:15,560  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.transaccions -> transaccion
+00:43:15,560  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.tarjetas -> tarjeta
+00:43:15,560  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.cuentas -> cuenta
+00:43:15,561  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Lista.listavalors -> listavalor
+00:43:15,561  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turno.turnopuntoventacajas -> turnopuntoventacaja
+00:43:15,564  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.transacciondetalles -> transacciondetalle
+00:43:15,564  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.puntoacumulados -> puntoacumulado
+00:43:15,565  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.movimientos -> movimiento
+00:43:15,565  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.perfilopcions -> perfilopcion
+00:43:15,565  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.usuarioperfils -> usuarioperfil
+00:43:15,565  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Departamento.provincias -> provincia
+00:43:15,565  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.usuarios -> usuario
+00:43:15,565  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.cajas -> caja
+00:43:15,566  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Impresora.impresorapuntoventas -> impresorapuntoventa
+00:43:15,566  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cara.caraproductos -> caraproducto
+00:43:15,566  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.turnopuntoventacajas -> turnopuntoventacaja
+00:43:15,566  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.impresorapuntoventas -> impresorapuntoventa
+00:43:15,566  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.centroemisors -> centroemisor
+00:43:15,566  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caja.turnopuntoventacajas -> turnopuntoventacaja
+00:43:15,567  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Listavalor.listavalors -> listavalor
+00:43:15,567  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Distrito.estacionservicios -> estacionservicio
+00:43:15,567  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Varillaje.varillajeajustes -> varillajeajuste
+00:43:15,567  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cuenta.subcuentas -> subcuenta
+00:43:15,567  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Despacho.transaccions -> transaccion
+00:43:15,567  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.turnos -> turno
+00:43:15,568  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.trabajadors -> trabajador
+00:43:15,568  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.puntoventas -> puntoventa
+00:43:15,568  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.surtidors -> surtidor
+00:43:15,568  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.tanques -> tanque
+00:43:15,568  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Opcion.perfilopcions -> perfilopcion
+00:43:15,569  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+00:43:15,603  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+00:43:15,603  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+00:43:15,603  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+00:43:15,614  INFO DriverManagerConnectionProvider:80 - using driver: org.postgresql.Driver at URL: jdbc:postgresql://localhost:5432/cem44
+00:43:15,615  INFO DriverManagerConnectionProvider:86 - connection properties: {user=postgres, password=****}
+00:43:15,699  INFO SettingsFactory:89 - RDBMS: PostgreSQL, version: 9.1.3
+00:43:15,699  INFO SettingsFactory:90 - JDBC driver: PostgreSQL Native Driver, version: PostgreSQL 9.0 JDBC4 (build 801)
+00:43:15,712  INFO Dialect:152 - Using dialect: org.hibernate.dialect.PostgreSQLDialect
+00:43:15,715  INFO TransactionFactoryFactory:34 - Transaction strategy: org.hibernate.transaction.JTATransactionFactory
+00:43:15,718  INFO NamingHelper:26 - JNDI InitialContext properties:{}
+00:43:15,720  INFO TransactionManagerLookupFactory:38 - instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+00:43:15,722  INFO TransactionManagerLookupFactory:42 - instantiated TransactionManagerLookup
+00:43:15,722  INFO TransactionManagerLookupFactory:38 - instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+00:43:15,722  INFO TransactionManagerLookupFactory:42 - instantiated TransactionManagerLookup
+00:43:15,723  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+00:43:15,723  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+00:43:15,723  INFO SettingsFactory:154 - JDBC batch size: 15
+00:43:15,723  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+00:43:15,726  INFO SettingsFactory:162 - Scrollable result sets: enabled
+00:43:15,726  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+00:43:15,727  INFO SettingsFactory:178 - Connection release mode: auto
+00:43:15,728  INFO SettingsFactory:205 - Default batch fetch size: 1
+00:43:15,728  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+00:43:15,728  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+00:43:15,728  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+00:43:15,728  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+00:43:15,730  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+00:43:15,730  INFO SettingsFactory:225 - Query language substitutions: {}
+00:43:15,730  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+00:43:15,730  INFO SettingsFactory:235 - Second-level cache: enabled
+00:43:15,731  INFO SettingsFactory:239 - Query cache: disabled
+00:43:15,731  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+00:43:15,731  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+00:43:15,731  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+00:43:15,734  INFO SettingsFactory:290 - Statistics: disabled
+00:43:15,734  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+00:43:15,734  INFO SettingsFactory:309 - Default entity-mode: pojo
+00:43:15,734  INFO SettingsFactory:313 - Named query checking : enabled
+00:43:15,756  INFO SessionFactoryImpl:161 - building session factory
+00:43:16,084  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+00:43:16,084  INFO NamingHelper:26 - JNDI InitialContext properties:{}
+00:44:23,926  INFO Version:15 - Hibernate Annotations 3.3.1.GA
+00:44:23,938  INFO Environment:514 - Hibernate 3.2.5
+00:44:23,941  INFO Environment:547 - hibernate.properties not found
+00:44:23,943  INFO Environment:681 - Bytecode provider name : cglib
+00:44:23,946  INFO Environment:598 - using JDK 1.4 java.sql.Timestamp handling
+00:44:23,993  INFO Configuration:1426 - configuring from resource: /hibernate.cfg.xml
+00:44:23,994  INFO Configuration:1403 - Configuration resource: /hibernate.cfg.xml
+00:44:24,059  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml
+00:44:24,102  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tarjeta.hbm.xml
+00:44:24,122  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Movimiento.hbm.xml
+00:44:24,142  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caraproducto.hbm.xml
+00:44:24,151  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisor.hbm.xml
+00:44:24,158  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tanque.hbm.xml
+00:44:24,164  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuario.hbm.xml
+00:44:24,170  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Surtidor.hbm.xml
+00:44:24,178  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Provincia.hbm.xml
+00:44:24,184  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfilopcion.hbm.xml
+00:44:24,189  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turnopuntoventacaja.hbm.xml
+00:44:24,195  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Producto.hbm.xml
+00:44:24,201  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cliente.hbm.xml
+00:44:24,211  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Lista.hbm.xml
+00:44:24,216  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Turno.hbm.xml
+00:44:24,221  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transaccion.hbm.xml
+00:44:24,227  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Subcuenta.hbm.xml
+00:44:24,233  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Transacciondetalle.hbm.xml
+00:44:24,238  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Perfil.hbm.xml
+00:44:24,242  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Usuarioperfil.hbm.xml
+00:44:24,246  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Departamento.hbm.xml
+00:44:24,250  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Deposito.hbm.xml
+00:44:24,254  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillajeajuste.hbm.xml
+00:44:24,261  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Trabajador.hbm.xml
+00:44:24,266  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Impresora.hbm.xml
+00:44:24,270  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Centroemisortipocomprobante.hbm.xml
+00:44:24,273  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cara.hbm.xml
+00:44:24,277  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoventa.hbm.xml
+00:44:24,281  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Caja.hbm.xml
+00:44:24,285  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Listavalor.hbm.xml
+00:44:24,289  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Distrito.hbm.xml
+00:44:24,293  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Varillaje.hbm.xml
+00:44:24,297  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Cuenta.hbm.xml
+00:44:24,301  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Puntoacumulado.hbm.xml
+00:44:24,307  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Despacho.hbm.xml
+00:44:24,311  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Estacionservicio.hbm.xml
+00:44:24,315  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Tipocambio.hbm.xml
+00:44:24,319  INFO Configuration:553 - Reading mappings from resource : pe/com/ega/sgces/dao/Opcion.hbm.xml
+00:44:24,322  INFO Configuration:1541 - Configured SessionFactory: null
+00:44:24,373  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresorapuntoventa -> impresorapuntoventa
+00:44:24,422  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tarjeta -> tarjeta
+00:44:24,425  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Movimiento -> movimiento
+00:44:24,426  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caraproducto -> caraproducto
+00:44:24,426  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisor -> centroemisor
+00:44:24,427  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tanque -> tanque
+00:44:24,427  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuario -> usuario
+00:44:24,428  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Surtidor -> surtidor
+00:44:24,428  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Provincia -> provincia
+00:44:24,429  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfilopcion -> perfilopcion
+00:44:24,429  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turnopuntoventacaja -> turnopuntoventacaja
+00:44:24,430  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Producto -> producto
+00:44:24,431  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cliente -> cliente
+00:44:24,431  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Lista -> lista
+00:44:24,431  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Turno -> turno
+00:44:24,432  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transaccion -> transaccion
+00:44:24,433  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Subcuenta -> subcuenta
+00:44:24,433  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Transacciondetalle -> transacciondetalle
+00:44:24,433  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Perfil -> perfil
+00:44:24,434  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Usuarioperfil -> usuarioperfil
+00:44:24,434  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Departamento -> departamento
+00:44:24,434  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Deposito -> deposito
+00:44:24,435  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillajeajuste -> varillajeajuste
+00:44:24,435  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Trabajador -> trabajador
+00:44:24,436  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Impresora -> impresora
+00:44:24,436  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Centroemisortipocomprobante -> centroemisortipocomprobante
+00:44:24,436  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cara -> cara
+00:44:24,437  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoventa -> puntoventa
+00:44:24,437  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Caja -> caja
+00:44:24,438  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Listavalor -> listavalor
+00:44:24,438  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Distrito -> distrito
+00:44:24,438  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Varillaje -> varillaje
+00:44:24,439  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Cuenta -> cuenta
+00:44:24,439  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Puntoacumulado -> puntoacumulado
+00:44:24,440  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Despacho -> despacho
+00:44:24,440  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Estacionservicio -> estacionservicio
+00:44:24,441  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Tipocambio -> tipocambio
+00:44:24,441  INFO HbmBinder:300 - Mapping class: pe.com.ega.sgces.model.Opcion -> opcion
+00:44:24,443  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.subcuentas -> subcuenta
+00:44:24,443  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tarjeta.puntoacumulados -> puntoacumulado
+00:44:24,444  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caraproducto.despachos -> despacho
+00:44:24,444  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Centroemisor.centroemisortipocomprobantes -> centroemisortipocomprobante
+00:44:24,444  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Tanque.varillajes -> varillaje
+00:44:24,444  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Usuario.usuarioperfils -> usuarioperfil
+00:44:24,444  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Surtidor.caras -> cara
+00:44:24,444  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Provincia.distritos -> distrito
+00:44:24,445  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.depositos -> deposito
+00:44:24,445  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turnopuntoventacaja.movimientos -> movimiento
+00:44:24,445  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.subcuentas -> subcuenta
+00:44:24,445  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.caraproductos -> caraproducto
+00:44:24,445  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.tanques -> tanque
+00:44:24,445  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.transacciondetalles -> transacciondetalle
+00:44:24,446  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Producto.despachos -> despacho
+00:44:24,446  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.transaccions -> transaccion
+00:44:24,446  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.tarjetas -> tarjeta
+00:44:24,446  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cliente.cuentas -> cuenta
+00:44:24,446  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Lista.listavalors -> listavalor
+00:44:24,446  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Turno.turnopuntoventacajas -> turnopuntoventacaja
+00:44:24,451  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.transacciondetalles -> transacciondetalle
+00:44:24,451  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.puntoacumulados -> puntoacumulado
+00:44:24,451  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Transaccion.movimientos -> movimiento
+00:44:24,452  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.perfilopcions -> perfilopcion
+00:44:24,452  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Perfil.usuarioperfils -> usuarioperfil
+00:44:24,452  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Departamento.provincias -> provincia
+00:44:24,452  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.usuarios -> usuario
+00:44:24,452  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Trabajador.cajas -> caja
+00:44:24,452  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Impresora.impresorapuntoventas -> impresorapuntoventa
+00:44:24,453  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cara.caraproductos -> caraproducto
+00:44:24,453  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.turnopuntoventacajas -> turnopuntoventacaja
+00:44:24,453  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.impresorapuntoventas -> impresorapuntoventa
+00:44:24,453  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Puntoventa.centroemisors -> centroemisor
+00:44:24,453  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Caja.turnopuntoventacajas -> turnopuntoventacaja
+00:44:24,453  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Listavalor.listavalors -> listavalor
+00:44:24,454  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Distrito.estacionservicios -> estacionservicio
+00:44:24,454  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Varillaje.varillajeajustes -> varillajeajuste
+00:44:24,454  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Cuenta.subcuentas -> subcuenta
+00:44:24,454  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Despacho.transaccions -> transaccion
+00:44:24,454  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.turnos -> turno
+00:44:24,454  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.trabajadors -> trabajador
+00:44:24,455  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.puntoventas -> puntoventa
+00:44:24,455  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.surtidors -> surtidor
+00:44:24,455  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Estacionservicio.tanques -> tanque
+00:44:24,455  INFO HbmBinder:2385 - Mapping collection: pe.com.ega.sgces.model.Opcion.perfilopcions -> perfilopcion
+00:44:24,456  INFO AnnotationConfiguration:365 - Hibernate Validator not found: ignoring
+00:44:24,485  INFO DriverManagerConnectionProvider:41 - Using Hibernate built-in connection pool (not for production use!)
+00:44:24,485  INFO DriverManagerConnectionProvider:42 - Hibernate connection pool size: 20
+00:44:24,485  INFO DriverManagerConnectionProvider:45 - autocommit mode: false
+00:44:24,497  INFO DriverManagerConnectionProvider:80 - using driver: org.postgresql.Driver at URL: jdbc:postgresql://localhost:5432/cem44
+00:44:24,498  INFO DriverManagerConnectionProvider:86 - connection properties: {user=postgres, password=****}
+00:44:24,583  INFO SettingsFactory:89 - RDBMS: PostgreSQL, version: 9.1.3
+00:44:24,584  INFO SettingsFactory:90 - JDBC driver: PostgreSQL Native Driver, version: PostgreSQL 9.0 JDBC4 (build 801)
+00:44:24,595  INFO Dialect:152 - Using dialect: org.hibernate.dialect.PostgreSQLDialect
+00:44:24,599  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+00:44:24,601  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+00:44:24,601  INFO SettingsFactory:143 - Automatic flush during beforeCompletion(): disabled
+00:44:24,601  INFO SettingsFactory:147 - Automatic session close at end of transaction: disabled
+00:44:24,601  INFO SettingsFactory:154 - JDBC batch size: 15
+00:44:24,602  INFO SettingsFactory:157 - JDBC batch updates for versioned data: disabled
+00:44:24,602  INFO SettingsFactory:162 - Scrollable result sets: enabled
+00:44:24,603  INFO SettingsFactory:170 - JDBC3 getGeneratedKeys(): enabled
+00:44:24,603  INFO SettingsFactory:178 - Connection release mode: auto
+00:44:24,604  INFO SettingsFactory:205 - Default batch fetch size: 1
+00:44:24,604  INFO SettingsFactory:209 - Generate SQL with comments: disabled
+00:44:24,605  INFO SettingsFactory:213 - Order SQL updates by primary key: disabled
+00:44:24,606  INFO SettingsFactory:217 - Order SQL inserts for batching: disabled
+00:44:24,607  INFO SettingsFactory:386 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+00:44:24,609  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+00:44:24,609  INFO SettingsFactory:225 - Query language substitutions: {}
+00:44:24,609  INFO SettingsFactory:230 - JPA-QL strict compliance: disabled
+00:44:24,609  INFO SettingsFactory:235 - Second-level cache: enabled
+00:44:24,609  INFO SettingsFactory:239 - Query cache: disabled
+00:44:24,610  INFO SettingsFactory:373 - Cache provider: org.hibernate.cache.NoCacheProvider
+00:44:24,610  INFO SettingsFactory:254 - Optimize cache for minimal puts: disabled
+00:44:24,610  INFO SettingsFactory:263 - Structured second-level cache entries: disabled
+00:44:24,615  INFO SettingsFactory:290 - Statistics: disabled
+00:44:24,615  INFO SettingsFactory:294 - Deleted entity synthetic identifier rollback: disabled
+00:44:24,616  INFO SettingsFactory:309 - Default entity-mode: pojo
+00:44:24,616  INFO SettingsFactory:313 - Named query checking : enabled
+00:44:24,639  INFO SessionFactoryImpl:161 - building session factory
+00:44:24,973  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+00:44:25,117 DEBUG IntegerType:172 - returning '1' as column: Id6_
+00:44:25,121 DEBUG IntegerType:172 - returning '1' as column: IdTrabaj2_6_
+00:44:25,121 DEBUG StringType:172 - returning 'admin' as column: Login6_
+00:44:25,121 DEBUG StringType:172 - returning 'admin' as column: Clave6_
+00:44:25,122 DEBUG DateType:172 - returning '12 diciembre 2013' as column: FechaReg5_6_
