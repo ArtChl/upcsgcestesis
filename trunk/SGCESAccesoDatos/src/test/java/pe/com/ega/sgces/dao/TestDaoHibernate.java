@@ -11,6 +11,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import pe.com.ega.sgces.model.Cliente;
+import pe.com.ega.sgces.model.Despacho;
+import pe.com.ega.sgces.model.Transaccion;
+import pe.com.ega.sgces.model.Transacciondetalle;
 import pe.com.ega.sgces.model.Usuario;
 
 /**
@@ -19,6 +23,10 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class TestDaoHibernate {
     private Usuariodao usuariodao;
+    private DespachoDao despachoDao;
+    private ClienteDao clienteDao;
+    private TransaccionDao transaccionDao;
+    private TransaccionDetalleDao transaccionDetalleDao;
     
     public TestDaoHibernate() {
     }
@@ -35,6 +43,10 @@ public class TestDaoHibernate {
     @Before
     public void setUp() {
       usuariodao = new UsuariodaoImpl();
+      despachoDao = new DespachoDaoImpl();
+      clienteDao = new ClienteDaoImpl();
+      transaccionDao = new TransaccionDaoImpl();
+      transaccionDetalleDao = new TransaccionDetalleDaoImpl();
     }
     
     @After
@@ -46,9 +58,29 @@ public class TestDaoHibernate {
         List<Usuario> usuarios = usuariodao.buscarTodos();
         assertEquals(1, usuarios.size());
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    @Test
+    public void despacho(){
+        List<Despacho> despachos = despachoDao.buscarTodos();
+        assertEquals(1, despachos.size());
+    }
+    
+    @Test
+    public void cliente(){
+        List<Cliente> clientes = clienteDao.buscarTodos();
+        assertEquals(1, clientes.size());
+    }
+    
+    @Test
+    public void Transaccion(){
+        List<Transaccion> transaccions = transaccionDao.buscarTodos();
+        assertEquals(1, transaccions.size());
+    }
+    
+    @Test
+    public void TransaccionDetalle(){
+        List<Transacciondetalle> detalles = transaccionDetalleDao.buscarTodos();
+        assertEquals(1, detalles.size());
+    }
+    
 }
