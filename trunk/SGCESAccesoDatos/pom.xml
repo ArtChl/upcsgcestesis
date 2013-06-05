@@ -74,10 +74,9 @@
             <version>1.5.2</version>
         </dependency>
     <dependency>
-      <groupId>pe.com.ega.sgces</groupId>
-      <artifactId>Model</artifactId>
-      <version>1.0</version>
-      <type>jar</type>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>SGCESEntidades</artifactId>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 </project>
