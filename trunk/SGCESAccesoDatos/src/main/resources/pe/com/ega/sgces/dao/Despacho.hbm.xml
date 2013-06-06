@@ -19,13 +19,13 @@
             <column name="IdEstado" />
         </property>
         <property name="montoSoles" type="java.lang.Long">
-            <column name="MontoSoles" precision="10" scale="0" />
+            <column name="MontoSoles" precision="10" scale="2" />
         </property>
         <property name="nroGalones" type="java.lang.Long">
-            <column name="NroGalones" precision="10" scale="0" />
+            <column name="NroGalones" precision="10" scale="2" />
         </property>
         <property name="precioUnitario" type="java.lang.Long">
-            <column name="PrecioUnitario" precision="10" scale="0" />
+            <column name="PrecioUnitario" precision="10" scale="2" />
         </property>
         <property name="fechaRegistro" type="date">
             <column name="FechaRegistro" length="10" />
