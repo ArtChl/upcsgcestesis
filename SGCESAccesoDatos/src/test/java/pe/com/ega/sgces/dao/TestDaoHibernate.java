@@ -76,7 +76,5 @@ public class TestDaoHibernate {
         List<Transaccion> transaccions = transaccionDao.buscarTodos();
         assertEquals(1, transaccions.size());
     }
-    
     */
-    
 }
