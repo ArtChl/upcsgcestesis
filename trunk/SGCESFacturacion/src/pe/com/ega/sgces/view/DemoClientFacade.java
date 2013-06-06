@@ -29,7 +29,7 @@ public class DemoClientFacade implements ClientFacade {
    
    public void getDespacho() {
         DespachoFrame f = new DespachoFrame();
-        f.setSize(528,301);
+        f.setSize(528,202);
         f.setTitle("Despachos");
         MDIFrame.add(f);
        
