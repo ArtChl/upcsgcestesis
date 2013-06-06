@@ -3,7 +3,6 @@ package pe.com.ega.sgces.view;
 import java.util.*;
 import org.openswing.swing.mdi.client.*;
 import org.openswing.swing.util.client.ClientSettings;
-import org.openswing.swing.internationalization.java.EnglishOnlyResourceFactory;
 import org.openswing.swing.permissions.client.*;
 import javax.swing.*;
 import org.openswing.swing.internationalization.java.Language;
