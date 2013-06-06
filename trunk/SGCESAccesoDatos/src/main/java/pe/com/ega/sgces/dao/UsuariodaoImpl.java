@@ -15,9 +15,10 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuariodaoImpl implements Usuariodao{
 
+    Session session= HibernateUtil.getSessionFactory().openSession();
+        
     @Override
     public Usuario buscarPorUsuario(Usuario usuario) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         String sql="select u from Usuario u where username=:user and password=:pass";
         Query query= session.createQuery(sql);
         query.setString("user", usuario.getLogin());
@@ -27,7 +28,6 @@ public class UsuariodaoImpl implements Usuariodao{
 
     @Override
     public void insertar(Usuario usuario) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.save(usuario);
@@ -40,7 +40,6 @@ public class UsuariodaoImpl implements Usuariodao{
 
     @Override
     public void actualizar(Usuario usuario) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.update(usuario);
@@ -53,7 +52,6 @@ public class UsuariodaoImpl implements Usuariodao{
 
     @Override
     public void eliminar(Usuario usuario) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.delete(usuario);
@@ -66,13 +64,11 @@ public class UsuariodaoImpl implements Usuariodao{
 
     @Override
     public Usuario buscraPorId(Integer id) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         return (Usuario) session.load(Usuario.class, id);
     }
 
     @Override
     public List<Usuario> buscarTodos() {
-        Session session= HibernateUtil.getSessionFactory().openSession();
          return session.createQuery("from Usuario").list();
     }
 }

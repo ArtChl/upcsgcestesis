@@ -6,7 +6,6 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
-import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Transacciondetalle;
 
 /**
@@ -15,8 +14,9 @@ import pe.com.ega.sgces.model.Transacciondetalle;
  */
 public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
 
+    Session session= HibernateUtil.getSessionFactory().openSession();
+        
     public void insertar(Transacciondetalle detalle) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.save(detalle);
@@ -28,7 +28,6 @@ public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
     }
 
     public void actualizar(Transacciondetalle detalle) {
-         Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.update(detalle);
@@ -40,7 +39,6 @@ public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
     }
 
     public void eliminar(Transacciondetalle detalle) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.delete(detalle);
@@ -52,12 +50,10 @@ public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
     }
 
     public Transacciondetalle buscraPorCodigo(Integer id) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         return (Transacciondetalle) session.load(Transacciondetalle.class, id);
     }
 
     public List<Transacciondetalle> buscarTodos() {
-        Session session= HibernateUtil.getSessionFactory().openSession();
          return session.createQuery("from Transacciondetalle").list();
     }
     
