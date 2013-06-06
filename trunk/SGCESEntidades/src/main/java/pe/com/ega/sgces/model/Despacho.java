@@ -16,9 +16,9 @@ public class Despacho  implements java.io.Serializable {
      private Producto producto;
      private Caraproducto caraproducto;
      private Integer idEstado;
-     private Long montoSoles;
-     private Long nroGalones;
-     private Long precioUnitario;
+     private Double montoSoles;
+     private Double nroGalones;
+     private Double precioUnitario;
      private Date fechaRegistro;
      private Set<Transaccion> transaccions = new HashSet<Transaccion>(0);
 
@@ -31,7 +31,7 @@ public class Despacho  implements java.io.Serializable {
         this.producto = producto;
         this.caraproducto = caraproducto;
     }
-    public Despacho(int id, Producto producto, Caraproducto caraproducto, Integer idEstado, Long montoSoles, Long nroGalones, Long precioUnitario, Date fechaRegistro, Set<Transaccion> transaccions) {
+    public Despacho(int id, Producto producto, Caraproducto caraproducto, Integer idEstado, Double montoSoles, Double nroGalones, Double precioUnitario, Date fechaRegistro, Set<Transaccion> transaccions) {
        this.id = id;
        this.producto = producto;
        this.caraproducto = caraproducto;
@@ -71,40 +71,42 @@ public class Despacho  implements java.io.Serializable {
     public void setIdEstado(Integer idEstado) {
         this.idEstado = idEstado;
     }
-    public Long getMontoSoles() {
+    public Double getMontoSoles() {
         return this.montoSoles;
     }
     
-    public void setMontoSoles(Long montoSoles) {
+    public void setMontoSoles(Double montoSoles) {
         this.montoSoles = montoSoles;
     }
-    public Long getNroGalones() {
+    public Double getNroGalones() {
         return this.nroGalones;
     }
     
-    public void setNroGalones(Long nroGalones) {
+    public void setNroGalones(Double nroGalones) {
         this.nroGalones = nroGalones;
     }
-    public Long getPrecioUnitario() {
+    public Double getPrecioUnitario() {
         return this.precioUnitario;
     }
     
-    public void setPrecioUnitario(Long precioUnitario) {
+    public void setPrecioUnitario(Double precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
-    }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
     public Set<Transaccion> getTransaccions() {
         return this.transaccions;
     }
     
     public void setTransaccions(Set<Transaccion> transaccions) {
         this.transaccions = transaccions;
+    }
+
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
 
