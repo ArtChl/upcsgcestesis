@@ -7,7 +7,6 @@ package pe.com.ega.sgces.dao;
 import java.util.List;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Cliente;
-import pe.com.ega.sgces.model.Despacho;
 
 /**
  *
@@ -15,8 +14,9 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class ClienteDaoImpl implements ClienteDao{
 
+    Session session= HibernateUtil.getSessionFactory().openSession();
+        
     public void insertar(Cliente cliente) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.save(cliente);
@@ -28,7 +28,6 @@ public class ClienteDaoImpl implements ClienteDao{
     }
 
     public void actualizar(Cliente cliente) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.update(cliente);
@@ -40,7 +39,6 @@ public class ClienteDaoImpl implements ClienteDao{
     }
 
     public void eliminar(Cliente cliente) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.update(cliente);
@@ -52,12 +50,10 @@ public class ClienteDaoImpl implements ClienteDao{
     }
 
     public Cliente buscraPorCodigo(Integer id) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         return (Cliente) session.load(Cliente.class, id);
     }
 
     public List<Cliente> buscarTodos() {
-        Session session= HibernateUtil.getSessionFactory().openSession();
          return session.createQuery("from Cliente").list();
     }
     

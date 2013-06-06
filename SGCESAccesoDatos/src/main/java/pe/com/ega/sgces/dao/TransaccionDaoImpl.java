@@ -6,7 +6,6 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
-import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**
@@ -15,8 +14,9 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class TransaccionDaoImpl implements TransaccionDao{
 
+    Session session= HibernateUtil.getSessionFactory().openSession();
+        
     public void insertar(Transaccion transaccion) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.save(transaccion);
@@ -28,7 +28,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
     }
 
     public void actualizar(Transaccion transaccion) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.update(transaccion);
@@ -40,7 +39,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
     }
 
     public void eliminar(Transaccion transaccion) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.delete(transaccion);
@@ -52,12 +50,10 @@ public class TransaccionDaoImpl implements TransaccionDao{
     }
 
     public Transaccion buscraPorCodigo(Integer id) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         return (Transaccion) session.load(Transaccion.class, id);
     }
 
     public List<Transaccion> buscarTodos() {
-        Session session= HibernateUtil.getSessionFactory().openSession();
          return session.createQuery("from Transaccion").list();
     }
     

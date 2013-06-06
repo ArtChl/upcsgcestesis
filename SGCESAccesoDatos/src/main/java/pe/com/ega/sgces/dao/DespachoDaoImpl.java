@@ -14,8 +14,9 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoDaoImpl implements DespachoDao{
 
+    Session session= HibernateUtil.getSessionFactory().openSession();
+        
     public void insertar(Despacho despacho) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.save(despacho);
@@ -27,7 +28,6 @@ public class DespachoDaoImpl implements DespachoDao{
     }
 
     public void actualizar(Despacho despacho) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.update(despacho);
@@ -39,7 +39,6 @@ public class DespachoDaoImpl implements DespachoDao{
     }
 
     public void eliminar(Despacho despacho) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
             session.delete(despacho);
@@ -51,12 +50,10 @@ public class DespachoDaoImpl implements DespachoDao{
     }
 
     public Despacho buscraPorCodigo(Integer id) {
-        Session session= HibernateUtil.getSessionFactory().openSession();
         return (Despacho) session.load(Despacho.class, id);
     }
 
     public List<Despacho> buscarTodos() {
-        Session session= HibernateUtil.getSessionFactory().openSession();
          return session.createQuery("from Despacho").list();
     }
     
