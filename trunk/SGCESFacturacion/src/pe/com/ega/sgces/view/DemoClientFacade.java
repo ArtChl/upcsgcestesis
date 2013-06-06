@@ -28,10 +28,15 @@ public class DemoClientFacade implements ClientFacade {
   }
    
    public void getDespacho() {
-   /*DespachoFrame despachoFrame = new DespachoFrame();
-   despachoFrame.setVisible(true);*/
-       OpcionFrame opcionFrame=new OpcionFrame("113");
-       opcionFrame.setVisible(true);
+        DespachoFrame f = new DespachoFrame();
+        f.setSize(528,301);
+        f.setTitle("Despachos");
+        MDIFrame.add(f);
+       
+       //DespachoFrame despachoFrame = new DespachoFrame();
+   //despachoFrame.setVisible(true);
+      // OpcionFrame opcionFrame=new OpcionFrame("113");
+       //opcionFrame.setVisible(true);
 
   }
 
