@@ -33,10 +33,12 @@ public class DespachoFrame extends javax.swing.JFrame {
 
     private DespachoDao despachoDao;
     
+    
     public DespachoFrame() {
         initComponents();
         pintarTabla();
         setLocationRelativeTo(null);
+        
     }
 
     /** This method is called from within the constructor to
@@ -156,10 +158,12 @@ salir(evt);      // TODO add your handling code here:
          if ((fila > -1) && (columna > -1))
             System.out.println(tabla.getValueAt(fila,0));
             String valor=(String) tabla.getValueAt(fila,0);
-            String x=String.valueOf(valor);
-         //   FrameClienteM.jcodigo.setText(x);
+            String x=String.valueOf(valor);            
+            llamada(x);
             setVisible(false);
       }
+
+            
    });
   DefaultTableModel modelo=new DefaultTableModel(arre, titulo);
   //ASIGNAR EL MODELO A LA TABLA
@@ -206,4 +210,8 @@ salir(evt);      // TODO add your handling code here:
         dispose();
     }
  
+    private void llamada(String x) {
+              OpcionFrame frame= new OpcionFrame("113");
+                frame.setVisible(true);
+            }
 }
