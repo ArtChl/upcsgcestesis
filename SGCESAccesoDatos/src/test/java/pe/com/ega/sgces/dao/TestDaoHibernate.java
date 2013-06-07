@@ -22,7 +22,7 @@ import pe.com.ega.sgces.model.Usuario;
  * @author FLOPEZ
  */
 public class TestDaoHibernate {
-    private Usuariodao usuariodao;
+   // private Usuariodao usuariodao;
     private DespachoDao despachoDao;
     private ClienteDao clienteDao;
     private TransaccionDao transaccionDao;
@@ -42,7 +42,7 @@ public class TestDaoHibernate {
     
     @Before
     public void setUp() {
-      usuariodao = new UsuariodaoImpl();
+     //usuariodao = new UsuariodaoImpl();
       despachoDao = new DespachoDaoImpl();
       clienteDao = new ClienteDaoImpl();
       transaccionDao = new TransaccionDaoImpl();
