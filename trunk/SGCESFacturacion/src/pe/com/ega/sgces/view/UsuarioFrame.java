@@ -16,7 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import pe.com.ega.sgces.dao.Usuariodao;
+import pe.com.ega.sgces.dao.UsuarioDao;
 import pe.com.ega.sgces.dao.UsuariodaoImpl;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Usuario;
@@ -28,7 +28,7 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuarioFrame extends javax.swing.JFrame {
 
-    private Usuariodao usuariodao;
+    private UsuarioDao usuariodao;
     
     public UsuarioFrame() {
         initComponents();
