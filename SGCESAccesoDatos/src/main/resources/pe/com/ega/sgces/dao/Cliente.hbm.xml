@@ -6,7 +6,7 @@
     <class name="pe.com.ega.sgces.model.Cliente" table="cliente" catalog="cem44">
         <id name="id" type="int">
             <column name="Id" />
-            <generator class="assigned" />
+            <generator class="sequence" />
         </id>
         <property name="numeroDocumento" type="string">
             <column name="NumeroDocumento" length="20" />
