@@ -20,7 +20,7 @@ public class Transaccion  implements java.io.Serializable {
      private String numeroTransaccion;
      private String numeroPlaca;
      private String numeroVale;
-     private Long montoTotal;
+     private Double montoTotal;
      private Date fechaRegistro;
      private Set<Transacciondetalle> transacciondetalles = new HashSet<Transacciondetalle>(0);
      private Set<Puntoacumulado> puntoacumulados = new HashSet<Puntoacumulado>(0);
@@ -35,7 +35,7 @@ public class Transaccion  implements java.io.Serializable {
         this.cliente = cliente;
         this.despacho = despacho;
     }
-    public Transaccion(int id, Cliente cliente, Despacho despacho, Integer idTipoTransaccion, Integer idEstado, String numeroTransaccion, String numeroPlaca, String numeroVale, Long montoTotal, Date fechaRegistro, Set<Transacciondetalle> transacciondetalles, Set<Puntoacumulado> puntoacumulados, Set<Movimiento> movimientos) {
+    public Transaccion(int id, Cliente cliente, Despacho despacho, Integer idTipoTransaccion, Integer idEstado, String numeroTransaccion, String numeroPlaca, String numeroVale, Double montoTotal, Date fechaRegistro, Set<Transacciondetalle> transacciondetalles, Set<Puntoacumulado> puntoacumulados, Set<Movimiento> movimientos) {
        this.id = id;
        this.cliente = cliente;
        this.despacho = despacho;
@@ -107,11 +107,11 @@ public class Transaccion  implements java.io.Serializable {
     public void setNumeroVale(String numeroVale) {
         this.numeroVale = numeroVale;
     }
-    public Long getMontoTotal() {
+    public Double getMontoTotal() {
         return this.montoTotal;
     }
     
-    public void setMontoTotal(Long montoTotal) {
+    public void setMontoTotal(Double montoTotal) {
         this.montoTotal = montoTotal;
     }
     public Date getFechaRegistro() {
