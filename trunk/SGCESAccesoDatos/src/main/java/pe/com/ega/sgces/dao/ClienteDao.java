@@ -15,6 +15,6 @@ public interface ClienteDao {
     public void insertar(Cliente cliente);
     public void actualizar(Cliente cliente);
     public void eliminar(Cliente cliente);
-    public Cliente buscraPorCodigo(Integer id);
+    public Cliente buscarPorCodigo(Integer id);
     public List<Cliente> buscarTodos();   
 }

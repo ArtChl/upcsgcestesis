@@ -13,7 +13,7 @@ import pe.com.ega.sgces.model.Usuario;
  *
  * @author Administrador
  */
-public class UsuariodaoImpl implements Usuariodao{
+public class UsuariodaoImpl implements UsuarioDao{
 
     Session session= HibernateUtil.getSessionFactory().openSession();
         
@@ -63,7 +63,7 @@ public class UsuariodaoImpl implements Usuariodao{
     }
 
     @Override
-    public Usuario buscraPorId(Integer id) {
+    public Usuario buscarPorCodigo(Integer id) {
         return (Usuario) session.load(Usuario.class, id);
     }
 

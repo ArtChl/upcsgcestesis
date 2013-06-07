@@ -22,7 +22,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
             session.save(transaccion);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Insertar Transaccion"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
@@ -33,7 +32,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
             session.update(transaccion);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Actualizar Transaccion"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
@@ -44,12 +42,11 @@ public class TransaccionDaoImpl implements TransaccionDao{
             session.delete(transaccion);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Eliminar Transaccion"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
 
-    public Transaccion buscraPorCodigo(Integer id) {
+    public Transaccion buscarPorCodigo(Integer id) {
         return (Transaccion) session.load(Transaccion.class, id);
     }
 

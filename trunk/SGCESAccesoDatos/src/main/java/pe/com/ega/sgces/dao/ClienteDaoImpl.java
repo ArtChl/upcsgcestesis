@@ -22,7 +22,6 @@ public class ClienteDaoImpl implements ClienteDao{
             session.save(cliente);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Insertar Cliente"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
@@ -33,7 +32,6 @@ public class ClienteDaoImpl implements ClienteDao{
             session.update(cliente);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Actualizar Cliente"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
@@ -44,12 +42,11 @@ public class ClienteDaoImpl implements ClienteDao{
             session.update(cliente);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Actualizar Cliente"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
 
-    public Cliente buscraPorCodigo(Integer id) {
+    public Cliente buscarPorCodigo(Integer id) {
         return (Cliente) session.load(Cliente.class, id);
     }
 

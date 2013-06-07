@@ -22,7 +22,6 @@ public class DespachoDaoImpl implements DespachoDao{
             session.save(despacho);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Insertar Despacho"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
@@ -33,7 +32,6 @@ public class DespachoDaoImpl implements DespachoDao{
             session.update(despacho);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Actualizar Despacho"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
@@ -44,12 +42,11 @@ public class DespachoDaoImpl implements DespachoDao{
             session.delete(despacho);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Eliminar Despacho"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
 
-    public Despacho buscraPorCodigo(Integer id) {
+    public Despacho buscarPorCodigo(Integer id) {
         return (Despacho) session.load(Despacho.class, id);
     }
 
