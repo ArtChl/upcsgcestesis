@@ -30,6 +30,7 @@ public class ClienteDaoImpl implements ClienteDao{
             session.beginTransaction().rollback();
         }
        */
+        session.save(cliente);
     }
 
     public void actualizar(Cliente cliente) {
