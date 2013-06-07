@@ -16,8 +16,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import pe.com.ega.sgces.dao.UsuarioDao;
-import pe.com.ega.sgces.dao.UsuariodaoImpl;
+import pe.com.ega.sgces.logic.UsuarioLogica;
+import pe.com.ega.sgces.logic.UsuarioLogicaImpl;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Usuario;
 
@@ -28,7 +28,7 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuarioFrame extends javax.swing.JFrame {
 
-    private UsuarioDao usuariodao;
+    private UsuarioLogica usuariodao;
     
     public UsuarioFrame() {
         initComponents();
@@ -117,7 +117,7 @@ salir(evt);      // TODO add your handling code here:
 
   //LENAR DE DATOS EL MODELO
   //la lista
-        usuariodao = new UsuariodaoImpl();
+        usuariodao = new UsuarioLogicaImpl();
         ArrayList<Usuario> transaccions=new ArrayList<Usuario>();
        // TecnicoBean t=new TecnicoBean();
         try {

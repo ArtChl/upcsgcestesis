@@ -7,8 +7,8 @@ package pe.com.ega.sgces.view;
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
-import pe.com.ega.sgces.dao.ClienteDao;
-import pe.com.ega.sgces.dao.ClienteDaoImpl;
+import pe.com.ega.sgces.logic.ClienteLogica;
+import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 
@@ -19,7 +19,7 @@ import pe.com.ega.sgces.model.Despacho;
 public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private Despacho desp;
-    private ClienteDao clienteDao;
+    private ClienteLogica clienteDao;
     private Cliente cliente;
     private Cliente temporal;
     private ImprimirComprobante comprobante;
@@ -27,7 +27,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         initComponents();
         desp=despacho;
         cliente= new Cliente();
-        clienteDao=new ClienteDaoImpl();
+        clienteDao=new ClienteLogicaImpl();
     }
 
     /**
@@ -158,7 +158,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            temporal1.setNumeroDocumento(jrucCliente.getText());
            temporal1.setRazonSocial(jrazonCliente.getText());
            try {
-               clienteDao.insertar(temporal1);
+               clienteDao.grabar(temporal1);
                temporal1 = new Cliente();
                comprobante.imprimirFactura(temporal1.getRazonSocial(),
                String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()

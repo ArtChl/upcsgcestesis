@@ -7,8 +7,8 @@ package pe.com.ega.sgces.view;
 import Imprimir.ImprimirComprobante;
 import javax.swing.JOptionPane;
 import org.openswing.swing.mdi.client.MDIFrame;
-import pe.com.ega.sgces.dao.TransaccionDao;
-import pe.com.ega.sgces.dao.TransaccionDaoImpl;
+import pe.com.ega.sgces.logic.TransaccionLogica;
+import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Transaccion;
@@ -22,7 +22,7 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private Despacho desp;
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
-    private TransaccionDao transaccionDao;
+    private TransaccionLogica transaccionDao;
     public OpcionFrame(Despacho codigo) {
         initComponents();
         desp=codigo;
@@ -95,8 +95,8 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
         clie.setId(1);
         transaccion.setCliente(clie);
         try {
-            transaccionDao=new TransaccionDaoImpl();
-            transaccionDao.insertar(transaccion);
+            transaccionDao=new TransaccionLogicaImpl();
+            transaccionDao.grabar(transaccion);
             comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
         

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import org.openswing.swing.mdi.client.InternalFrame;
 import org.openswing.swing.mdi.client.MDIFrame;
-import pe.com.ega.sgces.dao.DespachoDao;
-import pe.com.ega.sgces.dao.DespachoDaoImpl;
+import pe.com.ega.sgces.logic.DespachoLogica;
+import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.model.Despacho;
 
 /**
@@ -19,12 +19,12 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoFrame extends InternalFrame {
 
-    private DespachoDao despachoDao;
+    private DespachoLogica despachoDao;
     private ArrayList<Despacho> transaccions;
 
     public DespachoFrame() {
         initComponents();
-        despachoDao = new DespachoDaoImpl();
+        despachoDao = new DespachoLogicaImpl();
         transaccions=new ArrayList<>(); 
         pintarTabla();            
     }
