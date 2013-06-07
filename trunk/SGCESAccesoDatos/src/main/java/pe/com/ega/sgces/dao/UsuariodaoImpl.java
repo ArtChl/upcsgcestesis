@@ -15,7 +15,11 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuariodaoImpl implements UsuarioDao{
 
-    Session session= HibernateUtil.getSessionFactory().openSession();
+    Session session;
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
         
     @Override
     public Usuario buscarPorUsuario(Usuario usuario) {
@@ -28,38 +32,17 @@ public class UsuariodaoImpl implements UsuarioDao{
 
     @Override
     public void insertar(Usuario usuario) {
-        try{
-            session.beginTransaction();
-            session.save(usuario);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            System.out.println("Error en Insertar Usuario"+e.getMessage());
-            session.beginTransaction().rollback();
-        }
+        session.save(usuario);
     }
 
     @Override
     public void actualizar(Usuario usuario) {
-        try{
-            session.beginTransaction();
-            session.update(usuario);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            System.out.println("Error en Actualizar Usuario"+e.getMessage());
-            session.beginTransaction().rollback();
-        }
+        session.update(usuario);
     }
 
     @Override
     public void eliminar(Usuario usuario) {
-        try{
-            session.beginTransaction();
-            session.delete(usuario);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            System.out.println("Error en Eliminar Usuario"+e.getMessage());
-            session.beginTransaction().rollback();
-        }
+        session.delete(usuario);
     }
 
     @Override
