@@ -103,7 +103,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void jrucClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusLost
         String rucCliente=jrucCliente.getText();
         try{
-            cliente=clienteDao.buscraPorCodigo(Integer.parseInt(rucCliente));
+            cliente=clienteDao.buscarPorCodigo(Integer.parseInt(rucCliente));
             jrazonCliente.setText(cliente.getRazonSocial());
             temporal=new Cliente();
             temporal.setId(0);

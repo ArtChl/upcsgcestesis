@@ -5,8 +5,13 @@
 package pe.com.ega.sgces.view;
 
 import Imprimir.ImprimirComprobante;
+import javax.swing.JOptionPane;
 import org.openswing.swing.mdi.client.MDIFrame;
+import pe.com.ega.sgces.dao.TransaccionDao;
+import pe.com.ega.sgces.dao.TransaccionDaoImpl;
+import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
+import pe.com.ega.sgces.model.Transaccion;
 
 /**
  *
@@ -16,9 +21,12 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private Despacho desp;
     private ImprimirComprobante comprobante;
+    private Transaccion transaccion;
+    private TransaccionDao transaccionDao;
     public OpcionFrame(Despacho codigo) {
         initComponents();
         desp=codigo;
+        transaccion=new Transaccion();
     }
 
     /**
@@ -75,10 +83,30 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
     }//GEN-LAST:event_facturaActionPerformed
 
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
-        System.out.println("Despacho"+desp.getId()+desp.getMontoSoles());
-        comprobante=new ImprimirComprobante();
-        comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
+        System.out.println("Despacho"+transaccion.getId());
+        comprobante=new ImprimirComprobante();    
+        transaccion.setDespacho(desp);
+        transaccion.setIdTipoTransaccion(1);
+        transaccion.setIdEstado(1);
+        transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
+        transaccion.setMontoTotal(desp.getMontoSoles());
+        transaccion.setFechaRegistro(desp.getFechaRegistro());
+        Cliente clie= new Cliente();
+        clie.setId(1);
+        transaccion.setCliente(clie);
+        try {
+            transaccionDao=new TransaccionDaoImpl();
+            transaccionDao.insertar(transaccion);
+            comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No Inserto Transaccion", "Error", JOptionPane.ERROR_MESSAGE);
+       
+        }finally{
+            transaccion=new Transaccion();
+        }
+        
     }//GEN-LAST:event_boletaActionPerformed
 
     private void depachoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depachoActionPerformed
