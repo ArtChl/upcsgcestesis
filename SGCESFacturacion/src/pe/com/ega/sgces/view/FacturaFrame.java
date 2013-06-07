@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.view;
 
+import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDao;
@@ -19,8 +20,9 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private Despacho desp;
     private ClienteDao clienteDao;
-    Cliente cliente;
-    Cliente temporal;
+    private Cliente cliente;
+    private Cliente temporal;
+    private ImprimirComprobante comprobante;
     public FacturaFrame(Despacho despacho) {
         initComponents();
         desp=despacho;
@@ -107,7 +109,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             temporal.setId(0);
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
-            //temporal.setId(1);
+            temporal.setId(1);
         }     
     }//GEN-LAST:event_jrucClienteFocusLost
 
@@ -117,10 +119,9 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-       System.out.println("Cliente"+temporal.getId());
-       if(temporal.getId()==0){        
-           System.out.println("Nuevo Cliente"+cliente.getNumeroDocumento());
-       }else{
+       //System.out.println("Cliente"+temporal.getId());
+       comprobante = new ImprimirComprobante();
+       if(temporal.getId()==1){        
            System.out.println("Cliente"+temporal.getId());
            Cliente temporal1 = new Cliente();
            temporal1.setId(Integer.parseInt(jrucCliente.getText()));
@@ -129,9 +130,18 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            try {
                clienteDao.insertar(temporal1);
                temporal1 = new Cliente();
+               comprobante.imprimirFactura(temporal1.getRazonSocial(),
+                String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
+               limpiar();
            } catch (Exception e) {
                System.out.println("e");
-           }
+           }          
+       }else{
+           comprobante.imprimirFactura(cliente.getRazonSocial(),
+                String.valueOf(cliente.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
+           limpiar();
        }
     }//GEN-LAST:event_imprimirActionPerformed
 
@@ -155,6 +165,18 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void actionPerformed(ActionEvent evt) {
         setVisible(false);
         dispose();
+    }
+    
+    public double Redondear(double numero)
+{
+       int cifras=(int) Math.pow(10,2);
+        return Math.rint(numero*cifras)/cifras;
+}
+    
+    public void limpiar(){
+        jrucCliente.setText("");
+        jrazonCliente.setText("");
+    
     }
 
 }

@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.view;
 
+import Imprimir.ImprimirComprobante;
 import org.openswing.swing.mdi.client.MDIFrame;
 import pe.com.ega.sgces.model.Despacho;
 
@@ -14,6 +15,7 @@ import pe.com.ega.sgces.model.Despacho;
 public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private Despacho desp;
+    private ImprimirComprobante comprobante;
     public OpcionFrame(Despacho codigo) {
         initComponents();
         desp=codigo;
@@ -74,6 +76,9 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
         System.out.println("Despacho"+desp.getId()+desp.getMontoSoles());
+        comprobante=new ImprimirComprobante();
+        comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
     }//GEN-LAST:event_boletaActionPerformed
 
     private void depachoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depachoActionPerformed
