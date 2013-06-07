@@ -22,7 +22,7 @@ import pe.com.ega.sgces.model.Usuario;
  * @author FLOPEZ
  */
 public class TestDaoHibernate {
-   /* private Usuariodao usuariodao;
+    private Usuariodao usuariodao;
     private DespachoDao despachoDao;
     private ClienteDao clienteDao;
     private TransaccionDao transaccionDao;
@@ -53,7 +53,7 @@ public class TestDaoHibernate {
     public void tearDown() {
     }
     
-    @Test
+   /* @Test
     public void usuario(){
         List<Usuario> usuarios = usuariodao.buscarTodos();
         assertEquals(1, usuarios.size());
@@ -69,12 +69,12 @@ public class TestDaoHibernate {
     public void cliente(){
         List<Cliente> clientes = clienteDao.buscarTodos();
         assertEquals(1, clientes.size());
-    }
+    }*/
     
-    @Test
+  /*  @Test
     public void Transaccion(){
         List<Transaccion> transaccions = transaccionDao.buscarTodos();
         assertEquals(1, transaccions.size());
-    }
-    */
+    }*/
+    
 }
