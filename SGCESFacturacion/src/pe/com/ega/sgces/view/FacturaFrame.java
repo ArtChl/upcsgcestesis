@@ -115,7 +115,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         jrucCliente.setText("");
         jrazonCliente.setText("");
     }//GEN-LAST:event_jrucClienteFocusGained
-[[]]
+
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
        System.out.println("Cliente"+temporal.getId());
        if(temporal.getId()==0){        
