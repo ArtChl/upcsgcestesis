@@ -14,16 +14,22 @@ import pe.com.ega.sgces.model.Cliente;
  */
 public class ClienteDaoImpl implements ClienteDao{
 
-    Session session= HibernateUtil.getSessionFactory().openSession();
+    Session session;
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+    
         
     public void insertar(Cliente cliente) {
-        try{
+      /*  try{
             session.beginTransaction();
             session.save(cliente);
             session.beginTransaction().commit();
         }catch (Exception e){
             session.beginTransaction().rollback();
         }
+       */
     }
 
     public void actualizar(Cliente cliente) {
