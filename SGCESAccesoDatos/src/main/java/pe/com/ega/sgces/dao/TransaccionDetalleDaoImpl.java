@@ -14,36 +14,22 @@ import pe.com.ega.sgces.model.Transacciondetalle;
  */
 public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
 
-    Session session= HibernateUtil.getSessionFactory().openSession();
+    Session session;
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
         
     public void insertar(Transacciondetalle detalle) {
-        try{
-            session.beginTransaction();
-            session.save(detalle);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
+        session.save(detalle);
     }
 
     public void actualizar(Transacciondetalle detalle) {
-        try{
-            session.beginTransaction();
-            session.update(detalle);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
+        session.update(detalle);
     }
 
     public void eliminar(Transacciondetalle detalle) {
-        try{
-            session.beginTransaction();
-            session.delete(detalle);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
+        session.delete(detalle);
     }
 
     public Transacciondetalle buscraPorCodigo(Integer id) {

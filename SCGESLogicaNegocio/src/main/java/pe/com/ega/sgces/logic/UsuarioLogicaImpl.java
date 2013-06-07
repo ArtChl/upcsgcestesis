@@ -4,6 +4,8 @@
  */
 package pe.com.ega.sgces.logic;
 
+import org.hibernate.Session;
+import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.UsuarioDao;
 import pe.com.ega.sgces.model.Usuario;
 
@@ -13,9 +15,16 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuarioLogicaImpl implements UsuarioLogica {
 
+    public UsuarioLogicaImpl()
+    {
+        session = HibernateUtil.getSessionFactory().openSession();
+    }
+    
+    Session session; 
     UsuarioDao usuarioDao;
     public void setTransaccionDao(UsuarioDao usuarioDao) {
         this.usuarioDao = usuarioDao;   
+        this.usuarioDao.setSession(session);
     }
     
     public Usuario buscarPorUsuario(Usuario usuario) {
@@ -23,6 +32,7 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
     }
 
     public void grabar(Usuario usuario) {
+        session.beginTransaction();
         if(usuario.getId() == 0)
         {
             usuarioDao.insertar(usuario);
@@ -30,6 +40,7 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
         else{
             usuarioDao.actualizar(usuario);
         }
+        session.getTransaction().commit();
     }
 
     public Usuario buscarPorCodigo(Integer id) {

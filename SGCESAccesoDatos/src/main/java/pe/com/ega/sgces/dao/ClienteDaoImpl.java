@@ -19,38 +19,17 @@ public class ClienteDaoImpl implements ClienteDao{
     public void setSession(Session session) {
         this.session = session;
     }
-    
-        
+            
     public void insertar(Cliente cliente) {
-      /*  try{
-            session.beginTransaction();
-            session.save(cliente);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
-       */
         session.save(cliente);
     }
 
     public void actualizar(Cliente cliente) {
-        try{
-            session.beginTransaction();
-            session.update(cliente);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
+        session.update(cliente);
     }
 
     public void eliminar(Cliente cliente) {
-        try{
-            session.beginTransaction();
-            session.update(cliente);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
+        session.delete(cliente);
     }
 
     public Cliente buscarPorCodigo(Integer id) {

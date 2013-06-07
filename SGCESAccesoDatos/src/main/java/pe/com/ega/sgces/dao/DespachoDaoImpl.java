@@ -14,36 +14,22 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoDaoImpl implements DespachoDao{
 
-    Session session= HibernateUtil.getSessionFactory().openSession();
+    Session session;
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
         
     public void insertar(Despacho despacho) {
-        try{
-            session.beginTransaction();
-            session.save(despacho);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
+        session.save(despacho);
     }
 
     public void actualizar(Despacho despacho) {
-        try{
-            session.beginTransaction();
-            session.update(despacho);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
+        session.update(despacho);
     }
 
     public void eliminar(Despacho despacho) {
-        try{
-            session.beginTransaction();
-            session.delete(despacho);
-            session.beginTransaction().commit();
-        }catch (Exception e){
-            session.beginTransaction().rollback();
-        }
+        session.delete(despacho);
     }
 
     public Despacho buscarPorCodigo(Integer id) {
