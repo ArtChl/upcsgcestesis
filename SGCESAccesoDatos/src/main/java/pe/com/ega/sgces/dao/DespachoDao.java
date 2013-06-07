@@ -15,6 +15,6 @@ public interface DespachoDao {
     public void insertar(Despacho despacho);
     public void actualizar(Despacho despacho);
     public void eliminar(Despacho despacho);
-    public Despacho buscraPorCodigo(Integer id);
+    public Despacho buscarPorCodigo(Integer id);
     public List<Despacho> buscarTodos(); 
 }

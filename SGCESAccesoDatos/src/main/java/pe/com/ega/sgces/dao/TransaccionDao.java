@@ -15,6 +15,6 @@ public interface TransaccionDao {
     public void insertar(Transaccion transaccion);
     public void actualizar(Transaccion transaccion);
     public void eliminar(Transaccion transaccion);
-    public Transaccion buscraPorCodigo(Integer id);
+    public Transaccion buscarPorCodigo(Integer id);
     public List<Transaccion> buscarTodos();     
 }

@@ -22,7 +22,6 @@ public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
             session.save(detalle);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Insertar Detalle"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
@@ -33,7 +32,6 @@ public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
             session.update(detalle);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Actualizar Detalle"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }
@@ -44,7 +42,6 @@ public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
             session.delete(detalle);
             session.beginTransaction().commit();
         }catch (Exception e){
-            System.out.println("Error en Eliminar Detalle"+e.getMessage());
             session.beginTransaction().rollback();
         }
     }

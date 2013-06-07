@@ -11,11 +11,11 @@ import pe.com.ega.sgces.model.Usuario;
  *
  * @author Administrador
  */
-public interface Usuariodao {
+public interface UsuarioDao {
     public Usuario buscarPorUsuario(Usuario usuario);
     public void insertar(Usuario usuario);
     public void actualizar(Usuario usuario);
     public void eliminar(Usuario usuario);
-    public Usuario buscraPorId(Integer id);
+    public Usuario buscarPorCodigo(Integer id);
     public List<Usuario> buscarTodos();
 }
