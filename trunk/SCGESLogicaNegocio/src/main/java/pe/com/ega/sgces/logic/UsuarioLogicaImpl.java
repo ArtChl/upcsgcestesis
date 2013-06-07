@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
+import java.util.List;
 import org.hibernate.Session;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.UsuarioDao;
@@ -45,6 +46,10 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
 
     public Usuario buscarPorCodigo(Integer id) {
         return usuarioDao.buscarPorCodigo(id);
+    }
+
+    public List<Usuario> buscarTodos() {
+        return usuarioDao.buscarTodos();
     }
     
 }
