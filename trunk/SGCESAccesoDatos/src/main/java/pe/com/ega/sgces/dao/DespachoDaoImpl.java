@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.dao;
 
 import java.util.List;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Despacho;
 
@@ -25,7 +26,9 @@ public class DespachoDaoImpl implements DespachoDao{
     }
 
     public void actualizar(Despacho despacho) {
-        session.update(despacho);
+        String query = "update cem44.despacho set idestado=0 where id="+ despacho.getId();
+        SQLQuery s=session.createSQLQuery(query);
+        s.executeUpdate();
     }
 
     public void eliminar(Despacho despacho) {
@@ -37,7 +40,7 @@ public class DespachoDaoImpl implements DespachoDao{
     }
 
     public List<Despacho> buscarTodos(Session s) {
-         return s.createQuery("from Despacho").list();
+         return s.createQuery("from Despacho where idestado=1").list();
     }
     
 }
