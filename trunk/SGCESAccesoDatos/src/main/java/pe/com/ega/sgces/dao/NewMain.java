@@ -7,6 +7,10 @@ package pe.com.ega.sgces.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import pe.com.ega.sgces.model.Caraproducto;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Transaccion;
@@ -26,7 +30,7 @@ public class NewMain {
        //DespachoDao usuariodao = new DespachoDaoImpl();
        //List <Despacho> lista = usuariodao.buscarTodos();
        //System.out.println("Numero: "+lista.get(1).getMontoSoles());
-       Transaccion transaccion=new Transaccion();
+       /*Transaccion transaccion=new Transaccion();
        //transaccion.setId(2);
        Cliente cliente=new Cliente();
        cliente.setId(1);
@@ -42,6 +46,20 @@ public class NewMain {
             transdao.insertar(transaccion);
         } catch (Exception e) {
             System.out.println("Numero: "+e);
+        }
+       */
+       Session session = null;
+       session = HibernateUtil.getSessionFactory().openSession();
+       ClienteDaoImpl usuariodao = new ClienteDaoImpl();
+       usuariodao.setSession(session);
+       Cliente desp=new Cliente();
+       desp.setNumeroDocumento("1");
+       desp.setRazonSocial("1");
+       desp.setId(1);
+        try {
+            usuariodao.insertar(desp);
+        } catch (Exception e) {
+            System.out.println(e);
         }
        
        

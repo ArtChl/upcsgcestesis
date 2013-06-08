@@ -17,6 +17,6 @@ public interface DespachoDao {
     public void actualizar(Despacho despacho);
     public void eliminar(Despacho despacho);
     public Despacho buscarPorCodigo(Integer id);
-    public List<Despacho> buscarTodos();
+    public List<Despacho> buscarTodos(Session s);
     public void setSession(Session session);
 }

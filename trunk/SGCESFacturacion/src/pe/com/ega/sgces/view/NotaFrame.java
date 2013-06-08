@@ -7,6 +7,7 @@ package pe.com.ega.sgces.view;
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
+import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.logic.ClienteLogica;
 import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
@@ -19,7 +20,7 @@ import pe.com.ega.sgces.model.Despacho;
 public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private Despacho desp;
-    private ClienteLogica clienteDao;
+    private ClienteLogicaImpl clienteDao;
     private Cliente cliente;
     private Cliente temporal;
     private ImprimirComprobante comprobante;
@@ -28,6 +29,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         desp=despacho;
         cliente= new Cliente();
         clienteDao=new ClienteLogicaImpl();
+        clienteDao.setClienteDao(new ClienteDaoImpl());
     }
 
     /**
