@@ -11,6 +11,7 @@ import pe.com.ega.sgces.model.Cliente;
  */
 public interface ClienteLogica {
     public void grabar(Cliente cliente);
+    public void actualizar(Cliente cliente);
     public void eliminar(Cliente cliente);
-    public Cliente buscarPorCodigo(Integer id);
+    public Cliente buscarPorCodigo(String id);
 }

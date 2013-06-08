@@ -52,15 +52,8 @@ public class NewMain {
        session = HibernateUtil.getSessionFactory().openSession();
        ClienteDaoImpl usuariodao = new ClienteDaoImpl();
        usuariodao.setSession(session);
-       Cliente desp=new Cliente();
-       desp.setNumeroDocumento("1");
-       desp.setRazonSocial("1");
-       desp.setId(1);
-        try {
-            usuariodao.insertar(desp);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+       //List<Cliente> cliente=usuariodao.razon(1041949242);
+      // System.out.println("Cliente"+cliente.get(1).getRazonSocial());
        
        
     }

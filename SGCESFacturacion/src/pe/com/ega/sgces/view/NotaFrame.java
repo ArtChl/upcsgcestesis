@@ -148,7 +148,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void jrucClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusLost
         String rucCliente=jrucCliente.getText();
         try{
-            cliente=clienteDao.buscarPorCodigo(Integer.parseInt(rucCliente));
+            cliente=clienteDao.buscarPorCodigo(rucCliente);
             jrazonCliente.setText(cliente.getRazonSocial());
             temporal=new Cliente();
             temporal.setId(0);
@@ -169,16 +169,19 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
        if(temporal.getId()==1){        
            System.out.println("Cliente"+temporal.getId());
            Cliente temporal1 = new Cliente();
-           temporal1.setId(Integer.parseInt(jrucCliente.getText()));
+           //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
            temporal1.setNumeroDocumento(jrucCliente.getText());
            temporal1.setRazonSocial(jrazonCliente.getText());
            try {
                clienteDao.grabar(temporal1);
-               temporal1 = new Cliente();
+               llenardatos(desp,temporal1);
+               transaccionDao.grabar(transaccion);
+               despachoDao.grabar(desp);
                comprobante.imprimirFactura(temporal1.getRazonSocial(),
                String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
                limpiar();
+               salir(evt);
            } catch (Exception e) {
                System.out.println("e");
            }          
@@ -190,6 +193,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
                 String.valueOf(cliente.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
            limpiar();
+           salir(evt);
        }
     }//GEN-LAST:event_imprimirActionPerformed
 

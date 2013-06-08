@@ -25,11 +25,8 @@ public class NewMain {
      */
     public static void main(String[] args) {   
        ClienteLogicaImpl usuariodao = new ClienteLogicaImpl();
-       usuariodao.setClienteDao(new ClienteDaoImpl());
-       Cliente desp=new Cliente();
-       desp.setNumeroDocumento("1");
-       desp.setRazonSocial("1");
-       desp.setId(1);
-       usuariodao.grabar(desp);
+       usuariodao.setClienteDao(new ClienteDaoImpl());  
+       Cliente clie=usuariodao.buscarPorCodigo("1041949246");
+       System.out.println("Cliente"+clie.getRazonSocial());
     }
 }
