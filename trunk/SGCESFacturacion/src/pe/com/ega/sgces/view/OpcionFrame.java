@@ -97,16 +97,7 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
         System.out.println("Despacho"+desp.getId()+desp.getCaraproducto().getProducto()+desp.getCaraproducto().getCara());
         comprobante=new ImprimirComprobante();    
-        transaccion.setDespacho(desp);
-        transaccion.setIdTipoTransaccion(1);
-        transaccion.setIdEstado(1);
-        transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
-        transaccion.setMontoTotal(desp.getMontoSoles());
-        transaccion.setFechaRegistro(desp.getFechaRegistro());
-        Cliente clie= new Cliente();
-        clie.setId(1);
-        transaccion.setCliente(clie);
-       
+        llenardatos(desp);       
         try {
             transaccionDao.grabar(transaccion);
             despachoDao.grabar(desp);
@@ -142,5 +133,21 @@ private void salir (java.awt.event.ActionEvent evt){
     private void actionPerformed(ActionEvent evt) {
         setVisible(false);
         dispose();
+    }
+
+    private void llenardatos(Despacho desp) {
+        transaccion.setDespacho(desp);
+        transaccion.setIdTipoTransaccion("TBOL");
+        transaccion.setIdEstado(1);
+        transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
+        transaccion.setNumeroVale("325-00000001");
+        transaccion.setNroGalones(desp.getNroGalones());
+        transaccion.setPrecioUnitario(desp.getPrecioUnitario());
+        transaccion.setProducto(desp.getProducto().getNombre());
+        transaccion.setMontoTotal(desp.getMontoSoles());
+        transaccion.setFechaRegistro(desp.getFechaRegistro());
+        Cliente clie= new Cliente();
+        clie.setId(1);
+        transaccion.setCliente(clie);
     }
 }

@@ -8,10 +8,15 @@ import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
+import pe.com.ega.sgces.dao.DespachoDaoImpl;
+import pe.com.ega.sgces.dao.TransaccionDaoImpl;
 import pe.com.ega.sgces.logic.ClienteLogica;
 import pe.com.ega.sgces.logic.ClienteLogicaImpl;
+import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
+import pe.com.ega.sgces.model.Transaccion;
 
 /**
  *
@@ -24,12 +29,21 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private Cliente cliente;
     private Cliente temporal;
     private ImprimirComprobante comprobante;
+    private Transaccion transaccion;
+    private TransaccionLogicaImpl transaccionDao;
+    private DespachoLogicaImpl despachoDao;
+    
     public FacturaFrame(Despacho despacho) {
         initComponents();
         desp=despacho;
         cliente= new Cliente();
         clienteDao=new ClienteLogicaImpl();
         clienteDao.setClienteDao(new ClienteDaoImpl());
+        transaccion=new Transaccion();
+        transaccionDao =new TransaccionLogicaImpl();
+        transaccionDao.setTransaccionDao(new TransaccionDaoImpl());
+        despachoDao=new DespachoLogicaImpl();
+        despachoDao.setDespachoDao(new DespachoDaoImpl());
     }
 
     /**
@@ -140,6 +154,9 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
                System.out.println("e");
            }          
        }else{
+           llenardatos(desp,cliente);
+           transaccionDao.grabar(transaccion);
+           despachoDao.grabar(desp);
            comprobante.imprimirFactura(cliente.getRazonSocial(),
                 String.valueOf(cliente.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
@@ -179,6 +196,20 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         jrucCliente.setText("");
         jrazonCliente.setText("");
     
+    }
+    
+    private void llenardatos(Despacho desp, Cliente nuevo) {
+        transaccion.setDespacho(desp);
+        transaccion.setIdTipoTransaccion("TFAC");
+        transaccion.setIdEstado(1);
+        transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
+        transaccion.setNumeroVale("325-00000001");
+        transaccion.setNroGalones(desp.getNroGalones());
+        transaccion.setPrecioUnitario(desp.getPrecioUnitario());
+        transaccion.setProducto(desp.getProducto().getNombre());
+        transaccion.setMontoTotal(desp.getMontoSoles());
+        transaccion.setFechaRegistro(desp.getFechaRegistro());
+        transaccion.setCliente(nuevo);
     }
 
 }
