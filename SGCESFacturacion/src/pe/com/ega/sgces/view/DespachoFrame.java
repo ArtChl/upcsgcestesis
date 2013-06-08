@@ -81,11 +81,11 @@ public class DespachoFrame extends InternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
-   private void salir (java.awt.event.ActionEvent evt){
+   private void salir (MouseEvent evt){
        actionPerformed(evt);
    }
 
-   private void actionPerformed(ActionEvent evt) {
+   private void actionPerformed(MouseEvent evt) {
         setVisible(false);
         dispose();
    }
@@ -156,6 +156,7 @@ public class DespachoFrame extends InternalFrame {
             f.setSize(290,103);
             f.setTitle("Comprobante");
             MDIFrame.add(f);
+            salir(e);
         }
        
   }
