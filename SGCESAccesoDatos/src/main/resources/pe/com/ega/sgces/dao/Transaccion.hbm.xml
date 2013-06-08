@@ -14,7 +14,7 @@
         <many-to-one name="despacho" class="pe.com.ega.sgces.model.Despacho" fetch="select">
             <column name="IdDespacho" not-null="true" />
         </many-to-one>
-        <property name="idTipoTransaccion" type="java.lang.Integer">
+        <property name="idTipoTransaccion" type="string">
             <column name="IdTipoTransaccion" />
         </property>
         <property name="idEstado" type="java.lang.Integer">
@@ -29,8 +29,17 @@
         <property name="numeroVale" type="string">
             <column name="NumeroVale" length="20" />
         </property>
+        <property name="producto" type="string">
+            <column name="Producto" length="20" />
+        </property>
         <property name="montoTotal" type="java.lang.Double">
             <column name="MontoTotal" precision="10" scale="2" />
+        </property>
+        <property name="nroGalones" type="java.lang.Double">
+            <column name="NroGalones" precision="10" scale="2" />
+        </property>
+        <property name="precioUnitario" type="java.lang.Double">
+            <column name="PrecioUnitario" precision="10" scale="2" />
         </property>
         <property name="fechaRegistro" type="date">
             <column name="FechaRegistro" length="10" />

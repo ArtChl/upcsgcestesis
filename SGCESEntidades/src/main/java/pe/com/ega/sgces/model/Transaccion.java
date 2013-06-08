@@ -15,12 +15,15 @@ public class Transaccion  implements java.io.Serializable {
      private int id;
      private Cliente cliente;
      private Despacho despacho;
-     private Integer idTipoTransaccion;
+     private String idTipoTransaccion;
      private Integer idEstado;
      private String numeroTransaccion;
      private String numeroPlaca;
      private String numeroVale;
+     private String producto;
      private Double montoTotal;
+     private Double nroGalones;
+     private Double precioUnitario;
      private Date fechaRegistro;
      private Set<Transacciondetalle> transacciondetalles = new HashSet<Transacciondetalle>(0);
      private Set<Puntoacumulado> puntoacumulados = new HashSet<Puntoacumulado>(0);
@@ -29,27 +32,29 @@ public class Transaccion  implements java.io.Serializable {
     public Transaccion() {
     }
 
+    public Transaccion(int id, Cliente cliente, Despacho despacho, String idTipoTransaccion, Integer idEstado, String numeroTransaccion, String numeroPlaca, String numeroVale, String producto, Double montoTotal, Double nroGalones, Double precioUnitario, Date fechaRegistro) {
+        this.id = id;
+        this.cliente = cliente;
+        this.despacho = despacho;
+        this.idTipoTransaccion = idTipoTransaccion;
+        this.idEstado = idEstado;
+        this.numeroTransaccion = numeroTransaccion;
+        this.numeroPlaca = numeroPlaca;
+        this.numeroVale = numeroVale;
+        this.producto = producto;
+        this.montoTotal = montoTotal;
+        this.nroGalones = nroGalones;
+        this.precioUnitario = precioUnitario;
+        this.fechaRegistro = fechaRegistro;
+    }
+
 	
     public Transaccion(int id, Cliente cliente, Despacho despacho) {
         this.id = id;
         this.cliente = cliente;
         this.despacho = despacho;
     }
-    public Transaccion(int id, Cliente cliente, Despacho despacho, Integer idTipoTransaccion, Integer idEstado, String numeroTransaccion, String numeroPlaca, String numeroVale, Double montoTotal, Date fechaRegistro, Set<Transacciondetalle> transacciondetalles, Set<Puntoacumulado> puntoacumulados, Set<Movimiento> movimientos) {
-       this.id = id;
-       this.cliente = cliente;
-       this.despacho = despacho;
-       this.idTipoTransaccion = idTipoTransaccion;
-       this.idEstado = idEstado;
-       this.numeroTransaccion = numeroTransaccion;
-       this.numeroPlaca = numeroPlaca;
-       this.numeroVale = numeroVale;
-       this.montoTotal = montoTotal;
-       this.fechaRegistro = fechaRegistro;
-       this.transacciondetalles = transacciondetalles;
-       this.puntoacumulados = puntoacumulados;
-       this.movimientos = movimientos;
-    }
+    
    
     public int getId() {
         return this.id;
@@ -72,11 +77,11 @@ public class Transaccion  implements java.io.Serializable {
     public void setDespacho(Despacho despacho) {
         this.despacho = despacho;
     }
-    public Integer getIdTipoTransaccion() {
+    public String getIdTipoTransaccion() {
         return this.idTipoTransaccion;
     }
     
-    public void setIdTipoTransaccion(Integer idTipoTransaccion) {
+    public void setIdTipoTransaccion(String idTipoTransaccion) {
         this.idTipoTransaccion = idTipoTransaccion;
     }
     public Integer getIdEstado() {
@@ -143,7 +148,29 @@ public class Transaccion  implements java.io.Serializable {
         this.movimientos = movimientos;
     }
 
+    public Double getNroGalones() {
+        return nroGalones;
+    }
 
+    public void setNroGalones(Double nroGalones) {
+        this.nroGalones = nroGalones;
+    }
+
+    public Double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(Double precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+    
+    public String getProducto() {
+        return producto;
+    }
+
+    public void setProducto(String producto) {
+        this.producto = producto;
+    }
 
 
 }
