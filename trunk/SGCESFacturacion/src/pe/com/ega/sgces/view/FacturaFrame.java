@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
-import pe.com.ega.sgces.logic.ClienteLogica;
 import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
@@ -36,7 +35,6 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     public FacturaFrame(Despacho despacho) {
         initComponents();
         desp=despacho;
-        cliente= new Cliente();
         clienteDao=new ClienteLogicaImpl();
         clienteDao.setClienteDao(new ClienteDaoImpl());
         transaccion=new Transaccion();
@@ -119,14 +117,13 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void jrucClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusLost
         String rucCliente=jrucCliente.getText();
         try{
-            cliente=clienteDao.buscarPorCodigo(Integer.parseInt(rucCliente));
+            cliente=clienteDao.buscarPorCodigo(rucCliente);
             jrazonCliente.setText(cliente.getRazonSocial());
-            temporal=new Cliente();
-            temporal.setId(0);
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
-            temporal.setId(1);
-        }     
+            cliente= new Cliente();
+            cliente.setId(0);
+        }    
     }//GEN-LAST:event_jrucClienteFocusLost
 
     private void jrucClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusGained
@@ -135,24 +132,27 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-       //System.out.println("Cliente"+temporal.getId());
+       System.out.println("Cliente"+cliente.getId());
        comprobante = new ImprimirComprobante();
-       if(temporal.getId()==1){        
-           System.out.println("Cliente"+temporal.getId());
+       if(cliente.getId()==0){        
+           System.out.println("Cliente"+cliente.getId());
            Cliente temporal1 = new Cliente();
            temporal1.setId(Integer.parseInt(jrucCliente.getText()));
            temporal1.setNumeroDocumento(jrucCliente.getText());
            temporal1.setRazonSocial(jrazonCliente.getText());
            try {
                clienteDao.grabar(temporal1);
-               temporal1 = new Cliente();
+               llenardatos(desp,temporal1);
+               transaccionDao.grabar(transaccion);
+               despachoDao.grabar(desp);
                comprobante.imprimirFactura(temporal1.getRazonSocial(),
-                String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
+               String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
                limpiar();
+               salir(evt);
            } catch (Exception e) {
                System.out.println("e");
-           }          
+           }         
        }else{
            llenardatos(desp,cliente);
            transaccionDao.grabar(transaccion);
@@ -161,6 +161,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
                 String.valueOf(cliente.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
            limpiar();
+           salir(evt);
        }
     }//GEN-LAST:event_imprimirActionPerformed
 

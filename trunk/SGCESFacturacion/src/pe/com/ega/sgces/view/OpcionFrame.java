@@ -92,6 +92,7 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
             f.setSize(391,151);
             f.setTitle("Factura");
             MDIFrame.add(f);
+            //salir(evt);
     }//GEN-LAST:event_facturaActionPerformed
 
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
@@ -118,6 +119,7 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
             f.setSize(290,250);
             f.setTitle("Nota Despacho");
             MDIFrame.add(f);
+            //salir(evt);
     }//GEN-LAST:event_depachoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

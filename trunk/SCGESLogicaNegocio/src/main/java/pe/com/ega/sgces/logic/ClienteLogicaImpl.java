@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
+import java.util.ArrayList;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.dao.ClienteDao;
@@ -30,14 +31,7 @@ public class ClienteLogicaImpl implements ClienteLogica{
     
     public void grabar(Cliente cliente) {
         session.beginTransaction();
-        if(cliente.getId() == 0)
-        {
-            clienteDao.insertar(cliente);
-        }
-        else
-        {
-            clienteDao.actualizar(cliente);
-        }
+        clienteDao.insertar(cliente);   
         session.getTransaction().commit();
     }
 
@@ -47,8 +41,22 @@ public class ClienteLogicaImpl implements ClienteLogica{
         session.getTransaction().commit();
     }
 
-    public Cliente buscarPorCodigo(Integer id) {
-        return clienteDao.buscarPorCodigo(id);
+    public Cliente buscarPorCodigo(String id) {
+        Cliente razon=null;
+        ArrayList<Cliente> clientes=(ArrayList<Cliente>) clienteDao.buscarTodos();
+        for (Cliente cliente : clientes) {
+            if(id.equalsIgnoreCase(cliente.getNumeroDocumento())){
+                razon=cliente;
+                break;
+            }
+        }
+        return razon;
+    }
+
+    public void actualizar(Cliente cliente) {
+        session.beginTransaction();
+        clienteDao.actualizar(cliente);   
+        session.getTransaction().commit();
     }
     
 }

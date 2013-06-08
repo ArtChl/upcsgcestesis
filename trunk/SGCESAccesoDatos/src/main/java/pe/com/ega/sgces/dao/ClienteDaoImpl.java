@@ -5,6 +5,8 @@
 package pe.com.ega.sgces.dao;
 
 import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Cliente;
 
@@ -39,5 +41,5 @@ public class ClienteDaoImpl implements ClienteDao{
     public List<Cliente> buscarTodos() {
          return session.createQuery("from Cliente").list();
     }
-    
+   
 }
