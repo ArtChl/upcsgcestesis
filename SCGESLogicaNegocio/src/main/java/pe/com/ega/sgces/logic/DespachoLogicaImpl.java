@@ -41,9 +41,11 @@ public class DespachoLogicaImpl implements DespachoLogica {
            despachoDao.insertar(despacho);
         }
         else{
-         despachoDao.actualizar(despacho);
+           despachoDao.actualizar(despacho);
         }
         session.getTransaction().commit();
+        session.flush();
+        session.close();
     }
 
     public void eliminar(Despacho despacho) {
@@ -56,10 +58,8 @@ public class DespachoLogicaImpl implements DespachoLogica {
         return despachoDao.buscarPorCodigo(id);
     }
 
-    public List<Despacho> buscarTodos() {
-        
-        return despachoDao.buscarTodos(session);
-      
+    public List<Despacho> buscarTodos() {      
+        return despachoDao.buscarTodos(session);     
     }
 
 }

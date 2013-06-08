@@ -5,9 +5,12 @@
 package pe.com.ega.sgces.logic;
 
 import org.hibernate.Session;
+import pe.com.ega.sgces.dao.DespachoDao;
+import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.dao.TransaccionDetalleDao;
+import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Transacciondetalle;
 
@@ -17,17 +20,21 @@ import pe.com.ega.sgces.model.Transacciondetalle;
  */
 public class TransaccionLogicaImpl implements TransaccionLogica
 {
+    Session session; 
+    TransaccionDao transaccionDao;
+  
+    
     public TransaccionLogicaImpl()
     {
         session = HibernateUtil.getSessionFactory().openSession();
+     
     }
     
-    Session session; 
-    
-    TransaccionDao transaccionDao;
+   
     public void setTransaccionDao(TransaccionDao transaccionDao) {
-        this.transaccionDao = transaccionDao; 
+        this.transaccionDao = transaccionDao;
         this.transaccionDao.setSession(session);
+
     }
     
     TransaccionDetalleDao transacciondetalleDao;
@@ -42,7 +49,9 @@ public class TransaccionLogicaImpl implements TransaccionLogica
         for (Transacciondetalle detalle : transaccion.getTransacciondetalles()) {
             transacciondetalleDao.insertar(detalle);
         }
-        session.getTransaction().commit();
+        session.getTransaction().commit(); 
+        session.flush();
+        session.close();
     }
 
     public Transaccion buscarPorCodigo(Integer id) {
