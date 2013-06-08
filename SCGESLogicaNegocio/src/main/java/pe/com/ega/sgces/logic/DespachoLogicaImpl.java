@@ -6,6 +6,8 @@ package pe.com.ega.sgces.logic;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import pe.com.ega.sgces.dao.DespachoDao;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.HibernateUtil;
@@ -22,15 +24,14 @@ public class DespachoLogicaImpl implements DespachoLogica {
     
     public DespachoLogicaImpl()
     {
-        session = HibernateUtil.getSessionFactory().openSession();
-        
+       session = HibernateUtil.getSessionFactory().openSession();
+       
     }
     
-    
-    
     public void setDespachoDao(DespachoDao despachoDao) {
-        this.despachoDao = despachoDao;         
-        this.despachoDao.setSession(session);
+       this.despachoDao= despachoDao;
+       this.despachoDao.setSession(session);
+       System.out.println("Contrutor");
     }
     
     public void grabar(Despacho despacho) {
@@ -57,7 +58,7 @@ public class DespachoLogicaImpl implements DespachoLogica {
 
     public List<Despacho> buscarTodos() {
         
-        return despachoDao.buscarTodos();
+        return despachoDao.buscarTodos(session);
       
     }
 

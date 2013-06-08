@@ -36,8 +36,8 @@ public class DespachoDaoImpl implements DespachoDao{
         return (Despacho) session.load(Despacho.class, id);
     }
 
-    public List<Despacho> buscarTodos() {
-         return session.createQuery("from Despacho").list();
+    public List<Despacho> buscarTodos(Session s) {
+         return s.createQuery("from Despacho").list();
     }
     
 }
