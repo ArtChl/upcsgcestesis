@@ -25,24 +25,24 @@ import pe.com.ega.sgces.model.Transaccion;
 public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private Despacho desp;
-    private ClienteLogicaImpl clienteDao;
+    private ClienteLogicaImpl clienteLogica;
     private Cliente cliente;
     private Cliente temporal;
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
-    private TransaccionLogicaImpl transaccionDao;
-    private DespachoLogicaImpl despachoDao;
+    private TransaccionLogicaImpl transaccionLogica;
+    private DespachoLogicaImpl despachoLogica;
     public NotaFrame(Despacho despacho) {
         initComponents();
         desp=despacho;
         cliente= new Cliente();
-        clienteDao=new ClienteLogicaImpl();
-        clienteDao.setClienteDao(new ClienteDaoImpl());
+        clienteLogica=new ClienteLogicaImpl();
+        clienteLogica.setClienteDao(new ClienteDaoImpl());
          transaccion=new Transaccion();
-        transaccionDao =new TransaccionLogicaImpl();
-        transaccionDao.setTransaccionDao(new TransaccionDaoImpl());
-        despachoDao=new DespachoLogicaImpl();
-        despachoDao.setDespachoDao(new DespachoDaoImpl());
+        transaccionLogica =new TransaccionLogicaImpl();
+        transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
+        despachoLogica=new DespachoLogicaImpl();
+        despachoLogica.setDespachoDao(new DespachoDaoImpl());
     }
 
     /**
@@ -148,7 +148,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void jrucClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusLost
         String rucCliente=jrucCliente.getText();
         try{
-            cliente=clienteDao.buscarPorCodigo(rucCliente);
+            cliente=clienteLogica.buscarPorCodigo(rucCliente);
             jrazonCliente.setText(cliente.getRazonSocial());
             temporal=new Cliente();
             temporal.setId(0);
@@ -173,10 +173,10 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            temporal1.setNumeroDocumento(jrucCliente.getText());
            temporal1.setRazonSocial(jrazonCliente.getText());
            try {
-               clienteDao.grabar(temporal1);
+               clienteLogica.grabar(temporal1);
                llenardatos(desp,temporal1);
-               transaccionDao.grabar(transaccion);
-               despachoDao.grabar(desp);
+               transaccionLogica.grabar(transaccion);
+               despachoLogica.grabar(desp);
                comprobante.imprimirFactura(temporal1.getRazonSocial(),
                String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
@@ -187,8 +187,8 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            }          
        }else{
            llenardatos(desp,cliente);
-           transaccionDao.grabar(transaccion);
-           despachoDao.grabar(desp);
+           transaccionLogica.grabar(transaccion);
+           despachoLogica.grabar(desp);
            comprobante.imprimirNotaDespacho(jkilometrajes.getText(),jplaca.getText(),jchofer.getText(),cliente.getRazonSocial(),
                 String.valueOf(cliente.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
