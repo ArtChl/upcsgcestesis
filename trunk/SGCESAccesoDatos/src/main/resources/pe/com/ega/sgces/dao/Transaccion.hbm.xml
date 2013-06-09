@@ -29,6 +29,9 @@
         <property name="numeroVale" type="string">
             <column name="NumeroVale" length="20" />
         </property>
+        <property name="numeroTiket" type="string">
+            <column name="NumeroTiket" length="20" />
+        </property>
         <property name="producto" type="string">
             <column name="Producto" length="20" />
         </property>
