@@ -113,7 +113,7 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private void depachoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depachoActionPerformed
         NotaFrame f=new NotaFrame(desp);
-            f.setSize(290,250);
+            f.setSize(391,290);
             f.setTitle("Nota Despacho");
             MDIFrame.add(f);
             //salir(evt);

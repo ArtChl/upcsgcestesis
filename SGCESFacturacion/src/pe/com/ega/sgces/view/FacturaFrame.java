@@ -7,6 +7,7 @@ package pe.com.ega.sgces.view;
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
+import org.openswing.swing.mdi.client.MDIFrame;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
@@ -42,6 +43,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
         despachoDao=new DespachoLogicaImpl();
         despachoDao.setDespachoDao(new DespachoDaoImpl());
+        limpiar();
     }
 
     /**
@@ -60,6 +62,8 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         jrazonCliente = new javax.swing.JTextField();
         imprimir = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
+        bcliente = new javax.swing.JButton();
 
         jPanel1.setLayout(null);
 
@@ -76,9 +80,6 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jrucClienteFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jrucClienteFocusLost(evt);
-            }
         });
         jPanel1.add(jrucCliente);
         jrucCliente.setBounds(100, 30, 170, 20);
@@ -89,14 +90,14 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         jPanel1.add(jrazonCliente);
         jrazonCliente.setBounds(100, 60, 260, 20);
 
-        imprimir.setText("Imprimir");
+        imprimir.setText("Confirmar");
         imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imprimirActionPerformed(evt);
             }
         });
         jPanel1.add(imprimir);
-        imprimir.setBounds(110, 90, 80, 23);
+        imprimir.setBounds(150, 90, 80, 23);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +106,25 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(200, 90, 75, 23);
+        cancelar.setBounds(240, 90, 75, 23);
+
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buscar);
+        buscar.setBounds(290, 30, 65, 23);
+
+        bcliente.setText("Cliente");
+        bcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bclienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bcliente);
+        bcliente.setBounds(60, 90, 80, 23);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -169,7 +188,28 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         salir(evt);
     }//GEN-LAST:event_cancelarActionPerformed
 
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        String rucCliente=jrucCliente.getText();
+        try{
+            cliente=clienteLogica.buscarPorCodigo(rucCliente);
+            jrazonCliente.setText(cliente.getRazonSocial());
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            cliente= new Cliente();
+            cliente.setId(0);
+        }   
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void bclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclienteActionPerformed
+        ClienteFrame f=new ClienteFrame(desp);
+            f.setSize(391,151);
+            f.setTitle("Cliente Temporal");
+            MDIFrame.add(f);
+    }//GEN-LAST:event_bclienteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bcliente;
+    private javax.swing.JButton buscar;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton imprimir;
     private javax.swing.JLabel jLabel1;

@@ -48,5 +48,6 @@
     <mapping resource="pe/com/ega/sgces/dao/Estacionservicio.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Tipocambio.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Opcion.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/dao/Vale.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
