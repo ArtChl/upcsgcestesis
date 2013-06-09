@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
+import java.util.List;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**
@@ -13,4 +14,5 @@ import pe.com.ega.sgces.model.Transaccion;
 public interface TransaccionLogica {
     public void grabar(Transaccion transaccion);
     public Transaccion buscarPorCodigo(Integer id);
+    public List<Transaccion> buscarListaId(String id);
 }

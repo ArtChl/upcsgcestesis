@@ -11,8 +11,10 @@ import org.hibernate.cfg.Configuration;
 import pe.com.ega.sgces.dao.ClienteDao;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.HibernateUtil;
+import pe.com.ega.sgces.dao.UsuariodaoImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
+import pe.com.ega.sgces.model.Usuario;
 
 /**
  *
@@ -24,9 +26,12 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {   
-       ClienteLogicaImpl usuariodao = new ClienteLogicaImpl();
-       usuariodao.setClienteDao(new ClienteDaoImpl());  
-       Cliente clie=usuariodao.buscarPorCodigo("1041949246");
-       System.out.println("Cliente"+clie.getRazonSocial());
+       UsuarioLogicaImpl usuariodao = new UsuarioLogicaImpl();
+       usuariodao.setTransaccionDao(new UsuariodaoImpl());  
+       Usuario cli=new Usuario();
+       cli.setLogin("admin");
+       cli.setClave("admin");
+       Usuario usu=usuariodao.buscarPorUsuario(cli);
+       System.out.println("Cliente"+usu.getLogin());
     }
 }

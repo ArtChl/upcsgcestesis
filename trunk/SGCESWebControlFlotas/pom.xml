@@ -4,7 +4,7 @@
 
     <groupId>pe.com.ega.sgces</groupId>
     <artifactId>SGCESWebControlFlotas</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
 
     <name>SGCESWebControlFlotas</name>
@@ -13,13 +13,101 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    <repositories>
+      <repository>
+         <id>unknown-jars-temp-repo</id>
+         <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+         <url>file:${project.basedir}/lib</url>
+      </repository>
+      <repository>  
+        <id>Maven</id>  
+        <name>Maven Repository</name>  
+        <url>http://download.java.net/maven/2</url>        
+      </repository>  
+      <repository>  
+        <id>prime-repo</id>  
+        <name>PrimeFaces Maven Repository</name>  
+        <url>http://repository.primefaces.org</url>        
+      </repository>  
+    </repositories>
     <dependencies>
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>bluesky</artifactId>  
+            <version>1.0.9</version>  
+        </dependency> 
+        <dependency>
+            <groupId>pe.com.ega.sgces</groupId>
+            <artifactId>SGCESEntidades</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>pe.com.ega.sgces</groupId>
+            <artifactId>SCGESLogicaNegocio</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
             <scope>provided</scope>
+        </dependency>
+       <dependency>
+	<groupId>mysql</groupId>
+	<artifactId>mysql-connector-java</artifactId>
+	<version>5.1.25</version>
+    </dependency>           
+    <dependency>
+	<groupId>postgresql</groupId>
+	<artifactId>postgresql</artifactId>
+	<version>9.1-901.jdbc4</version>
+    </dependency>
+    <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate</artifactId>
+            <version>3.2.5.ga</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>3.3.2.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.sql</groupId>
+            <artifactId>jdbc-stdext</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>  
+            <groupId>org.primefaces</groupId>  
+            <artifactId>primefaces</artifactId>  
+            <version>3.5</version>  
+        </dependency> 
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.0.1B</version>
+        </dependency>
+        <dependency> 
+            <groupId>org.primefaces</groupId>  
+            <artifactId>primefaces-mobile</artifactId>  
+            <version>0.9.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>primefaces-extensions</artifactId>
+            <version>0.7.1</version>
+        </dependency>  
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>ejb3-persistence</artifactId>
+            <version>1.0.1.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.5.2</version>
         </dependency>
     </dependencies>
 

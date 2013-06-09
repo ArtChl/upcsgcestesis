@@ -18,5 +18,6 @@ public interface TransaccionDao {
     public void eliminar(Transaccion transaccion);
     public Transaccion buscarPorCodigo(Integer id);
     public List<Transaccion> buscarTodos(); 
+    public List<Transaccion> buscarListaId(String id);
     public void setSession(Session session);
 }
