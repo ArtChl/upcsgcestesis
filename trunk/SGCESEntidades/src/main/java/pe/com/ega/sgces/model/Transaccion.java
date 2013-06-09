@@ -20,6 +20,7 @@ public class Transaccion  implements java.io.Serializable {
      private String numeroTransaccion;
      private String numeroPlaca;
      private String numeroVale;
+     private String numeroTiket;
      private String producto;
      private Double montoTotal;
      private Double nroGalones;
@@ -32,7 +33,7 @@ public class Transaccion  implements java.io.Serializable {
     public Transaccion() {
     }
 
-    public Transaccion(int id, Cliente cliente, Despacho despacho, String idTipoTransaccion, Integer idEstado, String numeroTransaccion, String numeroPlaca, String numeroVale, String producto, Double montoTotal, Double nroGalones, Double precioUnitario, Date fechaRegistro) {
+    public Transaccion(int id, Cliente cliente, Despacho despacho, String idTipoTransaccion, Integer idEstado, String numeroTransaccion, String numeroPlaca, String numeroVale, String numeroTiket, String producto, Double montoTotal, Double nroGalones, Double precioUnitario, Date fechaRegistro) {
         this.id = id;
         this.cliente = cliente;
         this.despacho = despacho;
@@ -41,6 +42,7 @@ public class Transaccion  implements java.io.Serializable {
         this.numeroTransaccion = numeroTransaccion;
         this.numeroPlaca = numeroPlaca;
         this.numeroVale = numeroVale;
+        this.numeroTiket = numeroTiket;
         this.producto = producto;
         this.montoTotal = montoTotal;
         this.nroGalones = nroGalones;
@@ -48,6 +50,7 @@ public class Transaccion  implements java.io.Serializable {
         this.fechaRegistro = fechaRegistro;
     }
 
+    
 	
     public Transaccion(int id, Cliente cliente, Despacho despacho) {
         this.id = id;
@@ -171,7 +174,14 @@ public class Transaccion  implements java.io.Serializable {
     public void setProducto(String producto) {
         this.producto = producto;
     }
+    
+    public String getNumeroTiket() {
+        return numeroTiket;
+    }
 
+    public void setNumeroTiket(String numeroTiket) {
+        this.numeroTiket = numeroTiket;
+    }
 
 }
 
