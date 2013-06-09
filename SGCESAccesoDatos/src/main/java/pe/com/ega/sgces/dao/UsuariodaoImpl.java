@@ -23,7 +23,7 @@ public class UsuariodaoImpl implements UsuarioDao{
         
     @Override
     public Usuario buscarPorUsuario(Usuario usuario) {
-        String sql="select u from Usuario u where username=:user and password=:pass";
+        String sql="select u from Usuario u where login=:user and clave=:pass";
         Query query= session.createQuery(sql);
         query.setString("user", usuario.getLogin());
         query.setString("pass", usuario.getClave());

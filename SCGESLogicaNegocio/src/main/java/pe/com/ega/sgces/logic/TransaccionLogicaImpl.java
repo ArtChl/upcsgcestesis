@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
+import java.util.List;
 import org.hibernate.Session;
 import pe.com.ega.sgces.dao.DespachoDao;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
@@ -56,6 +57,10 @@ public class TransaccionLogicaImpl implements TransaccionLogica
 
     public Transaccion buscarPorCodigo(Integer id) {
         return transaccionDao.buscarPorCodigo(id);
+    }
+
+    public List<Transaccion> buscarListaId(String id) {
+        return transaccionDao.buscarListaId(id);
     }
     
 }
