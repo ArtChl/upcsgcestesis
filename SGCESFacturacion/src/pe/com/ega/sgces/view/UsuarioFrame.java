@@ -17,9 +17,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import pe.com.ega.sgces.dao.UsuariodaoImpl;
-import pe.com.ega.sgces.logic.UsuarioLogica;
 import pe.com.ega.sgces.logic.UsuarioLogicaImpl;
-import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Usuario;
 
 
@@ -29,14 +27,14 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuarioFrame extends javax.swing.JFrame {
 
-    private UsuarioLogicaImpl usuariodao;
+    private UsuarioLogicaImpl usuariLogica;
     
     public UsuarioFrame() {
         initComponents();
         pintarTabla();
         setLocationRelativeTo(null);
-        usuariodao = new UsuarioLogicaImpl();
-        usuariodao.setTransaccionDao(new UsuariodaoImpl());
+        usuariLogica = new UsuarioLogicaImpl();
+        usuariLogica.setTransaccionDao(new UsuariodaoImpl());
     }
 
     /** This method is called from within the constructor to
@@ -125,7 +123,7 @@ salir(evt);      // TODO add your handling code here:
        // TecnicoBean t=new TecnicoBean();
         try {
 
-            transaccions=(ArrayList<Usuario>) usuariodao.buscarTodos();
+            transaccions=(ArrayList<Usuario>) usuariLogica.buscarTodos();
 
         } catch (Exception ex) {
 

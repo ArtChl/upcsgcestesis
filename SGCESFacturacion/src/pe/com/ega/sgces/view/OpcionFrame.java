@@ -8,12 +8,9 @@ import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import org.openswing.swing.mdi.client.MDIFrame;
-import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
-import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
-import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
@@ -28,17 +25,17 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private Despacho desp;
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
-    private TransaccionLogicaImpl transaccionDao;
-    private DespachoLogicaImpl despachoDao;
+    private TransaccionLogicaImpl transaccionLogica;
+    private DespachoLogicaImpl despachoLogica;
     
     public OpcionFrame(Despacho codigo) {
         initComponents();
         desp=codigo;
         transaccion=new Transaccion();
-        transaccionDao =new TransaccionLogicaImpl();
-        transaccionDao.setTransaccionDao(new TransaccionDaoImpl());
-        despachoDao=new DespachoLogicaImpl();
-        despachoDao.setDespachoDao(new DespachoDaoImpl());
+        transaccionLogica =new TransaccionLogicaImpl();
+        transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
+        despachoLogica=new DespachoLogicaImpl();
+        despachoLogica.setDespachoDao(new DespachoDaoImpl());
     }
 
     /**
@@ -100,8 +97,8 @@ public class OpcionFrame extends org.openswing.swing.mdi.client.InternalFrame {
         comprobante=new ImprimirComprobante();    
         llenardatos(desp);       
         try {
-            transaccionDao.grabar(transaccion);
-            despachoDao.grabar(desp);
+            transaccionLogica.grabar(transaccion);
+            despachoLogica.grabar(desp);
             comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
             salir(evt);

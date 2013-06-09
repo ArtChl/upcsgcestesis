@@ -1,17 +1,13 @@
 
 package pe.com.ega.sgces.view;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import org.openswing.swing.mdi.client.InternalFrame;
 import org.openswing.swing.mdi.client.MDIFrame;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
-import pe.com.ega.sgces.logic.ClienteLogicaImpl;
-import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.model.Despacho;
 
@@ -21,13 +17,13 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoFrame extends InternalFrame {
 
-    private DespachoLogicaImpl despachoDao;
+    private DespachoLogicaImpl despachoLogic;
     private ArrayList<Despacho> transaccions;
 
     public DespachoFrame() {
         initComponents();
-        despachoDao = new DespachoLogicaImpl();      
-        despachoDao.setDespachoDao(new DespachoDaoImpl());
+        despachoLogic = new DespachoLogicaImpl();      
+        despachoLogic.setDespachoDao(new DespachoDaoImpl());
         transaccions=new ArrayList<>(); 
         pintarTabla();            
     }
@@ -95,9 +91,9 @@ public class DespachoFrame extends InternalFrame {
   String[] titulo=new String[]{"Codigo","Fecha","Cara","Producto","Precio","Galones","Monto"};
 
   try {
-  transaccions=(ArrayList<Despacho>) despachoDao.buscarTodos();
+  transaccions=(ArrayList<Despacho>) despachoLogic.buscarTodos();
   } catch (Exception ex) {
-
+//TODO Agregar log de errores.
   }
 
   Object[][] arre=new Object[transaccions.size()][7];

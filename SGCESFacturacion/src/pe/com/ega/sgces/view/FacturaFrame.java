@@ -24,22 +24,22 @@ import pe.com.ega.sgces.model.Transaccion;
 public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private Despacho desp;
-    private ClienteLogicaImpl clienteDao;
+    private ClienteLogicaImpl clienteLogica;
     private Cliente cliente;
     private Cliente temporal;
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
-    private TransaccionLogicaImpl transaccionDao;
+    private TransaccionLogicaImpl transaccionLogica;
     private DespachoLogicaImpl despachoDao;
     
     public FacturaFrame(Despacho despacho) {
         initComponents();
         desp=despacho;
-        clienteDao=new ClienteLogicaImpl();
-        clienteDao.setClienteDao(new ClienteDaoImpl());
+        clienteLogica=new ClienteLogicaImpl();
+        clienteLogica.setClienteDao(new ClienteDaoImpl());
         transaccion=new Transaccion();
-        transaccionDao =new TransaccionLogicaImpl();
-        transaccionDao.setTransaccionDao(new TransaccionDaoImpl());
+        transaccionLogica =new TransaccionLogicaImpl();
+        transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
         despachoDao=new DespachoLogicaImpl();
         despachoDao.setDespachoDao(new DespachoDaoImpl());
     }
@@ -117,7 +117,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void jrucClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusLost
         String rucCliente=jrucCliente.getText();
         try{
-            cliente=clienteDao.buscarPorCodigo(rucCliente);
+            cliente=clienteLogica.buscarPorCodigo(rucCliente);
             jrazonCliente.setText(cliente.getRazonSocial());
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
@@ -141,9 +141,9 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            temporal1.setNumeroDocumento(jrucCliente.getText());
            temporal1.setRazonSocial(jrazonCliente.getText());
            try {
-               clienteDao.grabar(temporal1);
+               clienteLogica.grabar(temporal1);
                llenardatos(desp,temporal1);
-               transaccionDao.grabar(transaccion);
+               transaccionLogica.grabar(transaccion);
                despachoDao.grabar(desp);
                comprobante.imprimirFactura(temporal1.getRazonSocial(),
                String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
@@ -155,7 +155,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            }         
        }else{
            llenardatos(desp,cliente);
-           transaccionDao.grabar(transaccion);
+           transaccionLogica.grabar(transaccion);
            despachoDao.grabar(desp);
            comprobante.imprimirFactura(cliente.getRazonSocial(),
                 String.valueOf(cliente.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
