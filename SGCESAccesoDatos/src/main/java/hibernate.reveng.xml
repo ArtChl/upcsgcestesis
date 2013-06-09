@@ -40,4 +40,5 @@
   <table-filter match-name="cara"/>
   <table-filter match-name="transaccion"/>
   <table-filter match-name="perfil"/>
+  <table-filter match-name="vale"/>
 </hibernate-reverse-engineering>
