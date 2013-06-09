@@ -23,6 +23,7 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
     
     Session session; 
     UsuarioDao usuarioDao;
+    
     public void setTransaccionDao(UsuarioDao usuarioDao) {
         this.usuarioDao = usuarioDao;   
         this.usuarioDao.setSession(session);
