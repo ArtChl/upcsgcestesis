@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    <h:head>
+        <title>Consumo Flotas</title>
+        <link rel="stylesheet" href="resources/css/botones.css" />
+    </h:head>
+    <h:body>
+    <!--Cabecera del formulario donde se encuentra esto es igual a todos las paginas JSF-->    
+    <h:form>
+       <p:menubar autoDisplay="false">  
+        <p:menuitem value="Inicio" icon="inicio" url="inicio.jsf"/>     
+        <p:submenu label="Consumo" icon="mante">  
+            <p:menuitem   value="Flotas" url="flotas.jsf" icon="mante" />  
+        </p:submenu>
+        <p:menuitem value="Salir" url="login.jsf" icon="salir" />  
+        
+    </p:menubar>
+     
+    </h:form>
+  
+    <!--Tabla donde se contiene la informacion de todos los registros--> 
+     <h:form id="frmPrincipal">  
+        <p:growl id="principal"/> 
+        <p:dataTable id="datatable" var="Transaccion" value="#{transsaccionBean.transaccions}" widgetVar="Transaccion"
+                     paginator="true" rows="10"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15"  sortBy="#{Transaccion.idEstado}" sortOrder="descending">  
+            
+            <f:facet name="header">  
+            Vales consumidos
+            </f:facet> 
+            
+            <p:column id="valeColumn" filterBy="#{Transaccion.numeroTiket}"   
+                headerText="Vale"  
+                filterMatchMode="startsWith">  
+            <h:outputText value="#{Transaccion.numeroTiket}" />  
+            </p:column>
+            
+            <p:column id="NotaColumn" filterBy="#{Transaccion.numeroVale}"   
+                headerText="Despacho"  
+                filterMatchMode="startsWith">  
+            <h:outputText value="#{Transaccion.numeroVale}" />  
+            </p:column>
+            
+            <p:column headerText="Placa" style="text-align: center">  
+                <h:outputText value="#{Transaccion.numeroPlaca}" />  
+            </p:column> 
+            
+            <p:column headerText="Producto" style="text-align: center">  
+                <h:outputText value="#{Transaccion.producto}" />  
+            </p:column> 
+            
+            <p:column headerText="Galones" style="text-align: center">  
+                <h:outputText value="#{Transaccion.nroGalones}"/>  
+            </p:column>
+                 
+            <p:column headerText="Monto" style="text-align: right">  
+                <h:outputText value="#{Transaccion.montoTotal}" > 
+                    <f:convertNumber  type="currency" currencySymbol=" " groupingUsed="true" locale="en"/>
+                </h:outputText> 
+            </p:column> 
+            
+            <f:facet name="footer">  
+                Vales Registrados #{transsaccionBean.transaccions.size()}.  
+            </f:facet> 
+            
+            <p:summaryRow>  
+            <p:column colspan="5" style="text-align:right">  
+                Total:  
+            </p:column>  
+            <p:column style="text-align:right">
+                <h:outputText value="#{transsaccionBean.totalSoles}"> 
+                    <f:convertNumber  type="currency" currencySymbol=" " groupingUsed="true" locale="en"/>
+                </h:outputText>   
+            </p:column>  
+            </p:summaryRow> 
+          </p:dataTable> 
+    </h:form>
+    </h:body>
+</html>
+

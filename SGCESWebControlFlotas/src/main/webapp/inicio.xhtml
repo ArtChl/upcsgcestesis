@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    <h:head>
+        <title>Control Flotas</title>
+        <link rel="stylesheet" href="resources/css/botones.css" />
+    </h:head>
+    <h:body>
+    <h:form>
+       <p:menubar autoDisplay="false">  
+        <p:menuitem value="Inicio" icon="inicio" url="inicio.jsf"/>     
+        <p:submenu label="Consumo" icon="mante">  
+            <p:menuitem   value="Flotas" url="flotas.jsf" icon="mante" />  
+        </p:submenu>
+        <p:menuitem value="Salir" url="login.jsf" icon="salir" />
+        
+    </p:menubar>
+     
+    </h:form>
+        <h:form id="principal">
+            <p:outputLabel>
+                Bienvenido al sistema Aviney #{loginBean.usuario.login}
+            </p:outputLabel>
+    </h:form>
+    
+    </h:body>
+</html>
+
