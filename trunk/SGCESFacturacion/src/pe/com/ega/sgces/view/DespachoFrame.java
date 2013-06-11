@@ -1,6 +1,5 @@
 
 package pe.com.ega.sgces.view;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -149,7 +148,7 @@ public class DespachoFrame extends InternalFrame {
                 
             }
             OpcionFrame f=new OpcionFrame(buscar(txt[0]));
-            f.setSize(290,103);
+            f.setSize(298,103);
             f.setTitle("Comprobante");
             MDIFrame.add(f);
             salir(e);
