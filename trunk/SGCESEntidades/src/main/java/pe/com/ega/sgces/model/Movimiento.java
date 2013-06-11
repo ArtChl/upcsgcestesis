@@ -13,10 +13,10 @@ public class Movimiento  implements java.io.Serializable {
      private int id;
      private Turnopuntoventacaja turnopuntoventacaja;
      private Transaccion transaccion;
-     private Integer idTipoPago;
-     private Long montoRecibido;
-     private Long montoTotal;
-     private Long montoDevuelto;
+     private String Pago;
+     private Double montoRecibido;
+     private Double montoTotal;
+     private Double montoDevuelto;
      private Date fechaRegistro;
      private String nroOperacion;
 
@@ -29,11 +29,11 @@ public class Movimiento  implements java.io.Serializable {
         this.turnopuntoventacaja = turnopuntoventacaja;
         this.transaccion = transaccion;
     }
-    public Movimiento(int id, Turnopuntoventacaja turnopuntoventacaja, Transaccion transaccion, Integer idTipoPago, Long montoRecibido, Long montoTotal, Long montoDevuelto, Date fechaRegistro, String nroOperacion) {
+    public Movimiento(int id, Turnopuntoventacaja turnopuntoventacaja, Transaccion transaccion, String idTipoPago, Double montoRecibido, Double montoTotal, Double montoDevuelto, Date fechaRegistro, String nroOperacion) {
        this.id = id;
        this.turnopuntoventacaja = turnopuntoventacaja;
        this.transaccion = transaccion;
-       this.idTipoPago = idTipoPago;
+       this.Pago = idTipoPago;
        this.montoRecibido = montoRecibido;
        this.montoTotal = montoTotal;
        this.montoDevuelto = montoDevuelto;
@@ -62,32 +62,32 @@ public class Movimiento  implements java.io.Serializable {
     public void setTransaccion(Transaccion transaccion) {
         this.transaccion = transaccion;
     }
-    public Integer getIdTipoPago() {
-        return this.idTipoPago;
+    public String getPago() {
+        return this.Pago;
     }
     
-    public void setIdTipoPago(Integer idTipoPago) {
-        this.idTipoPago = idTipoPago;
+    public void setPago(String Pago) {
+        this.Pago = Pago;
     }
-    public Long getMontoRecibido() {
+    public Double getMontoRecibido() {
         return this.montoRecibido;
     }
     
-    public void setMontoRecibido(Long montoRecibido) {
+    public void setMontoRecibido(Double montoRecibido) {
         this.montoRecibido = montoRecibido;
     }
-    public Long getMontoTotal() {
+    public Double getMontoTotal() {
         return this.montoTotal;
     }
     
-    public void setMontoTotal(Long montoTotal) {
+    public void setMontoTotal(Double montoTotal) {
         this.montoTotal = montoTotal;
     }
-    public Long getMontoDevuelto() {
+    public Double getMontoDevuelto() {
         return this.montoDevuelto;
     }
     
-    public void setMontoDevuelto(Long montoDevuelto) {
+    public void setMontoDevuelto(Double montoDevuelto) {
         this.montoDevuelto = montoDevuelto;
     }
     public Date getFechaRegistro() {
