@@ -159,28 +159,19 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            temporal1.setId(Integer.parseInt(jrucCliente.getText()));
            temporal1.setNumeroDocumento(jrucCliente.getText());
            temporal1.setRazonSocial(jrazonCliente.getText());
-           try {
                clienteLogica.grabar(temporal1);
-               llenardatos(desp,temporal1);
-               transaccionLogica.grabar(transaccion);
-               despachoDao.grabar(desp);
-               comprobante.imprimirFactura(temporal1.getRazonSocial(),
-               String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
-                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
-               limpiar();
-               salir(evt);
-           } catch (Exception e) {
-               System.out.println("e");
-           }         
+               MonedaFrame f=new MonedaFrame(desp, "TFAC", temporal1);
+                    f.setSize(295,132);
+                    f.setTitle("Tipo Pago");
+                    MDIFrame.add(f);
+                    salir(evt);
+                      
        }else{
-           llenardatos(desp,cliente);
-           transaccionLogica.grabar(transaccion);
-           despachoDao.grabar(desp);
-           comprobante.imprimirFactura(cliente.getRazonSocial(),
-                String.valueOf(cliente.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
-                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
-           limpiar();
-           salir(evt);
+                MonedaFrame f=new MonedaFrame(desp, "TFAC", cliente);
+                    f.setSize(295,132);
+                    f.setTitle("Tipo Pago");
+                    MDIFrame.add(f);
+                    salir(evt);          
        }
     }//GEN-LAST:event_imprimirActionPerformed
 
@@ -237,20 +228,6 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         jrucCliente.setText("");
         jrazonCliente.setText("");
     
-    }
-    
-    private void llenardatos(Despacho desp, Cliente nuevo) {
-        transaccion.setDespacho(desp);
-        transaccion.setIdTipoTransaccion("TFAC");
-        transaccion.setIdEstado(1);
-        transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumeroVale("325-00000001");
-        transaccion.setNroGalones(desp.getNroGalones());
-        transaccion.setPrecioUnitario(desp.getPrecioUnitario());
-        transaccion.setProducto(desp.getProducto().getNombre());
-        transaccion.setMontoTotal(desp.getMontoSoles());
-        transaccion.setFechaRegistro(desp.getFechaRegistro());
-        transaccion.setCliente(nuevo);
     }
 
 }
