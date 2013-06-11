@@ -64,6 +64,10 @@ public class MonedaFrame extends InternalFrame {
         tarjeta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         pago = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        numero = new javax.swing.JLabel();
+        tarjetas = new javax.swing.JComboBox();
+        numtarjeta = new javax.swing.JTextField();
 
         jPanel1.setLayout(null);
 
@@ -74,7 +78,7 @@ public class MonedaFrame extends InternalFrame {
             }
         });
         jPanel1.add(soles);
-        soles.setBounds(10, 50, 80, 40);
+        soles.setBounds(10, 120, 80, 40);
 
         dolares.setText("DOLARES");
         dolares.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +87,7 @@ public class MonedaFrame extends InternalFrame {
             }
         });
         jPanel1.add(dolares);
-        dolares.setBounds(100, 50, 80, 40);
+        dolares.setBounds(100, 120, 80, 40);
 
         tarjeta.setText("TARJETA");
         tarjeta.addActionListener(new java.awt.event.ActionListener() {
@@ -92,13 +96,44 @@ public class MonedaFrame extends InternalFrame {
             }
         });
         jPanel1.add(tarjeta);
-        tarjeta.setBounds(190, 50, 77, 40);
+        tarjeta.setBounds(190, 120, 77, 40);
 
         jLabel1.setText("Pago Efectivo:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(60, 20, 80, 14);
+        jLabel1.setBounds(20, 20, 80, 14);
+
+        pago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagoActionPerformed(evt);
+            }
+        });
         jPanel1.add(pago);
-        pago.setBounds(140, 20, 70, 20);
+        pago.setBounds(100, 20, 70, 20);
+
+        jLabel2.setText("Tarjeta");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(20, 50, 70, 14);
+
+        numero.setText("Numero:");
+        jPanel1.add(numero);
+        numero.setBounds(20, 80, 70, 14);
+
+        tarjetas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VISA", "MASTERCARD", " " }));
+        tarjetas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tarjetasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tarjetas);
+        tarjetas.setBounds(100, 50, 140, 20);
+
+        numtarjeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numtarjetaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(numtarjeta);
+        numtarjeta.setBounds(100, 80, 150, 20);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -115,20 +150,49 @@ public class MonedaFrame extends InternalFrame {
     }//GEN-LAST:event_solesActionPerformed
 
     private void dolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresActionPerformed
-        // TODO add your handling code here:
+        if("BOL".equals(moneda)){
+            imprimirBoleta(desp, evt);
+            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+        }else{
+            imprimirFactura(desp, cliente, evt);
+            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+        }
     }//GEN-LAST:event_dolaresActionPerformed
 
     private void tarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetaActionPerformed
-        // TODO add your handling code here:
+        if("BOL".equals(moneda)){
+            imprimirBoleta(desp, evt);
+            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+        }else{
+            imprimirFactura(desp, cliente, evt);
+            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+        }
     }//GEN-LAST:event_tarjetaActionPerformed
+
+    private void numtarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtarjetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numtarjetaActionPerformed
+
+    private void tarjetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetasActionPerformed
+        pago.setFocusable(false);
+    }//GEN-LAST:event_tarjetasActionPerformed
+
+    private void pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoActionPerformed
+        tarjetas.setFocusable(false);
+        numtarjeta.setFocusable(false);
+    }//GEN-LAST:event_pagoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dolares;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel numero;
+    private javax.swing.JTextField numtarjeta;
     private javax.swing.JTextField pago;
     private javax.swing.JButton soles;
     private javax.swing.JButton tarjeta;
+    private javax.swing.JComboBox tarjetas;
     // End of variables declaration//GEN-END:variables
 
    public void imprimirBoleta(Despacho desp, java.awt.event.ActionEvent evt){
