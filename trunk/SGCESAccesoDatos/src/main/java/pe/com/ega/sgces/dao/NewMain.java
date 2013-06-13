@@ -50,11 +50,14 @@ public class NewMain {
        */
        Session session = null;
        session = HibernateUtil.getSessionFactory().openSession();
-       ClienteDaoImpl usuariodao = new ClienteDaoImpl();
+       TransaccionDao usuariodao = new TransaccionDaoImpl();
        usuariodao.setSession(session);
        //List<Cliente> cliente=usuariodao.razon(1041949242);
       // System.out.println("Cliente"+cliente.get(1).getRazonSocial());
-       
+       ArrayList<Transaccion> comprobantes= (ArrayList<Transaccion>) usuariodao.buscarTodosDoc("NDES");
+            int i=comprobantes.size();
+            System.out.println(comprobantes.size());
+            int num=comprobantes.get(i-1).getNumero();
        
     }
 }

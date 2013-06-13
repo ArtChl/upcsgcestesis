@@ -15,4 +15,6 @@ public interface TransaccionLogica {
     public void grabar(Transaccion transaccion);
     public Transaccion buscarPorCodigo(Integer id);
     public List<Transaccion> buscarListaId(String id);
+    public List<Transaccion> buscarTodo();
+    public List<Transaccion> buscarTodoDoc(String documento);
 }

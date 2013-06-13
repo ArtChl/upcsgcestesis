@@ -18,5 +18,6 @@ public interface ValeDao {
     public void eliminar(Vale usuario);
     public Vale buscarPorCodigo(Integer id);
     public List<Vale> buscarTodos(String cliente);
+    public List<Vale> buscarConsumo(String cliente);
     public void setSession(Session session);
 }

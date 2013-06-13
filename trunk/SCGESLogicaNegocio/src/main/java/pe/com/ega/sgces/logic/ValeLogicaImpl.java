@@ -47,6 +47,10 @@ public class ValeLogicaImpl implements ValeLogica{
         return valeDao.buscarTodos(cliente);
     }
     
+    public List<Vale> buscarConsumo(String cliente) {
+        return valeDao.buscarConsumo(cliente);
+    }
+    
     
     
 }

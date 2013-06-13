@@ -31,6 +31,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private ClienteLogicaImpl clienteLogica;
     private Cliente cliente;
     private Cliente temporal;
+    private Vale valeTemporal;
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
     private TransaccionLogicaImpl transaccionLogica;
@@ -175,7 +176,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-       //System.out.println("Cliente"+temporal.getId());
+      // String numVale=transaccionLogica.
        comprobante = new ImprimirComprobante();
        if(temporal.getId()==1){        
            System.out.println("Cliente"+temporal.getId());
@@ -188,9 +189,11 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
                llenardatos(desp,temporal1);
                transaccionLogica.grabar(transaccion);
                despachoLogica.grabar(desp);
+               System.out.println("Vale"+valeTemporal.getId());
+               //valedao.actualizar(valeTemporal);
                comprobante.imprimirFactura(temporal1.getRazonSocial(),
-               String.valueOf(temporal1.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
-                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
+               String.valueOf(temporal1.getNumeroDocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNroGalones()), String.valueOf(numero("NDES")+1), "325", "10419492421", "FF9G151648", "NDES");
                limpiar();
                salir(evt);
            } catch (Exception e) {
@@ -199,10 +202,12 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
        }else{
            llenardatos(desp,cliente);
            transaccionLogica.grabar(transaccion);
-           despachoLogica.grabar(desp);
+           despachoLogica.grabar(desp); 
+           System.out.println("Vale"+valeTemporal.getId());
+          // valedao.actualizar(valeTemporal);
            comprobante.imprimirNotaDespacho(jkilometrajes.getText(),jplaca.getText(),jchofer.getText(),cliente.getRazonSocial(),
-                String.valueOf(cliente.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
-                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
+                String.valueOf(cliente.getNumeroDocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNroGalones()), String.valueOf(numero("NDES")+1), "325", "10419492421", "FF9G151648", "NDES");
            limpiar();
            salir(evt);
        }
@@ -239,7 +244,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
                   jchofer.setText(vale.getChofer());
                   jplaca.setText(vale.getPlaca());
                   transaccion.setNumeroTiket(vale.getNumero());
-                  
+                  valeTemporal=vale;
               }
         }
     }//GEN-LAST:event_comboValeActionPerformed
@@ -289,7 +294,8 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         transaccion.setIdTipoTransaccion("NDES");
         transaccion.setIdEstado(1);
         transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumeroVale("325-00000001");
+        transaccion.setNumeroVale("325-0000000"+String.valueOf(numero("NDES")+1));
+        transaccion.setNumero(numero("NDES")+1);
         transaccion.setNroGalones(desp.getNroGalones());
         transaccion.setPrecioUnitario(desp.getPrecioUnitario());
         transaccion.setProducto(desp.getProducto().getNombre());
@@ -312,6 +318,19 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         }
        
     }
+  
+    private int numero(String documento) 
+    {
+        int num=0;
+        try {
+            ArrayList<Transaccion> comprobantes= (ArrayList<Transaccion>) transaccionLogica.buscarTodoDoc(documento);
+            int i=comprobantes.size();
+            num=comprobantes.get(i-1).getNumero();  
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return num;
+    }
+    }
     
-    
-}
+ 
