@@ -20,6 +20,9 @@
         <property name="idEstado" type="java.lang.Integer">
             <column name="IdEstado" />
         </property>
+        <property name="numero" type="java.lang.Integer">
+            <column name="Numero" />
+        </property>
         <property name="numeroTransaccion" type="string">
             <column name="NumeroTransaccion" length="20" />
         </property>

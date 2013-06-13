@@ -43,5 +43,10 @@ public class TransaccionDaoImpl implements TransaccionDao{
     public List<Transaccion> buscarListaId(String id) {
         return session.createQuery("from Transaccion where idcliente='"+id+"' and idtipotransaccion='NDES'").list();
     }
+
+    public List<Transaccion> buscarTodosDoc(String documento) {
+        System.out.println(documento);
+        return session.createQuery("from Transaccion where idtipotransaccion='"+documento+"'").list();
+    }
     
 }

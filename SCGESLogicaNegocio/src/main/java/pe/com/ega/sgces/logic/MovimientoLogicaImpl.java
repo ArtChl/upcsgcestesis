@@ -32,8 +32,6 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
         session.beginTransaction();
         movimientoDao.insertar(movimiento);
         session.getTransaction().commit(); 
-        session.flush();
-        session.close();
     }
 
     public Movimiento buscarPorCodigo(Integer id) {

@@ -51,8 +51,6 @@ public class TransaccionLogicaImpl implements TransaccionLogica
             transacciondetalleDao.insertar(detalle);
         }
         session.getTransaction().commit(); 
-        session.flush();
-        session.close();
     }
 
     public Transaccion buscarPorCodigo(Integer id) {
@@ -61,6 +59,14 @@ public class TransaccionLogicaImpl implements TransaccionLogica
 
     public List<Transaccion> buscarListaId(String id) {
         return transaccionDao.buscarListaId(id);
+    }
+
+    public List<Transaccion> buscarTodo() {
+        return transaccionDao.buscarTodos();
+    }
+    
+     public List<Transaccion> buscarTodoDoc(String documento) {
+        return transaccionDao.buscarTodosDoc(documento);
     }
     
 }

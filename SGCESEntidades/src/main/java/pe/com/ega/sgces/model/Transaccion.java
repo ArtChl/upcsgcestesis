@@ -17,6 +17,7 @@ public class Transaccion  implements java.io.Serializable {
      private Despacho despacho;
      private String idTipoTransaccion;
      private Integer idEstado;
+     private Integer numero;
      private String numeroTransaccion;
      private String numeroPlaca;
      private String numeroVale;
@@ -181,6 +182,15 @@ public class Transaccion  implements java.io.Serializable {
 
     public void setNumeroTiket(String numeroTiket) {
         this.numeroTiket = numeroTiket;
+    }
+    
+    
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
 }

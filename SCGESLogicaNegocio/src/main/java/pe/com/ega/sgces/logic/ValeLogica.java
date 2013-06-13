@@ -18,4 +18,5 @@ public interface ValeLogica {
     public void eliminar(Vale usuario);
     public Vale buscarPorCodigo(Integer id);
     public List<Vale> buscarTodos(String cliente);
+    public List<Vale> buscarConsumo(String cliente);
 }
