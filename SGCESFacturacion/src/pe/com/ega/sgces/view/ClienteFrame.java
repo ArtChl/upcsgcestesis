@@ -93,7 +93,7 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(Registrar);
-        Registrar.setBounds(110, 90, 80, 23);
+        Registrar.setBounds(90, 90, 100, 23);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +102,7 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(200, 90, 75, 23);
+        cancelar.setBounds(200, 90, 110, 23);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents

@@ -8,8 +8,8 @@
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/cem44</property>
-    <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">12345678</property>
+    <property name="hibernate.connection.username">cem44</property>
+    <property name="hibernate.connection.password">cem44</property>
     <mapping resource="pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Tarjeta.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Movimiento.hbm.xml"/>

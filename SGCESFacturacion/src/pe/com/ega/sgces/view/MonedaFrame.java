@@ -71,7 +71,7 @@ public class MonedaFrame extends InternalFrame {
 
         jPanel1.setLayout(null);
 
-        soles.setText("N. SOLES");
+        soles.setText("SOLES");
         soles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 solesActionPerformed(evt);
@@ -96,7 +96,7 @@ public class MonedaFrame extends InternalFrame {
             }
         });
         jPanel1.add(tarjeta);
-        tarjeta.setBounds(190, 120, 77, 40);
+        tarjeta.setBounds(190, 120, 79, 40);
 
         jLabel1.setText("Pago Efectivo:");
         jPanel1.add(jLabel1);
@@ -125,7 +125,7 @@ public class MonedaFrame extends InternalFrame {
             }
         });
         jPanel1.add(tarjetas);
-        tarjetas.setBounds(100, 50, 140, 20);
+        tarjetas.setBounds(100, 50, 140, 22);
 
         numtarjeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +220,7 @@ public class MonedaFrame extends InternalFrame {
            transaccionLogica.grabar(transaccion);
                despachoLogica.grabar(desp);
                comprobante.imprimirFactura(cli.getRazonSocial(),
-               String.valueOf(cli.getId()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getMontoSoles()*0.82),String.valueOf(desp.getMontoSoles()*0.18),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
+               String.valueOf(cli.getNumeroDocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Math.rint(desp.getMontoSoles()*0.82*100)/100),String.valueOf(Math.rint(desp.getMontoSoles()*0.18*100)/100),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
                salir(evt);
        } catch (Exception e) {

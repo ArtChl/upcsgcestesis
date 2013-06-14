@@ -32,14 +32,14 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="boleta">
           <Properties>
-            <Property name="text" type="java.lang.String" value="BOLETA"/>
+            <Property name="text" type="java.lang.String" value="TBOL"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boletaActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="11" y="10" width="80" height="50"/>
+              <AbsoluteConstraints x="190" y="10" width="80" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -52,20 +52,20 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="10" width="80" height="50"/>
+              <AbsoluteConstraints x="10" y="10" width="80" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="factura">
           <Properties>
-            <Property name="text" type="java.lang.String" value="FACTURA"/>
+            <Property name="text" type="java.lang.String" value="FACT"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facturaActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="190" y="10" width="80" height="50"/>
+              <AbsoluteConstraints x="100" y="10" width="80" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
