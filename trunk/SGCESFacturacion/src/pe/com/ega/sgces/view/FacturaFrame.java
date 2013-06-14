@@ -97,7 +97,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(imprimir);
-        imprimir.setBounds(150, 90, 80, 23);
+        imprimir.setBounds(150, 90, 90, 23);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(240, 90, 75, 23);
+        cancelar.setBounds(260, 90, 77, 23);
 
         buscar.setText("Buscar");
         buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +115,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(buscar);
-        buscar.setBounds(290, 30, 65, 23);
+        buscar.setBounds(277, 30, 80, 23);
 
         bcliente.setText("Cliente");
         bcliente.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(bcliente);
-        bcliente.setBounds(60, 90, 80, 23);
+        bcliente.setBounds(50, 90, 90, 23);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -156,7 +156,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
        if(cliente.getId()==0){        
            System.out.println("Cliente"+cliente.getId());
            Cliente temporal1 = new Cliente();
-           temporal1.setId(Integer.parseInt(jrucCliente.getText()));
+           //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
            temporal1.setNumeroDocumento(jrucCliente.getText());
            temporal1.setRazonSocial(jrazonCliente.getText());
                clienteLogica.grabar(temporal1);

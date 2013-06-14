@@ -49,14 +49,14 @@ public class OpcionFrame extends InternalFrame {
 
         jPanel1.setLayout(null);
 
-        boleta.setText("BOLETA");
+        boleta.setText("TBOL");
         boleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boletaActionPerformed(evt);
             }
         });
         jPanel1.add(boleta);
-        boleta.setBounds(11, 10, 80, 50);
+        boleta.setBounds(190, 10, 80, 50);
 
         despacho.setText("NDES");
         despacho.addActionListener(new java.awt.event.ActionListener() {
@@ -65,16 +65,16 @@ public class OpcionFrame extends InternalFrame {
             }
         });
         jPanel1.add(despacho);
-        despacho.setBounds(100, 10, 80, 50);
+        despacho.setBounds(10, 10, 80, 50);
 
-        factura.setText("FACTURA");
+        factura.setText("FACT");
         factura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facturaActionPerformed(evt);
             }
         });
         jPanel1.add(factura);
-        factura.setBounds(190, 10, 80, 50);
+        factura.setBounds(100, 10, 80, 50);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
