@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	#login-container
+		form(method='post')#login-form.well.span4
+			h1 Inicar sesión
+			#div-alerta.alert.alert-error
+			label Usuario
+			input(type='text', name='usuario', id='user-tf').span4.required
+			label Password
+			input(type='password', name='clave', id='clave-tf').span4.required
+			button(type='submit')#btn-login.btn.btn-primary
+				i.icon-lock.icon-white
+				| Iniciar
+			label#remember-me.checkbox Recuerdame
+				input(type='checkbox', checked='checked')
+			div.clear-fix
+			hr
+			div.btn-links
+				a(href='/reinicioClave')#forgot-password ¿Olvido su clave?
+				a(href='/crearCuenta')#create-account Crear una cuenta
+
+block scripts
+	script(src='/vendor/jquery.min.js')
+	script(src='/vendor/jquery.form.js')
+	script(src='/vendor/bootstrap-alert.js')
+	script(src='/js/views/login.js')
+	script(src='/js/controllers/loginController.js')
+	script(src='/js/form-validators/loginValidator.js')
