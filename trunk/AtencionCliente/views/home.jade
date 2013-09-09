@@ -1,0 +1,61 @@
+extends layout
+
+block content
+	div.navbar.navbar-top-fluid
+		div.navbar-inner
+			div.container
+				a(data-google='collapse',data-target='.nav-collapse').btn.btn-navbar
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a(href='#').brand Panel de Control
+				div(style='height: 0px;').nav-collapse.collapse
+					ul.nav.pull-right
+						li.dropdown
+							a(href="#",data-toggle='dropdown').dropdown-toggle.btn-large
+								i.icon-user.icon-white 
+								| 
+								| #{usuario}
+								b.caret
+							ul.dropdown-menu
+								li						
+									a(href="/cerrarSesion")
+										i.icon-lock.icon-black 
+										| 
+										| Salir
+	
+	div.container-fluid
+		div.row-fluid
+			div.span3
+				div.well.sidebar-nav
+					ul.nav.nav-list
+						li.nav-header Menu
+						li
+							a(href='/flotas') Flota
+						li
+							a(href='/consumos') Vale de Consumo
+						li
+							a(href='/depositos') Deposito
+						li
+							a(href='/facturacion') Facturación
+			div.span9
+				div.hero-unit
+					h1 Hola mundo
+					p Comentario
+		hr
+		footer.footer
+			ul.nav.pull-left
+				li @ 2013 Github, Inc
+				li Terminos
+				li Privacidad
+				li Sehuridad
+				li Contactanos
+
+
+block scripts
+	script(src='/vendor/jquery.min.js')
+	script(src='/vendor/jquery.form.js')
+	script(src='/vendor/bootstrap-dropdown.js')
+	script(src='/vendor/bootstrap-collapse.js')
+	script(src='/js/views/home.js')
+	script(src='/js/controllers/homeController.js')
