@@ -1,0 +1,2464 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.3
+-- Dumped by pg_dump version 9.1.3
+-- Started on 2013-09-13 11:45:51
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 6 (class 2615 OID 17763)
+-- Name: cem44; Type: SCHEMA; Schema: -; Owner: cem44
+--
+
+CREATE SCHEMA cem44;
+
+
+ALTER SCHEMA cem44 OWNER TO cem44;
+
+--
+-- TOC entry 211 (class 3079 OID 11639)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2224 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = cem44, pg_catalog;
+
+--
+-- TOC entry 162 (class 1259 OID 17764)
+-- Dependencies: 6
+-- Name: Transaccion; Type: SEQUENCE; Schema: cem44; Owner: postgres
+--
+
+CREATE SEQUENCE "Transaccion"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    MAXVALUE 9999999999
+    CACHE 1;
+
+
+ALTER TABLE cem44."Transaccion" OWNER TO postgres;
+
+--
+-- TOC entry 2225 (class 0 OID 0)
+-- Dependencies: 162
+-- Name: Transaccion; Type: SEQUENCE SET; Schema: cem44; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Transaccion"', 200, true);
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 208 (class 1259 OID 18231)
+-- Dependencies: 6
+-- Name: abono; Type: TABLE; Schema: cem44; Owner: cem44; Tablespace: 
+--
+
+CREATE TABLE abono (
+    id integer NOT NULL,
+    fecha date,
+    monto numeric(10,2),
+    responsable character(20),
+    nrotransaccion character(20),
+    banco character(20),
+    cuenta integer
+);
+
+
+ALTER TABLE cem44.abono OWNER TO cem44;
+
+--
+-- TOC entry 163 (class 1259 OID 17766)
+-- Dependencies: 6
+-- Name: caja; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE caja (
+    id integer NOT NULL,
+    idtrabajador integer NOT NULL,
+    codigo character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.caja OWNER TO postgres;
+
+--
+-- TOC entry 164 (class 1259 OID 17769)
+-- Dependencies: 6
+-- Name: cara; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cara (
+    id integer NOT NULL,
+    idsurtidor integer NOT NULL,
+    fecharegistro date,
+    codigo character varying(20)
+);
+
+
+ALTER TABLE cem44.cara OWNER TO postgres;
+
+--
+-- TOC entry 165 (class 1259 OID 17772)
+-- Dependencies: 6
+-- Name: caraproducto; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE caraproducto (
+    idcara integer NOT NULL,
+    idproducto integer NOT NULL,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.caraproducto OWNER TO postgres;
+
+--
+-- TOC entry 166 (class 1259 OID 17775)
+-- Dependencies: 6
+-- Name: centroemisor; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE centroemisor (
+    id integer NOT NULL,
+    idpuntoventa integer NOT NULL,
+    emisor character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.centroemisor OWNER TO postgres;
+
+--
+-- TOC entry 167 (class 1259 OID 17778)
+-- Dependencies: 6
+-- Name: centroemisortipocomprobante; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE centroemisortipocomprobante (
+    idtipocomprobante integer NOT NULL,
+    idcentroemisor integer NOT NULL,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.centroemisortipocomprobante OWNER TO postgres;
+
+--
+-- TOC entry 168 (class 1259 OID 17781)
+-- Dependencies: 6
+-- Name: cliente; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cliente (
+    id integer NOT NULL,
+    numerodocumento character varying(20),
+    razonsocial character varying(20),
+    idtipodocumento integer,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.cliente OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 18266)
+-- Dependencies: 6
+-- Name: cuadre; Type: TABLE; Schema: cem44; Owner: cem44; Tablespace: 
+--
+
+CREATE TABLE cuadre (
+    id integer NOT NULL,
+    fecha date,
+    tipotarjeta character(20),
+    turno character(20),
+    monto numeric(15,2),
+    numero character(20)
+);
+
+
+ALTER TABLE cem44.cuadre OWNER TO cem44;
+
+--
+-- TOC entry 169 (class 1259 OID 17784)
+-- Dependencies: 6
+-- Name: cuenta; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cuenta (
+    id integer NOT NULL,
+    idcliente integer NOT NULL,
+    tienelimitecredito integer,
+    tienelimitediario integer,
+    periodofacturacion integer,
+    idtipoperiodofacturacion integer,
+    nrodiasvencimiento integer,
+    fecharegistro date,
+    limitecredito integer,
+    limitediario integer
+);
+
+
+ALTER TABLE cem44.cuenta OWNER TO postgres;
+
+--
+-- TOC entry 170 (class 1259 OID 17787)
+-- Dependencies: 6
+-- Name: departamento; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE departamento (
+    id character varying(2) NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE cem44.departamento OWNER TO postgres;
+
+--
+-- TOC entry 171 (class 1259 OID 17790)
+-- Dependencies: 6
+-- Name: deposito; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE deposito (
+    id integer NOT NULL,
+    idturno integer NOT NULL,
+    idpuntoventa integer NOT NULL,
+    idcaja integer NOT NULL,
+    montototal bigint,
+    fecharegistro date,
+    idtipopago integer
+);
+
+
+ALTER TABLE cem44.deposito OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 17793)
+-- Dependencies: 6
+-- Name: despacho; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE despacho (
+    id integer NOT NULL,
+    idproducto integer NOT NULL,
+    idcara integer NOT NULL,
+    idestado integer,
+    montosoles numeric(10,2),
+    nrogalones numeric(10,2),
+    preciounitario numeric(10,2),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.despacho OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 17796)
+-- Dependencies: 6
+-- Name: distrito; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE distrito (
+    id character varying(2) NOT NULL,
+    idprovincia character varying(20) NOT NULL,
+    iddepartamento character varying(2) NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE cem44.distrito OWNER TO postgres;
+
+--
+-- TOC entry 174 (class 1259 OID 17799)
+-- Dependencies: 6
+-- Name: estacionservicio; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE estacionservicio (
+    id integer NOT NULL,
+    iddistrito character varying(2) NOT NULL,
+    idprovincia character varying(20) NOT NULL,
+    iddepartamento character varying(2) NOT NULL,
+    nombre character varying(20),
+    direccion character varying(20),
+    latitud bigint,
+    longitud bigint,
+    razonsocial character varying(20),
+    ruc character varying(20),
+    telefono character varying(20),
+    fechaapertura date,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.estacionservicio OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 17802)
+-- Dependencies: 6
+-- Name: impresora; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE impresora (
+    id integer NOT NULL,
+    nombre character varying(20),
+    descripcion character varying(20),
+    puerto character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.impresora OWNER TO postgres;
+
+--
+-- TOC entry 176 (class 1259 OID 17805)
+-- Dependencies: 6
+-- Name: impresorapuntoventa; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE impresorapuntoventa (
+    idpuntoventa integer NOT NULL,
+    idimpresora integer NOT NULL,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.impresorapuntoventa OWNER TO postgres;
+
+--
+-- TOC entry 177 (class 1259 OID 17808)
+-- Dependencies: 6
+-- Name: lista; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE lista (
+    id integer NOT NULL,
+    nombre character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.lista OWNER TO postgres;
+
+--
+-- TOC entry 178 (class 1259 OID 17811)
+-- Dependencies: 6
+-- Name: listavalor; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE listavalor (
+    id integer NOT NULL,
+    idcategoria integer,
+    idlista integer NOT NULL,
+    nombre character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.listavalor OWNER TO postgres;
+
+--
+-- TOC entry 179 (class 1259 OID 17814)
+-- Dependencies: 6
+-- Name: movimiento; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE movimiento (
+    id integer NOT NULL,
+    idturno integer NOT NULL,
+    idpuntoventa integer NOT NULL,
+    idcaja integer NOT NULL,
+    idtransaccion integer NOT NULL,
+    pago character varying(10),
+    montorecibido numeric(10,2),
+    montototal numeric(10,2),
+    montodevuelto numeric(10,2),
+    fecharegistro date,
+    nrooperacion character varying(20)
+);
+
+
+ALTER TABLE cem44.movimiento OWNER TO postgres;
+
+--
+-- TOC entry 180 (class 1259 OID 17817)
+-- Dependencies: 6
+-- Name: opcion; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE opcion (
+    id integer NOT NULL,
+    nombre character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.opcion OWNER TO postgres;
+
+--
+-- TOC entry 181 (class 1259 OID 17820)
+-- Dependencies: 6
+-- Name: perfil; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE perfil (
+    id integer NOT NULL,
+    nombre character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.perfil OWNER TO postgres;
+
+--
+-- TOC entry 182 (class 1259 OID 17823)
+-- Dependencies: 6
+-- Name: perfilopcion; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE perfilopcion (
+    idopcion integer NOT NULL,
+    idperfil integer NOT NULL,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.perfilopcion OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 17826)
+-- Dependencies: 6
+-- Name: producto; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE producto (
+    id integer NOT NULL,
+    idtipoproducto integer,
+    nombre character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.producto OWNER TO postgres;
+
+--
+-- TOC entry 184 (class 1259 OID 17829)
+-- Dependencies: 6
+-- Name: provincia; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE provincia (
+    id character varying(20) NOT NULL,
+    iddepartamento character varying(2) NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE cem44.provincia OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 17832)
+-- Dependencies: 6
+-- Name: puntoacumulado; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE puntoacumulado (
+    idtransaccion integer NOT NULL,
+    idtarjeta integer NOT NULL,
+    fecharegistro date,
+    numeropuntos integer
+);
+
+
+ALTER TABLE cem44.puntoacumulado OWNER TO postgres;
+
+--
+-- TOC entry 186 (class 1259 OID 17835)
+-- Dependencies: 6
+-- Name: puntoventa; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE puntoventa (
+    id integer NOT NULL,
+    idestacionservicio integer NOT NULL,
+    nombre character varying(20),
+    descripcion character varying(20),
+    idtipopuntoventa integer,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.puntoventa OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 18274)
+-- Dependencies: 6
+-- Name: sobrante; Type: TABLE; Schema: cem44; Owner: cem44; Tablespace: 
+--
+
+CREATE TABLE sobrante (
+    id integer NOT NULL,
+    fecha date,
+    tipo character(20),
+    motivo character(20),
+    monto character(20),
+    responsable character(20),
+    turno character(20)
+);
+
+
+ALTER TABLE cem44.sobrante OWNER TO cem44;
+
+--
+-- TOC entry 187 (class 1259 OID 17838)
+-- Dependencies: 6
+-- Name: subcuenta; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE subcuenta (
+    id integer NOT NULL,
+    idcuenta integer NOT NULL,
+    idproducto integer NOT NULL,
+    idtarjeta integer NOT NULL,
+    descriocion character varying(20),
+    idtipomoneda integer,
+    saldo integer,
+    limitecredito integer,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.subcuenta OWNER TO postgres;
+
+--
+-- TOC entry 188 (class 1259 OID 17841)
+-- Dependencies: 6
+-- Name: surtidor; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE surtidor (
+    id integer NOT NULL,
+    idestacionservicio integer NOT NULL,
+    idmarca integer,
+    idmodelo integer,
+    descripcion character varying(20),
+    nombre character varying(20),
+    nrocaras integer,
+    numeroserie character varying(20),
+    fecharegistro date,
+    idfamiliaelectronica integer,
+    nromangueras integer,
+    lote character varying(20)
+);
+
+
+ALTER TABLE cem44.surtidor OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 17844)
+-- Dependencies: 6
+-- Name: tanque; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tanque (
+    id integer NOT NULL,
+    idproducto integer NOT NULL,
+    idestacionservicio integer NOT NULL,
+    fecharegistro date,
+    capacidad integer,
+    numero integer,
+    alturavarillaje integer,
+    alturasensor integer
+);
+
+
+ALTER TABLE cem44.tanque OWNER TO postgres;
+
+--
+-- TOC entry 190 (class 1259 OID 17847)
+-- Dependencies: 6
+-- Name: tarjeta; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tarjeta (
+    id integer NOT NULL,
+    idcliente integer NOT NULL,
+    nombrechofer character varying(20),
+    numeroplaca character varying(20),
+    fechacaducidad date,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.tarjeta OWNER TO postgres;
+
+--
+-- TOC entry 191 (class 1259 OID 17850)
+-- Dependencies: 6
+-- Name: tipocambio; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tipocambio (
+    id integer NOT NULL,
+    cambio bigint,
+    idmoneda integer,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.tipocambio OWNER TO postgres;
+
+--
+-- TOC entry 192 (class 1259 OID 17853)
+-- Dependencies: 6
+-- Name: trabajador; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE trabajador (
+    id integer NOT NULL,
+    idestacionservicio integer NOT NULL,
+    nombre character varying(20),
+    apellidopaterno character varying(20),
+    apellidomaterno character varying(20),
+    dni character varying(20),
+    correo character varying(20),
+    telefono character varying(20),
+    idcargo integer,
+    idestadocivil integer,
+    fechanacimiento date,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.trabajador OWNER TO postgres;
+
+--
+-- TOC entry 193 (class 1259 OID 17856)
+-- Dependencies: 6
+-- Name: transaccion; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE transaccion (
+    id integer NOT NULL,
+    idcliente integer NOT NULL,
+    iddespacho integer NOT NULL,
+    idtipotransaccion character varying(20),
+    idestado integer,
+    numerotransaccion character varying(20),
+    numeroplaca character varying(20),
+    numerovale character varying(20),
+    montototal numeric(10,2),
+    fecharegistro date,
+    producto character varying(20),
+    nrogalones double precision,
+    preciounitario double precision,
+    numerotiket character varying(20),
+    numero integer
+);
+
+
+ALTER TABLE cem44.transaccion OWNER TO postgres;
+
+--
+-- TOC entry 194 (class 1259 OID 17859)
+-- Dependencies: 6
+-- Name: transacciondetalle; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE transacciondetalle (
+    id integer NOT NULL,
+    idproducto integer NOT NULL,
+    idtransaccion integer NOT NULL,
+    monto bigint,
+    cantidad integer,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.transacciondetalle OWNER TO postgres;
+
+--
+-- TOC entry 195 (class 1259 OID 17862)
+-- Dependencies: 6
+-- Name: turno; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE turno (
+    id integer NOT NULL,
+    idestacionservicio integer NOT NULL,
+    fechaapertura date,
+    fechacierre date
+);
+
+
+ALTER TABLE cem44.turno OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 17865)
+-- Dependencies: 6
+-- Name: turnopuntoventacaja; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE turnopuntoventacaja (
+    idturno integer NOT NULL,
+    idpuntoventa integer NOT NULL,
+    idcaja integer NOT NULL,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.turnopuntoventacaja OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 17868)
+-- Dependencies: 6
+-- Name: usuario; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE usuario (
+    id integer NOT NULL,
+    idtrabajador integer NOT NULL,
+    login character varying(20),
+    clave character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.usuario OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 17871)
+-- Dependencies: 6
+-- Name: usuarioperfil; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE usuarioperfil (
+    idusuario integer NOT NULL,
+    idperfil integer NOT NULL,
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.usuarioperfil OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 17874)
+-- Dependencies: 6
+-- Name: vale; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE vale (
+    id integer NOT NULL,
+    cliente character varying(20),
+    numero character varying(20),
+    producto character varying(20),
+    monto double precision,
+    chofer character varying(20),
+    placa character varying(20),
+    fecha date,
+    estado integer
+);
+
+
+ALTER TABLE cem44.vale OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 17877)
+-- Dependencies: 6
+-- Name: varillaje; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE varillaje (
+    id integer NOT NULL,
+    idtanque integer NOT NULL,
+    fechalectura date,
+    medicionvolumen integer,
+    medicionagua integer,
+    fechanegocio character varying(18),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.varillaje OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 17880)
+-- Dependencies: 6
+-- Name: varillajeajuste; Type: TABLE; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE varillajeajuste (
+    id integer NOT NULL,
+    idvarillaje integer NOT NULL,
+    volumen integer,
+    concepto character varying(20),
+    fecharegistro date
+);
+
+
+ALTER TABLE cem44.varillajeajuste OWNER TO postgres;
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 202 (class 1259 OID 17883)
+-- Dependencies: 7
+-- Name: T_CAMBIO_PRECIO; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "T_CAMBIO_PRECIO" (
+    estado text,
+    precio text,
+    id_producto text
+);
+
+
+ALTER TABLE public."T_CAMBIO_PRECIO" OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 17889)
+-- Dependencies: 7
+-- Name: T_CIERRE; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "T_CIERRE" (
+    id_cierre text,
+    tipo_cierre text,
+    fecha text,
+    estado text
+);
+
+
+ALTER TABLE public."T_CIERRE" OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 17895)
+-- Dependencies: 7
+-- Name: T_CIERRE_DETALLE; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "T_CIERRE_DETALLE" (
+    id_cierre text,
+    tipo_cierre text,
+    id_surtidor text,
+    id_manguera text,
+    id_producto text,
+    contometro_monto text,
+    contometro_vol text,
+    ppu text,
+    fecha text
+);
+
+
+ALTER TABLE public."T_CIERRE_DETALLE" OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 17901)
+-- Dependencies: 7
+-- Name: T_DESPACHO; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "T_DESPACHO" (
+    id_despacho text,
+    monto text,
+    id_producto text,
+    cantidad text,
+    id_surtidor text,
+    fecha text,
+    hora text,
+    id_despa_cem text,
+    estado text
+);
+
+
+ALTER TABLE public."T_DESPACHO" OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 17907)
+-- Dependencies: 7
+-- Name: T_PRODUCTO; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "T_PRODUCTO" (
+    id_producto text,
+    id_cem text
+);
+
+
+ALTER TABLE public."T_PRODUCTO" OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 17913)
+-- Dependencies: 7
+-- Name: hibernate_sequence; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE hibernate_sequence
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.hibernate_sequence OWNER TO postgres;
+
+--
+-- TOC entry 2226 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('hibernate_sequence', 207, true);
+
+
+SET search_path = cem44, pg_catalog;
+
+--
+-- TOC entry 2216 (class 0 OID 18231)
+-- Dependencies: 208
+-- Data for Name: abono; Type: TABLE DATA; Schema: cem44; Owner: cem44
+--
+
+COPY abono (id, fecha, monto, responsable, nrotransaccion, banco, cuenta) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2172 (class 0 OID 17766)
+-- Dependencies: 163
+-- Data for Name: caja; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY caja (id, idtrabajador, codigo, fecharegistro) FROM stdin;
+1	1	Caja 1	2013-12-12
+\.
+
+
+--
+-- TOC entry 2173 (class 0 OID 17769)
+-- Dependencies: 164
+-- Data for Name: cara; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY cara (id, idsurtidor, fecharegistro, codigo) FROM stdin;
+1	1	2013-12-12	1
+2	1	2013-12-12	2
+\.
+
+
+--
+-- TOC entry 2174 (class 0 OID 17772)
+-- Dependencies: 165
+-- Data for Name: caraproducto; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY caraproducto (idcara, idproducto, fecharegistro) FROM stdin;
+1	1	2013-12-12
+2	8	2013-12-12
+2	7	2013-12-12
+2	6	2013-12-12
+2	5	2013-12-12
+2	4	2013-12-12
+2	3	2013-12-12
+2	2	2013-12-12
+2	1	2013-12-12
+1	8	2013-12-12
+1	7	2013-12-12
+1	6	2013-12-12
+1	5	2013-12-12
+1	4	2013-12-12
+1	3	2013-12-12
+1	2	2013-12-12
+\.
+
+
+--
+-- TOC entry 2175 (class 0 OID 17775)
+-- Dependencies: 166
+-- Data for Name: centroemisor; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY centroemisor (id, idpuntoventa, emisor, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2176 (class 0 OID 17778)
+-- Dependencies: 167
+-- Data for Name: centroemisortipocomprobante; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY centroemisortipocomprobante (idtipocomprobante, idcentroemisor, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2177 (class 0 OID 17781)
+-- Dependencies: 168
+-- Data for Name: cliente; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY cliente (id, numerodocumento, razonsocial, idtipodocumento, fecharegistro) FROM stdin;
+6	1041949243	ALMACEN SAC	1	2013-06-07
+7	1041949244	POLOSOFT EIRL	1	2013-06-07
+1	1041949242	TRANSPORTE SRL	1	2013-06-07
+63	1041949245	PINTOCORP SRL	1	2013-06-07
+64	1041949246	DILECOP SA	1	2013-06-07
+67	1041949247	LOPEZ TRANS	\N	\N
+73	1		\N	\N
+76	2	111	\N	\N
+77	1041949249	LOPEZ CORDOVA	\N	\N
+81	1234		\N	\N
+82	123456	LOPEZ CORDOVA	\N	\N
+83	12345678	EDWIN LOPEZ	\N	\N
+205	201020880	EDWIN FRANK LOPEZ	\N	\N
+\.
+
+
+--
+-- TOC entry 2217 (class 0 OID 18266)
+-- Dependencies: 209
+-- Data for Name: cuadre; Type: TABLE DATA; Schema: cem44; Owner: cem44
+--
+
+COPY cuadre (id, fecha, tipotarjeta, turno, monto, numero) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2178 (class 0 OID 17784)
+-- Dependencies: 169
+-- Data for Name: cuenta; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY cuenta (id, idcliente, tienelimitecredito, tienelimitediario, periodofacturacion, idtipoperiodofacturacion, nrodiasvencimiento, fecharegistro, limitecredito, limitediario) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2179 (class 0 OID 17787)
+-- Dependencies: 170
+-- Data for Name: departamento; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY departamento (id, nombre) FROM stdin;
+1	Lima
+\.
+
+
+--
+-- TOC entry 2180 (class 0 OID 17790)
+-- Dependencies: 171
+-- Data for Name: deposito; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY deposito (id, idturno, idpuntoventa, idcaja, montototal, fecharegistro, idtipopago) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2181 (class 0 OID 17793)
+-- Dependencies: 172
+-- Data for Name: despacho; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY despacho (id, idproducto, idcara, idestado, montosoles, nrogalones, preciounitario, fecharegistro) FROM stdin;
+13	6	2	1	8.13	0.79	10.25	2013-06-08
+14	2	1	1	126.56	9.14	13.85	2013-06-08
+15	6	2	1	25.34	2.47	10.25	2013-06-08
+16	6	1	1	93.68	9.14	10.25	2013-06-08
+17	6	1	1	12.69	1.24	10.25	2013-06-08
+18	6	2	1	27.52	2.69	10.25	2013-06-08
+19	6	1	1	25.34	2.47	10.25	2013-06-08
+20	6	2	1	36.73	3.58	10.25	2013-06-08
+10	2	2	0	49.61	3.58	13.85	2013-06-08
+1	2	2	1	3.71	0.27	13.85	2013-06-08
+2	2	1	1	1.39	0.10	13.85	2013-06-08
+3	2	1	1	17.14	1.24	13.85	2013-06-08
+4	6	2	1	25.34	2.47	10.25	2013-06-08
+5	6	2	1	16.23	1.58	10.25	2013-06-08
+6	6	1	1	93.68	9.14	10.25	2013-06-08
+7	6	1	1	16.23	1.58	10.25	2013-06-08
+8	2	2	1	49.61	3.58	13.85	2013-06-08
+9	2	1	1	21.91	1.58	13.85	2013-06-08
+11	6	1	0	36.73	3.58	10.25	2013-06-08
+12	2	2	0	21.91	1.58	13.85	2013-06-08
+\.
+
+
+--
+-- TOC entry 2182 (class 0 OID 17796)
+-- Dependencies: 173
+-- Data for Name: distrito; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY distrito (id, idprovincia, iddepartamento, nombre) FROM stdin;
+1	1	1	Chosica
+\.
+
+
+--
+-- TOC entry 2183 (class 0 OID 17799)
+-- Dependencies: 174
+-- Data for Name: estacionservicio; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY estacionservicio (id, iddistrito, idprovincia, iddepartamento, nombre, direccion, latitud, longitud, razonsocial, ruc, telefono, fechaapertura, fecharegistro) FROM stdin;
+1	1	1	1	Derby	Polo	200	200	1041949242	1041949242	3612451	2013-12-12	2013-12-12
+\.
+
+
+--
+-- TOC entry 2184 (class 0 OID 17802)
+-- Dependencies: 175
+-- Data for Name: impresora; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY impresora (id, nombre, descripcion, puerto, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2185 (class 0 OID 17805)
+-- Dependencies: 176
+-- Data for Name: impresorapuntoventa; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY impresorapuntoventa (idpuntoventa, idimpresora, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2186 (class 0 OID 17808)
+-- Dependencies: 177
+-- Data for Name: lista; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY lista (id, nombre, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2187 (class 0 OID 17811)
+-- Dependencies: 178
+-- Data for Name: listavalor; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY listavalor (id, idcategoria, idlista, nombre, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2188 (class 0 OID 17814)
+-- Dependencies: 179
+-- Data for Name: movimiento; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY movimiento (id, idturno, idpuntoventa, idcaja, idtransaccion, pago, montorecibido, montototal, montodevuelto, fecharegistro, nrooperacion) FROM stdin;
+99	1	1	1	95	TBOL	80.00	100.00	20.00	\N	\N
+102	1	1	1	95	TBOL	80.00	100.00	20.00	\N	\N
+108	1	1	1	107	BOL	100.00	25.34	-74.66	\N	\N
+110	1	1	1	109	BOL	50.00	93.68	-43.68	\N	\N
+113	1	1	1	112	TFAC	150.00	27.52	122.48	\N	\N
+115	1	1	1	114	TFAC	200.00	25.34	174.66	\N	\N
+117	1	1	1	116	BOL	132.50	36.73	95.77	\N	\N
+119	1	1	1	118	BOL	100.00	49.61	50.39	\N	\N
+120	1	1	1	118	BOL	3000.00	36.73	2963.27	\N	\N
+204	1	1	1	203	BOL	300.00	36.73	263.27	\N	\N
+207	1	1	1	206	TFAC	1325.00	21.91	1303.09	\N	\N
+\.
+
+
+--
+-- TOC entry 2189 (class 0 OID 17817)
+-- Dependencies: 180
+-- Data for Name: opcion; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY opcion (id, nombre, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2190 (class 0 OID 17820)
+-- Dependencies: 181
+-- Data for Name: perfil; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY perfil (id, nombre, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2191 (class 0 OID 17823)
+-- Dependencies: 182
+-- Data for Name: perfilopcion; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY perfilopcion (idopcion, idperfil, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2192 (class 0 OID 17826)
+-- Dependencies: 183
+-- Data for Name: producto; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY producto (id, idtipoproducto, nombre, fecharegistro) FROM stdin;
+1	1	GASOLINA 84	2013-12-12
+9	9	BIODIESEL	2013-12-12
+8	8	GLP	2013-12-12
+7	7	GNV	2013-12-12
+6	6	DIESEL	2013-12-12
+5	5	KEROSENE	2013-12-12
+4	4	GASOLINA 97	2013-12-12
+3	3	GASOLINA 95	2013-12-12
+2	2	GASOLINA 90	2013-12-12
+\.
+
+
+--
+-- TOC entry 2193 (class 0 OID 17829)
+-- Dependencies: 184
+-- Data for Name: provincia; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY provincia (id, iddepartamento, nombre) FROM stdin;
+1	1	Lima
+\.
+
+
+--
+-- TOC entry 2194 (class 0 OID 17832)
+-- Dependencies: 185
+-- Data for Name: puntoacumulado; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY puntoacumulado (idtransaccion, idtarjeta, fecharegistro, numeropuntos) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2195 (class 0 OID 17835)
+-- Dependencies: 186
+-- Data for Name: puntoventa; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY puntoventa (id, idestacionservicio, nombre, descripcion, idtipopuntoventa, fecharegistro) FROM stdin;
+1	1	Punto Venta	Playero 1	2001	2013-12-12
+\.
+
+
+--
+-- TOC entry 2218 (class 0 OID 18274)
+-- Dependencies: 210
+-- Data for Name: sobrante; Type: TABLE DATA; Schema: cem44; Owner: cem44
+--
+
+COPY sobrante (id, fecha, tipo, motivo, monto, responsable, turno) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2196 (class 0 OID 17838)
+-- Dependencies: 187
+-- Data for Name: subcuenta; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY subcuenta (id, idcuenta, idproducto, idtarjeta, descriocion, idtipomoneda, saldo, limitecredito, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2197 (class 0 OID 17841)
+-- Dependencies: 188
+-- Data for Name: surtidor; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY surtidor (id, idestacionservicio, idmarca, idmodelo, descripcion, nombre, nrocaras, numeroserie, fecharegistro, idfamiliaelectronica, nromangueras, lote) FROM stdin;
+1	1	1	1	WAYNE	1	2	1	2013-12-12	1	1	1
+\.
+
+
+--
+-- TOC entry 2198 (class 0 OID 17844)
+-- Dependencies: 189
+-- Data for Name: tanque; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY tanque (id, idproducto, idestacionservicio, fecharegistro, capacidad, numero, alturavarillaje, alturasensor) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2199 (class 0 OID 17847)
+-- Dependencies: 190
+-- Data for Name: tarjeta; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY tarjeta (id, idcliente, nombrechofer, numeroplaca, fechacaducidad, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2200 (class 0 OID 17850)
+-- Dependencies: 191
+-- Data for Name: tipocambio; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY tipocambio (id, cambio, idmoneda, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2201 (class 0 OID 17853)
+-- Dependencies: 192
+-- Data for Name: trabajador; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY trabajador (id, idestacionservicio, nombre, apellidopaterno, apellidomaterno, dni, correo, telefono, idcargo, idestadocivil, fechanacimiento, fecharegistro) FROM stdin;
+1	1	admin	admin	admin	41949242	screaber@gmail.com	3612451	1	1	2013-12-12	2013-12-12
+\.
+
+
+--
+-- TOC entry 2202 (class 0 OID 17856)
+-- Dependencies: 193
+-- Data for Name: transaccion; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY transaccion (id, idcliente, iddespacho, idtipotransaccion, idestado, numerotransaccion, numeroplaca, numerovale, montototal, fecharegistro, producto, nrogalones, preciounitario, numerotiket, numero) FROM stdin;
+45	1	1	1	1	1	\N	\N	3.71	2013-06-08	\N	\N	\N	\N	\N
+46	1	2	1	1	2	\N	\N	1.39	2013-06-08	\N	\N	\N	\N	\N
+47	1	3	1	1	3	\N	\N	17.14	2013-06-08	\N	\N	\N	\N	\N
+48	1	4	1	1	4	\N	\N	25.34	2013-06-08	\N	\N	\N	\N	\N
+49	1	5	1	1	5	\N	\N	16.23	2013-06-08	\N	\N	\N	\N	\N
+50	1	6	1	1	6	\N	\N	93.68	2013-06-08	\N	\N	\N	\N	\N
+53	1	7	TBOL	1	7	\N	325-00000001	16.23	2013-06-08	DIESEL	1.5800000000000001	10.25	\N	\N
+54	1	7	TBOL	1	7	\N	325-00000001	16.23	2013-06-08	DIESEL	1.5800000000000001	10.25	\N	\N
+55	1	8	TBOL	1	8	\N	325-00000001	49.61	2013-06-08	GASOLINA 90	3.5800000000000001	13.85	\N	\N
+56	1	9	TBOL	1	9	\N	325-00000001	21.91	2013-06-08	GASOLINA 90	1.5800000000000001	13.85	\N	\N
+57	1	10	TBOL	1	10	\N	325-00000001	49.61	2013-06-08	GASOLINA 90	3.5800000000000001	13.85	\N	\N
+58	1	11	TFAC	1	11	\N	325-00000001	36.73	2013-06-08	DIESEL	3.5800000000000001	10.25	\N	\N
+59	1	11	NDES	1	11	TGR	325-00000001	36.73	2013-06-08	DIESEL	3.5800000000000001	10.25	\N	\N
+60	1	12	TFAC	1	12	\N	325-00000001	21.91	2013-06-08	GASOLINA 90	1.5800000000000001	13.85	\N	\N
+61	1	13	TFAC	1	13	\N	325-00000001	8.13	2013-06-08	DIESEL	0.79000000000000004	10.25	\N	\N
+62	1	14	TFAC	1	14	\N	325-00000001	126.56	2013-06-08	GASOLINA 90	9.1400000000000006	13.85	\N	\N
+65	1	15	TFAC	1	15	\N	325-00000001	25.34	2013-06-08	DIESEL	2.4700000000000002	10.25	\N	\N
+66	64	16	TFAC	1	16	\N	325-00000001	93.68	2013-06-08	DIESEL	9.1400000000000006	10.25	\N	\N
+68	1	17	NDES	1	17	TGJ432	325-00000001	12.69	2013-06-08	DIESEL	1.24	10.25	\N	\N
+69	1	18	TFAC	1	18	\N	325-00000001	27.52	2013-06-08	DIESEL	2.6899999999999999	10.25	\N	\N
+70	1	19	TFAC	1	19	\N	325-00000001	25.34	2013-06-08	DIESEL	2.4700000000000002	10.25	\N	\N
+71	1	20	TFAC	1	20	\N	325-00000001	36.73	2013-06-08	DIESEL	3.5800000000000001	10.25	\N	\N
+72	1	1	TBOL	1	1	\N	325-00000001	3.71	2013-06-08	GASOLINA 90	0.27000000000000002	13.85	\N	\N
+74	73	3	TFAC	1	3	\N	325-00000001	17.14	2013-06-08	GASOLINA 90	1.24	13.85	\N	\N
+75	73	3	TFAC	1	3	\N	325-00000001	17.14	2013-06-08	GASOLINA 90	1.24	13.85	\N	\N
+84	82	2	TFAC	1	2	\N	325-00000001	1.39	2013-06-08	GASOLINA 90	0.10000000000000001	13.85	\N	\N
+85	1	5	NDES	1	5	TGJ586	325-00000001	16.23	2013-06-08	DIESEL	1.5800000000000001	10.25	\N	\N
+86	1	4	NDES	1	4	TGJ432	325-00000001	25.34	2013-06-08	DIESEL	2.4700000000000002	10.25	000001	\N
+87	1	4	NDES	1	4	TGJ432	325-00000001	25.34	2013-06-08	DIESEL	2.4700000000000002	10.25	000001	\N
+88	64	4	NDES	1	4	TGJ432	325-00000001	25.34	2013-06-08	DIESEL	2.4700000000000002	10.25	\N	\N
+89	76	6	NDES	1	6	545	325-00000001	93.68	2013-06-08	DIESEL	9.1400000000000006	10.25	\N	\N
+90	1	6	NDES	1	6	TGJ432	325-00000001	93.68	2013-06-08	DIESEL	9.1400000000000006	10.25	000001	\N
+91	1	6	TBOL	1	6	\N	325-00000001	93.68	2013-06-08	DIESEL	9.1400000000000006	10.25	\N	\N
+92	1	7	TBOL	1	7	\N	325-00000001	16.23	2013-06-08	DIESEL	1.5800000000000001	10.25	\N	\N
+93	1	8	TBOL	1	8	\N	325-00000001	49.61	2013-06-08	GASOLINA 90	3.5800000000000001	13.85	\N	\N
+94	1	9	TBOL	1	9	\N	325-00000001	21.91	2013-06-08	GASOLINA 90	1.5800000000000001	13.85	\N	\N
+95	1	10	TBOL	1	10	\N	325-00000001	49.61	2013-06-08	GASOLINA 90	3.5800000000000001	13.85	\N	\N
+96	1	11	TBOL	1	11	\N	325-00000001	36.73	2013-06-08	DIESEL	3.5800000000000001	10.25	\N	\N
+100	1	12	TBOL	1	12	\N	325-00000001	21.91	2013-06-08	GASOLINA 90	1.5800000000000001	13.85	\N	\N
+103	1	13	TBOL	1	13	\N	325-00000001	8.13	2013-06-08	DIESEL	0.79000000000000004	10.25	\N	\N
+105	1	14	TBOL	1	14	\N	325-00000001	126.56	2013-06-08	GASOLINA 90	9.1400000000000006	13.85	\N	\N
+107	1	15	TBOL	1	15	\N	325-00000001	25.34	2013-06-08	DIESEL	2.4700000000000002	10.25	\N	\N
+109	1	16	TBOL	1	16	\N	325-00000001	93.68	2013-06-08	DIESEL	9.1400000000000006	10.25	\N	\N
+111	1	17	TFAC	1	17	\N	325-00000001	12.69	2013-06-08	DIESEL	1.24	10.25	\N	\N
+112	76	18	TFAC	1	18	\N	325-00000001	27.52	2013-06-08	DIESEL	2.6899999999999999	10.25	\N	\N
+114	76	19	TFAC	1	19	\N	325-00000001	25.34	2013-06-08	DIESEL	2.4700000000000002	10.25	\N	\N
+116	1	20	TBOL	1	20	\N	325-00000001	36.73	2013-06-08	DIESEL	3.5800000000000001	10.25	\N	\N
+118	1	10	TBOL	1	10	\N	325-00000001	49.61	2013-06-08	GASOLINA 90	3.5800000000000001	13.85	\N	\N
+203	1	11	TBOL	1	11	\N	325-00000001	36.73	2013-06-08	DIESEL	3.5800000000000001	10.25	\N	\N
+206	205	12	TFAC	1	12	\N	325-00000001	21.91	2013-06-08	GASOLINA 90	1.5800000000000001	13.85	\N	\N
+\.
+
+
+--
+-- TOC entry 2203 (class 0 OID 17859)
+-- Dependencies: 194
+-- Data for Name: transacciondetalle; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY transacciondetalle (id, idproducto, idtransaccion, monto, cantidad, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2204 (class 0 OID 17862)
+-- Dependencies: 195
+-- Data for Name: turno; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY turno (id, idestacionservicio, fechaapertura, fechacierre) FROM stdin;
+1	1	2013-12-12	2013-12-12
+\.
+
+
+--
+-- TOC entry 2205 (class 0 OID 17865)
+-- Dependencies: 196
+-- Data for Name: turnopuntoventacaja; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY turnopuntoventacaja (idturno, idpuntoventa, idcaja, fecharegistro) FROM stdin;
+1	1	1	2013-12-12
+\.
+
+
+--
+-- TOC entry 2206 (class 0 OID 17868)
+-- Dependencies: 197
+-- Data for Name: usuario; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY usuario (id, idtrabajador, login, clave, fecharegistro) FROM stdin;
+2	1	operador	operador	2013-12-12
+1	1	usuario	usuario	2013-12-12
+\.
+
+
+--
+-- TOC entry 2207 (class 0 OID 17871)
+-- Dependencies: 198
+-- Data for Name: usuarioperfil; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY usuarioperfil (idusuario, idperfil, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2208 (class 0 OID 17874)
+-- Dependencies: 199
+-- Data for Name: vale; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY vale (id, cliente, numero, producto, monto, chofer, placa, fecha, estado) FROM stdin;
+1	1041949242	000001	DIESEL	100	LOPEZ CORDOVA	TGJ432	2013-12-12	1
+2	1041949242	000002	GASOLINA 90	50	JEAN CARLOS	TGJ586	2013-12-12	1
+4	1041949243	000002	DIESEL	120	EDWIN ROJAS	W1D568	2013-12-12	1
+3	1041949243	000001	DIESEL	150	JUAN JOSE	B1D866	2013-12-12	1
+5	1041949244	000001	GASOLINA 95	150	ALBERTO JUAN	T1D956	2013-12-12	1
+\.
+
+
+--
+-- TOC entry 2209 (class 0 OID 17877)
+-- Dependencies: 200
+-- Data for Name: varillaje; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY varillaje (id, idtanque, fechalectura, medicionvolumen, medicionagua, fechanegocio, fecharegistro) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2210 (class 0 OID 17880)
+-- Dependencies: 201
+-- Data for Name: varillajeajuste; Type: TABLE DATA; Schema: cem44; Owner: postgres
+--
+
+COPY varillajeajuste (id, idvarillaje, volumen, concepto, fecharegistro) FROM stdin;
+\.
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 2211 (class 0 OID 17883)
+-- Dependencies: 202
+-- Data for Name: T_CAMBIO_PRECIO; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "T_CAMBIO_PRECIO" (estado, precio, id_producto) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2212 (class 0 OID 17889)
+-- Dependencies: 203
+-- Data for Name: T_CIERRE; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "T_CIERRE" (id_cierre, tipo_cierre, fecha, estado) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2213 (class 0 OID 17895)
+-- Dependencies: 204
+-- Data for Name: T_CIERRE_DETALLE; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "T_CIERRE_DETALLE" (id_cierre, tipo_cierre, id_surtidor, id_manguera, id_producto, contometro_monto, contometro_vol, ppu, fecha) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2214 (class 0 OID 17901)
+-- Dependencies: 205
+-- Data for Name: T_DESPACHO; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "T_DESPACHO" (id_despacho, monto, id_producto, cantidad, id_surtidor, fecha, hora, id_despa_cem, estado) FROM stdin;
+000000000000000001	16.23		1.583	01	20130603	134829	57	N
+000000000000000002	0.16		0.16	01	20130608	001625	85	N
+000000000000000003	0.08		0.08	02	20130608	001630	113	N
+\.
+
+
+--
+-- TOC entry 2215 (class 0 OID 17907)
+-- Dependencies: 206
+-- Data for Name: T_PRODUCTO; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "T_PRODUCTO" (id_producto, id_cem) FROM stdin;
+\.
+
+
+SET search_path = cem44, pg_catalog;
+
+--
+-- TOC entry 2041 (class 2606 OID 17916)
+-- Dependencies: 163 163
+-- Name: caja_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY caja
+    ADD CONSTRAINT caja_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2043 (class 2606 OID 17918)
+-- Dependencies: 164 164
+-- Name: cara_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cara
+    ADD CONSTRAINT cara_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2045 (class 2606 OID 17920)
+-- Dependencies: 165 165 165
+-- Name: caraproducto_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY caraproducto
+    ADD CONSTRAINT caraproducto_pkey PRIMARY KEY (idcara, idproducto);
+
+
+--
+-- TOC entry 2047 (class 2606 OID 17922)
+-- Dependencies: 166 166
+-- Name: centroemisor_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY centroemisor
+    ADD CONSTRAINT centroemisor_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2049 (class 2606 OID 17924)
+-- Dependencies: 167 167 167
+-- Name: centroemisortipocomprobante_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY centroemisortipocomprobante
+    ADD CONSTRAINT centroemisortipocomprobante_pkey PRIMARY KEY (idtipocomprobante, idcentroemisor);
+
+
+--
+-- TOC entry 2051 (class 2606 OID 17926)
+-- Dependencies: 168 168
+-- Name: cliente_numerodocumento_key; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cliente
+    ADD CONSTRAINT cliente_numerodocumento_key UNIQUE (numerodocumento);
+
+
+--
+-- TOC entry 2053 (class 2606 OID 17928)
+-- Dependencies: 168 168
+-- Name: cliente_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2055 (class 2606 OID 17930)
+-- Dependencies: 169 169
+-- Name: cuenta_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cuenta
+    ADD CONSTRAINT cuenta_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2057 (class 2606 OID 17932)
+-- Dependencies: 170 170
+-- Name: departamento_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY departamento
+    ADD CONSTRAINT departamento_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2059 (class 2606 OID 17934)
+-- Dependencies: 171 171
+-- Name: deposito_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY deposito
+    ADD CONSTRAINT deposito_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2061 (class 2606 OID 17936)
+-- Dependencies: 172 172
+-- Name: despacho_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY despacho
+    ADD CONSTRAINT despacho_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2063 (class 2606 OID 17938)
+-- Dependencies: 173 173 173 173
+-- Name: distrito_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY distrito
+    ADD CONSTRAINT distrito_pkey PRIMARY KEY (id, idprovincia, iddepartamento);
+
+
+--
+-- TOC entry 2065 (class 2606 OID 17940)
+-- Dependencies: 174 174
+-- Name: estacionservicio_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY estacionservicio
+    ADD CONSTRAINT estacionservicio_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2125 (class 2606 OID 18278)
+-- Dependencies: 210 210
+-- Name: id_sobrante; Type: CONSTRAINT; Schema: cem44; Owner: cem44; Tablespace: 
+--
+
+ALTER TABLE ONLY sobrante
+    ADD CONSTRAINT id_sobrante PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2067 (class 2606 OID 17942)
+-- Dependencies: 175 175
+-- Name: impresora_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY impresora
+    ADD CONSTRAINT impresora_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2069 (class 2606 OID 17944)
+-- Dependencies: 176 176 176
+-- Name: impresorapuntoventa_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY impresorapuntoventa
+    ADD CONSTRAINT impresorapuntoventa_pkey PRIMARY KEY (idpuntoventa, idimpresora);
+
+
+--
+-- TOC entry 2071 (class 2606 OID 17946)
+-- Dependencies: 177 177
+-- Name: lista_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY lista
+    ADD CONSTRAINT lista_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2073 (class 2606 OID 17948)
+-- Dependencies: 178 178
+-- Name: listavalor_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY listavalor
+    ADD CONSTRAINT listavalor_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2075 (class 2606 OID 17950)
+-- Dependencies: 179 179
+-- Name: movimiento_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY movimiento
+    ADD CONSTRAINT movimiento_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2077 (class 2606 OID 17952)
+-- Dependencies: 180 180
+-- Name: opcion_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY opcion
+    ADD CONSTRAINT opcion_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2079 (class 2606 OID 17954)
+-- Dependencies: 181 181
+-- Name: perfil_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY perfil
+    ADD CONSTRAINT perfil_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2081 (class 2606 OID 17956)
+-- Dependencies: 182 182 182
+-- Name: perfilopcion_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY perfilopcion
+    ADD CONSTRAINT perfilopcion_pkey PRIMARY KEY (idopcion, idperfil);
+
+
+--
+-- TOC entry 2123 (class 2606 OID 18270)
+-- Dependencies: 209 209
+-- Name: primary; Type: CONSTRAINT; Schema: cem44; Owner: cem44; Tablespace: 
+--
+
+ALTER TABLE ONLY cuadre
+    ADD CONSTRAINT "primary" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2121 (class 2606 OID 18235)
+-- Dependencies: 208 208
+-- Name: primary_key; Type: CONSTRAINT; Schema: cem44; Owner: cem44; Tablespace: 
+--
+
+ALTER TABLE ONLY abono
+    ADD CONSTRAINT primary_key PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2083 (class 2606 OID 17958)
+-- Dependencies: 183 183
+-- Name: producto_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY producto
+    ADD CONSTRAINT producto_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2085 (class 2606 OID 17960)
+-- Dependencies: 184 184 184
+-- Name: provincia_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY provincia
+    ADD CONSTRAINT provincia_pkey PRIMARY KEY (id, iddepartamento);
+
+
+--
+-- TOC entry 2087 (class 2606 OID 17962)
+-- Dependencies: 185 185 185
+-- Name: puntoacumulado_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY puntoacumulado
+    ADD CONSTRAINT puntoacumulado_pkey PRIMARY KEY (idtransaccion, idtarjeta);
+
+
+--
+-- TOC entry 2089 (class 2606 OID 17964)
+-- Dependencies: 186 186
+-- Name: puntoventa_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY puntoventa
+    ADD CONSTRAINT puntoventa_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2091 (class 2606 OID 17966)
+-- Dependencies: 187 187
+-- Name: subcuenta_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY subcuenta
+    ADD CONSTRAINT subcuenta_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2093 (class 2606 OID 17968)
+-- Dependencies: 188 188
+-- Name: surtidor_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY surtidor
+    ADD CONSTRAINT surtidor_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2095 (class 2606 OID 17970)
+-- Dependencies: 189 189
+-- Name: tanque_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tanque
+    ADD CONSTRAINT tanque_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2097 (class 2606 OID 17972)
+-- Dependencies: 190 190
+-- Name: tarjeta_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tarjeta
+    ADD CONSTRAINT tarjeta_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2099 (class 2606 OID 17974)
+-- Dependencies: 191 191
+-- Name: tipocambio_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tipocambio
+    ADD CONSTRAINT tipocambio_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2101 (class 2606 OID 17976)
+-- Dependencies: 192 192
+-- Name: trabajador_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY trabajador
+    ADD CONSTRAINT trabajador_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2103 (class 2606 OID 17978)
+-- Dependencies: 193 193
+-- Name: transaccion_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY transaccion
+    ADD CONSTRAINT transaccion_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2105 (class 2606 OID 17980)
+-- Dependencies: 194 194
+-- Name: transacciondetalle_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY transacciondetalle
+    ADD CONSTRAINT transacciondetalle_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2107 (class 2606 OID 17982)
+-- Dependencies: 195 195
+-- Name: turno_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY turno
+    ADD CONSTRAINT turno_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2109 (class 2606 OID 17984)
+-- Dependencies: 196 196 196 196
+-- Name: turnopuntoventacaja_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY turnopuntoventacaja
+    ADD CONSTRAINT turnopuntoventacaja_pkey PRIMARY KEY (idturno, idpuntoventa, idcaja);
+
+
+--
+-- TOC entry 2111 (class 2606 OID 17986)
+-- Dependencies: 197 197
+-- Name: usuario_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2113 (class 2606 OID 17988)
+-- Dependencies: 198 198 198
+-- Name: usuarioperfil_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY usuarioperfil
+    ADD CONSTRAINT usuarioperfil_pkey PRIMARY KEY (idusuario, idperfil);
+
+
+--
+-- TOC entry 2115 (class 2606 OID 17990)
+-- Dependencies: 199 199
+-- Name: vale_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY vale
+    ADD CONSTRAINT vale_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2117 (class 2606 OID 17992)
+-- Dependencies: 200 200
+-- Name: varillaje_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY varillaje
+    ADD CONSTRAINT varillaje_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2119 (class 2606 OID 17994)
+-- Dependencies: 201 201
+-- Name: varillajeajuste_pkey; Type: CONSTRAINT; Schema: cem44; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY varillajeajuste
+    ADD CONSTRAINT varillajeajuste_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2136 (class 2606 OID 17995)
+-- Dependencies: 2084 173 173 184 184
+-- Name: fk11393598f2bcb913; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY distrito
+    ADD CONSTRAINT fk11393598f2bcb913 FOREIGN KEY (idprovincia, iddepartamento) REFERENCES provincia(id, iddepartamento);
+
+
+--
+-- TOC entry 2137 (class 2606 OID 18000)
+-- Dependencies: 173 2062 174 174 174 173 173
+-- Name: fk13372bb62a312c67; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY estacionservicio
+    ADD CONSTRAINT fk13372bb62a312c67 FOREIGN KEY (iddistrito, idprovincia, iddepartamento) REFERENCES distrito(id, idprovincia, iddepartamento);
+
+
+--
+-- TOC entry 2128 (class 2606 OID 18005)
+-- Dependencies: 165 164 2042
+-- Name: fk1f28ef6d2d5554c0; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY caraproducto
+    ADD CONSTRAINT fk1f28ef6d2d5554c0 FOREIGN KEY (idcara) REFERENCES cara(id);
+
+
+--
+-- TOC entry 2129 (class 2606 OID 18010)
+-- Dependencies: 183 2082 165
+-- Name: fk1f28ef6daf143e66; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY caraproducto
+    ADD CONSTRAINT fk1f28ef6daf143e66 FOREIGN KEY (idproducto) REFERENCES producto(id);
+
+
+--
+-- TOC entry 2149 (class 2606 OID 18015)
+-- Dependencies: 2064 174 186
+-- Name: fk294b18864bfed12; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY puntoventa
+    ADD CONSTRAINT fk294b18864bfed12 FOREIGN KEY (idestacionservicio) REFERENCES estacionservicio(id);
+
+
+--
+-- TOC entry 2140 (class 2606 OID 18020)
+-- Dependencies: 2072 178 178
+-- Name: fk2db9e721225dec64; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY listavalor
+    ADD CONSTRAINT fk2db9e721225dec64 FOREIGN KEY (idcategoria) REFERENCES listavalor(id);
+
+
+--
+-- TOC entry 2141 (class 2606 OID 18025)
+-- Dependencies: 178 177 2070
+-- Name: fk2db9e7217e5a3d20; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY listavalor
+    ADD CONSTRAINT fk2db9e7217e5a3d20 FOREIGN KEY (idlista) REFERENCES lista(id);
+
+
+--
+-- TOC entry 2126 (class 2606 OID 18251)
+-- Dependencies: 163 192 2100
+-- Name: fk2e7a156981e3c2; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY caja
+    ADD CONSTRAINT fk2e7a156981e3c2 FOREIGN KEY (idtrabajador) REFERENCES trabajador(id);
+
+
+--
+-- TOC entry 2127 (class 2606 OID 18035)
+-- Dependencies: 2092 188 164
+-- Name: fk2e7b0d67b5d06a; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY cara
+    ADD CONSTRAINT fk2e7b0d67b5d06a FOREIGN KEY (idsurtidor) REFERENCES surtidor(id);
+
+
+--
+-- TOC entry 2163 (class 2606 OID 18040)
+-- Dependencies: 2040 163 196
+-- Name: fk34d50faf2d5552d0; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY turnopuntoventacaja
+    ADD CONSTRAINT fk34d50faf2d5552d0 FOREIGN KEY (idcaja) REFERENCES caja(id);
+
+
+--
+-- TOC entry 2164 (class 2606 OID 18045)
+-- Dependencies: 196 186 2088
+-- Name: fk34d50faf6f2dad36; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY turnopuntoventacaja
+    ADD CONSTRAINT fk34d50faf6f2dad36 FOREIGN KEY (idpuntoventa) REFERENCES puntoventa(id);
+
+
+--
+-- TOC entry 2165 (class 2606 OID 18050)
+-- Dependencies: 196 195 2106
+-- Name: fk34d50faf7f46953e; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY turnopuntoventacaja
+    ADD CONSTRAINT fk34d50faf7f46953e FOREIGN KEY (idturno) REFERENCES turno(id);
+
+
+--
+-- TOC entry 2133 (class 2606 OID 18246)
+-- Dependencies: 196 171 171 2108 171 196 196
+-- Name: fk383bbd911746b72e; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY deposito
+    ADD CONSTRAINT fk383bbd911746b72e FOREIGN KEY (idturno, idpuntoventa, idcaja) REFERENCES turnopuntoventacaja(idturno, idpuntoventa, idcaja);
+
+
+--
+-- TOC entry 2134 (class 2606 OID 18060)
+-- Dependencies: 172 183 2082
+-- Name: fk3d601847af143e66; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY despacho
+    ADD CONSTRAINT fk3d601847af143e66 FOREIGN KEY (idproducto) REFERENCES producto(id);
+
+
+--
+-- TOC entry 2135 (class 2606 OID 18065)
+-- Dependencies: 165 2044 165 172 172
+-- Name: fk3d601847e400219b; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY despacho
+    ADD CONSTRAINT fk3d601847e400219b FOREIGN KEY (idcara, idproducto) REFERENCES caraproducto(idcara, idproducto);
+
+
+--
+-- TOC entry 2150 (class 2606 OID 18070)
+-- Dependencies: 187 169 2054
+-- Name: fk45a26882f7b7db6; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY subcuenta
+    ADD CONSTRAINT fk45a26882f7b7db6 FOREIGN KEY (idcuenta) REFERENCES cuenta(id);
+
+
+--
+-- TOC entry 2151 (class 2606 OID 18075)
+-- Dependencies: 187 190 2096
+-- Name: fk45a268883b093b4; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY subcuenta
+    ADD CONSTRAINT fk45a268883b093b4 FOREIGN KEY (idtarjeta) REFERENCES tarjeta(id);
+
+
+--
+-- TOC entry 2152 (class 2606 OID 18080)
+-- Dependencies: 183 187 2082
+-- Name: fk45a2688af143e66; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY subcuenta
+    ADD CONSTRAINT fk45a2688af143e66 FOREIGN KEY (idproducto) REFERENCES producto(id);
+
+
+--
+-- TOC entry 2131 (class 2606 OID 18085)
+-- Dependencies: 167 166 2046
+-- Name: fk5e17aa668060575a; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY centroemisortipocomprobante
+    ADD CONSTRAINT fk5e17aa668060575a FOREIGN KEY (idcentroemisor) REFERENCES centroemisor(id);
+
+
+--
+-- TOC entry 2167 (class 2606 OID 18090)
+-- Dependencies: 198 197 2110
+-- Name: fk6994c27a2b383df6; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY usuarioperfil
+    ADD CONSTRAINT fk6994c27a2b383df6 FOREIGN KEY (idusuario) REFERENCES usuario(id);
+
+
+--
+-- TOC entry 2168 (class 2606 OID 18095)
+-- Dependencies: 198 181 2078
+-- Name: fk6994c27a5a2220be; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY usuarioperfil
+    ADD CONSTRAINT fk6994c27a5a2220be FOREIGN KEY (idperfil) REFERENCES perfil(id);
+
+
+--
+-- TOC entry 2162 (class 2606 OID 18100)
+-- Dependencies: 195 174 2064
+-- Name: fk6998f9264bfed12; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY turno
+    ADD CONSTRAINT fk6998f9264bfed12 FOREIGN KEY (idestacionservicio) REFERENCES estacionservicio(id);
+
+
+--
+-- TOC entry 2158 (class 2606 OID 18221)
+-- Dependencies: 172 193 2060
+-- Name: fk7f99188fa17ccc34; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY transaccion
+    ADD CONSTRAINT fk7f99188fa17ccc34 FOREIGN KEY (iddespacho) REFERENCES despacho(id);
+
+
+--
+-- TOC entry 2159 (class 2606 OID 18226)
+-- Dependencies: 2052 193 168
+-- Name: fk7f99188fa1a5638e; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY transaccion
+    ADD CONSTRAINT fk7f99188fa1a5638e FOREIGN KEY (idcliente) REFERENCES cliente(id);
+
+
+--
+-- TOC entry 2153 (class 2606 OID 18115)
+-- Dependencies: 2064 188 174
+-- Name: fka07c9a6264bfed12; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY surtidor
+    ADD CONSTRAINT fka07c9a6264bfed12 FOREIGN KEY (idestacionservicio) REFERENCES estacionservicio(id);
+
+
+--
+-- TOC entry 2142 (class 2606 OID 18120)
+-- Dependencies: 196 196 196 179 179 179 2108
+-- Name: fka121bc951746b72e; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY movimiento
+    ADD CONSTRAINT fka121bc951746b72e FOREIGN KEY (idturno, idpuntoventa, idcaja) REFERENCES turnopuntoventacaja(idturno, idpuntoventa, idcaja);
+
+
+--
+-- TOC entry 2143 (class 2606 OID 18125)
+-- Dependencies: 179 193 2102
+-- Name: fka121bc95d5b72bb8; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY movimiento
+    ADD CONSTRAINT fka121bc95d5b72bb8 FOREIGN KEY (idtransaccion) REFERENCES transaccion(id);
+
+
+--
+-- TOC entry 2156 (class 2606 OID 18130)
+-- Dependencies: 168 190 2052
+-- Name: fka4511e0da1a5638e; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY tarjeta
+    ADD CONSTRAINT fka4511e0da1a5638e FOREIGN KEY (idcliente) REFERENCES cliente(id);
+
+
+--
+-- TOC entry 2144 (class 2606 OID 18135)
+-- Dependencies: 180 182 2076
+-- Name: fka82aaef257e0e972; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY perfilopcion
+    ADD CONSTRAINT fka82aaef257e0e972 FOREIGN KEY (idopcion) REFERENCES opcion(id);
+
+
+--
+-- TOC entry 2145 (class 2606 OID 18140)
+-- Dependencies: 182 181 2078
+-- Name: fka82aaef25a2220be; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY perfilopcion
+    ADD CONSTRAINT fka82aaef25a2220be FOREIGN KEY (idperfil) REFERENCES perfil(id);
+
+
+--
+-- TOC entry 2132 (class 2606 OID 18145)
+-- Dependencies: 168 169 2052
+-- Name: fkaf901848a1a5638e; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY cuenta
+    ADD CONSTRAINT fkaf901848a1a5638e FOREIGN KEY (idcliente) REFERENCES cliente(id);
+
+
+--
+-- TOC entry 2130 (class 2606 OID 18150)
+-- Dependencies: 186 166 2088
+-- Name: fkc322ff5a6f2dad36; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY centroemisor
+    ADD CONSTRAINT fkc322ff5a6f2dad36 FOREIGN KEY (idpuntoventa) REFERENCES puntoventa(id);
+
+
+--
+-- TOC entry 2154 (class 2606 OID 18155)
+-- Dependencies: 174 189 2064
+-- Name: fkcb7cc78064bfed12; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY tanque
+    ADD CONSTRAINT fkcb7cc78064bfed12 FOREIGN KEY (idestacionservicio) REFERENCES estacionservicio(id);
+
+
+--
+-- TOC entry 2155 (class 2606 OID 18160)
+-- Dependencies: 2082 189 183
+-- Name: fkcb7cc780af143e66; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY tanque
+    ADD CONSTRAINT fkcb7cc780af143e66 FOREIGN KEY (idproducto) REFERENCES producto(id);
+
+
+--
+-- TOC entry 2147 (class 2606 OID 18165)
+-- Dependencies: 185 190 2096
+-- Name: fkcc9751f783b093b4; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY puntoacumulado
+    ADD CONSTRAINT fkcc9751f783b093b4 FOREIGN KEY (idtarjeta) REFERENCES tarjeta(id);
+
+
+--
+-- TOC entry 2148 (class 2606 OID 18170)
+-- Dependencies: 2102 185 193
+-- Name: fkcc9751f7d5b72bb8; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY puntoacumulado
+    ADD CONSTRAINT fkcc9751f7d5b72bb8 FOREIGN KEY (idtransaccion) REFERENCES transaccion(id);
+
+
+--
+-- TOC entry 2146 (class 2606 OID 18175)
+-- Dependencies: 170 184 2056
+-- Name: fkdf613bad6214b0ae; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY provincia
+    ADD CONSTRAINT fkdf613bad6214b0ae FOREIGN KEY (iddepartamento) REFERENCES departamento(id);
+
+
+--
+-- TOC entry 2160 (class 2606 OID 18180)
+-- Dependencies: 183 194 2082
+-- Name: fkf21cf608af143e66; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY transacciondetalle
+    ADD CONSTRAINT fkf21cf608af143e66 FOREIGN KEY (idproducto) REFERENCES producto(id);
+
+
+--
+-- TOC entry 2161 (class 2606 OID 18185)
+-- Dependencies: 193 2102 194
+-- Name: fkf21cf608d5b72bb8; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY transacciondetalle
+    ADD CONSTRAINT fkf21cf608d5b72bb8 FOREIGN KEY (idtransaccion) REFERENCES transaccion(id);
+
+
+--
+-- TOC entry 2166 (class 2606 OID 18190)
+-- Dependencies: 192 197 2100
+-- Name: fkf814f32e6981e3c2; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fkf814f32e6981e3c2 FOREIGN KEY (idtrabajador) REFERENCES trabajador(id);
+
+
+--
+-- TOC entry 2170 (class 2606 OID 18195)
+-- Dependencies: 2116 201 200
+-- Name: fkf96bfcb2a8409f0e; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY varillajeajuste
+    ADD CONSTRAINT fkf96bfcb2a8409f0e FOREIGN KEY (idvarillaje) REFERENCES varillaje(id);
+
+
+--
+-- TOC entry 2138 (class 2606 OID 18200)
+-- Dependencies: 2088 176 186
+-- Name: fkf99fae126f2dad36; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY impresorapuntoventa
+    ADD CONSTRAINT fkf99fae126f2dad36 FOREIGN KEY (idpuntoventa) REFERENCES puntoventa(id);
+
+
+--
+-- TOC entry 2139 (class 2606 OID 18205)
+-- Dependencies: 176 2066 175
+-- Name: fkf99fae12a0c95b2e; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY impresorapuntoventa
+    ADD CONSTRAINT fkf99fae12a0c95b2e FOREIGN KEY (idimpresora) REFERENCES impresora(id);
+
+
+--
+-- TOC entry 2169 (class 2606 OID 18210)
+-- Dependencies: 200 2094 189
+-- Name: fkfbb4e2fa6754dc26; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY varillaje
+    ADD CONSTRAINT fkfbb4e2fa6754dc26 FOREIGN KEY (idtanque) REFERENCES tanque(id);
+
+
+--
+-- TOC entry 2157 (class 2606 OID 18215)
+-- Dependencies: 174 2064 192
+-- Name: fkffbeccce64bfed12; Type: FK CONSTRAINT; Schema: cem44; Owner: postgres
+--
+
+ALTER TABLE ONLY trabajador
+    ADD CONSTRAINT fkffbeccce64bfed12 FOREIGN KEY (idestacionservicio) REFERENCES estacionservicio(id);
+
+
+--
+-- TOC entry 2171 (class 2606 OID 18241)
+-- Dependencies: 2054 208 169
+-- Name: foren_key; Type: FK CONSTRAINT; Schema: cem44; Owner: cem44
+--
+
+ALTER TABLE ONLY abono
+    ADD CONSTRAINT foren_key FOREIGN KEY (cuenta) REFERENCES cuenta(id);
+
+
+--
+-- TOC entry 2223 (class 0 OID 0)
+-- Dependencies: 7
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO cem44;
+
+
+-- Completed on 2013-09-13 11:45:52
+
+--
+-- PostgreSQL database dump complete
+--
+
