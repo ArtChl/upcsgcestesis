@@ -6,7 +6,7 @@
     <class name="pe.com.ega.sgces.model.Transaccion" table="transaccion" catalog="cem44">
         <id name="id" type="int">
             <column name="Id" />
-            <generator class="sequence" />
+            <generator class="sequence"/>
         </id>
         <many-to-one name="cliente" class="pe.com.ega.sgces.model.Cliente" fetch="select">
             <column name="IdCliente" not-null="true" />
