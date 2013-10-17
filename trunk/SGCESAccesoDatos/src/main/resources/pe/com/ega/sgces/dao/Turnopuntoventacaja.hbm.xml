@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Turnopuntoventacaja" table="turnopuntoventacaja" schema="public">
+        <composite-id name="id" class="pe.com.ega.sgces.model.TurnopuntoventacajaId">
+            <key-property name="idturno" type="int">
+                <column name="idturno" />
+            </key-property>
+            <key-property name="idpuntoventa" type="int">
+                <column name="idpuntoventa" />
+            </key-property>
+            <key-property name="idcaja" type="int">
+                <column name="idcaja" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="caja" class="pe.com.ega.sgces.model.Caja" update="false" insert="false" fetch="select">
+            <column name="idcaja" not-null="true" />
+        </many-to-one>
+        <many-to-one name="turno" class="pe.com.ega.sgces.model.Turno" update="false" insert="false" fetch="select">
+            <column name="idturno" not-null="true" />
+        </many-to-one>
+        <many-to-one name="puntoventa" class="pe.com.ega.sgces.model.Puntoventa" update="false" insert="false" fetch="select">
+            <column name="idpuntoventa" not-null="true" />
+        </many-to-one>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <set name="depositos" inverse="true">
+            <key>
+                <column name="idturno" not-null="true" />
+                <column name="idpuntoventa" not-null="true" />
+                <column name="idcaja" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Deposito" />
+        </set>
+        <set name="movimientos" inverse="true">
+            <key>
+                <column name="idturno" not-null="true" />
+                <column name="idpuntoventa" not-null="true" />
+                <column name="idcaja" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Movimiento" />
+        </set>
+    </class>
+</hibernate-mapping>

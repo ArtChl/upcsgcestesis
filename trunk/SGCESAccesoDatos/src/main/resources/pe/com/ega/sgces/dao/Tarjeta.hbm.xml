@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Tarjeta" table="tarjeta" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="pe.com.ega.sgces.model.Cliente" fetch="select">
+            <column name="idcliente" not-null="true" />
+        </many-to-one>
+        <property name="nombrechofer" type="string">
+            <column name="nombrechofer" length="20" />
+        </property>
+        <property name="numeroplaca" type="string">
+            <column name="numeroplaca" length="20" />
+        </property>
+        <property name="fechacaducidad" type="date">
+            <column name="fechacaducidad" length="13" />
+        </property>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <set name="subcuentas" inverse="true">
+            <key>
+                <column name="idtarjeta" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Subcuenta" />
+        </set>
+        <set name="puntoacumulados" inverse="true">
+            <key>
+                <column name="idtarjeta" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Puntoacumulado" />
+        </set>
+    </class>
+</hibernate-mapping>

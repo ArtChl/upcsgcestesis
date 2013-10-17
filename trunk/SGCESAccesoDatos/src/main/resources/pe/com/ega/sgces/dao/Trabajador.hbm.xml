@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Trabajador" table="trabajador" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="estacionservicio" class="pe.com.ega.sgces.model.Estacionservicio" fetch="select">
+            <column name="idestacionservicio" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" />
+        </property>
+        <property name="apellidopaterno" type="string">
+            <column name="apellidopaterno" length="20" />
+        </property>
+        <property name="apellidomaterno" type="string">
+            <column name="apellidomaterno" length="20" />
+        </property>
+        <property name="dni" type="string">
+            <column name="dni" length="20" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="20" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="20" />
+        </property>
+        <property name="idcargo" type="java.lang.Integer">
+            <column name="idcargo" />
+        </property>
+        <property name="idestadocivil" type="java.lang.Integer">
+            <column name="idestadocivil" />
+        </property>
+        <property name="fechanacimiento" type="date">
+            <column name="fechanacimiento" length="13" />
+        </property>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <set name="usuarios" inverse="true">
+            <key>
+                <column name="idtrabajador" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Usuario" />
+        </set>
+        <set name="cajas" inverse="true">
+            <key>
+                <column name="idtrabajador" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Caja" />
+        </set>
+    </class>
+</hibernate-mapping>
