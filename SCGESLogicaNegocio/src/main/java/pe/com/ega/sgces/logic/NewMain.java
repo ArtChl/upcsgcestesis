@@ -22,7 +22,7 @@ import pe.com.ega.sgces.dao.ValeDaoImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Movimiento;
-import pe.com.ega.sgces.model.NumComprobante;
+import pe.com.ega.sgces.model.Numcomprobante;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
@@ -50,7 +50,7 @@ public class NewMain {
        //valedao.setSession(session);
        //List<Cliente> cliente=usuariodao.razon(1041949242);
       // System.out.println("Cliente"+cliente.get(1).getRazonSocial());
-       NumComprobante comprobantes= valedao.buscarPorCodigo(1);
+       Numcomprobante comprobantes= valedao.buscarPorCodigo(1);
         System.out.println(comprobantes.getNumero());
        comprobantes.setNumero(comprobantes.getNumero()+1);
         valedao.actualizar(comprobantes);

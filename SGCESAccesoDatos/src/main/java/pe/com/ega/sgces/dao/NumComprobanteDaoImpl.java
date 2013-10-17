@@ -6,7 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
-import pe.com.ega.sgces.model.NumComprobante;
+import pe.com.ega.sgces.model.Numcomprobante;
 
 /**
  *
@@ -16,27 +16,27 @@ public class NumComprobanteDaoImpl implements NumComprobanteDao{
 
     Session session;
     @Override
-    public void insertar(NumComprobante usuario) {
+    public void insertar(Numcomprobante usuario) {
         session.save(usuario);
     }
 
     @Override
-    public void actualizar(NumComprobante usuario) {
+    public void actualizar(Numcomprobante usuario) {
         session.update(usuario);
     }
 
     @Override
-    public void eliminar(NumComprobante usuario) {
+    public void eliminar(Numcomprobante usuario) {
         session.delete(usuario);
     }
 
     @Override
-    public NumComprobante buscarPorCodigo(int id) {
-        return (NumComprobante) session.load(NumComprobante.class, id);
+    public Numcomprobante buscarPorCodigo(int id) {
+        return (Numcomprobante) session.load(Numcomprobante.class, id);
     }
   
     @Override
-    public List<NumComprobante> buscarConsumo(String cliente) {
+    public List<Numcomprobante> buscarConsumo(String cliente) {
         return session.createQuery("from Vale where cliente='"+cliente+"' and estado=1").list();
     }
     

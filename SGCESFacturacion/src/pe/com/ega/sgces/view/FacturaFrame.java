@@ -137,7 +137,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         String rucCliente=jrucCliente.getText();
         try{
             cliente=clienteLogica.buscarPorCodigo(rucCliente);
-            jrazonCliente.setText(cliente.getRazonSocial());
+            jrazonCliente.setText(cliente.getRazonsocial());
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
             cliente= new Cliente();
@@ -157,8 +157,8 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            System.out.println("Cliente"+cliente.getId());
            Cliente temporal1 = new Cliente();
            //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
-           temporal1.setNumeroDocumento(jrucCliente.getText());
-           temporal1.setRazonSocial(jrazonCliente.getText());
+           temporal1.setNumerodocumento(jrucCliente.getText());
+           temporal1.setRazonsocial(jrazonCliente.getText());
                clienteLogica.grabar(temporal1);
                MonedaFrame f=new MonedaFrame(desp, "TFAC", temporal1);
                     f.setSize(295,204);
@@ -183,7 +183,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         String rucCliente=jrucCliente.getText();
         try{
             cliente=clienteLogica.buscarPorCodigo(rucCliente);
-            jrazonCliente.setText(cliente.getRazonSocial());
+            jrazonCliente.setText(cliente.getRazonsocial());
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
             cliente= new Cliente();

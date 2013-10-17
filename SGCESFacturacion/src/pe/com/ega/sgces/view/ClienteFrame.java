@@ -120,8 +120,8 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
            Cliente temporal1 = new Cliente();
            //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
-           temporal1.setNumeroDocumento(jrucCliente.getText());
-           temporal1.setRazonSocial(jrazonCliente.getText());
+           temporal1.setNumerodocumento(jrucCliente.getText());
+           temporal1.setRazonsocial(jrazonCliente.getText());
            if(clienteDao.buscarPorCodigo(jrucCliente.getText())!=null)
            {    
             JOptionPane.showMessageDialog(null, "Cliente Ya existe", "Error", JOptionPane.ERROR_MESSAGE);

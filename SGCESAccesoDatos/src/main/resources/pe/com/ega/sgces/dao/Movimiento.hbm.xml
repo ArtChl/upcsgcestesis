@@ -6,7 +6,7 @@
     <class name="pe.com.ega.sgces.model.Movimiento" table="movimiento" schema="public">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="sequence" />
         </id>
         <many-to-one name="turnopuntoventacaja" class="pe.com.ega.sgces.model.Turnopuntoventacaja" fetch="select">
             <column name="idturno" not-null="true" />

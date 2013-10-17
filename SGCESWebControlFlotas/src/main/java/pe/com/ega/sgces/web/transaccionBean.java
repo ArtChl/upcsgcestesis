@@ -76,7 +76,7 @@ public class transaccionBean implements Serializable{
         Double nim;
         transaccions=transacciondao.buscarListaId(String.valueOf(loginBean.getUsuario().getId()));
         for (Transaccion string : transaccions) {
-            nim = Double.parseDouble(String.valueOf(string.getMontoTotal()));
+            nim = Double.parseDouble(String.valueOf(string.getMontototal()));
             total = total+nim;
             System.out.println("Suma"+total);
         }
