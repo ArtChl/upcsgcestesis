@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -14,7 +14,7 @@ public class Cara  implements java.io.Serializable {
 
      private int id;
      private Surtidor surtidor;
-     private Date fechaRegistro;
+     private Date fecharegistro;
      private String codigo;
      private Set<Caraproducto> caraproductos = new HashSet<Caraproducto>(0);
 
@@ -26,10 +26,10 @@ public class Cara  implements java.io.Serializable {
         this.id = id;
         this.surtidor = surtidor;
     }
-    public Cara(int id, Surtidor surtidor, Date fechaRegistro, String codigo, Set<Caraproducto> caraproductos) {
+    public Cara(int id, Surtidor surtidor, Date fecharegistro, String codigo, Set<Caraproducto> caraproductos) {
        this.id = id;
        this.surtidor = surtidor;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
        this.codigo = codigo;
        this.caraproductos = caraproductos;
     }
@@ -48,12 +48,12 @@ public class Cara  implements java.io.Serializable {
     public void setSurtidor(Surtidor surtidor) {
         this.surtidor = surtidor;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public String getCodigo() {
         return this.codigo;

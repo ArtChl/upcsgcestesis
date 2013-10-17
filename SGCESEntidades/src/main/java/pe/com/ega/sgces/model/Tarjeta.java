@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -14,10 +14,10 @@ public class Tarjeta  implements java.io.Serializable {
 
      private int id;
      private Cliente cliente;
-     private String nombreChofer;
-     private String numeroPlaca;
-     private Date fechaCaducidad;
-     private Date fechaRegistro;
+     private String nombrechofer;
+     private String numeroplaca;
+     private Date fechacaducidad;
+     private Date fecharegistro;
      private Set<Subcuenta> subcuentas = new HashSet<Subcuenta>(0);
      private Set<Puntoacumulado> puntoacumulados = new HashSet<Puntoacumulado>(0);
 
@@ -29,13 +29,13 @@ public class Tarjeta  implements java.io.Serializable {
         this.id = id;
         this.cliente = cliente;
     }
-    public Tarjeta(int id, Cliente cliente, String nombreChofer, String numeroPlaca, Date fechaCaducidad, Date fechaRegistro, Set<Subcuenta> subcuentas, Set<Puntoacumulado> puntoacumulados) {
+    public Tarjeta(int id, Cliente cliente, String nombrechofer, String numeroplaca, Date fechacaducidad, Date fecharegistro, Set<Subcuenta> subcuentas, Set<Puntoacumulado> puntoacumulados) {
        this.id = id;
        this.cliente = cliente;
-       this.nombreChofer = nombreChofer;
-       this.numeroPlaca = numeroPlaca;
-       this.fechaCaducidad = fechaCaducidad;
-       this.fechaRegistro = fechaRegistro;
+       this.nombrechofer = nombrechofer;
+       this.numeroplaca = numeroplaca;
+       this.fechacaducidad = fechacaducidad;
+       this.fecharegistro = fecharegistro;
        this.subcuentas = subcuentas;
        this.puntoacumulados = puntoacumulados;
     }
@@ -54,33 +54,33 @@ public class Tarjeta  implements java.io.Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    public String getNombreChofer() {
-        return this.nombreChofer;
+    public String getNombrechofer() {
+        return this.nombrechofer;
     }
     
-    public void setNombreChofer(String nombreChofer) {
-        this.nombreChofer = nombreChofer;
+    public void setNombrechofer(String nombrechofer) {
+        this.nombrechofer = nombrechofer;
     }
-    public String getNumeroPlaca() {
-        return this.numeroPlaca;
-    }
-    
-    public void setNumeroPlaca(String numeroPlaca) {
-        this.numeroPlaca = numeroPlaca;
-    }
-    public Date getFechaCaducidad() {
-        return this.fechaCaducidad;
+    public String getNumeroplaca() {
+        return this.numeroplaca;
     }
     
-    public void setFechaCaducidad(Date fechaCaducidad) {
-        this.fechaCaducidad = fechaCaducidad;
+    public void setNumeroplaca(String numeroplaca) {
+        this.numeroplaca = numeroplaca;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFechacaducidad() {
+        return this.fechacaducidad;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFechacaducidad(Date fechacaducidad) {
+        this.fechacaducidad = fechacaducidad;
+    }
+    public Date getFecharegistro() {
+        return this.fecharegistro;
+    }
+    
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Subcuenta> getSubcuentas() {
         return this.subcuentas;

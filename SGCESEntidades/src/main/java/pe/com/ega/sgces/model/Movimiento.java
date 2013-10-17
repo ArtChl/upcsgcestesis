@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,12 +13,12 @@ public class Movimiento  implements java.io.Serializable {
      private int id;
      private Turnopuntoventacaja turnopuntoventacaja;
      private Transaccion transaccion;
-     private String Pago;
-     private Double montoRecibido;
-     private Double montoTotal;
-     private Double montoDevuelto;
-     private Date fechaRegistro;
-     private String nroOperacion;
+     private String pago;
+     private Double montorecibido;
+     private Double montototal;
+     private Double montodevuelto;
+     private Date fecharegistro;
+     private String nrooperacion;
 
     public Movimiento() {
     }
@@ -29,16 +29,16 @@ public class Movimiento  implements java.io.Serializable {
         this.turnopuntoventacaja = turnopuntoventacaja;
         this.transaccion = transaccion;
     }
-    public Movimiento(int id, Turnopuntoventacaja turnopuntoventacaja, Transaccion transaccion, String idTipoPago, Double montoRecibido, Double montoTotal, Double montoDevuelto, Date fechaRegistro, String nroOperacion) {
+    public Movimiento(int id, Turnopuntoventacaja turnopuntoventacaja, Transaccion transaccion, String pago, Double montorecibido, Double montototal, Double montodevuelto, Date fecharegistro, String nrooperacion) {
        this.id = id;
        this.turnopuntoventacaja = turnopuntoventacaja;
        this.transaccion = transaccion;
-       this.Pago = idTipoPago;
-       this.montoRecibido = montoRecibido;
-       this.montoTotal = montoTotal;
-       this.montoDevuelto = montoDevuelto;
-       this.fechaRegistro = fechaRegistro;
-       this.nroOperacion = nroOperacion;
+       this.pago = pago;
+       this.montorecibido = montorecibido;
+       this.montototal = montototal;
+       this.montodevuelto = montodevuelto;
+       this.fecharegistro = fecharegistro;
+       this.nrooperacion = nrooperacion;
     }
    
     public int getId() {
@@ -63,46 +63,46 @@ public class Movimiento  implements java.io.Serializable {
         this.transaccion = transaccion;
     }
     public String getPago() {
-        return this.Pago;
+        return this.pago;
     }
     
-    public void setPago(String Pago) {
-        this.Pago = Pago;
+    public void setPago(String pago) {
+        this.pago = pago;
     }
-    public Double getMontoRecibido() {
-        return this.montoRecibido;
-    }
-    
-    public void setMontoRecibido(Double montoRecibido) {
-        this.montoRecibido = montoRecibido;
-    }
-    public Double getMontoTotal() {
-        return this.montoTotal;
+    public Double getMontorecibido() {
+        return this.montorecibido;
     }
     
-    public void setMontoTotal(Double montoTotal) {
-        this.montoTotal = montoTotal;
+    public void setMontorecibido(Double montorecibido) {
+        this.montorecibido = montorecibido;
     }
-    public Double getMontoDevuelto() {
-        return this.montoDevuelto;
-    }
-    
-    public void setMontoDevuelto(Double montoDevuelto) {
-        this.montoDevuelto = montoDevuelto;
-    }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Double getMontototal() {
+        return this.montototal;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setMontototal(Double montototal) {
+        this.montototal = montototal;
     }
-    public String getNroOperacion() {
-        return this.nroOperacion;
+    public Double getMontodevuelto() {
+        return this.montodevuelto;
     }
     
-    public void setNroOperacion(String nroOperacion) {
-        this.nroOperacion = nroOperacion;
+    public void setMontodevuelto(Double montodevuelto) {
+        this.montodevuelto = montodevuelto;
+    }
+    public Date getFecharegistro() {
+        return this.fecharegistro;
+    }
+    
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
+    }
+    public String getNrooperacion() {
+        return this.nrooperacion;
+    }
+    
+    public void setNrooperacion(String nrooperacion) {
+        this.nrooperacion = nrooperacion;
     }
 
 

@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -18,11 +18,11 @@ public class Estacionservicio  implements java.io.Serializable {
      private String direccion;
      private Long latitud;
      private Long longitud;
-     private String razonSocial;
+     private String razonsocial;
      private String ruc;
      private String telefono;
-     private Date fechaApertura;
-     private Date fechaRegistro;
+     private Date fechaapertura;
+     private Date fecharegistro;
      private Set<Turno> turnos = new HashSet<Turno>(0);
      private Set<Trabajador> trabajadors = new HashSet<Trabajador>(0);
      private Set<Puntoventa> puntoventas = new HashSet<Puntoventa>(0);
@@ -37,18 +37,18 @@ public class Estacionservicio  implements java.io.Serializable {
         this.id = id;
         this.distrito = distrito;
     }
-    public Estacionservicio(int id, Distrito distrito, String nombre, String direccion, Long latitud, Long longitud, String razonSocial, String ruc, String telefono, Date fechaApertura, Date fechaRegistro, Set<Turno> turnos, Set<Trabajador> trabajadors, Set<Puntoventa> puntoventas, Set<Surtidor> surtidors, Set<Tanque> tanques) {
+    public Estacionservicio(int id, Distrito distrito, String nombre, String direccion, Long latitud, Long longitud, String razonsocial, String ruc, String telefono, Date fechaapertura, Date fecharegistro, Set<Turno> turnos, Set<Trabajador> trabajadors, Set<Puntoventa> puntoventas, Set<Surtidor> surtidors, Set<Tanque> tanques) {
        this.id = id;
        this.distrito = distrito;
        this.nombre = nombre;
        this.direccion = direccion;
        this.latitud = latitud;
        this.longitud = longitud;
-       this.razonSocial = razonSocial;
+       this.razonsocial = razonsocial;
        this.ruc = ruc;
        this.telefono = telefono;
-       this.fechaApertura = fechaApertura;
-       this.fechaRegistro = fechaRegistro;
+       this.fechaapertura = fechaapertura;
+       this.fecharegistro = fecharegistro;
        this.turnos = turnos;
        this.trabajadors = trabajadors;
        this.puntoventas = puntoventas;
@@ -98,12 +98,12 @@ public class Estacionservicio  implements java.io.Serializable {
     public void setLongitud(Long longitud) {
         this.longitud = longitud;
     }
-    public String getRazonSocial() {
-        return this.razonSocial;
+    public String getRazonsocial() {
+        return this.razonsocial;
     }
     
-    public void setRazonSocial(String razonSocial) {
-        this.razonSocial = razonSocial;
+    public void setRazonsocial(String razonsocial) {
+        this.razonsocial = razonsocial;
     }
     public String getRuc() {
         return this.ruc;
@@ -119,19 +119,19 @@ public class Estacionservicio  implements java.io.Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    public Date getFechaApertura() {
-        return this.fechaApertura;
+    public Date getFechaapertura() {
+        return this.fechaapertura;
     }
     
-    public void setFechaApertura(Date fechaApertura) {
-        this.fechaApertura = fechaApertura;
+    public void setFechaapertura(Date fechaapertura) {
+        this.fechaapertura = fechaapertura;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Turno> getTurnos() {
         return this.turnos;

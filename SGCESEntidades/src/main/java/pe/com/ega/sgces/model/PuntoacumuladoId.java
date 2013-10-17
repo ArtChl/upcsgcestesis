@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,30 +9,30 @@ package pe.com.ega.sgces.model;
 public class PuntoacumuladoId  implements java.io.Serializable {
 
 
-     private int idTransaccion;
-     private int idTarjeta;
+     private int idtransaccion;
+     private int idtarjeta;
 
     public PuntoacumuladoId() {
     }
 
-    public PuntoacumuladoId(int idTransaccion, int idTarjeta) {
-       this.idTransaccion = idTransaccion;
-       this.idTarjeta = idTarjeta;
+    public PuntoacumuladoId(int idtransaccion, int idtarjeta) {
+       this.idtransaccion = idtransaccion;
+       this.idtarjeta = idtarjeta;
     }
    
-    public int getIdTransaccion() {
-        return this.idTransaccion;
+    public int getIdtransaccion() {
+        return this.idtransaccion;
     }
     
-    public void setIdTransaccion(int idTransaccion) {
-        this.idTransaccion = idTransaccion;
+    public void setIdtransaccion(int idtransaccion) {
+        this.idtransaccion = idtransaccion;
     }
-    public int getIdTarjeta() {
-        return this.idTarjeta;
+    public int getIdtarjeta() {
+        return this.idtarjeta;
     }
     
-    public void setIdTarjeta(int idTarjeta) {
-        this.idTarjeta = idTarjeta;
+    public void setIdtarjeta(int idtarjeta) {
+        this.idtarjeta = idtarjeta;
     }
 
 
@@ -42,15 +42,15 @@ public class PuntoacumuladoId  implements java.io.Serializable {
 		 if ( !(other instanceof PuntoacumuladoId) ) return false;
 		 PuntoacumuladoId castOther = ( PuntoacumuladoId ) other; 
          
-		 return (this.getIdTransaccion()==castOther.getIdTransaccion())
- && (this.getIdTarjeta()==castOther.getIdTarjeta());
+		 return (this.getIdtransaccion()==castOther.getIdtransaccion())
+ && (this.getIdtarjeta()==castOther.getIdtarjeta());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getIdTransaccion();
-         result = 37 * result + this.getIdTarjeta();
+         result = 37 * result + this.getIdtransaccion();
+         result = 37 * result + this.getIdtarjeta();
          return result;
    }   
 

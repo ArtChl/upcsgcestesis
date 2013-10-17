@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -16,7 +16,7 @@ public class Usuario  implements java.io.Serializable {
      private Trabajador trabajador;
      private String login;
      private String clave;
-     private Date fechaRegistro;
+     private Date fecharegistro;
      private Set<Usuarioperfil> usuarioperfils = new HashSet<Usuarioperfil>(0);
 
     public Usuario() {
@@ -27,12 +27,12 @@ public class Usuario  implements java.io.Serializable {
         this.id = id;
         this.trabajador = trabajador;
     }
-    public Usuario(int id, Trabajador trabajador, String login, String clave, Date fechaRegistro, Set<Usuarioperfil> usuarioperfils) {
+    public Usuario(int id, Trabajador trabajador, String login, String clave, Date fecharegistro, Set<Usuarioperfil> usuarioperfils) {
        this.id = id;
        this.trabajador = trabajador;
        this.login = login;
        this.clave = clave;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
        this.usuarioperfils = usuarioperfils;
     }
    
@@ -64,12 +64,12 @@ public class Usuario  implements java.io.Serializable {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Usuarioperfil> getUsuarioperfils() {
         return this.usuarioperfils;

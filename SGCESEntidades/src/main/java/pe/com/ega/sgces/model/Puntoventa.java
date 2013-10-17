@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -16,8 +16,8 @@ public class Puntoventa  implements java.io.Serializable {
      private Estacionservicio estacionservicio;
      private String nombre;
      private String descripcion;
-     private Integer idTipoPuntoVenta;
-     private Date fechaRegistro;
+     private Integer idtipopuntoventa;
+     private Date fecharegistro;
      private Set<Turnopuntoventacaja> turnopuntoventacajas = new HashSet<Turnopuntoventacaja>(0);
      private Set<Impresorapuntoventa> impresorapuntoventas = new HashSet<Impresorapuntoventa>(0);
      private Set<Centroemisor> centroemisors = new HashSet<Centroemisor>(0);
@@ -30,13 +30,13 @@ public class Puntoventa  implements java.io.Serializable {
         this.id = id;
         this.estacionservicio = estacionservicio;
     }
-    public Puntoventa(int id, Estacionservicio estacionservicio, String nombre, String descripcion, Integer idTipoPuntoVenta, Date fechaRegistro, Set<Turnopuntoventacaja> turnopuntoventacajas, Set<Impresorapuntoventa> impresorapuntoventas, Set<Centroemisor> centroemisors) {
+    public Puntoventa(int id, Estacionservicio estacionservicio, String nombre, String descripcion, Integer idtipopuntoventa, Date fecharegistro, Set<Turnopuntoventacaja> turnopuntoventacajas, Set<Impresorapuntoventa> impresorapuntoventas, Set<Centroemisor> centroemisors) {
        this.id = id;
        this.estacionservicio = estacionservicio;
        this.nombre = nombre;
        this.descripcion = descripcion;
-       this.idTipoPuntoVenta = idTipoPuntoVenta;
-       this.fechaRegistro = fechaRegistro;
+       this.idtipopuntoventa = idtipopuntoventa;
+       this.fecharegistro = fecharegistro;
        this.turnopuntoventacajas = turnopuntoventacajas;
        this.impresorapuntoventas = impresorapuntoventas;
        this.centroemisors = centroemisors;
@@ -70,19 +70,19 @@ public class Puntoventa  implements java.io.Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public Integer getIdTipoPuntoVenta() {
-        return this.idTipoPuntoVenta;
+    public Integer getIdtipopuntoventa() {
+        return this.idtipopuntoventa;
     }
     
-    public void setIdTipoPuntoVenta(Integer idTipoPuntoVenta) {
-        this.idTipoPuntoVenta = idTipoPuntoVenta;
+    public void setIdtipopuntoventa(Integer idtipopuntoventa) {
+        this.idtipopuntoventa = idtipopuntoventa;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Turnopuntoventacaja> getTurnopuntoventacajas() {
         return this.turnopuntoventacajas;

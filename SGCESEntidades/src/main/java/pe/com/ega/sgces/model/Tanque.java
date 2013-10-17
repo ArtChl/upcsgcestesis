@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -15,11 +15,11 @@ public class Tanque  implements java.io.Serializable {
      private int id;
      private Producto producto;
      private Estacionservicio estacionservicio;
-     private Date fechaRegistro;
+     private Date fecharegistro;
      private Integer capacidad;
      private Integer numero;
-     private Integer alturaVarillaje;
-     private Integer alturaSensor;
+     private Integer alturavarillaje;
+     private Integer alturasensor;
      private Set<Varillaje> varillajes = new HashSet<Varillaje>(0);
 
     public Tanque() {
@@ -31,15 +31,15 @@ public class Tanque  implements java.io.Serializable {
         this.producto = producto;
         this.estacionservicio = estacionservicio;
     }
-    public Tanque(int id, Producto producto, Estacionservicio estacionservicio, Date fechaRegistro, Integer capacidad, Integer numero, Integer alturaVarillaje, Integer alturaSensor, Set<Varillaje> varillajes) {
+    public Tanque(int id, Producto producto, Estacionservicio estacionservicio, Date fecharegistro, Integer capacidad, Integer numero, Integer alturavarillaje, Integer alturasensor, Set<Varillaje> varillajes) {
        this.id = id;
        this.producto = producto;
        this.estacionservicio = estacionservicio;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
        this.capacidad = capacidad;
        this.numero = numero;
-       this.alturaVarillaje = alturaVarillaje;
-       this.alturaSensor = alturaSensor;
+       this.alturavarillaje = alturavarillaje;
+       this.alturasensor = alturasensor;
        this.varillajes = varillajes;
     }
    
@@ -64,12 +64,12 @@ public class Tanque  implements java.io.Serializable {
     public void setEstacionservicio(Estacionservicio estacionservicio) {
         this.estacionservicio = estacionservicio;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Integer getCapacidad() {
         return this.capacidad;
@@ -85,19 +85,19 @@ public class Tanque  implements java.io.Serializable {
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
-    public Integer getAlturaVarillaje() {
-        return this.alturaVarillaje;
+    public Integer getAlturavarillaje() {
+        return this.alturavarillaje;
     }
     
-    public void setAlturaVarillaje(Integer alturaVarillaje) {
-        this.alturaVarillaje = alturaVarillaje;
+    public void setAlturavarillaje(Integer alturavarillaje) {
+        this.alturavarillaje = alturavarillaje;
     }
-    public Integer getAlturaSensor() {
-        return this.alturaSensor;
+    public Integer getAlturasensor() {
+        return this.alturasensor;
     }
     
-    public void setAlturaSensor(Integer alturaSensor) {
-        this.alturaSensor = alturaSensor;
+    public void setAlturasensor(Integer alturasensor) {
+        this.alturasensor = alturasensor;
     }
     public Set<Varillaje> getVarillajes() {
         return this.varillajes;

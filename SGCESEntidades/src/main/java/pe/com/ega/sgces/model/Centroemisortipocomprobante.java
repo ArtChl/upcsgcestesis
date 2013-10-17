@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -12,7 +12,7 @@ public class Centroemisortipocomprobante  implements java.io.Serializable {
 
      private CentroemisortipocomprobanteId id;
      private Centroemisor centroemisor;
-     private Date fechaRegistro;
+     private Date fecharegistro;
 
     public Centroemisortipocomprobante() {
     }
@@ -22,10 +22,10 @@ public class Centroemisortipocomprobante  implements java.io.Serializable {
         this.id = id;
         this.centroemisor = centroemisor;
     }
-    public Centroemisortipocomprobante(CentroemisortipocomprobanteId id, Centroemisor centroemisor, Date fechaRegistro) {
+    public Centroemisortipocomprobante(CentroemisortipocomprobanteId id, Centroemisor centroemisor, Date fecharegistro) {
        this.id = id;
        this.centroemisor = centroemisor;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
     }
    
     public CentroemisortipocomprobanteId getId() {
@@ -42,12 +42,12 @@ public class Centroemisortipocomprobante  implements java.io.Serializable {
     public void setCentroemisor(Centroemisor centroemisor) {
         this.centroemisor = centroemisor;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
 
 

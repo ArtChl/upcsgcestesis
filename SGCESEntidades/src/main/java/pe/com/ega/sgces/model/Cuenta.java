@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -14,14 +14,14 @@ public class Cuenta  implements java.io.Serializable {
 
      private int id;
      private Cliente cliente;
-     private Integer tieneLimiteCredito;
-     private Integer tieneLimiteDiario;
-     private Integer periodoFacturacion;
-     private Integer idTipoPeriodoFacturacion;
-     private Integer nroDiasVencimiento;
-     private Date fechaRegistro;
-     private Integer limiteCredito;
-     private Integer limiteDiario;
+     private Integer tienelimitecredito;
+     private Integer tienelimitediario;
+     private Integer periodofacturacion;
+     private Integer idtipoperiodofacturacion;
+     private Integer nrodiasvencimiento;
+     private Date fecharegistro;
+     private Integer limitecredito;
+     private Integer limitediario;
      private Set<Subcuenta> subcuentas = new HashSet<Subcuenta>(0);
 
     public Cuenta() {
@@ -32,17 +32,17 @@ public class Cuenta  implements java.io.Serializable {
         this.id = id;
         this.cliente = cliente;
     }
-    public Cuenta(int id, Cliente cliente, Integer tieneLimiteCredito, Integer tieneLimiteDiario, Integer periodoFacturacion, Integer idTipoPeriodoFacturacion, Integer nroDiasVencimiento, Date fechaRegistro, Integer limiteCredito, Integer limiteDiario, Set<Subcuenta> subcuentas) {
+    public Cuenta(int id, Cliente cliente, Integer tienelimitecredito, Integer tienelimitediario, Integer periodofacturacion, Integer idtipoperiodofacturacion, Integer nrodiasvencimiento, Date fecharegistro, Integer limitecredito, Integer limitediario, Set<Subcuenta> subcuentas) {
        this.id = id;
        this.cliente = cliente;
-       this.tieneLimiteCredito = tieneLimiteCredito;
-       this.tieneLimiteDiario = tieneLimiteDiario;
-       this.periodoFacturacion = periodoFacturacion;
-       this.idTipoPeriodoFacturacion = idTipoPeriodoFacturacion;
-       this.nroDiasVencimiento = nroDiasVencimiento;
-       this.fechaRegistro = fechaRegistro;
-       this.limiteCredito = limiteCredito;
-       this.limiteDiario = limiteDiario;
+       this.tienelimitecredito = tienelimitecredito;
+       this.tienelimitediario = tienelimitediario;
+       this.periodofacturacion = periodofacturacion;
+       this.idtipoperiodofacturacion = idtipoperiodofacturacion;
+       this.nrodiasvencimiento = nrodiasvencimiento;
+       this.fecharegistro = fecharegistro;
+       this.limitecredito = limitecredito;
+       this.limitediario = limitediario;
        this.subcuentas = subcuentas;
     }
    
@@ -60,61 +60,61 @@ public class Cuenta  implements java.io.Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    public Integer getTieneLimiteCredito() {
-        return this.tieneLimiteCredito;
+    public Integer getTienelimitecredito() {
+        return this.tienelimitecredito;
     }
     
-    public void setTieneLimiteCredito(Integer tieneLimiteCredito) {
-        this.tieneLimiteCredito = tieneLimiteCredito;
+    public void setTienelimitecredito(Integer tienelimitecredito) {
+        this.tienelimitecredito = tienelimitecredito;
     }
-    public Integer getTieneLimiteDiario() {
-        return this.tieneLimiteDiario;
-    }
-    
-    public void setTieneLimiteDiario(Integer tieneLimiteDiario) {
-        this.tieneLimiteDiario = tieneLimiteDiario;
-    }
-    public Integer getPeriodoFacturacion() {
-        return this.periodoFacturacion;
+    public Integer getTienelimitediario() {
+        return this.tienelimitediario;
     }
     
-    public void setPeriodoFacturacion(Integer periodoFacturacion) {
-        this.periodoFacturacion = periodoFacturacion;
+    public void setTienelimitediario(Integer tienelimitediario) {
+        this.tienelimitediario = tienelimitediario;
     }
-    public Integer getIdTipoPeriodoFacturacion() {
-        return this.idTipoPeriodoFacturacion;
-    }
-    
-    public void setIdTipoPeriodoFacturacion(Integer idTipoPeriodoFacturacion) {
-        this.idTipoPeriodoFacturacion = idTipoPeriodoFacturacion;
-    }
-    public Integer getNroDiasVencimiento() {
-        return this.nroDiasVencimiento;
+    public Integer getPeriodofacturacion() {
+        return this.periodofacturacion;
     }
     
-    public void setNroDiasVencimiento(Integer nroDiasVencimiento) {
-        this.nroDiasVencimiento = nroDiasVencimiento;
+    public void setPeriodofacturacion(Integer periodofacturacion) {
+        this.periodofacturacion = periodofacturacion;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
-    }
-    
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-    public Integer getLimiteCredito() {
-        return this.limiteCredito;
+    public Integer getIdtipoperiodofacturacion() {
+        return this.idtipoperiodofacturacion;
     }
     
-    public void setLimiteCredito(Integer limiteCredito) {
-        this.limiteCredito = limiteCredito;
+    public void setIdtipoperiodofacturacion(Integer idtipoperiodofacturacion) {
+        this.idtipoperiodofacturacion = idtipoperiodofacturacion;
     }
-    public Integer getLimiteDiario() {
-        return this.limiteDiario;
+    public Integer getNrodiasvencimiento() {
+        return this.nrodiasvencimiento;
     }
     
-    public void setLimiteDiario(Integer limiteDiario) {
-        this.limiteDiario = limiteDiario;
+    public void setNrodiasvencimiento(Integer nrodiasvencimiento) {
+        this.nrodiasvencimiento = nrodiasvencimiento;
+    }
+    public Date getFecharegistro() {
+        return this.fecharegistro;
+    }
+    
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
+    }
+    public Integer getLimitecredito() {
+        return this.limitecredito;
+    }
+    
+    public void setLimitecredito(Integer limitecredito) {
+        this.limitecredito = limitecredito;
+    }
+    public Integer getLimitediario() {
+        return this.limitediario;
+    }
+    
+    public void setLimitediario(Integer limitediario) {
+        this.limitediario = limitediario;
     }
     public Set<Subcuenta> getSubcuentas() {
         return this.subcuentas;

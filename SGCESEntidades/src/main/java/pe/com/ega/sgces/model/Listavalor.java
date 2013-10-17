@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -16,7 +16,7 @@ public class Listavalor  implements java.io.Serializable {
      private Listavalor listavalor;
      private Lista lista;
      private String nombre;
-     private Date fechaRegistro;
+     private Date fecharegistro;
      private Set<Listavalor> listavalors = new HashSet<Listavalor>(0);
 
     public Listavalor() {
@@ -27,12 +27,12 @@ public class Listavalor  implements java.io.Serializable {
         this.id = id;
         this.lista = lista;
     }
-    public Listavalor(int id, Listavalor listavalor, Lista lista, String nombre, Date fechaRegistro, Set<Listavalor> listavalors) {
+    public Listavalor(int id, Listavalor listavalor, Lista lista, String nombre, Date fecharegistro, Set<Listavalor> listavalors) {
        this.id = id;
        this.listavalor = listavalor;
        this.lista = lista;
        this.nombre = nombre;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
        this.listavalors = listavalors;
     }
    
@@ -64,12 +64,12 @@ public class Listavalor  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Listavalor> getListavalors() {
         return this.listavalors;

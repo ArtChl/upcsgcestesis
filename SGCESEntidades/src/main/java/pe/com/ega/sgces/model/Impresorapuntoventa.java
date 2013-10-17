@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,7 +13,7 @@ public class Impresorapuntoventa  implements java.io.Serializable {
      private ImpresorapuntoventaId id;
      private Impresora impresora;
      private Puntoventa puntoventa;
-     private Date fechaRegistro;
+     private Date fecharegistro;
 
     public Impresorapuntoventa() {
     }
@@ -24,11 +24,11 @@ public class Impresorapuntoventa  implements java.io.Serializable {
         this.impresora = impresora;
         this.puntoventa = puntoventa;
     }
-    public Impresorapuntoventa(ImpresorapuntoventaId id, Impresora impresora, Puntoventa puntoventa, Date fechaRegistro) {
+    public Impresorapuntoventa(ImpresorapuntoventaId id, Impresora impresora, Puntoventa puntoventa, Date fecharegistro) {
        this.id = id;
        this.impresora = impresora;
        this.puntoventa = puntoventa;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
     }
    
     public ImpresorapuntoventaId getId() {
@@ -52,12 +52,12 @@ public class Impresorapuntoventa  implements java.io.Serializable {
     public void setPuntoventa(Puntoventa puntoventa) {
         this.puntoventa = puntoventa;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
 
 

@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -12,9 +12,9 @@ public class Deposito  implements java.io.Serializable {
 
      private int id;
      private Turnopuntoventacaja turnopuntoventacaja;
-     private Long montoTotal;
-     private Date fechaRegistro;
-     private Integer idTipoPago;
+     private Long montototal;
+     private Date fecharegistro;
+     private Integer idtipopago;
 
     public Deposito() {
     }
@@ -24,12 +24,12 @@ public class Deposito  implements java.io.Serializable {
         this.id = id;
         this.turnopuntoventacaja = turnopuntoventacaja;
     }
-    public Deposito(int id, Turnopuntoventacaja turnopuntoventacaja, Long montoTotal, Date fechaRegistro, Integer idTipoPago) {
+    public Deposito(int id, Turnopuntoventacaja turnopuntoventacaja, Long montototal, Date fecharegistro, Integer idtipopago) {
        this.id = id;
        this.turnopuntoventacaja = turnopuntoventacaja;
-       this.montoTotal = montoTotal;
-       this.fechaRegistro = fechaRegistro;
-       this.idTipoPago = idTipoPago;
+       this.montototal = montototal;
+       this.fecharegistro = fecharegistro;
+       this.idtipopago = idtipopago;
     }
    
     public int getId() {
@@ -46,26 +46,26 @@ public class Deposito  implements java.io.Serializable {
     public void setTurnopuntoventacaja(Turnopuntoventacaja turnopuntoventacaja) {
         this.turnopuntoventacaja = turnopuntoventacaja;
     }
-    public Long getMontoTotal() {
-        return this.montoTotal;
+    public Long getMontototal() {
+        return this.montototal;
     }
     
-    public void setMontoTotal(Long montoTotal) {
-        this.montoTotal = montoTotal;
+    public void setMontototal(Long montototal) {
+        this.montototal = montototal;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
-    }
-    
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-    public Integer getIdTipoPago() {
-        return this.idTipoPago;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setIdTipoPago(Integer idTipoPago) {
-        this.idTipoPago = idTipoPago;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
+    }
+    public Integer getIdtipopago() {
+        return this.idtipopago;
+    }
+    
+    public void setIdtipopago(Integer idtipopago) {
+        this.idtipopago = idtipopago;
     }
 
 

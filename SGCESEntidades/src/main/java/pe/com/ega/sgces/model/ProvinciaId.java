@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -10,14 +10,14 @@ public class ProvinciaId  implements java.io.Serializable {
 
 
      private String id;
-     private String idDepartamento;
+     private String iddepartamento;
 
     public ProvinciaId() {
     }
 
-    public ProvinciaId(String id, String idDepartamento) {
+    public ProvinciaId(String id, String iddepartamento) {
        this.id = id;
-       this.idDepartamento = idDepartamento;
+       this.iddepartamento = iddepartamento;
     }
    
     public String getId() {
@@ -27,12 +27,12 @@ public class ProvinciaId  implements java.io.Serializable {
     public void setId(String id) {
         this.id = id;
     }
-    public String getIdDepartamento() {
-        return this.idDepartamento;
+    public String getIddepartamento() {
+        return this.iddepartamento;
     }
     
-    public void setIdDepartamento(String idDepartamento) {
-        this.idDepartamento = idDepartamento;
+    public void setIddepartamento(String iddepartamento) {
+        this.iddepartamento = iddepartamento;
     }
 
 
@@ -43,14 +43,14 @@ public class ProvinciaId  implements java.io.Serializable {
 		 ProvinciaId castOther = ( ProvinciaId ) other; 
          
 		 return ( (this.getId()==castOther.getId()) || ( this.getId()!=null && castOther.getId()!=null && this.getId().equals(castOther.getId()) ) )
- && ( (this.getIdDepartamento()==castOther.getIdDepartamento()) || ( this.getIdDepartamento()!=null && castOther.getIdDepartamento()!=null && this.getIdDepartamento().equals(castOther.getIdDepartamento()) ) );
+ && ( (this.getIddepartamento()==castOther.getIddepartamento()) || ( this.getIddepartamento()!=null && castOther.getIddepartamento()!=null && this.getIddepartamento().equals(castOther.getIddepartamento()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + ( getId() == null ? 0 : this.getId().hashCode() );
-         result = 37 * result + ( getIdDepartamento() == null ? 0 : this.getIdDepartamento().hashCode() );
+         result = 37 * result + ( getIddepartamento() == null ? 0 : this.getIddepartamento().hashCode() );
          return result;
    }   
 

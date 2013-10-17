@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,10 +13,10 @@ public class Cliente  implements java.io.Serializable {
 
 
      private int id;
-     private String numeroDocumento;
-     private String razonSocial;
-     private Integer idTipoDocumento;
-     private Date fechaRegistro;
+     private String numerodocumento;
+     private String razonsocial;
+     private Integer idtipodocumento;
+     private Date fecharegistro;
      private Set<Transaccion> transaccions = new HashSet<Transaccion>(0);
      private Set<Tarjeta> tarjetas = new HashSet<Tarjeta>(0);
      private Set<Cuenta> cuentas = new HashSet<Cuenta>(0);
@@ -28,12 +28,12 @@ public class Cliente  implements java.io.Serializable {
     public Cliente(int id) {
         this.id = id;
     }
-    public Cliente(int id, String numeroDocumento, String razonSocial, Integer idTipoDocumento, Date fechaRegistro, Set<Transaccion> transaccions, Set<Tarjeta> tarjetas, Set<Cuenta> cuentas) {
+    public Cliente(int id, String numerodocumento, String razonsocial, Integer idtipodocumento, Date fecharegistro, Set<Transaccion> transaccions, Set<Tarjeta> tarjetas, Set<Cuenta> cuentas) {
        this.id = id;
-       this.numeroDocumento = numeroDocumento;
-       this.razonSocial = razonSocial;
-       this.idTipoDocumento = idTipoDocumento;
-       this.fechaRegistro = fechaRegistro;
+       this.numerodocumento = numerodocumento;
+       this.razonsocial = razonsocial;
+       this.idtipodocumento = idtipodocumento;
+       this.fecharegistro = fecharegistro;
        this.transaccions = transaccions;
        this.tarjetas = tarjetas;
        this.cuentas = cuentas;
@@ -46,33 +46,33 @@ public class Cliente  implements java.io.Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    public String getNumeroDocumento() {
-        return this.numeroDocumento;
+    public String getNumerodocumento() {
+        return this.numerodocumento;
     }
     
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public void setNumerodocumento(String numerodocumento) {
+        this.numerodocumento = numerodocumento;
     }
-    public String getRazonSocial() {
-        return this.razonSocial;
-    }
-    
-    public void setRazonSocial(String razonSocial) {
-        this.razonSocial = razonSocial;
-    }
-    public Integer getIdTipoDocumento() {
-        return this.idTipoDocumento;
+    public String getRazonsocial() {
+        return this.razonsocial;
     }
     
-    public void setIdTipoDocumento(Integer idTipoDocumento) {
-        this.idTipoDocumento = idTipoDocumento;
+    public void setRazonsocial(String razonsocial) {
+        this.razonsocial = razonsocial;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Integer getIdtipodocumento() {
+        return this.idtipodocumento;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setIdtipodocumento(Integer idtipodocumento) {
+        this.idtipodocumento = idtipodocumento;
+    }
+    public Date getFecharegistro() {
+        return this.fecharegistro;
+    }
+    
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Transaccion> getTransaccions() {
         return this.transaccions;

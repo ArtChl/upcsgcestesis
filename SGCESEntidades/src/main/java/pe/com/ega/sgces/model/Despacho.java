@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -15,11 +15,14 @@ public class Despacho  implements java.io.Serializable {
      private int id;
      private Producto producto;
      private Caraproducto caraproducto;
-     private Integer idEstado;
-     private Double montoSoles;
-     private Double nroGalones;
-     private Double precioUnitario;
-     private Date fechaRegistro;
+     private Integer idestado;
+     private Double montosoles;
+     private Double nrogalones;
+     private Double preciounitario;
+     private Date fecharegistro;
+     private String turno;
+     private String hora;
+     private String idcem;
      private Set<Transaccion> transaccions = new HashSet<Transaccion>(0);
 
     public Despacho() {
@@ -31,15 +34,18 @@ public class Despacho  implements java.io.Serializable {
         this.producto = producto;
         this.caraproducto = caraproducto;
     }
-    public Despacho(int id, Producto producto, Caraproducto caraproducto, Integer idEstado, Double montoSoles, Double nroGalones, Double precioUnitario, Date fechaRegistro, Set<Transaccion> transaccions) {
+    public Despacho(int id, Producto producto, Caraproducto caraproducto, Integer idestado, Double montosoles, Double nrogalones, Double preciounitario, Date fecharegistro, String turno, String hora, String idcem, Set<Transaccion> transaccions) {
        this.id = id;
        this.producto = producto;
        this.caraproducto = caraproducto;
-       this.idEstado = idEstado;
-       this.montoSoles = montoSoles;
-       this.nroGalones = nroGalones;
-       this.precioUnitario = precioUnitario;
-       this.fechaRegistro = fechaRegistro;
+       this.idestado = idestado;
+       this.montosoles = montosoles;
+       this.nrogalones = nrogalones;
+       this.preciounitario = preciounitario;
+       this.fecharegistro = fecharegistro;
+       this.turno = turno;
+       this.hora = hora;
+       this.idcem = idcem;
        this.transaccions = transaccions;
     }
    
@@ -64,49 +70,68 @@ public class Despacho  implements java.io.Serializable {
     public void setCaraproducto(Caraproducto caraproducto) {
         this.caraproducto = caraproducto;
     }
-    public Integer getIdEstado() {
-        return this.idEstado;
+    public Integer getIdestado() {
+        return this.idestado;
     }
     
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
+    public void setIdestado(Integer idestado) {
+        this.idestado = idestado;
     }
-    public Double getMontoSoles() {
-        return this.montoSoles;
-    }
-    
-    public void setMontoSoles(Double montoSoles) {
-        this.montoSoles = montoSoles;
-    }
-    public Double getNroGalones() {
-        return this.nroGalones;
+    public Double getMontosoles() {
+        return this.montosoles;
     }
     
-    public void setNroGalones(Double nroGalones) {
-        this.nroGalones = nroGalones;
+    public void setMontosoles(Double montosoles) {
+        this.montosoles = montosoles;
     }
-    public Double getPrecioUnitario() {
-        return this.precioUnitario;
-    }
-    
-    public void setPrecioUnitario(Double precioUnitario) {
-        this.precioUnitario = precioUnitario;
+    public Double getNrogalones() {
+        return this.nrogalones;
     }
     
+    public void setNrogalones(Double nrogalones) {
+        this.nrogalones = nrogalones;
+    }
+    public Double getPreciounitario() {
+        return this.preciounitario;
+    }
+    
+    public void setPreciounitario(Double preciounitario) {
+        this.preciounitario = preciounitario;
+    }
+    public Date getFecharegistro() {
+        return this.fecharegistro;
+    }
+    
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
+    }
+    public String getTurno() {
+        return this.turno;
+    }
+    
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+    public String getHora() {
+        return this.hora;
+    }
+    
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+    public String getIdcem() {
+        return this.idcem;
+    }
+    
+    public void setIdcem(String idcem) {
+        this.idcem = idcem;
+    }
     public Set<Transaccion> getTransaccions() {
         return this.transaccions;
     }
     
     public void setTransaccions(Set<Transaccion> transaccions) {
         this.transaccions = transaccions;
-    }
-
-    public Date getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
     }
 
 

@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -16,7 +16,7 @@ public class Turnopuntoventacaja  implements java.io.Serializable {
      private Caja caja;
      private Turno turno;
      private Puntoventa puntoventa;
-     private Date fechaRegistro;
+     private Date fecharegistro;
      private Set<Deposito> depositos = new HashSet<Deposito>(0);
      private Set<Movimiento> movimientos = new HashSet<Movimiento>(0);
 
@@ -30,12 +30,12 @@ public class Turnopuntoventacaja  implements java.io.Serializable {
         this.turno = turno;
         this.puntoventa = puntoventa;
     }
-    public Turnopuntoventacaja(TurnopuntoventacajaId id, Caja caja, Turno turno, Puntoventa puntoventa, Date fechaRegistro, Set<Deposito> depositos, Set<Movimiento> movimientos) {
+    public Turnopuntoventacaja(TurnopuntoventacajaId id, Caja caja, Turno turno, Puntoventa puntoventa, Date fecharegistro, Set<Deposito> depositos, Set<Movimiento> movimientos) {
        this.id = id;
        this.caja = caja;
        this.turno = turno;
        this.puntoventa = puntoventa;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
        this.depositos = depositos;
        this.movimientos = movimientos;
     }
@@ -68,12 +68,12 @@ public class Turnopuntoventacaja  implements java.io.Serializable {
     public void setPuntoventa(Puntoventa puntoventa) {
         this.puntoventa = puntoventa;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Deposito> getDepositos() {
         return this.depositos;

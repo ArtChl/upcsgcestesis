@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -15,15 +15,15 @@ public class Trabajador  implements java.io.Serializable {
      private int id;
      private Estacionservicio estacionservicio;
      private String nombre;
-     private String apellidoPaterno;
-     private String apellidoMaterno;
+     private String apellidopaterno;
+     private String apellidomaterno;
      private String dni;
      private String correo;
      private String telefono;
-     private Integer idCargo;
-     private Integer idEstadoCivil;
-     private Date fechaNacimiento;
-     private Date fechaRegistro;
+     private Integer idcargo;
+     private Integer idestadocivil;
+     private Date fechanacimiento;
+     private Date fecharegistro;
      private Set<Usuario> usuarios = new HashSet<Usuario>(0);
      private Set<Caja> cajas = new HashSet<Caja>(0);
 
@@ -35,19 +35,19 @@ public class Trabajador  implements java.io.Serializable {
         this.id = id;
         this.estacionservicio = estacionservicio;
     }
-    public Trabajador(int id, Estacionservicio estacionservicio, String nombre, String apellidoPaterno, String apellidoMaterno, String dni, String correo, String telefono, Integer idCargo, Integer idEstadoCivil, Date fechaNacimiento, Date fechaRegistro, Set<Usuario> usuarios, Set<Caja> cajas) {
+    public Trabajador(int id, Estacionservicio estacionservicio, String nombre, String apellidopaterno, String apellidomaterno, String dni, String correo, String telefono, Integer idcargo, Integer idestadocivil, Date fechanacimiento, Date fecharegistro, Set<Usuario> usuarios, Set<Caja> cajas) {
        this.id = id;
        this.estacionservicio = estacionservicio;
        this.nombre = nombre;
-       this.apellidoPaterno = apellidoPaterno;
-       this.apellidoMaterno = apellidoMaterno;
+       this.apellidopaterno = apellidopaterno;
+       this.apellidomaterno = apellidomaterno;
        this.dni = dni;
        this.correo = correo;
        this.telefono = telefono;
-       this.idCargo = idCargo;
-       this.idEstadoCivil = idEstadoCivil;
-       this.fechaNacimiento = fechaNacimiento;
-       this.fechaRegistro = fechaRegistro;
+       this.idcargo = idcargo;
+       this.idestadocivil = idestadocivil;
+       this.fechanacimiento = fechanacimiento;
+       this.fecharegistro = fecharegistro;
        this.usuarios = usuarios;
        this.cajas = cajas;
     }
@@ -73,19 +73,19 @@ public class Trabajador  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getApellidoPaterno() {
-        return this.apellidoPaterno;
+    public String getApellidopaterno() {
+        return this.apellidopaterno;
     }
     
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+    public void setApellidopaterno(String apellidopaterno) {
+        this.apellidopaterno = apellidopaterno;
     }
-    public String getApellidoMaterno() {
-        return this.apellidoMaterno;
+    public String getApellidomaterno() {
+        return this.apellidomaterno;
     }
     
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    public void setApellidomaterno(String apellidomaterno) {
+        this.apellidomaterno = apellidomaterno;
     }
     public String getDni() {
         return this.dni;
@@ -108,33 +108,33 @@ public class Trabajador  implements java.io.Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    public Integer getIdCargo() {
-        return this.idCargo;
+    public Integer getIdcargo() {
+        return this.idcargo;
     }
     
-    public void setIdCargo(Integer idCargo) {
-        this.idCargo = idCargo;
+    public void setIdcargo(Integer idcargo) {
+        this.idcargo = idcargo;
     }
-    public Integer getIdEstadoCivil() {
-        return this.idEstadoCivil;
-    }
-    
-    public void setIdEstadoCivil(Integer idEstadoCivil) {
-        this.idEstadoCivil = idEstadoCivil;
-    }
-    public Date getFechaNacimiento() {
-        return this.fechaNacimiento;
+    public Integer getIdestadocivil() {
+        return this.idestadocivil;
     }
     
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setIdestadocivil(Integer idestadocivil) {
+        this.idestadocivil = idestadocivil;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFechanacimiento() {
+        return this.fechanacimiento;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFechanacimiento(Date fechanacimiento) {
+        this.fechanacimiento = fechanacimiento;
+    }
+    public Date getFecharegistro() {
+        return this.fecharegistro;
+    }
+    
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Usuario> getUsuarios() {
         return this.usuarios;

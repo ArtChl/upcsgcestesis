@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,8 +13,8 @@ public class Puntoacumulado  implements java.io.Serializable {
      private PuntoacumuladoId id;
      private Tarjeta tarjeta;
      private Transaccion transaccion;
-     private Date fechaRegistro;
-     private Integer numeroPuntos;
+     private Date fecharegistro;
+     private Integer numeropuntos;
 
     public Puntoacumulado() {
     }
@@ -25,12 +25,12 @@ public class Puntoacumulado  implements java.io.Serializable {
         this.tarjeta = tarjeta;
         this.transaccion = transaccion;
     }
-    public Puntoacumulado(PuntoacumuladoId id, Tarjeta tarjeta, Transaccion transaccion, Date fechaRegistro, Integer numeroPuntos) {
+    public Puntoacumulado(PuntoacumuladoId id, Tarjeta tarjeta, Transaccion transaccion, Date fecharegistro, Integer numeropuntos) {
        this.id = id;
        this.tarjeta = tarjeta;
        this.transaccion = transaccion;
-       this.fechaRegistro = fechaRegistro;
-       this.numeroPuntos = numeroPuntos;
+       this.fecharegistro = fecharegistro;
+       this.numeropuntos = numeropuntos;
     }
    
     public PuntoacumuladoId getId() {
@@ -54,19 +54,19 @@ public class Puntoacumulado  implements java.io.Serializable {
     public void setTransaccion(Transaccion transaccion) {
         this.transaccion = transaccion;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
-    public Integer getNumeroPuntos() {
-        return this.numeroPuntos;
+    public Integer getNumeropuntos() {
+        return this.numeropuntos;
     }
     
-    public void setNumeroPuntos(Integer numeroPuntos) {
-        this.numeroPuntos = numeroPuntos;
+    public void setNumeropuntos(Integer numeropuntos) {
+        this.numeropuntos = numeropuntos;
     }
 
 

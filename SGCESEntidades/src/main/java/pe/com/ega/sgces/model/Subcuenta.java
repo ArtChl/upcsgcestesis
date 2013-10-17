@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -15,10 +15,10 @@ public class Subcuenta  implements java.io.Serializable {
      private Producto producto;
      private Tarjeta tarjeta;
      private String descriocion;
-     private Integer idTipoMoneda;
+     private Integer idtipomoneda;
      private Integer saldo;
-     private Integer limiteCredito;
-     private Date fechaRegistro;
+     private Integer limitecredito;
+     private Date fecharegistro;
 
     public Subcuenta() {
     }
@@ -30,16 +30,16 @@ public class Subcuenta  implements java.io.Serializable {
         this.producto = producto;
         this.tarjeta = tarjeta;
     }
-    public Subcuenta(int id, Cuenta cuenta, Producto producto, Tarjeta tarjeta, String descriocion, Integer idTipoMoneda, Integer saldo, Integer limiteCredito, Date fechaRegistro) {
+    public Subcuenta(int id, Cuenta cuenta, Producto producto, Tarjeta tarjeta, String descriocion, Integer idtipomoneda, Integer saldo, Integer limitecredito, Date fecharegistro) {
        this.id = id;
        this.cuenta = cuenta;
        this.producto = producto;
        this.tarjeta = tarjeta;
        this.descriocion = descriocion;
-       this.idTipoMoneda = idTipoMoneda;
+       this.idtipomoneda = idtipomoneda;
        this.saldo = saldo;
-       this.limiteCredito = limiteCredito;
-       this.fechaRegistro = fechaRegistro;
+       this.limitecredito = limitecredito;
+       this.fecharegistro = fecharegistro;
     }
    
     public int getId() {
@@ -77,12 +77,12 @@ public class Subcuenta  implements java.io.Serializable {
     public void setDescriocion(String descriocion) {
         this.descriocion = descriocion;
     }
-    public Integer getIdTipoMoneda() {
-        return this.idTipoMoneda;
+    public Integer getIdtipomoneda() {
+        return this.idtipomoneda;
     }
     
-    public void setIdTipoMoneda(Integer idTipoMoneda) {
-        this.idTipoMoneda = idTipoMoneda;
+    public void setIdtipomoneda(Integer idtipomoneda) {
+        this.idtipomoneda = idtipomoneda;
     }
     public Integer getSaldo() {
         return this.saldo;
@@ -91,19 +91,19 @@ public class Subcuenta  implements java.io.Serializable {
     public void setSaldo(Integer saldo) {
         this.saldo = saldo;
     }
-    public Integer getLimiteCredito() {
-        return this.limiteCredito;
+    public Integer getLimitecredito() {
+        return this.limitecredito;
     }
     
-    public void setLimiteCredito(Integer limiteCredito) {
-        this.limiteCredito = limiteCredito;
+    public void setLimitecredito(Integer limitecredito) {
+        this.limitecredito = limitecredito;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
 
 

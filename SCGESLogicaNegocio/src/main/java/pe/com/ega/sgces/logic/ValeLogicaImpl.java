@@ -7,7 +7,9 @@ package pe.com.ega.sgces.logic;
 import java.util.List;
 import org.hibernate.Session;
 import pe.com.ega.sgces.dao.HibernateUtil;
+import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
 import pe.com.ega.sgces.dao.ValeDao;
+import pe.com.ega.sgces.model.NumComprobante;
 import pe.com.ega.sgces.model.Vale;
 
 /**
@@ -18,8 +20,10 @@ public class ValeLogicaImpl implements ValeLogica{
 
     Session session; 
     ValeDao valeDao;
+    
     public ValeLogicaImpl() {
         session = HibernateUtil.getSessionFactory().openSession();
+        
     }
 
     public void setValeDao(ValeDao valeDao) {
@@ -27,16 +31,22 @@ public class ValeLogicaImpl implements ValeLogica{
         this.valeDao.setSession(session);
     }
 
-    public void insertar(Vale usuario) {
+    public void insertar(Vale usuario) {     
+        session.beginTransaction();
         valeDao.insertar(usuario);
+        session.getTransaction().commit(); 
     }
 
     public void actualizar(Vale usuario) {
+        session.beginTransaction();
         valeDao.actualizar(usuario);
+        session.getTransaction().commit(); 
     }
 
     public void eliminar(Vale usuario) {
+        session.beginTransaction();
         valeDao.eliminar(usuario);
+        session.getTransaction().commit(); 
     }
 
     public Vale buscarPorCodigo(Integer id) {

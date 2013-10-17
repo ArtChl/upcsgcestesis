@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,39 +9,39 @@ package pe.com.ega.sgces.model;
 public class TurnopuntoventacajaId  implements java.io.Serializable {
 
 
-     private int idTurno;
-     private int idPuntoVenta;
-     private int idCaja;
+     private int idturno;
+     private int idpuntoventa;
+     private int idcaja;
 
     public TurnopuntoventacajaId() {
     }
 
-    public TurnopuntoventacajaId(int idTurno, int idPuntoVenta, int idCaja) {
-       this.idTurno = idTurno;
-       this.idPuntoVenta = idPuntoVenta;
-       this.idCaja = idCaja;
+    public TurnopuntoventacajaId(int idturno, int idpuntoventa, int idcaja) {
+       this.idturno = idturno;
+       this.idpuntoventa = idpuntoventa;
+       this.idcaja = idcaja;
     }
    
-    public int getIdTurno() {
-        return this.idTurno;
+    public int getIdturno() {
+        return this.idturno;
     }
     
-    public void setIdTurno(int idTurno) {
-        this.idTurno = idTurno;
+    public void setIdturno(int idturno) {
+        this.idturno = idturno;
     }
-    public int getIdPuntoVenta() {
-        return this.idPuntoVenta;
-    }
-    
-    public void setIdPuntoVenta(int idPuntoVenta) {
-        this.idPuntoVenta = idPuntoVenta;
-    }
-    public int getIdCaja() {
-        return this.idCaja;
+    public int getIdpuntoventa() {
+        return this.idpuntoventa;
     }
     
-    public void setIdCaja(int idCaja) {
-        this.idCaja = idCaja;
+    public void setIdpuntoventa(int idpuntoventa) {
+        this.idpuntoventa = idpuntoventa;
+    }
+    public int getIdcaja() {
+        return this.idcaja;
+    }
+    
+    public void setIdcaja(int idcaja) {
+        this.idcaja = idcaja;
     }
 
 
@@ -51,17 +51,17 @@ public class TurnopuntoventacajaId  implements java.io.Serializable {
 		 if ( !(other instanceof TurnopuntoventacajaId) ) return false;
 		 TurnopuntoventacajaId castOther = ( TurnopuntoventacajaId ) other; 
          
-		 return (this.getIdTurno()==castOther.getIdTurno())
- && (this.getIdPuntoVenta()==castOther.getIdPuntoVenta())
- && (this.getIdCaja()==castOther.getIdCaja());
+		 return (this.getIdturno()==castOther.getIdturno())
+ && (this.getIdpuntoventa()==castOther.getIdpuntoventa())
+ && (this.getIdcaja()==castOther.getIdcaja());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getIdTurno();
-         result = 37 * result + this.getIdPuntoVenta();
-         result = 37 * result + this.getIdCaja();
+         result = 37 * result + this.getIdturno();
+         result = 37 * result + this.getIdpuntoventa();
+         result = 37 * result + this.getIdcaja();
          return result;
    }   
 
