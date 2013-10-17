@@ -141,10 +141,10 @@ public class MonedaFrame extends InternalFrame {
     private void solesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solesActionPerformed
         if("BOL".equals(moneda)){
             imprimirBoleta(desp, evt);
-            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText()));
+            llenarMovimientoSoles(transaccion, moneda, Double.parseDouble(pago.getText()));
         }else{
             imprimirFactura(desp, cliente, evt);
-            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText()));
+            llenarMovimientoSoles(transaccion, moneda, Double.parseDouble(pago.getText()));
         }
         
     }//GEN-LAST:event_solesActionPerformed
@@ -152,20 +152,20 @@ public class MonedaFrame extends InternalFrame {
     private void dolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresActionPerformed
         if("BOL".equals(moneda)){
             imprimirBoleta(desp, evt);
-            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+            llenarMovimientoDolares(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
         }else{
             imprimirFactura(desp, cliente, evt);
-            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+            llenarMovimientoDolares(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
         }
     }//GEN-LAST:event_dolaresActionPerformed
 
     private void tarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetaActionPerformed
         if("BOL".equals(moneda)){
             imprimirBoleta(desp, evt);
-            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+            llenarMovimientoTarjeta(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
         }else{
             imprimirFactura(desp, cliente, evt);
-            llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+            llenarMovimientoTarjeta(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
         }
     }//GEN-LAST:event_tarjetaActionPerformed
 
@@ -250,13 +250,14 @@ public class MonedaFrame extends InternalFrame {
         transaccion.setProducto(desp.getProducto().getNombre());
         transaccion.setMontototal(desp.getMontosoles());
         transaccion.setFecharegistro(desp.getFecharegistro());
+        transaccion.setTurno(desp.getTurno());
         Cliente clie= new Cliente();
         clie.setId(1);
         transaccion.setCliente(clie);
        // return transaccion;
     }
     
-    private void llenarMovimiento(Transaccion transaccion, String pag, Double monto){
+    private void llenarMovimientoSoles(Transaccion transaccion, String pag, Double monto){
         movimiento.setTransaccion(transaccion);
         movimiento.setPago(pag);
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
@@ -264,7 +265,50 @@ public class MonedaFrame extends InternalFrame {
         movimiento.setTurnopuntoventacaja(caja);
         movimiento.setMontototal(desp.getMontosoles());
         movimiento.setMontorecibido(monto);
+        movimiento.setTipo("SOLES");
+        movimiento.setTurno(desp.getTurno());
+        movimiento.setCerrado("N");
         movimiento.setMontodevuelto(monto-desp.getMontosoles());
+        try {
+            movimientoLogica.grabar(movimiento);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+    }
+    
+    private void llenarMovimientoDolares(Transaccion transaccion, String pag, Double monto){
+        movimiento.setTransaccion(transaccion);
+        movimiento.setPago(pag);
+        Turnopuntoventacaja caja= new Turnopuntoventacaja();
+        caja.setId(new TurnopuntoventacajaId(1, 1, 1));
+        movimiento.setTurnopuntoventacaja(caja);
+        movimiento.setMontototal(desp.getMontosoles());
+        movimiento.setMontorecibido(monto);
+        movimiento.setTipo("DOLARES");
+        movimiento.setTurno(desp.getTurno());
+        movimiento.setCerrado("N");
+        movimiento.setMontodevuelto(monto-desp.getMontosoles());
+        try {
+            movimientoLogica.grabar(movimiento);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+    }
+    
+    private void llenarMovimientoTarjeta(Transaccion transaccion, String pag, Double monto){
+        movimiento.setTransaccion(transaccion);
+        movimiento.setPago(pag);
+        Turnopuntoventacaja caja= new Turnopuntoventacaja();
+        caja.setId(new TurnopuntoventacajaId(1, 1, 1));
+        movimiento.setTurnopuntoventacaja(caja);
+        movimiento.setMontototal(desp.getMontosoles());
+        movimiento.setMontorecibido(desp.getMontosoles());
+        movimiento.setTipo((String)tarjetas.getSelectedItem());
+        movimiento.setTurno(desp.getTurno());
+        movimiento.setCerrado("N");
+       // movimiento.setMontodevuelto(monto-desp.getMontosoles());
         try {
             movimientoLogica.grabar(movimiento);
         } catch (Exception e) {
@@ -285,6 +329,7 @@ public class MonedaFrame extends InternalFrame {
         transaccion.setMontototal(desp.getMontosoles());
         transaccion.setFecharegistro(desp.getFecharegistro());
         transaccion.setCliente(nuevo);
+        transaccion.setTurno(desp.getTurno());
     }
 
 }

@@ -21,6 +21,8 @@ public class TransaccionDaoImpl implements TransaccionDao{
     }
         
     public void insertar(Transaccion transaccion) {
+        transaccion.setFacturado(false);
+        transaccion.setAnulado(false);
         session.save(transaccion);
     }
 

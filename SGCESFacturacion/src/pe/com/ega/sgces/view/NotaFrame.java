@@ -315,6 +315,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         transaccion.setNumeroplaca(jplaca.getText());
         transaccion.setFecharegistro(desp.getFecharegistro());
         transaccion.setCliente(nuevo);
+        transaccion.setTurno(desp.getTurno());
         
     }
     

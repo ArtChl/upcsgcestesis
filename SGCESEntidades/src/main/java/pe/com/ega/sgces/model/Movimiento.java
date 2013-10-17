@@ -19,95 +19,125 @@ public class Movimiento  implements java.io.Serializable {
      private Double montodevuelto;
      private Date fecharegistro;
      private String nrooperacion;
+     private String tipo;
+     private String turno;
+     private String cerrado;
 
     public Movimiento() {
     }
 
-	
-    public Movimiento(int id, Turnopuntoventacaja turnopuntoventacaja, Transaccion transaccion) {
+    public Movimiento(int id, Turnopuntoventacaja turnopuntoventacaja, Transaccion transaccion, String pago, Double montorecibido, Double montototal, Double montodevuelto, Date fecharegistro, String nrooperacion, String tipo, String turno, String cerrado) {
         this.id = id;
         this.turnopuntoventacaja = turnopuntoventacaja;
         this.transaccion = transaccion;
+        this.pago = pago;
+        this.montorecibido = montorecibido;
+        this.montototal = montototal;
+        this.montodevuelto = montodevuelto;
+        this.fecharegistro = fecharegistro;
+        this.nrooperacion = nrooperacion;
+        this.tipo = tipo;
+        this.turno = turno;
+        this.cerrado = cerrado;
     }
-    public Movimiento(int id, Turnopuntoventacaja turnopuntoventacaja, Transaccion transaccion, String pago, Double montorecibido, Double montototal, Double montodevuelto, Date fecharegistro, String nrooperacion) {
-       this.id = id;
-       this.turnopuntoventacaja = turnopuntoventacaja;
-       this.transaccion = transaccion;
-       this.pago = pago;
-       this.montorecibido = montorecibido;
-       this.montototal = montototal;
-       this.montodevuelto = montodevuelto;
-       this.fecharegistro = fecharegistro;
-       this.nrooperacion = nrooperacion;
-    }
-   
+
     public int getId() {
-        return this.id;
+        return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
+
     public Turnopuntoventacaja getTurnopuntoventacaja() {
-        return this.turnopuntoventacaja;
+        return turnopuntoventacaja;
     }
-    
+
     public void setTurnopuntoventacaja(Turnopuntoventacaja turnopuntoventacaja) {
         this.turnopuntoventacaja = turnopuntoventacaja;
     }
+
     public Transaccion getTransaccion() {
-        return this.transaccion;
+        return transaccion;
     }
-    
+
     public void setTransaccion(Transaccion transaccion) {
         this.transaccion = transaccion;
     }
+
     public String getPago() {
-        return this.pago;
+        return pago;
     }
-    
+
     public void setPago(String pago) {
         this.pago = pago;
     }
+
     public Double getMontorecibido() {
-        return this.montorecibido;
+        return montorecibido;
     }
-    
+
     public void setMontorecibido(Double montorecibido) {
         this.montorecibido = montorecibido;
     }
+
     public Double getMontototal() {
-        return this.montototal;
+        return montototal;
     }
-    
+
     public void setMontototal(Double montototal) {
         this.montototal = montototal;
     }
+
     public Double getMontodevuelto() {
-        return this.montodevuelto;
+        return montodevuelto;
     }
-    
+
     public void setMontodevuelto(Double montodevuelto) {
         this.montodevuelto = montodevuelto;
     }
+
     public Date getFecharegistro() {
-        return this.fecharegistro;
+        return fecharegistro;
     }
-    
+
     public void setFecharegistro(Date fecharegistro) {
         this.fecharegistro = fecharegistro;
     }
+
     public String getNrooperacion() {
-        return this.nrooperacion;
+        return nrooperacion;
     }
-    
+
     public void setNrooperacion(String nrooperacion) {
         this.nrooperacion = nrooperacion;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
+    public String getTurno() {
+        return turno;
+    }
 
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    public String getCerrado() {
+        return cerrado;
+    }
+
+    public void setCerrado(String cerrado) {
+        this.cerrado = cerrado;
+    }
+
+    
 }
 
 
