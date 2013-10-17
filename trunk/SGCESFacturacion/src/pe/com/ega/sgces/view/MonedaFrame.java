@@ -202,8 +202,8 @@ public class MonedaFrame extends InternalFrame {
         try {
             transaccionLogica.grabar(transaccion);
             despachoLogica.grabar(desp);
-            comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
-                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
+            comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNrogalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
             salir(evt);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
@@ -219,9 +219,9 @@ public class MonedaFrame extends InternalFrame {
        try {
            transaccionLogica.grabar(transaccion);
                despachoLogica.grabar(desp);
-               comprobante.imprimirFactura(cli.getRazonSocial(),
-               String.valueOf(cli.getNumeroDocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Math.rint(desp.getMontoSoles()*0.82*100)/100),String.valueOf(Math.rint(desp.getMontoSoles()*0.18*100)/100),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
-                 , String.valueOf(desp.getNroGalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
+               comprobante.imprimirFactura(cli.getRazonsocial(),
+               String.valueOf(cli.getNumerodocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Math.rint(desp.getMontosoles()*0.82*100)/100),String.valueOf(Math.rint(desp.getMontosoles()*0.18*100)/100),String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNrogalones()), "1", "325", "10419492421", "FF9G151648", "TBOL");
                salir(evt);
        } catch (Exception e) {
            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
@@ -241,15 +241,15 @@ public class MonedaFrame extends InternalFrame {
 
     private void llenardatos(Despacho desp) {
         transaccion.setDespacho(desp);
-        transaccion.setIdTipoTransaccion("TBOL");
-        transaccion.setIdEstado(1);
-        transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumeroVale("325-00000001");
-        transaccion.setNroGalones(desp.getNroGalones());
-        transaccion.setPrecioUnitario(desp.getPrecioUnitario());
+        transaccion.setIdtipotransaccion("TBOL");
+        transaccion.setIdestado(1);
+        transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
+        transaccion.setNumerovale("325-00000001");
+        transaccion.setNrogalones(desp.getNrogalones());
+        transaccion.setPreciounitario(desp.getPreciounitario());
         transaccion.setProducto(desp.getProducto().getNombre());
-        transaccion.setMontoTotal(desp.getMontoSoles());
-        transaccion.setFechaRegistro(desp.getFechaRegistro());
+        transaccion.setMontototal(desp.getMontosoles());
+        transaccion.setFecharegistro(desp.getFecharegistro());
         Cliente clie= new Cliente();
         clie.setId(1);
         transaccion.setCliente(clie);
@@ -262,9 +262,9 @@ public class MonedaFrame extends InternalFrame {
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
         caja.setId(new TurnopuntoventacajaId(1, 1, 1));
         movimiento.setTurnopuntoventacaja(caja);
-        movimiento.setMontoTotal(desp.getMontoSoles());
-        movimiento.setMontoRecibido(monto);
-        movimiento.setMontoDevuelto(monto-desp.getMontoSoles());
+        movimiento.setMontototal(desp.getMontosoles());
+        movimiento.setMontorecibido(monto);
+        movimiento.setMontodevuelto(monto-desp.getMontosoles());
         try {
             movimientoLogica.grabar(movimiento);
         } catch (Exception e) {
@@ -275,15 +275,15 @@ public class MonedaFrame extends InternalFrame {
     
     private void llenardatosF(Despacho desp, Cliente nuevo) {
         transaccion.setDespacho(desp);
-        transaccion.setIdTipoTransaccion("TFAC");
-        transaccion.setIdEstado(1);
-        transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumeroVale("325-00000001");
-        transaccion.setNroGalones(desp.getNroGalones());
-        transaccion.setPrecioUnitario(desp.getPrecioUnitario());
+        transaccion.setIdtipotransaccion("TFAC");
+        transaccion.setIdestado(1);
+        transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
+        transaccion.setNumerovale("325-00000001");
+        transaccion.setNrogalones(desp.getNrogalones());
+        transaccion.setPreciounitario(desp.getPreciounitario());
         transaccion.setProducto(desp.getProducto().getNombre());
-        transaccion.setMontoTotal(desp.getMontoSoles());
-        transaccion.setFechaRegistro(desp.getFechaRegistro());
+        transaccion.setMontototal(desp.getMontosoles());
+        transaccion.setFecharegistro(desp.getFecharegistro());
         transaccion.setCliente(nuevo);
     }
 

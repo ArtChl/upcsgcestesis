@@ -5,7 +5,7 @@
 package pe.com.ega.sgces.dao;
 
 import org.hibernate.Session;
-import pe.com.ega.sgces.model.NumComprobante;
+import pe.com.ega.sgces.model.Numcomprobante;
 
 /**
  *

@@ -9,7 +9,7 @@ import org.hibernate.Session;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.NumComprobanteDao;
 import pe.com.ega.sgces.dao.ValeDao;
-import pe.com.ega.sgces.model.NumComprobante;
+import pe.com.ega.sgces.model.Numcomprobante;
 import pe.com.ega.sgces.model.Vale;
 
 /**
@@ -31,33 +31,33 @@ public class NumComprobanteLogicaImpl implements NumComprobanteLogica{
     }
 
     @Override
-    public void insertar(NumComprobante numDao) {
+    public void insertar(Numcomprobante numDao) {
         session.beginTransaction();
         valeDao.insertar(numDao);
         session.getTransaction().commit(); 
     }
 
     @Override
-    public void actualizar(NumComprobante numDao) {
+    public void actualizar(Numcomprobante numDao) {
         session.beginTransaction();
         valeDao.actualizar(numDao);
         session.getTransaction().commit(); 
     }
 
     @Override
-    public void eliminar(NumComprobante numDao) {
+    public void eliminar(Numcomprobante numDao) {
         session.beginTransaction();
         valeDao.eliminar(numDao);
         session.getTransaction().commit(); 
     }
   
     @Override
-    public List<NumComprobante> buscarConsumo(String cliente) {
+    public List<Numcomprobante> buscarConsumo(String cliente) {
         return valeDao.buscarConsumo(cliente);
     }
 
     @Override
-    public NumComprobante buscarPorCodigo(int tipo) {
+    public Numcomprobante buscarPorCodigo(int tipo) {
         return valeDao.buscarPorCodigo(tipo);
     }
     

@@ -6,16 +6,16 @@ package pe.com.ega.sgces.logic;
 
 import java.util.List;
 import org.hibernate.Session;
-import pe.com.ega.sgces.model.NumComprobante;
+import pe.com.ega.sgces.model.Numcomprobante;
 
 /**
  *
  * @author FLOPEZ
  */
 public interface NumComprobanteLogica {
-    public void insertar(NumComprobante comp);
-    public void actualizar(NumComprobante comp);
-    public void eliminar(NumComprobante comp);
-    public NumComprobante buscarPorCodigo(int tipo);
-    public List<NumComprobante> buscarConsumo(String cliente);
+    public void insertar(Numcomprobante comp);
+    public void actualizar(Numcomprobante comp);
+    public void eliminar(Numcomprobante comp);
+    public Numcomprobante buscarPorCodigo(int tipo);
+    public List<Numcomprobante> buscarConsumo(String cliente);
 }

@@ -18,7 +18,7 @@ import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
 import pe.com.ega.sgces.dao.ValeDaoImpl;
 import pe.com.ega.sgces.logic.NumComprobanteLogicaImpl;
 import pe.com.ega.sgces.logic.ValeLogicaImpl;
-import pe.com.ega.sgces.model.NumComprobante;
+import pe.com.ega.sgces.model.Numcomprobante;
 import pe.com.ega.sgces.model.Vale;
 
 /**
@@ -102,7 +102,7 @@ public class valeBean implements Serializable{
     
     public void agregarVale() {
         FacesContext context = FacesContext.getCurrentInstance(); 
-        NumComprobante comprobantes= numdao.buscarPorCodigo(1);
+        Numcomprobante comprobantes= numdao.buscarPorCodigo(1);
         try {
             vale.setCliente(loginBean.getUsuario().getTrabajador().getDni());
             Formatter fmt = new Formatter();

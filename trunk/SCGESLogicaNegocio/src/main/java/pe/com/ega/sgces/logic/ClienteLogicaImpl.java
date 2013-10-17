@@ -45,7 +45,7 @@ public class ClienteLogicaImpl implements ClienteLogica{
         Cliente razon=null;
         ArrayList<Cliente> clientes=(ArrayList<Cliente>) clienteDao.buscarTodos();
         for (Cliente cliente : clientes) {
-            if(id.equalsIgnoreCase(cliente.getNumeroDocumento())){
+            if(id.equalsIgnoreCase(cliente.getNumerodocumento())){
                 razon=cliente;
                 break;
             }

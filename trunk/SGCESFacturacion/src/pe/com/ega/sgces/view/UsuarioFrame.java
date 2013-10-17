@@ -136,7 +136,7 @@ salir(evt);      // TODO add your handling code here:
       arre[i][0]=t.getId();
       arre[i][1]=t.getLogin();
       arre[i][2]=t.getClave();
-      arre[i][3]=t.getFechaRegistro();
+      arre[i][3]=t.getFecharegistro();
       i++;
   }
 

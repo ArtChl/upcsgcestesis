@@ -99,12 +99,12 @@ public class DespachoFrame extends InternalFrame {
   int i=0;
   for(Despacho t:transaccions){
       arre[i][0]=t.getId();
-      arre[i][1]=t.getFechaRegistro();
+      arre[i][1]=t.getFecharegistro();
       arre[i][2]=t.getCaraproducto().getCara().getCodigo();
       arre[i][3]=t.getProducto().getNombre();
-      arre[i][4]=t.getPrecioUnitario();
-      arre[i][5]=t.getNroGalones();
-      arre[i][6]=t.getMontoSoles();
+      arre[i][4]=t.getPreciounitario();
+      arre[i][5]=t.getNrogalones();
+      arre[i][6]=t.getMontosoles();
       i++;
   }
 

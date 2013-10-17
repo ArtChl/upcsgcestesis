@@ -184,8 +184,8 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            System.out.println("Cliente"+temporal.getId());
            Cliente temporal1 = new Cliente();
            //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
-           temporal1.setNumeroDocumento(jrucCliente.getText());
-           temporal1.setRazonSocial(jrazonCliente.getText());
+           temporal1.setNumerodocumento(jrucCliente.getText());
+           temporal1.setRazonsocial(jrazonCliente.getText());
            try {
                llenardatos(desp,cliente);
            transaccionLogica.grabar(transaccion);
@@ -193,13 +193,13 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            //System.out.println("Vale"+valeTemporal.getId());
            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
            Date now = new Date();
-           valeTemporal.setFechaDespacho(now);
-           valeTemporal.setHoraDespacho(format.format(now));
+           valeTemporal.setFechadespacho(now);
+           valeTemporal.setHoradespacho(format.format(now));
            valeTemporal.setEstado(0);
            valedao.actualizar(valeTemporal);
-           comprobante.imprimirNotaDespacho(jkilometrajes.getText(),jplaca.getText(),jchofer.getText(),cliente.getRazonSocial(),
-                String.valueOf(cliente.getNumeroDocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
-                 , String.valueOf(desp.getNroGalones()), String.valueOf(numero("NDES")), "325", "10419492421", "FF9G151648", "NDES");
+           comprobante.imprimirNotaDespacho(jkilometrajes.getText(),jplaca.getText(),jchofer.getText(),cliente.getRazonsocial(),
+                String.valueOf(cliente.getNumerodocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Redondear(desp.getMontosoles()*0.82)),String.valueOf(Redondear(desp.getMontosoles()*0.18)),String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNrogalones()), String.valueOf(numero("NDES")), "325", "10419492421", "FF9G151648", "NDES");
            limpiar();
            salir(evt);
            } catch (Exception e) {
@@ -211,13 +211,13 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            despachoLogica.grabar(desp); 
            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
            Date now = new Date();
-           valeTemporal.setFechaDespacho(now);
-           valeTemporal.setHoraDespacho(format.format(now));
+           valeTemporal.setFechadespacho(now);
+           valeTemporal.setHoradespacho(format.format(now));
            valeTemporal.setEstado(0);
            valedao.actualizar(valeTemporal);
-           comprobante.imprimirNotaDespacho(jkilometrajes.getText(),jplaca.getText(),jchofer.getText(),cliente.getRazonSocial(),
-                String.valueOf(cliente.getNumeroDocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
-                 , String.valueOf(desp.getNroGalones()), String.valueOf(numero("NDES")), "325", "10419492421", "FF9G151648", "NDES");
+           comprobante.imprimirNotaDespacho(jkilometrajes.getText(),jplaca.getText(),jchofer.getText(),cliente.getRazonsocial(),
+                String.valueOf(cliente.getNumerodocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Redondear(desp.getMontosoles()*0.82)),String.valueOf(Redondear(desp.getMontosoles()*0.18)),String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre()
+                 , String.valueOf(desp.getNrogalones()), String.valueOf(numero("NDES")), "325", "10419492421", "FF9G151648", "NDES");
            limpiar();
            salir(evt);
        }
@@ -235,8 +235,8 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         String rucCliente=jrucCliente.getText();
         try{
             cliente=clienteLogica.buscarPorCodigo(rucCliente);
-            jrazonCliente.setText(cliente.getRazonSocial());
-            llenarcombo(cliente.getNumeroDocumento());
+            jrazonCliente.setText(cliente.getRazonsocial());
+            llenarcombo(cliente.getNumerodocumento());
             temporal=new Cliente();
             temporal.setId(0);          
         } catch (Exception e){
@@ -253,7 +253,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
                   jplaca.setFocusable(false);
                   jchofer.setText(vale.getChofer());
                   jplaca.setText(vale.getPlaca());
-                  transaccion.setNumeroTiket(vale.getNumero());
+                  transaccion.setNumerotiket(vale.getNumero());
                   valeTemporal=vale;
               }else{
                   
@@ -303,17 +303,17 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     
     private void llenardatos(Despacho desp, Cliente nuevo) {
         transaccion.setDespacho(desp);
-        transaccion.setIdTipoTransaccion("NDES");
-        transaccion.setIdEstado(1);
-        transaccion.setNumeroTransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumeroVale("325-0000000"+String.valueOf(numero("NDES")+1));
+        transaccion.setIdtipotransaccion("NDES");
+        transaccion.setIdestado(1);
+        transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
+        transaccion.setNumerovale("325-0000000"+String.valueOf(numero("NDES")+1));
         transaccion.setNumero(numero("NDES")+1);
-        transaccion.setNroGalones(desp.getNroGalones());
-        transaccion.setPrecioUnitario(desp.getPrecioUnitario());
+        transaccion.setNrogalones(desp.getNrogalones());
+        transaccion.setPreciounitario(desp.getPreciounitario());
         transaccion.setProducto(desp.getProducto().getNombre());
-        transaccion.setMontoTotal(desp.getMontoSoles());
-        transaccion.setNumeroPlaca(jplaca.getText());
-        transaccion.setFechaRegistro(desp.getFechaRegistro());
+        transaccion.setMontototal(desp.getMontosoles());
+        transaccion.setNumeroplaca(jplaca.getText());
+        transaccion.setFecharegistro(desp.getFecharegistro());
         transaccion.setCliente(nuevo);
         
     }
