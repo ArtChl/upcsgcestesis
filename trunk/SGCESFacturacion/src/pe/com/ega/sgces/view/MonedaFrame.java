@@ -6,6 +6,7 @@ package pe.com.ega.sgces.view;
 
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import org.openswing.swing.mdi.client.InternalFrame;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
@@ -162,10 +163,10 @@ public class MonedaFrame extends InternalFrame {
     private void tarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetaActionPerformed
         if("BOL".equals(moneda)){
             imprimirBoleta(desp, evt);
-            llenarMovimientoTarjeta(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+            llenarMovimientoTarjeta(transaccion, moneda, numtarjeta.getText());
         }else{
             imprimirFactura(desp, cliente, evt);
-            llenarMovimientoTarjeta(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+            llenarMovimientoTarjeta(transaccion, moneda, numtarjeta.getText());
         }
     }//GEN-LAST:event_tarjetaActionPerformed
 
@@ -269,6 +270,7 @@ public class MonedaFrame extends InternalFrame {
         movimiento.setTurno(desp.getTurno());
         movimiento.setCerrado("N");
         movimiento.setMontodevuelto(monto-desp.getMontosoles());
+        movimiento.setFecharegistro(new Date());
         try {
             movimientoLogica.grabar(movimiento);
         } catch (Exception e) {
@@ -289,6 +291,7 @@ public class MonedaFrame extends InternalFrame {
         movimiento.setTurno(desp.getTurno());
         movimiento.setCerrado("N");
         movimiento.setMontodevuelto(monto-desp.getMontosoles());
+        movimiento.setFecharegistro(new Date());
         try {
             movimientoLogica.grabar(movimiento);
         } catch (Exception e) {
@@ -297,7 +300,7 @@ public class MonedaFrame extends InternalFrame {
         
     }
     
-    private void llenarMovimientoTarjeta(Transaccion transaccion, String pag, Double monto){
+    private void llenarMovimientoTarjeta(Transaccion transaccion, String pag, String monto){
         movimiento.setTransaccion(transaccion);
         movimiento.setPago(pag);
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
@@ -308,7 +311,9 @@ public class MonedaFrame extends InternalFrame {
         movimiento.setTipo((String)tarjetas.getSelectedItem());
         movimiento.setTurno(desp.getTurno());
         movimiento.setCerrado("N");
-       // movimiento.setMontodevuelto(monto-desp.getMontosoles());
+        movimiento.setMontodevuelto(0.0);
+        movimiento.setNrooperacion(monto);
+        movimiento.setFecharegistro(new Date());
         try {
             movimientoLogica.grabar(movimiento);
         } catch (Exception e) {
