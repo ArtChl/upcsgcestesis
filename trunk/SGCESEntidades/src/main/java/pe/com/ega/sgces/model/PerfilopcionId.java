@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,30 +9,30 @@ package pe.com.ega.sgces.model;
 public class PerfilopcionId  implements java.io.Serializable {
 
 
-     private int idOpcion;
-     private int idPerfil;
+     private int idopcion;
+     private int idperfil;
 
     public PerfilopcionId() {
     }
 
-    public PerfilopcionId(int idOpcion, int idPerfil) {
-       this.idOpcion = idOpcion;
-       this.idPerfil = idPerfil;
+    public PerfilopcionId(int idopcion, int idperfil) {
+       this.idopcion = idopcion;
+       this.idperfil = idperfil;
     }
    
-    public int getIdOpcion() {
-        return this.idOpcion;
+    public int getIdopcion() {
+        return this.idopcion;
     }
     
-    public void setIdOpcion(int idOpcion) {
-        this.idOpcion = idOpcion;
+    public void setIdopcion(int idopcion) {
+        this.idopcion = idopcion;
     }
-    public int getIdPerfil() {
-        return this.idPerfil;
+    public int getIdperfil() {
+        return this.idperfil;
     }
     
-    public void setIdPerfil(int idPerfil) {
-        this.idPerfil = idPerfil;
+    public void setIdperfil(int idperfil) {
+        this.idperfil = idperfil;
     }
 
 
@@ -42,15 +42,15 @@ public class PerfilopcionId  implements java.io.Serializable {
 		 if ( !(other instanceof PerfilopcionId) ) return false;
 		 PerfilopcionId castOther = ( PerfilopcionId ) other; 
          
-		 return (this.getIdOpcion()==castOther.getIdOpcion())
- && (this.getIdPerfil()==castOther.getIdPerfil());
+		 return (this.getIdopcion()==castOther.getIdopcion())
+ && (this.getIdperfil()==castOther.getIdperfil());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getIdOpcion();
-         result = 37 * result + this.getIdPerfil();
+         result = 37 * result + this.getIdopcion();
+         result = 37 * result + this.getIdperfil();
          return result;
    }   
 

@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,30 +9,30 @@ package pe.com.ega.sgces.model;
 public class CaraproductoId  implements java.io.Serializable {
 
 
-     private int idCara;
-     private int idProducto;
+     private int idcara;
+     private int idproducto;
 
     public CaraproductoId() {
     }
 
-    public CaraproductoId(int idCara, int idProducto) {
-       this.idCara = idCara;
-       this.idProducto = idProducto;
+    public CaraproductoId(int idcara, int idproducto) {
+       this.idcara = idcara;
+       this.idproducto = idproducto;
     }
    
-    public int getIdCara() {
-        return this.idCara;
+    public int getIdcara() {
+        return this.idcara;
     }
     
-    public void setIdCara(int idCara) {
-        this.idCara = idCara;
+    public void setIdcara(int idcara) {
+        this.idcara = idcara;
     }
-    public int getIdProducto() {
-        return this.idProducto;
+    public int getIdproducto() {
+        return this.idproducto;
     }
     
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setIdproducto(int idproducto) {
+        this.idproducto = idproducto;
     }
 
 
@@ -42,15 +42,15 @@ public class CaraproductoId  implements java.io.Serializable {
 		 if ( !(other instanceof CaraproductoId) ) return false;
 		 CaraproductoId castOther = ( CaraproductoId ) other; 
          
-		 return (this.getIdCara()==castOther.getIdCara())
- && (this.getIdProducto()==castOther.getIdProducto());
+		 return (this.getIdcara()==castOther.getIdcara())
+ && (this.getIdproducto()==castOther.getIdproducto());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getIdCara();
-         result = 37 * result + this.getIdProducto();
+         result = 37 * result + this.getIdcara();
+         result = 37 * result + this.getIdproducto();
          return result;
    }   
 

@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -15,7 +15,7 @@ public class Transacciondetalle  implements java.io.Serializable {
      private Transaccion transaccion;
      private Long monto;
      private Integer cantidad;
-     private Date fechaRegistro;
+     private Date fecharegistro;
 
     public Transacciondetalle() {
     }
@@ -26,13 +26,13 @@ public class Transacciondetalle  implements java.io.Serializable {
         this.producto = producto;
         this.transaccion = transaccion;
     }
-    public Transacciondetalle(int id, Producto producto, Transaccion transaccion, Long monto, Integer cantidad, Date fechaRegistro) {
+    public Transacciondetalle(int id, Producto producto, Transaccion transaccion, Long monto, Integer cantidad, Date fecharegistro) {
        this.id = id;
        this.producto = producto;
        this.transaccion = transaccion;
        this.monto = monto;
        this.cantidad = cantidad;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
     }
    
     public int getId() {
@@ -70,12 +70,12 @@ public class Transacciondetalle  implements java.io.Serializable {
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
 
 

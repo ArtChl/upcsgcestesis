@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -14,8 +14,8 @@ public class Turno  implements java.io.Serializable {
 
      private int id;
      private Estacionservicio estacionservicio;
-     private Date fechaApertura;
-     private Date fechaCierre;
+     private Date fechaapertura;
+     private Date fechacierre;
      private Set<Turnopuntoventacaja> turnopuntoventacajas = new HashSet<Turnopuntoventacaja>(0);
 
     public Turno() {
@@ -26,11 +26,11 @@ public class Turno  implements java.io.Serializable {
         this.id = id;
         this.estacionservicio = estacionservicio;
     }
-    public Turno(int id, Estacionservicio estacionservicio, Date fechaApertura, Date fechaCierre, Set<Turnopuntoventacaja> turnopuntoventacajas) {
+    public Turno(int id, Estacionservicio estacionservicio, Date fechaapertura, Date fechacierre, Set<Turnopuntoventacaja> turnopuntoventacajas) {
        this.id = id;
        this.estacionservicio = estacionservicio;
-       this.fechaApertura = fechaApertura;
-       this.fechaCierre = fechaCierre;
+       this.fechaapertura = fechaapertura;
+       this.fechacierre = fechacierre;
        this.turnopuntoventacajas = turnopuntoventacajas;
     }
    
@@ -48,19 +48,19 @@ public class Turno  implements java.io.Serializable {
     public void setEstacionservicio(Estacionservicio estacionservicio) {
         this.estacionservicio = estacionservicio;
     }
-    public Date getFechaApertura() {
-        return this.fechaApertura;
+    public Date getFechaapertura() {
+        return this.fechaapertura;
     }
     
-    public void setFechaApertura(Date fechaApertura) {
-        this.fechaApertura = fechaApertura;
+    public void setFechaapertura(Date fechaapertura) {
+        this.fechaapertura = fechaapertura;
     }
-    public Date getFechaCierre() {
-        return this.fechaCierre;
+    public Date getFechacierre() {
+        return this.fechacierre;
     }
     
-    public void setFechaCierre(Date fechaCierre) {
-        this.fechaCierre = fechaCierre;
+    public void setFechacierre(Date fechacierre) {
+        this.fechacierre = fechacierre;
     }
     public Set<Turnopuntoventacaja> getTurnopuntoventacajas() {
         return this.turnopuntoventacajas;

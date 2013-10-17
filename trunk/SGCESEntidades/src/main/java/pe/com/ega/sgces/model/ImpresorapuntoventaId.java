@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,30 +9,30 @@ package pe.com.ega.sgces.model;
 public class ImpresorapuntoventaId  implements java.io.Serializable {
 
 
-     private int idPuntoVenta;
-     private int idImpresora;
+     private int idpuntoventa;
+     private int idimpresora;
 
     public ImpresorapuntoventaId() {
     }
 
-    public ImpresorapuntoventaId(int idPuntoVenta, int idImpresora) {
-       this.idPuntoVenta = idPuntoVenta;
-       this.idImpresora = idImpresora;
+    public ImpresorapuntoventaId(int idpuntoventa, int idimpresora) {
+       this.idpuntoventa = idpuntoventa;
+       this.idimpresora = idimpresora;
     }
    
-    public int getIdPuntoVenta() {
-        return this.idPuntoVenta;
+    public int getIdpuntoventa() {
+        return this.idpuntoventa;
     }
     
-    public void setIdPuntoVenta(int idPuntoVenta) {
-        this.idPuntoVenta = idPuntoVenta;
+    public void setIdpuntoventa(int idpuntoventa) {
+        this.idpuntoventa = idpuntoventa;
     }
-    public int getIdImpresora() {
-        return this.idImpresora;
+    public int getIdimpresora() {
+        return this.idimpresora;
     }
     
-    public void setIdImpresora(int idImpresora) {
-        this.idImpresora = idImpresora;
+    public void setIdimpresora(int idimpresora) {
+        this.idimpresora = idimpresora;
     }
 
 
@@ -42,15 +42,15 @@ public class ImpresorapuntoventaId  implements java.io.Serializable {
 		 if ( !(other instanceof ImpresorapuntoventaId) ) return false;
 		 ImpresorapuntoventaId castOther = ( ImpresorapuntoventaId ) other; 
          
-		 return (this.getIdPuntoVenta()==castOther.getIdPuntoVenta())
- && (this.getIdImpresora()==castOther.getIdImpresora());
+		 return (this.getIdpuntoventa()==castOther.getIdpuntoventa())
+ && (this.getIdimpresora()==castOther.getIdimpresora());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getIdPuntoVenta();
-         result = 37 * result + this.getIdImpresora();
+         result = 37 * result + this.getIdpuntoventa();
+         result = 37 * result + this.getIdimpresora();
          return result;
    }   
 

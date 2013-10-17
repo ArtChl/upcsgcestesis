@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -15,7 +15,7 @@ public class Centroemisor  implements java.io.Serializable {
      private int id;
      private Puntoventa puntoventa;
      private String emisor;
-     private Date fechaRegistro;
+     private Date fecharegistro;
      private Set<Centroemisortipocomprobante> centroemisortipocomprobantes = new HashSet<Centroemisortipocomprobante>(0);
 
     public Centroemisor() {
@@ -26,11 +26,11 @@ public class Centroemisor  implements java.io.Serializable {
         this.id = id;
         this.puntoventa = puntoventa;
     }
-    public Centroemisor(int id, Puntoventa puntoventa, String emisor, Date fechaRegistro, Set<Centroemisortipocomprobante> centroemisortipocomprobantes) {
+    public Centroemisor(int id, Puntoventa puntoventa, String emisor, Date fecharegistro, Set<Centroemisortipocomprobante> centroemisortipocomprobantes) {
        this.id = id;
        this.puntoventa = puntoventa;
        this.emisor = emisor;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
        this.centroemisortipocomprobantes = centroemisortipocomprobantes;
     }
    
@@ -55,12 +55,12 @@ public class Centroemisor  implements java.io.Serializable {
     public void setEmisor(String emisor) {
         this.emisor = emisor;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Centroemisortipocomprobante> getCentroemisortipocomprobantes() {
         return this.centroemisortipocomprobantes;

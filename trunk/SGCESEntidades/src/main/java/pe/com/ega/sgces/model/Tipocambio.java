@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -12,8 +12,8 @@ public class Tipocambio  implements java.io.Serializable {
 
      private int id;
      private Long cambio;
-     private Integer idMoneda;
-     private Date fechaRegistro;
+     private Integer idmoneda;
+     private Date fecharegistro;
 
     public Tipocambio() {
     }
@@ -22,11 +22,11 @@ public class Tipocambio  implements java.io.Serializable {
     public Tipocambio(int id) {
         this.id = id;
     }
-    public Tipocambio(int id, Long cambio, Integer idMoneda, Date fechaRegistro) {
+    public Tipocambio(int id, Long cambio, Integer idmoneda, Date fecharegistro) {
        this.id = id;
        this.cambio = cambio;
-       this.idMoneda = idMoneda;
-       this.fechaRegistro = fechaRegistro;
+       this.idmoneda = idmoneda;
+       this.fecharegistro = fecharegistro;
     }
    
     public int getId() {
@@ -43,19 +43,19 @@ public class Tipocambio  implements java.io.Serializable {
     public void setCambio(Long cambio) {
         this.cambio = cambio;
     }
-    public Integer getIdMoneda() {
-        return this.idMoneda;
+    public Integer getIdmoneda() {
+        return this.idmoneda;
     }
     
-    public void setIdMoneda(Integer idMoneda) {
-        this.idMoneda = idMoneda;
+    public void setIdmoneda(Integer idmoneda) {
+        this.idmoneda = idmoneda;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
 
 

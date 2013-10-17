@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -14,7 +14,7 @@ public class Varillajeajuste  implements java.io.Serializable {
      private Varillaje varillaje;
      private Integer volumen;
      private String concepto;
-     private Date fechaRegistro;
+     private Date fecharegistro;
 
     public Varillajeajuste() {
     }
@@ -24,12 +24,12 @@ public class Varillajeajuste  implements java.io.Serializable {
         this.id = id;
         this.varillaje = varillaje;
     }
-    public Varillajeajuste(int id, Varillaje varillaje, Integer volumen, String concepto, Date fechaRegistro) {
+    public Varillajeajuste(int id, Varillaje varillaje, Integer volumen, String concepto, Date fecharegistro) {
        this.id = id;
        this.varillaje = varillaje;
        this.volumen = volumen;
        this.concepto = concepto;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
     }
    
     public int getId() {
@@ -60,12 +60,12 @@ public class Varillajeajuste  implements java.io.Serializable {
     public void setConcepto(String concepto) {
         this.concepto = concepto;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
 
 

@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -14,15 +14,15 @@ public class Surtidor  implements java.io.Serializable {
 
      private int id;
      private Estacionservicio estacionservicio;
-     private Integer idMarca;
-     private Integer idModelo;
+     private Integer idmarca;
+     private Integer idmodelo;
      private String descripcion;
      private String nombre;
-     private Integer nroCaras;
-     private String numeroSerie;
-     private Date fechaRegistro;
-     private Integer idFamiliaElectronica;
-     private Integer nroMangueras;
+     private Integer nrocaras;
+     private String numeroserie;
+     private Date fecharegistro;
+     private Integer idfamiliaelectronica;
+     private Integer nromangueras;
      private String lote;
      private Set<Cara> caras = new HashSet<Cara>(0);
 
@@ -34,18 +34,18 @@ public class Surtidor  implements java.io.Serializable {
         this.id = id;
         this.estacionservicio = estacionservicio;
     }
-    public Surtidor(int id, Estacionservicio estacionservicio, Integer idMarca, Integer idModelo, String descripcion, String nombre, Integer nroCaras, String numeroSerie, Date fechaRegistro, Integer idFamiliaElectronica, Integer nroMangueras, String lote, Set<Cara> caras) {
+    public Surtidor(int id, Estacionservicio estacionservicio, Integer idmarca, Integer idmodelo, String descripcion, String nombre, Integer nrocaras, String numeroserie, Date fecharegistro, Integer idfamiliaelectronica, Integer nromangueras, String lote, Set<Cara> caras) {
        this.id = id;
        this.estacionservicio = estacionservicio;
-       this.idMarca = idMarca;
-       this.idModelo = idModelo;
+       this.idmarca = idmarca;
+       this.idmodelo = idmodelo;
        this.descripcion = descripcion;
        this.nombre = nombre;
-       this.nroCaras = nroCaras;
-       this.numeroSerie = numeroSerie;
-       this.fechaRegistro = fechaRegistro;
-       this.idFamiliaElectronica = idFamiliaElectronica;
-       this.nroMangueras = nroMangueras;
+       this.nrocaras = nrocaras;
+       this.numeroserie = numeroserie;
+       this.fecharegistro = fecharegistro;
+       this.idfamiliaelectronica = idfamiliaelectronica;
+       this.nromangueras = nromangueras;
        this.lote = lote;
        this.caras = caras;
     }
@@ -64,19 +64,19 @@ public class Surtidor  implements java.io.Serializable {
     public void setEstacionservicio(Estacionservicio estacionservicio) {
         this.estacionservicio = estacionservicio;
     }
-    public Integer getIdMarca() {
-        return this.idMarca;
+    public Integer getIdmarca() {
+        return this.idmarca;
     }
     
-    public void setIdMarca(Integer idMarca) {
-        this.idMarca = idMarca;
+    public void setIdmarca(Integer idmarca) {
+        this.idmarca = idmarca;
     }
-    public Integer getIdModelo() {
-        return this.idModelo;
+    public Integer getIdmodelo() {
+        return this.idmodelo;
     }
     
-    public void setIdModelo(Integer idModelo) {
-        this.idModelo = idModelo;
+    public void setIdmodelo(Integer idmodelo) {
+        this.idmodelo = idmodelo;
     }
     public String getDescripcion() {
         return this.descripcion;
@@ -92,40 +92,40 @@ public class Surtidor  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public Integer getNroCaras() {
-        return this.nroCaras;
+    public Integer getNrocaras() {
+        return this.nrocaras;
     }
     
-    public void setNroCaras(Integer nroCaras) {
-        this.nroCaras = nroCaras;
+    public void setNrocaras(Integer nrocaras) {
+        this.nrocaras = nrocaras;
     }
-    public String getNumeroSerie() {
-        return this.numeroSerie;
-    }
-    
-    public void setNumeroSerie(String numeroSerie) {
-        this.numeroSerie = numeroSerie;
-    }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public String getNumeroserie() {
+        return this.numeroserie;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setNumeroserie(String numeroserie) {
+        this.numeroserie = numeroserie;
     }
-    public Integer getIdFamiliaElectronica() {
-        return this.idFamiliaElectronica;
-    }
-    
-    public void setIdFamiliaElectronica(Integer idFamiliaElectronica) {
-        this.idFamiliaElectronica = idFamiliaElectronica;
-    }
-    public Integer getNroMangueras() {
-        return this.nroMangueras;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setNroMangueras(Integer nroMangueras) {
-        this.nroMangueras = nroMangueras;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
+    }
+    public Integer getIdfamiliaelectronica() {
+        return this.idfamiliaelectronica;
+    }
+    
+    public void setIdfamiliaelectronica(Integer idfamiliaelectronica) {
+        this.idfamiliaelectronica = idfamiliaelectronica;
+    }
+    public Integer getNromangueras() {
+        return this.nromangueras;
+    }
+    
+    public void setNromangueras(Integer nromangueras) {
+        this.nromangueras = nromangueras;
     }
     public String getLote() {
         return this.lote;

@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -14,11 +14,11 @@ public class Varillaje  implements java.io.Serializable {
 
      private int id;
      private Tanque tanque;
-     private Date fechaLectura;
-     private Integer medicionVolumen;
-     private Integer medicionAgua;
-     private String fechaNegocio;
-     private Date fechaRegistro;
+     private Date fechalectura;
+     private Integer medicionvolumen;
+     private Integer medicionagua;
+     private String fechanegocio;
+     private Date fecharegistro;
      private Set<Varillajeajuste> varillajeajustes = new HashSet<Varillajeajuste>(0);
 
     public Varillaje() {
@@ -29,14 +29,14 @@ public class Varillaje  implements java.io.Serializable {
         this.id = id;
         this.tanque = tanque;
     }
-    public Varillaje(int id, Tanque tanque, Date fechaLectura, Integer medicionVolumen, Integer medicionAgua, String fechaNegocio, Date fechaRegistro, Set<Varillajeajuste> varillajeajustes) {
+    public Varillaje(int id, Tanque tanque, Date fechalectura, Integer medicionvolumen, Integer medicionagua, String fechanegocio, Date fecharegistro, Set<Varillajeajuste> varillajeajustes) {
        this.id = id;
        this.tanque = tanque;
-       this.fechaLectura = fechaLectura;
-       this.medicionVolumen = medicionVolumen;
-       this.medicionAgua = medicionAgua;
-       this.fechaNegocio = fechaNegocio;
-       this.fechaRegistro = fechaRegistro;
+       this.fechalectura = fechalectura;
+       this.medicionvolumen = medicionvolumen;
+       this.medicionagua = medicionagua;
+       this.fechanegocio = fechanegocio;
+       this.fecharegistro = fecharegistro;
        this.varillajeajustes = varillajeajustes;
     }
    
@@ -54,40 +54,40 @@ public class Varillaje  implements java.io.Serializable {
     public void setTanque(Tanque tanque) {
         this.tanque = tanque;
     }
-    public Date getFechaLectura() {
-        return this.fechaLectura;
+    public Date getFechalectura() {
+        return this.fechalectura;
     }
     
-    public void setFechaLectura(Date fechaLectura) {
-        this.fechaLectura = fechaLectura;
+    public void setFechalectura(Date fechalectura) {
+        this.fechalectura = fechalectura;
     }
-    public Integer getMedicionVolumen() {
-        return this.medicionVolumen;
-    }
-    
-    public void setMedicionVolumen(Integer medicionVolumen) {
-        this.medicionVolumen = medicionVolumen;
-    }
-    public Integer getMedicionAgua() {
-        return this.medicionAgua;
+    public Integer getMedicionvolumen() {
+        return this.medicionvolumen;
     }
     
-    public void setMedicionAgua(Integer medicionAgua) {
-        this.medicionAgua = medicionAgua;
+    public void setMedicionvolumen(Integer medicionvolumen) {
+        this.medicionvolumen = medicionvolumen;
     }
-    public String getFechaNegocio() {
-        return this.fechaNegocio;
-    }
-    
-    public void setFechaNegocio(String fechaNegocio) {
-        this.fechaNegocio = fechaNegocio;
-    }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Integer getMedicionagua() {
+        return this.medicionagua;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setMedicionagua(Integer medicionagua) {
+        this.medicionagua = medicionagua;
+    }
+    public String getFechanegocio() {
+        return this.fechanegocio;
+    }
+    
+    public void setFechanegocio(String fechanegocio) {
+        this.fechanegocio = fechanegocio;
+    }
+    public Date getFecharegistro() {
+        return this.fecharegistro;
+    }
+    
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Varillajeajuste> getVarillajeajustes() {
         return this.varillajeajustes;

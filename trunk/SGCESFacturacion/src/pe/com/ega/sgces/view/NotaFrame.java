@@ -6,7 +6,9 @@ package pe.com.ega.sgces.view;
 
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
@@ -186,10 +188,15 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            temporal1.setRazonSocial(jrazonCliente.getText());
            try {
                llenardatos(desp,cliente);
-            transaccionLogica.grabar(transaccion);
+           transaccionLogica.grabar(transaccion);
            despachoLogica.grabar(desp); 
            //System.out.println("Vale"+valeTemporal.getId());
-          // valedao.actualizar(valeTemporal);
+           SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+           Date now = new Date();
+           valeTemporal.setFechaDespacho(now);
+           valeTemporal.setHoraDespacho(format.format(now));
+           valeTemporal.setEstado(0);
+           valedao.actualizar(valeTemporal);
            comprobante.imprimirNotaDespacho(jkilometrajes.getText(),jplaca.getText(),jchofer.getText(),cliente.getRazonSocial(),
                 String.valueOf(cliente.getNumeroDocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), String.valueOf(numero("NDES")), "325", "10419492421", "FF9G151648", "NDES");
@@ -202,8 +209,12 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            llenardatos(desp,cliente);
            transaccionLogica.grabar(transaccion);
            despachoLogica.grabar(desp); 
-           //System.out.println("Vale"+valeTemporal.getId());
-          // valedao.actualizar(valeTemporal);
+           SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+           Date now = new Date();
+           valeTemporal.setFechaDespacho(now);
+           valeTemporal.setHoraDespacho(format.format(now));
+           valeTemporal.setEstado(0);
+           valedao.actualizar(valeTemporal);
            comprobante.imprimirNotaDespacho(jkilometrajes.getText(),jplaca.getText(),jchofer.getText(),cliente.getRazonSocial(),
                 String.valueOf(cliente.getNumeroDocumento()) ,"LOPEZ CORDOVA", String.valueOf(desp.getMontoSoles()), String.valueOf(Redondear(desp.getMontoSoles()*0.82)),String.valueOf(Redondear(desp.getMontoSoles()*0.18)),String.valueOf(desp.getPrecioUnitario()), desp.getProducto().getNombre()
                  , String.valueOf(desp.getNroGalones()), String.valueOf(numero("NDES")), "325", "10419492421", "FF9G151648", "NDES");

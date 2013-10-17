@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,7 +13,7 @@ public class Perfilopcion  implements java.io.Serializable {
      private PerfilopcionId id;
      private Perfil perfil;
      private Opcion opcion;
-     private Date fechaRegistro;
+     private Date fecharegistro;
 
     public Perfilopcion() {
     }
@@ -24,11 +24,11 @@ public class Perfilopcion  implements java.io.Serializable {
         this.perfil = perfil;
         this.opcion = opcion;
     }
-    public Perfilopcion(PerfilopcionId id, Perfil perfil, Opcion opcion, Date fechaRegistro) {
+    public Perfilopcion(PerfilopcionId id, Perfil perfil, Opcion opcion, Date fecharegistro) {
        this.id = id;
        this.perfil = perfil;
        this.opcion = opcion;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
     }
    
     public PerfilopcionId getId() {
@@ -52,12 +52,12 @@ public class Perfilopcion  implements java.io.Serializable {
     public void setOpcion(Opcion opcion) {
         this.opcion = opcion;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
 
 

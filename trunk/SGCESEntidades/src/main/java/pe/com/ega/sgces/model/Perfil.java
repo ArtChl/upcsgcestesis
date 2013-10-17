@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -14,9 +14,9 @@ public class Perfil  implements java.io.Serializable {
 
      private int id;
      private String nombre;
-     private Date fechaRegistro;
-     private Set<Perfilopcion> perfilopcions = new HashSet<Perfilopcion>(0);
+     private Date fecharegistro;
      private Set<Usuarioperfil> usuarioperfils = new HashSet<Usuarioperfil>(0);
+     private Set<Perfilopcion> perfilopcions = new HashSet<Perfilopcion>(0);
 
     public Perfil() {
     }
@@ -25,12 +25,12 @@ public class Perfil  implements java.io.Serializable {
     public Perfil(int id) {
         this.id = id;
     }
-    public Perfil(int id, String nombre, Date fechaRegistro, Set<Perfilopcion> perfilopcions, Set<Usuarioperfil> usuarioperfils) {
+    public Perfil(int id, String nombre, Date fecharegistro, Set<Usuarioperfil> usuarioperfils, Set<Perfilopcion> perfilopcions) {
        this.id = id;
        this.nombre = nombre;
-       this.fechaRegistro = fechaRegistro;
-       this.perfilopcions = perfilopcions;
+       this.fecharegistro = fecharegistro;
        this.usuarioperfils = usuarioperfils;
+       this.perfilopcions = perfilopcions;
     }
    
     public int getId() {
@@ -47,19 +47,12 @@ public class Perfil  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-    public Set<Perfilopcion> getPerfilopcions() {
-        return this.perfilopcions;
-    }
-    
-    public void setPerfilopcions(Set<Perfilopcion> perfilopcions) {
-        this.perfilopcions = perfilopcions;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Usuarioperfil> getUsuarioperfils() {
         return this.usuarioperfils;
@@ -67,6 +60,13 @@ public class Perfil  implements java.io.Serializable {
     
     public void setUsuarioperfils(Set<Usuarioperfil> usuarioperfils) {
         this.usuarioperfils = usuarioperfils;
+    }
+    public Set<Perfilopcion> getPerfilopcions() {
+        return this.perfilopcions;
+    }
+    
+    public void setPerfilopcions(Set<Perfilopcion> perfilopcions) {
+        this.perfilopcions = perfilopcions;
     }
 
 

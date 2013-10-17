@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -9,30 +9,30 @@ package pe.com.ega.sgces.model;
 public class CentroemisortipocomprobanteId  implements java.io.Serializable {
 
 
-     private int idTipoComprobante;
-     private int idCentroEmisor;
+     private int idtipocomprobante;
+     private int idcentroemisor;
 
     public CentroemisortipocomprobanteId() {
     }
 
-    public CentroemisortipocomprobanteId(int idTipoComprobante, int idCentroEmisor) {
-       this.idTipoComprobante = idTipoComprobante;
-       this.idCentroEmisor = idCentroEmisor;
+    public CentroemisortipocomprobanteId(int idtipocomprobante, int idcentroemisor) {
+       this.idtipocomprobante = idtipocomprobante;
+       this.idcentroemisor = idcentroemisor;
     }
    
-    public int getIdTipoComprobante() {
-        return this.idTipoComprobante;
+    public int getIdtipocomprobante() {
+        return this.idtipocomprobante;
     }
     
-    public void setIdTipoComprobante(int idTipoComprobante) {
-        this.idTipoComprobante = idTipoComprobante;
+    public void setIdtipocomprobante(int idtipocomprobante) {
+        this.idtipocomprobante = idtipocomprobante;
     }
-    public int getIdCentroEmisor() {
-        return this.idCentroEmisor;
+    public int getIdcentroemisor() {
+        return this.idcentroemisor;
     }
     
-    public void setIdCentroEmisor(int idCentroEmisor) {
-        this.idCentroEmisor = idCentroEmisor;
+    public void setIdcentroemisor(int idcentroemisor) {
+        this.idcentroemisor = idcentroemisor;
     }
 
 
@@ -42,15 +42,15 @@ public class CentroemisortipocomprobanteId  implements java.io.Serializable {
 		 if ( !(other instanceof CentroemisortipocomprobanteId) ) return false;
 		 CentroemisortipocomprobanteId castOther = ( CentroemisortipocomprobanteId ) other; 
          
-		 return (this.getIdTipoComprobante()==castOther.getIdTipoComprobante())
- && (this.getIdCentroEmisor()==castOther.getIdCentroEmisor());
+		 return (this.getIdtipocomprobante()==castOther.getIdtipocomprobante())
+ && (this.getIdcentroemisor()==castOther.getIdcentroemisor());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getIdTipoComprobante();
-         result = 37 * result + this.getIdCentroEmisor();
+         result = 37 * result + this.getIdtipocomprobante();
+         result = 37 * result + this.getIdcentroemisor();
          return result;
    }   
 

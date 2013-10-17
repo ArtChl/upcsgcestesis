@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,13 +13,13 @@ public class Producto  implements java.io.Serializable {
 
 
      private int id;
-     private Integer idTipoProducto;
+     private Integer idtipoproducto;
      private String nombre;
-     private Date fechaRegistro;
-     private Set<Subcuenta> subcuentas = new HashSet<Subcuenta>(0);
+     private Date fecharegistro;
+     private Set<Transacciondetalle> transacciondetalles = new HashSet<Transacciondetalle>(0);
      private Set<Caraproducto> caraproductos = new HashSet<Caraproducto>(0);
      private Set<Tanque> tanques = new HashSet<Tanque>(0);
-     private Set<Transacciondetalle> transacciondetalles = new HashSet<Transacciondetalle>(0);
+     private Set<Subcuenta> subcuentas = new HashSet<Subcuenta>(0);
      private Set<Despacho> despachos = new HashSet<Despacho>(0);
 
     public Producto() {
@@ -29,15 +29,15 @@ public class Producto  implements java.io.Serializable {
     public Producto(int id) {
         this.id = id;
     }
-    public Producto(int id, Integer idTipoProducto, String nombre, Date fechaRegistro, Set<Subcuenta> subcuentas, Set<Caraproducto> caraproductos, Set<Tanque> tanques, Set<Transacciondetalle> transacciondetalles, Set<Despacho> despachos) {
+    public Producto(int id, Integer idtipoproducto, String nombre, Date fecharegistro, Set<Transacciondetalle> transacciondetalles, Set<Caraproducto> caraproductos, Set<Tanque> tanques, Set<Subcuenta> subcuentas, Set<Despacho> despachos) {
        this.id = id;
-       this.idTipoProducto = idTipoProducto;
+       this.idtipoproducto = idtipoproducto;
        this.nombre = nombre;
-       this.fechaRegistro = fechaRegistro;
-       this.subcuentas = subcuentas;
+       this.fecharegistro = fecharegistro;
+       this.transacciondetalles = transacciondetalles;
        this.caraproductos = caraproductos;
        this.tanques = tanques;
-       this.transacciondetalles = transacciondetalles;
+       this.subcuentas = subcuentas;
        this.despachos = despachos;
     }
    
@@ -48,12 +48,12 @@ public class Producto  implements java.io.Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    public Integer getIdTipoProducto() {
-        return this.idTipoProducto;
+    public Integer getIdtipoproducto() {
+        return this.idtipoproducto;
     }
     
-    public void setIdTipoProducto(Integer idTipoProducto) {
-        this.idTipoProducto = idTipoProducto;
+    public void setIdtipoproducto(Integer idtipoproducto) {
+        this.idtipoproducto = idtipoproducto;
     }
     public String getNombre() {
         return this.nombre;
@@ -62,19 +62,19 @@ public class Producto  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
-    public Set<Subcuenta> getSubcuentas() {
-        return this.subcuentas;
+    public Set<Transacciondetalle> getTransacciondetalles() {
+        return this.transacciondetalles;
     }
     
-    public void setSubcuentas(Set<Subcuenta> subcuentas) {
-        this.subcuentas = subcuentas;
+    public void setTransacciondetalles(Set<Transacciondetalle> transacciondetalles) {
+        this.transacciondetalles = transacciondetalles;
     }
     public Set<Caraproducto> getCaraproductos() {
         return this.caraproductos;
@@ -90,12 +90,12 @@ public class Producto  implements java.io.Serializable {
     public void setTanques(Set<Tanque> tanques) {
         this.tanques = tanques;
     }
-    public Set<Transacciondetalle> getTransacciondetalles() {
-        return this.transacciondetalles;
+    public Set<Subcuenta> getSubcuentas() {
+        return this.subcuentas;
     }
     
-    public void setTransacciondetalles(Set<Transacciondetalle> transacciondetalles) {
-        this.transacciondetalles = transacciondetalles;
+    public void setSubcuentas(Set<Subcuenta> subcuentas) {
+        this.subcuentas = subcuentas;
     }
     public Set<Despacho> getDespachos() {
         return this.despachos;

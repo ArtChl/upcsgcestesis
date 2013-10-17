@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 
@@ -10,16 +10,16 @@ public class DistritoId  implements java.io.Serializable {
 
 
      private String id;
-     private String idProvincia;
-     private String idDepartamento;
+     private String idprovincia;
+     private String iddepartamento;
 
     public DistritoId() {
     }
 
-    public DistritoId(String id, String idProvincia, String idDepartamento) {
+    public DistritoId(String id, String idprovincia, String iddepartamento) {
        this.id = id;
-       this.idProvincia = idProvincia;
-       this.idDepartamento = idDepartamento;
+       this.idprovincia = idprovincia;
+       this.iddepartamento = iddepartamento;
     }
    
     public String getId() {
@@ -29,19 +29,19 @@ public class DistritoId  implements java.io.Serializable {
     public void setId(String id) {
         this.id = id;
     }
-    public String getIdProvincia() {
-        return this.idProvincia;
+    public String getIdprovincia() {
+        return this.idprovincia;
     }
     
-    public void setIdProvincia(String idProvincia) {
-        this.idProvincia = idProvincia;
+    public void setIdprovincia(String idprovincia) {
+        this.idprovincia = idprovincia;
     }
-    public String getIdDepartamento() {
-        return this.idDepartamento;
+    public String getIddepartamento() {
+        return this.iddepartamento;
     }
     
-    public void setIdDepartamento(String idDepartamento) {
-        this.idDepartamento = idDepartamento;
+    public void setIddepartamento(String iddepartamento) {
+        this.iddepartamento = iddepartamento;
     }
 
 
@@ -52,16 +52,16 @@ public class DistritoId  implements java.io.Serializable {
 		 DistritoId castOther = ( DistritoId ) other; 
          
 		 return ( (this.getId()==castOther.getId()) || ( this.getId()!=null && castOther.getId()!=null && this.getId().equals(castOther.getId()) ) )
- && ( (this.getIdProvincia()==castOther.getIdProvincia()) || ( this.getIdProvincia()!=null && castOther.getIdProvincia()!=null && this.getIdProvincia().equals(castOther.getIdProvincia()) ) )
- && ( (this.getIdDepartamento()==castOther.getIdDepartamento()) || ( this.getIdDepartamento()!=null && castOther.getIdDepartamento()!=null && this.getIdDepartamento().equals(castOther.getIdDepartamento()) ) );
+ && ( (this.getIdprovincia()==castOther.getIdprovincia()) || ( this.getIdprovincia()!=null && castOther.getIdprovincia()!=null && this.getIdprovincia().equals(castOther.getIdprovincia()) ) )
+ && ( (this.getIddepartamento()==castOther.getIddepartamento()) || ( this.getIddepartamento()!=null && castOther.getIddepartamento()!=null && this.getIddepartamento().equals(castOther.getIddepartamento()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + ( getId() == null ? 0 : this.getId().hashCode() );
-         result = 37 * result + ( getIdProvincia() == null ? 0 : this.getIdProvincia().hashCode() );
-         result = 37 * result + ( getIdDepartamento() == null ? 0 : this.getIdDepartamento().hashCode() );
+         result = 37 * result + ( getIdprovincia() == null ? 0 : this.getIdprovincia().hashCode() );
+         result = 37 * result + ( getIddepartamento() == null ? 0 : this.getIddepartamento().hashCode() );
          return result;
    }   
 

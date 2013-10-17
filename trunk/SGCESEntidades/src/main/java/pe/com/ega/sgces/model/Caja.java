@@ -1,5 +1,5 @@
 package pe.com.ega.sgces.model;
-// Generated 04/06/2013 01:38:23 AM by Hibernate Tools 3.2.1.GA
+// Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -15,7 +15,7 @@ public class Caja  implements java.io.Serializable {
      private int id;
      private Trabajador trabajador;
      private String codigo;
-     private Date fechaRegistro;
+     private Date fecharegistro;
      private Set<Turnopuntoventacaja> turnopuntoventacajas = new HashSet<Turnopuntoventacaja>(0);
 
     public Caja() {
@@ -26,11 +26,11 @@ public class Caja  implements java.io.Serializable {
         this.id = id;
         this.trabajador = trabajador;
     }
-    public Caja(int id, Trabajador trabajador, String codigo, Date fechaRegistro, Set<Turnopuntoventacaja> turnopuntoventacajas) {
+    public Caja(int id, Trabajador trabajador, String codigo, Date fecharegistro, Set<Turnopuntoventacaja> turnopuntoventacajas) {
        this.id = id;
        this.trabajador = trabajador;
        this.codigo = codigo;
-       this.fechaRegistro = fechaRegistro;
+       this.fecharegistro = fecharegistro;
        this.turnopuntoventacajas = turnopuntoventacajas;
     }
    
@@ -55,12 +55,12 @@ public class Caja  implements java.io.Serializable {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    public Date getFechaRegistro() {
-        return this.fechaRegistro;
+    public Date getFecharegistro() {
+        return this.fecharegistro;
     }
     
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
     public Set<Turnopuntoventacaja> getTurnopuntoventacajas() {
         return this.turnopuntoventacajas;
