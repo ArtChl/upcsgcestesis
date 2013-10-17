@@ -34,5 +34,14 @@
         <property name="nrooperacion" type="string">
             <column name="nrooperacion" length="20" />
         </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="20" />
+        </property>
+        <property name="turno" type="string">
+            <column name="turno" length="50" />
+        </property>
+        <property name="cerrado" type="string">
+            <column name="cerrado" length="2" />
+        </property>
     </class>
 </hibernate-mapping>
