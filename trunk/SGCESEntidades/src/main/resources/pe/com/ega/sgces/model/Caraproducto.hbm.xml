@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Caraproducto" table="caraproducto" schema="public">
+        <composite-id name="id" class="pe.com.ega.sgces.model.CaraproductoId">
+            <key-property name="idcara" type="int">
+                <column name="idcara" />
+            </key-property>
+            <key-property name="idproducto" type="int">
+                <column name="idproducto" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="producto" class="pe.com.ega.sgces.model.Producto" update="false" insert="false" fetch="select">
+            <column name="idproducto" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cara" class="pe.com.ega.sgces.model.Cara" update="false" insert="false" fetch="select">
+            <column name="idcara" not-null="true" />
+        </many-to-one>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <set name="despachos" inverse="true">
+            <key>
+                <column name="idcara" not-null="true" />
+                <column name="idproducto" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Despacho" />
+        </set>
+    </class>
+</hibernate-mapping>

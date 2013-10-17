@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="cem44" match-schema="public"/>
+  <table-filter match-name="perfilopcion"/>
+  <table-filter match-name="interface_config"/>
+  <table-filter match-name="provincia"/>
+  <table-filter match-name="listavalor"/>
+  <table-filter match-name="transaccion"/>
+  <table-filter match-name="centroemisor"/>
+  <table-filter match-name="turno"/>
+  <table-filter match-name="distrito"/>
+  <table-filter match-name="turnopuntoventacaja"/>
+  <table-filter match-name="numcomprobante"/>
+  <table-filter match-name="puntoventa"/>
+  <table-filter match-name="departamento"/>
+  <table-filter match-name="caraproducto"/>
+  <table-filter match-name="impresorapuntoventa"/>
+  <table-filter match-name="cuenta"/>
+  <table-filter match-name="centroemisortipocomprobante"/>
+  <table-filter match-name="cara"/>
+  <table-filter match-name="impresora"/>
+  <table-filter match-name="transacciondetalle"/>
+  <table-filter match-name="opcion"/>
+  <table-filter match-name="vale"/>
+  <table-filter match-name="tarjeta"/>
+  <table-filter match-name="lista"/>
+  <table-filter match-name="varillaje"/>
+  <table-filter match-name="tanque"/>
+  <table-filter match-name="movimiento"/>
+  <table-filter match-name="cliente"/>
+  <table-filter match-name="usuarioperfil"/>
+  <table-filter match-name="puntoacumulado"/>
+  <table-filter match-name="tipocambio"/>
+  <table-filter match-name="subcuenta"/>
+  <table-filter match-name="perfil"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="surtidor"/>
+  <table-filter match-name="producto"/>
+  <table-filter match-name="varillajeajuste"/>
+  <table-filter match-name="despacho"/>
+  <table-filter match-name="deposito"/>
+  <table-filter match-name="trabajador"/>
+  <table-filter match-name="estacionservicio"/>
+  <table-filter match-name="caja"/>
+</hibernate-reverse-engineering>

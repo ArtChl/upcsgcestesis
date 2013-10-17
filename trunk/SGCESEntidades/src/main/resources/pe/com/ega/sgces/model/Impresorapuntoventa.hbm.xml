@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Impresorapuntoventa" table="impresorapuntoventa" schema="public">
+        <composite-id name="id" class="pe.com.ega.sgces.model.ImpresorapuntoventaId">
+            <key-property name="idpuntoventa" type="int">
+                <column name="idpuntoventa" />
+            </key-property>
+            <key-property name="idimpresora" type="int">
+                <column name="idimpresora" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="impresora" class="pe.com.ega.sgces.model.Impresora" update="false" insert="false" fetch="select">
+            <column name="idimpresora" not-null="true" />
+        </many-to-one>
+        <many-to-one name="puntoventa" class="pe.com.ega.sgces.model.Puntoventa" update="false" insert="false" fetch="select">
+            <column name="idpuntoventa" not-null="true" />
+        </many-to-one>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>
