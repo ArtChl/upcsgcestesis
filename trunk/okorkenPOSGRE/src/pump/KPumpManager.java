@@ -266,7 +266,7 @@ public class KPumpManager
 
                             String fecha = arrayShiftz[0];
                             String id_surtidor = String.valueOf(i + 1);
-                            posManager.updateTotalizers(hose, electronic_amount, electronic_volume, id_surtidor, id_cem, fecha);
+                            //posManager.updateTotalizers(hose, electronic_amount, electronic_volume, id_surtidor, id_cem, fecha);
                         }
 
                     }

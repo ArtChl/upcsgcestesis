@@ -57,7 +57,7 @@ public class KPosManager
             try
         {
             String pump = KDataFormatter.justifyStrings("", dispatch.getPump(), 2, '0');
-            String sentence = "INSERT INTO DESPACHO (id, idproducto, idcara, fecharegistro, nrogalones, preciounitario, montosoles, idestado) VALUES (";
+            String sentence = "INSERT INTO DESPACHO (id, idproducto, idcara, fecharegistro, nrogalones, preciounitario, montosoles, turno, hora, idcem, idestado) VALUES (";
             String maximun = "SELECT MAX(id) FROM DESPACHO";
                 String nextNumber = "";
                 try
@@ -86,6 +86,9 @@ public class KPosManager
             sentence = sentence + "'" + KDataFormatter.redondeartres(Double.parseDouble(dispatch.getAmount()), Double.parseDouble(dispatch.getPPU())) + "',";
             sentence = sentence + "'" + Double.parseDouble(dispatch.getPPU()) + "',";
             sentence = sentence + "'" + Double.parseDouble(dispatch.getAmount()) + "',";
+            sentence = sentence + "'" + dispatch.getShiftId() + "',"; 
+            sentence = sentence + "'" + dispatch.getTime() + "',"; 
+            sentence = sentence + "'" + dispatch.getSaleId() + "',"; 
             sentence = sentence + "'" + dispatch.getStatus() + "')";
             try
             {
