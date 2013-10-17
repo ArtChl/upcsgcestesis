@@ -278,12 +278,20 @@ public class ClientApplication implements MDIController,LoginController {
     DefaultTreeModel model = new DefaultTreeModel(root);
     ApplicationFunction n1 = new ApplicationFunction("Mantenimiento",null);
     ApplicationFunction n2 = new ApplicationFunction("Operacion",null);
+    ApplicationFunction n3 = new ApplicationFunction("Caja",null);
     ApplicationFunction n11 = new ApplicationFunction("Usuario","USUARIO","cliente.png","getUsuario");
     ApplicationFunction n21 = new ApplicationFunction("Despacho","DESPACHO","car.png","getDespacho");
+    ApplicationFunction n31 = new ApplicationFunction("Cierre","CIERRE","print16.gif","getDespacho");
+    ApplicationFunction n32 = new ApplicationFunction("Arqueo","ARQUEO","copy16.gif","getDespacho");
+    ApplicationFunction n33 = new ApplicationFunction("Tirada Buzon","TIRDADA","paste16.gif","getDespacho");
     n1.add(n11);
     n2.add(n21);
+    n3.add(n31);
+    n3.add(n32);
+    n3.add(n33);
     root.add(n1);
     root.add(n2);
+    root.add(n3);
 
     return model;
   }
