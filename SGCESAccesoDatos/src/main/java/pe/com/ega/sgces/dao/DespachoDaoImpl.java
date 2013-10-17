@@ -26,7 +26,7 @@ public class DespachoDaoImpl implements DespachoDao{
     }
 
     public void actualizar(Despacho despacho) {
-        String query = "update cem44.despacho set idestado=0 where id="+ despacho.getId();
+        String query = "update despacho set idestado=0 where id="+ despacho.getId();
         SQLQuery s=session.createSQLQuery(query);
         s.executeUpdate();
     }

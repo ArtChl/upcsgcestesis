@@ -4,18 +4,8 @@
  */
 package pe.com.ega.sgces.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import pe.com.ega.sgces.model.Caraproducto;
-import pe.com.ega.sgces.model.Cliente;
-import pe.com.ega.sgces.model.Despacho;
-import pe.com.ega.sgces.model.Transaccion;
-import pe.com.ega.sgces.model.Transacciondetalle;
-import pe.com.ega.sgces.model.Usuario;
+import pe.com.ega.sgces.model.NumComprobante;
 
 /**
  *
@@ -50,14 +40,25 @@ public class NewMain {
        */
        Session session = null;
        session = HibernateUtil.getSessionFactory().openSession();
-       TransaccionDao usuariodao = new TransaccionDaoImpl();
-       usuariodao.setSession(session);
+       CierreDao valedao = new CierreDaoImpl();
+       valedao.setSession(session);
+       session.beginTransaction();
+       valedao.cierreTurno();
+       session.getTransaction().commit(); 
+       
+       //valedao.setSession(session);
        //List<Cliente> cliente=usuariodao.razon(1041949242);
       // System.out.println("Cliente"+cliente.get(1).getRazonSocial());
-       ArrayList<Transaccion> comprobantes= (ArrayList<Transaccion>) usuariodao.buscarTodosDoc("NDES");
-            int i=comprobantes.size();
-            System.out.println(comprobantes.size());
-            int num=comprobantes.get(i-1).getNumero();
-       
+        /*NumComprobante comprobantes= valedao.buscarPorCodigo(1);
+        System.out.println(comprobantes.getNumero());
+       comprobantes.setNumero(comprobantes.getNumero()+1);
+  
+        System.out.println(comprobantes.getNumero());
+             session.beginTransaction();
+            valedao.actualizar(comprobantes);
+            session.getTransaction().commit(); 
+             
+            */
+    
     }
 }
