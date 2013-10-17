@@ -15,7 +15,8 @@
        <p:menubar autoDisplay="false">  
         <p:menuitem value="Inicio" icon="inicio" url="inicio.jsf"/>     
         <p:submenu label="Consumo" icon="mante">  
-            <p:menuitem   value="Flotas" url="flotas.jsf" icon="mante" />  
+            <p:menuitem   value="Flotas" url="flotas.jsf" icon="mante" /> 
+            <p:menuitem   value="Vales" url="vales.jsf" icon="mante" /> 
         </p:submenu>
         <p:menuitem value="Salir" url="login.jsf" icon="salir" />  
         
@@ -39,7 +40,7 @@
             
             <p:column id="valeColumn" filterBy="#{Transaccion.numeroTiket}"   
                 headerText="Vale"  
-                filterMatchMode="startsWith"> 
+                filterMatchMode="startsWith" style="text-align: center"> 
             <f:facet name="header">  
             <h:outputText value="Vale" />  
             </f:facet>     
@@ -48,7 +49,7 @@
             
             <p:column id="NotaColumn" filterBy="#{Transaccion.numeroVale}"   
                 headerText="Despacho"  
-                filterMatchMode="startsWith">
+                filterMatchMode="startsWith" style="text-align: center">
             <f:facet name="header">  
             <h:outputText value="Despacho" />  
             </f:facet>      

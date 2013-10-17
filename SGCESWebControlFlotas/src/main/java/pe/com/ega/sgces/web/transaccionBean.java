@@ -8,15 +8,11 @@ package pe.com.ega.sgces.web;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
-import pe.com.ega.sgces.dao.UsuariodaoImpl;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
-import pe.com.ega.sgces.logic.UsuarioLogicaImpl;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**
