@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/cem44</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">12345678</property>
+    <mapping resource="pe/com/ega/sgces/model/Provincia.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Cara.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Producto.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Distrito.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Surtidor.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Estacionservicio.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Caraproducto.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Departamento.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Despacho.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Transaccion.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Caja.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Puntoacumulado.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Varillaje.hbm.xml"/>
+    <mapping/>
+    <mapping/>
+    <mapping resource="pe/com/ega/sgces/model/Perfil.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Subcuenta.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Centroemisor.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Cliente.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Varillajeajuste.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Usuario.hbm.xml"/>
+    <mapping/>
+    <mapping resource="pe/com/ega/sgces/model/Centroemisortipocomprobante.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Puntoventa.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/InterfaceConfig.hbm.xml"/>
+    <mapping/>
+    <mapping resource="pe/com/ega/sgces/model/Perfilopcion.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Lista.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Opcion.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Tipocambio.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Tarjeta.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Turnopuntoventacaja.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Turno.hbm.xml"/>
+    <mapping/>
+    <mapping resource="pe/com/ega/sgces/model/Impresorapuntoventa.hbm.xml"/>
+    <mapping/>
+    <mapping/>
+    <mapping resource="pe/com/ega/sgces/model/Usuarioperfil.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Cuenta.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Movimiento.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Transacciondetalle.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Impresora.hbm.xml"/>
+    <mapping/>
+    <mapping resource="pe/com/ega/sgces/model/Listavalor.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Tanque.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Vale.hbm.xml"/>
+    <mapping/>
+    <mapping resource="pe/com/ega/sgces/model/Deposito.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Numcomprobante.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/model/Trabajador.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

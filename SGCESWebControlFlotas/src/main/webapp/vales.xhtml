@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    <h:head>
+        <title>Consumo Flotas</title>
+        <link rel="stylesheet" href="resources/css/botones.css" />
+    </h:head>
+    <h:body>
+    <!--Cabecera del formulario donde se encuentra esto es igual a todos las paginas JSF-->    
+    <h:form>
+       <p:menubar autoDisplay="false">  
+        <p:menuitem value="Inicio" icon="inicio" url="inicio.jsf"/>     
+        <p:submenu label="Consumo" icon="mante">  
+            <p:menuitem   value="Flotas" url="flotas.jsf" icon="mante" />  
+            <p:menuitem   value="Vales" url="vales.jsf" icon="mante" /> 
+        </p:submenu>
+        <p:menuitem value="Salir" url="login.jsf" icon="salir" />  
+        
+    </p:menubar>
+     
+    </h:form>
+     <h:form id="frmNuevo">
+            <p:commandButton value="Nuevo Vale Consumo" icon="ui-icon-disk" oncomplete="dlgIngresar.show()"
+                             update=":frmIngresar:dlgIngresar" actionListener="#{valeBean.inicioVale()}"/>
+    </h:form> 
+    <!--Tabla donde se contiene la informacion de todos los registros--> 
+     <h:form id="frmPrincipal">  
+        <p:growl id="principal"/> 
+        <p:dataTable id="datatable" var="Vale" value="#{valeBean.vales}"  paginator="true" rows="10"
+                     sortBy="#{Vale.estado}" sortOrder="descending" >  
+            
+            <f:facet name="header">  
+            Vales consumidos
+            </f:facet> 
+            
+            <p:column id="valeColumn" filterBy="#{Vale.numero}"   
+                headerText="Vale"  
+                filterMatchMode="startsWith" style="text-align: center"> 
+            <f:facet name="header">  
+            <h:outputText value="Vale" />  
+            </f:facet>     
+                <h:outputText value="#{Vale.numero}" />  
+            </p:column>
+            
+            <p:column id="NotaColumn" filterBy="#{Vale.chofer}"   
+                headerText="Chofer"  
+                filterMatchMode="startsWith" style="text-align: center">
+            <f:facet name="header">  
+            <h:outputText value="Despacho" />  
+            </f:facet>      
+                <h:outputText value="#{Vale.chofer}" />  
+            </p:column>
+            
+            <p:column headerText="Producto" style="text-align: center">
+            <f:facet name="header">  
+            <h:outputText value="Producto" />  
+            </f:facet>      
+                <h:outputText value="#{Vale.producto}" />  
+            </p:column> 
+            
+            <p:column headerText="Placa" style="text-align: center">
+            <f:facet name="header">  
+            <h:outputText value="Placa" />  
+            </f:facet>      
+                <h:outputText value="#{Vale.placa}" />  
+            </p:column> 
+            
+             <p:column headerText="Fecha" style="text-align: center">
+            <f:facet name="header">  
+            <h:outputText value="Fecha" />  
+            </f:facet>      
+                 <h:outputText value="#{Vale.fecha}" >
+                 <f:convertDateTime pattern="dd/MM/yyyy" /> 
+                 </h:outputText>  
+            </p:column> 
+            
+            <p:column headerText="Fecha Despacho" style="background-color: burlywood; text-align: center" >  
+                <h:outputText value="#{Vale.fechaDespacho}" >
+                <f:convertDateTime pattern="dd/MM/yyyy" /> 
+                </h:outputText>
+            </p:column>
+            
+            <p:column headerText="Hora Despacho" style="background-color: burlywood; text-align: center">  
+                <h:outputText value="#{Vale.horaDespacho}" />
+            </p:column>
+            
+           <p:column headerText="Monto" style="text-align: right">
+            <f:facet name="header">  
+            <h:outputText value="Monto" />  
+            </f:facet>      
+               <h:outputText value="#{Vale.monto}" > 
+                    <f:convertNumber  type="currency" currencySymbol=" " groupingUsed="true" locale="en"/>
+                </h:outputText> 
+            </p:column> 
+            
+            <p:column style="width:8%; text-align: center" >  
+                <p:commandButton oncomplete="dlgActualizar.show()" icon="editar" title="Actualizar" 
+                                 update=":frmActualizar:dlgActualizar" actionListener="#{valeBean.prepararVale(Vale.id)}"/>  
+                <p:commandButton oncomplete="dlgEliminar.show()" icon="eliminar" title="Eliminar"
+                                 update=":frmEliminar:dlgEliminar" actionListener="#{valeBean.prepararVale(Vale.id)}"/>                 
+            </p:column> 
+            
+            <f:facet name="footer">  
+                Vales Registrados #{valeBean.vales.size()}.  
+            </f:facet> 
+            
+            
+          </p:dataTable> 
+          <h:panelGrid columns="1">  
+            <p:panel header="Exportar Tabla">       
+            <h:commandLink>  
+                <p:graphicImage value="/resources/img/csv.png" />  
+                <p:dataExporter type="xls" target="datatable" fileName="ConsumoFlotas" />  
+            </h:commandLink>            
+            <h:commandLink>  
+                <p:graphicImage value="/resources/img/pdf.png" />  
+                <p:dataExporter type="pdf" target="datatable" fileName="ConsumoFlotas" />  
+            </h:commandLink>         
+            </p:panel>  
+           </h:panelGrid>  
+    </h:form>
+    
+    <!--Formulario de Ingreso de Registros Nuevos--> 
+    <h:form id="frmIngresar">   
+        <p:dialog header="Ingreso Consumo" widgetVar="dlgIngresar" resizable="false"  
+              modal="true" id="dlgIngresar"> 
+        <p:growl id="growl" showDetail="false" sticky="true" />  
+        
+        <h:panelGrid columns="2" cellpadding="5"> 
+            
+            <h:outputText value="Producto:   " /> 
+            <p:selectOneMenu value="#{valeBean.vale.producto}">  
+            <f:selectItem itemLabel="Seleccione" itemValue="" />  
+            <f:selectItem itemLabel="Gasolina 84" itemValue="G84" />  
+            <f:selectItem itemLabel="Gasolina 90" itemValue="G90" />  
+            <f:selectItem itemLabel="Gasolina 95" itemValue="G95" />  
+            <f:selectItem itemLabel="Gasolina 98" itemValue="G98" />  
+            <f:selectItem itemLabel="Diesel Pro" itemValue="DIESEL" />  
+            <f:selectItem itemLabel="GLP" itemValue="GLP" />  
+            </p:selectOneMenu>
+                
+            <h:outputText value="Monto:   " />   
+            <p:inputText value="#{valeBean.vale.monto}" required="true" label="Name"/>  
+                
+            <h:outputText value="Chofer:   " />   
+            <p:inputText value="#{valeBean.vale.chofer}" required="true" label="Name"/> 
+            
+            <h:outputText value="Placa:   " />   
+            <p:inputText value="#{valeBean.vale.placa}" required="true" label="Name"/> 
+            
+            <h:outputText value="Fecha:   " /> 
+            <p:calendar value="#{valeBean.vale.fecha}" id="popupDate" required="true" label="Name"/>     
+                                           
+            </h:panelGrid>  
+            <p:commandButton value="Guardar" style="text-align: center" oncomplete="dlgIngresar.hide()" 
+                             update=":frmPrincipal:datatable, growl" actionListener="#{valeBean.agregarVale()}"/>
+            <p:commandButton value="Cancelar" style="text-align: center" oncomplete="dlgIngresar.hide()"/>                           
+        </p:dialog> 
+    </h:form>
+   <!--Formulario de Actualizacion de Registros-->      
+    <h:form id="frmActualizar">   
+        <p:dialog header="Actualizar Factura Pendiente" widgetVar="dlgActualizar" resizable="false"  
+              modal="true" id="dlgActualizar"> 
+        <p:growl id="growl" showDetail="false" sticky="true" /> 
+        
+        <h:panelGrid columns="2" cellpadding="5"> 
+            <h:outputText value="Producto:   " /> 
+            <p:inputText value="#{valeBean.vale.producto}" required="true" label="Name"/>     
+                
+            <h:outputText value="Monto:   " />   
+            <p:inputText value="#{valeBean.vale.monto}" required="true" label="Name"/>  
+                
+            <h:outputText value="Chofer:   " />   
+            <p:inputText value="#{valeBean.vale.chofer}" required="true" label="Name"/> 
+            
+            <h:outputText value="Placa:   " />   
+            <p:inputText value="#{valeBean.vale.placa}" required="true" label="Name"/> 
+            
+            <h:outputText value="Fecha:   " /> 
+            <p:calendar value="#{valeBean.vale.fecha}" id="popupDate" required="true" label="Name"/>   
+            
+            </h:panelGrid> 
+            <p:commandButton value="Guardar" style="text-align: center" oncomplete="dlgActualizar.hide()" 
+                             update=":frmPrincipal:datatable,growl" actionListener="#{valeBean.actualizarVale()}"/>
+            <p:commandButton value="Cancelar" style="text-align: center" oncomplete="dlgActualizar.hide()"/>                           
+        </p:dialog> 
+    </h:form>
+    <!--Confirmacion de Eliminacion-->     
+    <h:form id="frmEliminar">                       
+    <p:growl id="messages" />    
+       
+    <p:confirmDialog id="dlgEliminar" message="Esta Seguro de Eliminar Vale?"  
+                header="Iniciando Eliminacion" severity="alert" widgetVar="dlgEliminar">  
+                  
+        <p:commandButton id="confirm" value="Confirmar" update=":frmPrincipal:datatable, messages" oncomplete="dlgEliminar.hide()"  
+                         actionListener="#{valeBean.eliminarVale()}" />  
+        <p:commandButton id="decline" value="Cancelar" onclick="dlgEliminar.hide()" type="button" />   
+                  
+    </p:confirmDialog>   
+    </h:form> 
+    <!--Formulario de invocacion a losa tipos de fechas usado en el ingreso de datos-->
+  
+    <p:dialog header="Selected Dates" widgetVar="dialog"   
+            showEffect="fade" hideEffect="fade">  
+      
+        <h:panelGrid id="display" columns="2" cellpadding="5">  
+          
+            <h:outputText value="Inline Date:" />  
+            <h:outputText value="#{calendarBean.date1}" id="inlineDate">  
+                <f:convertDateTime pattern="d/M/yyyy"/>  
+            </h:outputText>  
+              
+            <h:outputText value="Popup Date:" />  
+            <h:outputText value="#{calendarBean.date2}" id="popupDate">  
+                <f:convertDateTime pattern="d/M/yyyy"/>  
+            </h:outputText>  
+              
+            <h:outputText value="Popup Button Date: " />  
+            <h:outputText value="#{calendarBean.date3}" id="popupButtonDate">  
+                <f:convertDateTime pattern="d/M/yyyy"/>  
+            </h:outputText>  
+              
+        </h:panelGrid>           
+    </p:dialog>  
+    </h:body>
+</html>
+

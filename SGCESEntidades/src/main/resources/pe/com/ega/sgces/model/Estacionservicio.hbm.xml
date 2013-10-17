@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Estacionservicio" table="estacionservicio" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="distrito" class="pe.com.ega.sgces.model.Distrito" fetch="select">
+            <column name="iddistrito" length="2" not-null="true" />
+            <column name="idprovincia" length="20" not-null="true" />
+            <column name="iddepartamento" length="2" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="20" />
+        </property>
+        <property name="latitud" type="java.lang.Long">
+            <column name="latitud" />
+        </property>
+        <property name="longitud" type="java.lang.Long">
+            <column name="longitud" />
+        </property>
+        <property name="razonsocial" type="string">
+            <column name="razonsocial" length="20" />
+        </property>
+        <property name="ruc" type="string">
+            <column name="ruc" length="20" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="20" />
+        </property>
+        <property name="fechaapertura" type="date">
+            <column name="fechaapertura" length="13" />
+        </property>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <set name="turnos" inverse="true">
+            <key>
+                <column name="idestacionservicio" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Turno" />
+        </set>
+        <set name="trabajadors" inverse="true">
+            <key>
+                <column name="idestacionservicio" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Trabajador" />
+        </set>
+        <set name="puntoventas" inverse="true">
+            <key>
+                <column name="idestacionservicio" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Puntoventa" />
+        </set>
+        <set name="surtidors" inverse="true">
+            <key>
+                <column name="idestacionservicio" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Surtidor" />
+        </set>
+        <set name="tanques" inverse="true">
+            <key>
+                <column name="idestacionservicio" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Tanque" />
+        </set>
+    </class>
+</hibernate-mapping>

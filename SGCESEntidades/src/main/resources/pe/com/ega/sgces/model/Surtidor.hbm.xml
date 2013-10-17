@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Surtidor" table="surtidor" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="estacionservicio" class="pe.com.ega.sgces.model.Estacionservicio" fetch="select">
+            <column name="idestacionservicio" not-null="true" />
+        </many-to-one>
+        <property name="idmarca" type="java.lang.Integer">
+            <column name="idmarca" />
+        </property>
+        <property name="idmodelo" type="java.lang.Integer">
+            <column name="idmodelo" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="20" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" />
+        </property>
+        <property name="nrocaras" type="java.lang.Integer">
+            <column name="nrocaras" />
+        </property>
+        <property name="numeroserie" type="string">
+            <column name="numeroserie" length="20" />
+        </property>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <property name="idfamiliaelectronica" type="java.lang.Integer">
+            <column name="idfamiliaelectronica" />
+        </property>
+        <property name="nromangueras" type="java.lang.Integer">
+            <column name="nromangueras" />
+        </property>
+        <property name="lote" type="string">
+            <column name="lote" length="20" />
+        </property>
+        <set name="caras" inverse="true">
+            <key>
+                <column name="idsurtidor" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Cara" />
+        </set>
+    </class>
+</hibernate-mapping>
