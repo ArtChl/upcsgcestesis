@@ -8,23 +8,21 @@ import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import java.util.Date;
 import org.openswing.swing.mdi.client.InternalFrame;
-import org.openswing.swing.mdi.client.MDIFrame;
 import pe.com.ega.sgces.dao.DepositoDaoImpl;
-import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.MovimientoDaoImpl;
-import pe.com.ega.sgces.dao.TransaccionDaoImpl;
 import pe.com.ega.sgces.dao.TurnoDaoImpl;
+import pe.com.ega.sgces.dao.TurnopuntoventacajaDaoImpl;
 import pe.com.ega.sgces.logic.DepositoLogicaImpl;
-import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
-import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
-import pe.com.ega.sgces.model.Despacho;
-import pe.com.ega.sgces.model.Distrito;
+import pe.com.ega.sgces.logic.TurnopuntoventacajaLogicaImpl;
+import pe.com.ega.sgces.model.Caja;
 import pe.com.ega.sgces.model.Estacionservicio;
-import pe.com.ega.sgces.model.Provincia;
+import pe.com.ega.sgces.model.Puntoventa;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Turno;
+import pe.com.ega.sgces.model.Turnopuntoventacaja;
+import pe.com.ega.sgces.model.TurnopuntoventacajaId;
 
 /**
  *
@@ -37,6 +35,7 @@ public class CierreFrame extends InternalFrame {
     private DepositoLogicaImpl depositoLogica;
     private MovimientoLogicaImpl movimientoLogica;
     private TurnoLogicaImpl turnoLogica;
+    private TurnopuntoventacajaLogicaImpl turnopuntoventacajaLogica;
     private Turno turno;
     
     public CierreFrame() {
@@ -48,6 +47,8 @@ public class CierreFrame extends InternalFrame {
         turnoLogica.setTurnoDao(new TurnoDaoImpl());
         movimientoLogica =new MovimientoLogicaImpl();
         movimientoLogica.setMovimientoDao(new MovimientoDaoImpl());
+        turnopuntoventacajaLogica =new TurnopuntoventacajaLogicaImpl();
+        turnopuntoventacajaLogica.setTurnopuntoventacajaDao(new TurnopuntoventacajaDaoImpl());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -114,6 +115,14 @@ public class CierreFrame extends InternalFrame {
         x.setFechaapertura(new Date());
         x.setEstado("N");
         turnoLogica.insertar(x);
+
+        Turnopuntoventacaja cajax= new Turnopuntoventacaja();
+        cajax.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(),1,1));
+        cajax.setCaja(new Caja(1));
+        cajax.setPuntoventa(new Puntoventa(1));
+        cajax.setTurno(turnoLogica.buscarPorCodigo("N"));
+        cajax.setFecharegistro(new Date());
+        turnopuntoventacajaLogica.insertar(cajax);
     }
 
 }

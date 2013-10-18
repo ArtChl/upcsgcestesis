@@ -52,7 +52,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("       Gracias por su Preferencia");
-            ticket.ImprimirDocumento("COM1");
+            ticket.ImprimirDocumento("COM15");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
     
@@ -93,7 +93,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("________________        ________________");
             ticket.AddPieLinea("    CHOFER                    PLAYERO ");
-            ticket.ImprimirDocumento("COM1");
+            ticket.ImprimirDocumento("COM15");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
     
@@ -126,7 +126,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("Cobrado por: "+String.format("%1$27s",vendedor));
             ticket.AddPieLinea("       Gracias por su Preferencia");
-            ticket.ImprimirDocumento("COM1");
+            ticket.ImprimirDocumento("COM15");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
     
@@ -166,7 +166,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("Cobrado por: "+String.format("%1$27s",vendedor));
             ticket.AddPieLinea("       Gracias por su Preferencia");
-            ticket.ImprimirDocumento("COM1");
+            ticket.ImprimirDocumento("COM15");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
     
@@ -211,7 +211,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("Cobrado por: "+String.format("%1$27s",vendedor));
             ticket.AddPieLinea("       Gracias por su Preferencia");
-            ticket.ImprimirDocumento("COM1");
+            ticket.ImprimirDocumento("COM15");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
 }
