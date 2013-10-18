@@ -30,6 +30,11 @@ public class Puntoventa  implements java.io.Serializable {
         this.id = id;
         this.estacionservicio = estacionservicio;
     }
+    
+     public Puntoventa(int id) {
+        this.id = id;
+        
+    }
     public Puntoventa(int id, Estacionservicio estacionservicio, String nombre, String descripcion, Integer idtipopuntoventa, Date fecharegistro, Set<Turnopuntoventacaja> turnopuntoventacajas, Set<Impresorapuntoventa> impresorapuntoventas, Set<Centroemisor> centroemisors) {
        this.id = id;
        this.estacionservicio = estacionservicio;

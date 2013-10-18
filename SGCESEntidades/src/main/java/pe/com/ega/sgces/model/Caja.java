@@ -21,6 +21,10 @@ public class Caja  implements java.io.Serializable {
     public Caja() {
     }
 
+    public Caja(int id) {
+        this.id = id;
+      
+    }
 	
     public Caja(int id, Trabajador trabajador) {
         this.id = id;
