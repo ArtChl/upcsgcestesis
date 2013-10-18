@@ -17,4 +17,5 @@ public interface MovimientoDao {
     public void eliminar(Movimiento movimiento);
     public Movimiento buscarPorCodigo(Integer id);
     public void setSession(Session session);
+    public Movimiento buscarTurno(String cerrado);
 }

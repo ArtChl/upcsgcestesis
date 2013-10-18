@@ -36,6 +36,11 @@ public class MovimientoDaoImpl implements MovimientoDao{
         return (Movimiento) session.load(Movimiento.class, id);
     }
 
+    @Override
+    public Movimiento buscarTurno(String cerrado) {
+        return (Movimiento) session.load(Movimiento.class, cerrado);
+    }
+
    
     
 }

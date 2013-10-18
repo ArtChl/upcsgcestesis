@@ -37,5 +37,7 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
     public Movimiento buscarPorCodigo(Integer id) {
         return movimientoDao.buscarPorCodigo(id);
     }
+
+    
     
 }

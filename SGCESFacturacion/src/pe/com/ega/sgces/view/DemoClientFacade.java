@@ -39,5 +39,22 @@ public class DemoClientFacade implements ClientFacade {
        //opcionFrame.setVisible(true);
 
   }
+   
+   public void getTirada() 
+   {
+        TiradaFrame f = new TiradaFrame();
+        f.setSize(232,184);
+        f.setTitle("Tirada Buzon");
+        MDIFrame.add(f);
 
+  }
+
+   public void getCierre() 
+   {
+        CierreFrame f = new CierreFrame();
+        f.setSize(293,107);
+        f.setTitle("Cierre Turno");
+        MDIFrame.add(f);
+
+  }
 }

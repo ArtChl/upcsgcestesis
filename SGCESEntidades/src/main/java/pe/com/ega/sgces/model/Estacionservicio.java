@@ -37,6 +37,9 @@ public class Estacionservicio  implements java.io.Serializable {
         this.id = id;
         this.distrito = distrito;
     }
+     public Estacionservicio(int id) {
+        this.id = id;
+    }
     public Estacionservicio(int id, Distrito distrito, String nombre, String direccion, Long latitud, Long longitud, String razonsocial, String ruc, String telefono, Date fechaapertura, Date fecharegistro, Set<Turno> turnos, Set<Trabajador> trabajadors, Set<Puntoventa> puntoventas, Set<Surtidor> surtidors, Set<Tanque> tanques) {
        this.id = id;
        this.distrito = distrito;

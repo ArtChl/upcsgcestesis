@@ -17,6 +17,9 @@ public class Turno  implements java.io.Serializable {
      private Date fechaapertura;
      private Date fechacierre;
      private Set<Turnopuntoventacaja> turnopuntoventacajas = new HashSet<Turnopuntoventacaja>(0);
+     private String estado;
+
+  
 
     public Turno() {
     }
@@ -26,12 +29,13 @@ public class Turno  implements java.io.Serializable {
         this.id = id;
         this.estacionservicio = estacionservicio;
     }
-    public Turno(int id, Estacionservicio estacionservicio, Date fechaapertura, Date fechacierre, Set<Turnopuntoventacaja> turnopuntoventacajas) {
+    public Turno(int id, Estacionservicio estacionservicio, Date fechaapertura, Date fechacierre, Set<Turnopuntoventacaja> turnopuntoventacajas, String estado) {
        this.id = id;
        this.estacionservicio = estacionservicio;
        this.fechaapertura = fechaapertura;
        this.fechacierre = fechacierre;
        this.turnopuntoventacajas = turnopuntoventacajas;
+       this.estado=estado;
     }
    
     public int getId() {
@@ -70,7 +74,15 @@ public class Turno  implements java.io.Serializable {
         this.turnopuntoventacajas = turnopuntoventacajas;
     }
 
+    public String getEstado() {
+        return estado;
+    }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+   
 
 
 }

@@ -19,8 +19,14 @@
         <property name="fecharegistro" type="date">
             <column name="fecharegistro" length="13" />
         </property>
-        <property name="idtipopago" type="java.lang.Integer">
-            <column name="idtipopago" />
+        <property name="idtipopago" type="string">
+            <column name="idtipopago" length="10"/>
+        </property>
+        <property name="turno" type="string">
+            <column name="turno" length="30"/>
+        </property>
+        <property name="cerrado" type="string">
+            <column name="cerrado" length="2"/>
         </property>
     </class>
 </hibernate-mapping>

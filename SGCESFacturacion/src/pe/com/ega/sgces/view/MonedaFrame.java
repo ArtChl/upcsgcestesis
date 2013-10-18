@@ -13,9 +13,11 @@ import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.MovimientoDao;
 import pe.com.ega.sgces.dao.MovimientoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
+import pe.com.ega.sgces.dao.TurnoDaoImpl;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
+import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Movimiento;
@@ -36,6 +38,7 @@ public class MonedaFrame extends InternalFrame {
     private TransaccionLogicaImpl transaccionLogica;
     private DespachoLogicaImpl despachoLogica;
     private MovimientoLogicaImpl movimientoLogica;
+    private TurnoLogicaImpl turnoLogica;
     private String moneda;
     private Cliente cliente;
     
@@ -53,6 +56,8 @@ public class MonedaFrame extends InternalFrame {
         despachoLogica.setDespachoDao(new DespachoDaoImpl());
         movimientoLogica=new MovimientoLogicaImpl();
         movimientoLogica.setMovimientoDao(new MovimientoDaoImpl());
+        turnoLogica =new TurnoLogicaImpl();
+        turnoLogica.setTurnoDao(new TurnoDaoImpl());
     }
 
     @SuppressWarnings("unchecked")
@@ -243,7 +248,7 @@ public class MonedaFrame extends InternalFrame {
     private void llenardatos(Despacho desp) {
         transaccion.setDespacho(desp);
         transaccion.setIdtipotransaccion("TBOL");
-        transaccion.setIdestado(1);
+        transaccion.setIdestado(turnoLogica.buscarPorCodigo("N").getId());
         transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
         transaccion.setNumerovale("325-00000001");
         transaccion.setNrogalones(desp.getNrogalones());
@@ -262,7 +267,7 @@ public class MonedaFrame extends InternalFrame {
         movimiento.setTransaccion(transaccion);
         movimiento.setPago(pag);
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
-        caja.setId(new TurnopuntoventacajaId(1, 1, 1));
+        caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(),1,1));
         movimiento.setTurnopuntoventacaja(caja);
         movimiento.setMontototal(desp.getMontosoles());
         movimiento.setMontorecibido(monto);
@@ -283,7 +288,7 @@ public class MonedaFrame extends InternalFrame {
         movimiento.setTransaccion(transaccion);
         movimiento.setPago(pag);
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
-        caja.setId(new TurnopuntoventacajaId(1, 1, 1));
+        caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(),1,1));
         movimiento.setTurnopuntoventacaja(caja);
         movimiento.setMontototal(desp.getMontosoles());
         movimiento.setMontorecibido(monto);
@@ -304,7 +309,7 @@ public class MonedaFrame extends InternalFrame {
         movimiento.setTransaccion(transaccion);
         movimiento.setPago(pag);
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
-        caja.setId(new TurnopuntoventacajaId(1, 1, 1));
+        caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(),1,1));
         movimiento.setTurnopuntoventacaja(caja);
         movimiento.setMontototal(desp.getMontosoles());
         movimiento.setMontorecibido(desp.getMontosoles());
@@ -325,7 +330,7 @@ public class MonedaFrame extends InternalFrame {
     private void llenardatosF(Despacho desp, Cliente nuevo) {
         transaccion.setDespacho(desp);
         transaccion.setIdtipotransaccion("TFAC");
-        transaccion.setIdestado(1);
+        transaccion.setIdestado(turnoLogica.buscarPorCodigo("N").getId());
         transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
         transaccion.setNumerovale("325-00000001");
         transaccion.setNrogalones(desp.getNrogalones());

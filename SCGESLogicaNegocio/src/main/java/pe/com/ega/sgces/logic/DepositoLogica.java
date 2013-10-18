@@ -4,14 +4,16 @@
  */
 package pe.com.ega.sgces.logic;
 
-import pe.com.ega.sgces.model.Cliente;
+import java.util.List;
+import pe.com.ega.sgces.model.Deposito;
 /**
  *
  * @author CHRISTIAN
  */
 public interface DepositoLogica {
-    public void grabar(Cliente cliente);
-    public void actualizar(Cliente cliente);
-    public void eliminar(Cliente cliente);
-    public Cliente buscarPorCodigo(String id);
+     public void insertar(Deposito deposito);
+    public void actualizar(Deposito deposito);
+    public void eliminar(Deposito deposito);
+    public Deposito buscarPorCodigo(Integer id);
+    public List<Deposito> buscarTodos();
 }
