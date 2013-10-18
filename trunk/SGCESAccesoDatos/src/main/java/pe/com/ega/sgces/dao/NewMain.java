@@ -5,7 +5,9 @@
 package pe.com.ega.sgces.dao;
 
 import org.hibernate.Session;
+import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Numcomprobante;
+import pe.com.ega.sgces.model.Turno;
 
 /**
  *
@@ -40,12 +42,12 @@ public class NewMain {
        */
        Session session = null;
        session = HibernateUtil.getSessionFactory().openSession();
-       CierreDao valedao = new CierreDaoImpl();
+       TurnoDao valedao = new TurnoDaoImpl();
        valedao.setSession(session);
        session.beginTransaction();
-       valedao.cierreTurno();
+       Turno desp=valedao.buscarPorCodigo("N");
        session.getTransaction().commit(); 
-       
+       System.out.println("Despacho"+desp.getId());
        //valedao.setSession(session);
        //List<Cliente> cliente=usuariodao.razon(1041949242);
       // System.out.println("Cliente"+cliente.get(1).getRazonSocial());

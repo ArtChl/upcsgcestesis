@@ -14,63 +14,82 @@ public class Deposito  implements java.io.Serializable {
      private Turnopuntoventacaja turnopuntoventacaja;
      private Long montototal;
      private Date fecharegistro;
-     private Integer idtipopago;
+     private String idtipopago;
+     private String turno;
+     private String cerrado;
 
     public Deposito() {
     }
 
-	
-    public Deposito(int id, Turnopuntoventacaja turnopuntoventacaja) {
+    public Deposito(int id, Turnopuntoventacaja turnopuntoventacaja, Long montototal, Date fecharegistro, String idtipopago, String turno, String cerrado) {
         this.id = id;
         this.turnopuntoventacaja = turnopuntoventacaja;
+        this.montototal = montototal;
+        this.fecharegistro = fecharegistro;
+        this.idtipopago = idtipopago;
+        this.turno = turno;
+        this.cerrado = cerrado;
     }
-    public Deposito(int id, Turnopuntoventacaja turnopuntoventacaja, Long montototal, Date fecharegistro, Integer idtipopago) {
-       this.id = id;
-       this.turnopuntoventacaja = turnopuntoventacaja;
-       this.montototal = montototal;
-       this.fecharegistro = fecharegistro;
-       this.idtipopago = idtipopago;
-    }
-   
+
     public int getId() {
-        return this.id;
+        return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
+
     public Turnopuntoventacaja getTurnopuntoventacaja() {
-        return this.turnopuntoventacaja;
+        return turnopuntoventacaja;
     }
-    
+
     public void setTurnopuntoventacaja(Turnopuntoventacaja turnopuntoventacaja) {
         this.turnopuntoventacaja = turnopuntoventacaja;
     }
+
     public Long getMontototal() {
-        return this.montototal;
+        return montototal;
     }
-    
+
     public void setMontototal(Long montototal) {
         this.montototal = montototal;
     }
+
     public Date getFecharegistro() {
-        return this.fecharegistro;
+        return fecharegistro;
     }
-    
+
     public void setFecharegistro(Date fecharegistro) {
         this.fecharegistro = fecharegistro;
     }
-    public Integer getIdtipopago() {
-        return this.idtipopago;
+
+    public String getIdtipopago() {
+        return idtipopago;
     }
-    
-    public void setIdtipopago(Integer idtipopago) {
+
+    public void setIdtipopago(String idtipopago) {
         this.idtipopago = idtipopago;
     }
 
+    public String getTurno() {
+        return turno;
+    }
 
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
 
+    public String getCerrado() {
+        return cerrado;
+    }
 
+    public void setCerrado(String cerrado) {
+        this.cerrado = cerrado;
+    }
+
+   
+
+    
 }
 
 

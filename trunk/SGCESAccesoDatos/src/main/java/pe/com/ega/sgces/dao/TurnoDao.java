@@ -7,16 +7,16 @@ package pe.com.ega.sgces.dao;
 import java.util.List;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Deposito;
+import pe.com.ega.sgces.model.Turno;
 
 /**
  *
  * @author Flopez
  */
-public interface DepositoDao {
-    public void insertar(Deposito deposito);
-    public void actualizar(Deposito deposito);
-    public void eliminar(Deposito deposito);
-    public Deposito buscarPorCodigo(Integer id);
-    public List<Deposito> buscarTodos();   
+public interface TurnoDao {
+    public void insertar(Turno turno);
+    public void actualizar(Turno turno);
+    public void eliminar(Turno turno);
+    public Turno buscarPorCodigo(String estado);  
     public void setSession(Session session);
 }

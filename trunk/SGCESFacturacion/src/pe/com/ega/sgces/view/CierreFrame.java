@@ -6,16 +6,25 @@ package pe.com.ega.sgces.view;
 
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
-import javax.swing.JOptionPane;
+import java.util.Date;
 import org.openswing.swing.mdi.client.InternalFrame;
 import org.openswing.swing.mdi.client.MDIFrame;
+import pe.com.ega.sgces.dao.DepositoDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
+import pe.com.ega.sgces.dao.MovimientoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
+import pe.com.ega.sgces.dao.TurnoDaoImpl;
+import pe.com.ega.sgces.logic.DepositoLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
-import pe.com.ega.sgces.model.Cliente;
+import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Despacho;
+import pe.com.ega.sgces.model.Distrito;
+import pe.com.ega.sgces.model.Estacionservicio;
+import pe.com.ega.sgces.model.Provincia;
 import pe.com.ega.sgces.model.Transaccion;
+import pe.com.ega.sgces.model.Turno;
 
 /**
  *
@@ -23,90 +32,71 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class CierreFrame extends InternalFrame {
 
-    private Despacho desp;
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
-    private TransaccionLogicaImpl transaccionLogica;
-    private DespachoLogicaImpl despachoLogica;
+    private DepositoLogicaImpl depositoLogica;
+    private MovimientoLogicaImpl movimientoLogica;
+    private TurnoLogicaImpl turnoLogica;
+    private Turno turno;
     
-    public CierreFrame(Despacho codigo) {
+    public CierreFrame() {
         initComponents();
-        desp=codigo;
         transaccion=new Transaccion();
-        transaccionLogica =new TransaccionLogicaImpl();
-        transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
-        despachoLogica=new DespachoLogicaImpl();
-        despachoLogica.setDespachoDao(new DespachoDaoImpl());
+        depositoLogica =new DepositoLogicaImpl();
+        depositoLogica.setDepositoDao(new DepositoDaoImpl());
+        turnoLogica =new TurnoLogicaImpl();
+        turnoLogica.setTurnoDao(new TurnoDaoImpl());
+        movimientoLogica =new MovimientoLogicaImpl();
+        movimientoLogica.setMovimientoDao(new MovimientoDaoImpl());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        boleta = new javax.swing.JButton();
-        despacho = new javax.swing.JButton();
-        factura = new javax.swing.JButton();
+        bdia = new javax.swing.JButton();
+        bturno = new javax.swing.JButton();
 
         jPanel1.setLayout(null);
 
-        boleta.setText("TBOL");
-        boleta.addActionListener(new java.awt.event.ActionListener() {
+        bdia.setText("DIA");
+        bdia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boletaActionPerformed(evt);
+                bdiaActionPerformed(evt);
             }
         });
-        jPanel1.add(boleta);
-        boleta.setBounds(190, 10, 80, 50);
+        jPanel1.add(bdia);
+        bdia.setBounds(160, 10, 80, 50);
 
-        despacho.setText("NDES");
-        despacho.addActionListener(new java.awt.event.ActionListener() {
+        bturno.setText("TURNO");
+        bturno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                despachoActionPerformed(evt);
+                bturnoActionPerformed(evt);
             }
         });
-        jPanel1.add(despacho);
-        despacho.setBounds(10, 10, 80, 50);
-
-        factura.setText("FACT");
-        factura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facturaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(factura);
-        factura.setBounds(100, 10, 80, 50);
+        jPanel1.add(bturno);
+        bturno.setBounds(30, 10, 80, 50);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
-        FacturaFrame f=new FacturaFrame(desp);
-            f.setSize(391,151);
-            f.setTitle("Factura");
-            MDIFrame.add(f);
+    private void bdiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdiaActionPerformed
+     
             salir(evt);
-    }//GEN-LAST:event_facturaActionPerformed
+    }//GEN-LAST:event_bdiaActionPerformed
 
-    private void despachoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despachoActionPerformed
-       NotaFrame f=new NotaFrame(desp);
-            f.setSize(391,290);
-            f.setTitle("Nota Despacho");
-            MDIFrame.add(f);
+    private void bturnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bturnoActionPerformed
+            turno=turnoLogica.buscarPorCodigo("N");
+            turno.setEstado("S");
+            turno.setFechacierre(new Date());
+            turnoLogica.actualizar(turno);
+            this.Turno();
             salir(evt);
-    }//GEN-LAST:event_despachoActionPerformed
-
-    private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
-        MonedaFrame f=new MonedaFrame(desp, "BOL", null);
-            f.setSize(295,204);
-            f.setTitle("Tipo Pago");
-            MDIFrame.add(f);
-            salir(evt);
-    }//GEN-LAST:event_boletaActionPerformed
+    }//GEN-LAST:event_bturnoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boleta;
-    private javax.swing.JButton despacho;
-    private javax.swing.JButton factura;
+    private javax.swing.JButton bdia;
+    private javax.swing.JButton bturno;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
    private void salir (java.awt.event.ActionEvent evt){
@@ -116,6 +106,14 @@ public class CierreFrame extends InternalFrame {
     private void actionPerformed(ActionEvent evt) {
         setVisible(false);
         dispose();
+    }
+    
+    private void Turno() {
+        Turno x=new Turno();
+        x.setEstacionservicio(new  Estacionservicio(1));
+        x.setFechaapertura(new Date());
+        x.setEstado("N");
+        turnoLogica.insertar(x);
     }
 
 }

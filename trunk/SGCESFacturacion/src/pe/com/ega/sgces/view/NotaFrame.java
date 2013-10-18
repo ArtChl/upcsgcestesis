@@ -13,10 +13,12 @@ import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
+import pe.com.ega.sgces.dao.TurnoDaoImpl;
 import pe.com.ega.sgces.dao.ValeDaoImpl;
 import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
+import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.logic.ValeLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
@@ -38,6 +40,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private Transaccion transaccion;
     private TransaccionLogicaImpl transaccionLogica;
     private DespachoLogicaImpl despachoLogica;
+    private TurnoLogicaImpl turnoLogica;
     private ValeLogicaImpl valedao;
     ArrayList<Vale> lista;
     public NotaFrame(Despacho despacho) {
@@ -54,6 +57,8 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         despachoLogica.setDespachoDao(new DespachoDaoImpl());
         valedao=new ValeLogicaImpl();
         valedao.setValeDao(new ValeDaoImpl());
+        turnoLogica =new TurnoLogicaImpl();
+        turnoLogica.setTurnoDao(new TurnoDaoImpl());
     }
 
     @SuppressWarnings("unchecked")
@@ -304,7 +309,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void llenardatos(Despacho desp, Cliente nuevo) {
         transaccion.setDespacho(desp);
         transaccion.setIdtipotransaccion("NDES");
-        transaccion.setIdestado(1);
+        transaccion.setIdestado(turnoLogica.buscarPorCodigo("N").getId());
         transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
         transaccion.setNumerovale("325-0000000"+String.valueOf(numero("NDES")+1));
         transaccion.setNumero(numero("NDES")+1);

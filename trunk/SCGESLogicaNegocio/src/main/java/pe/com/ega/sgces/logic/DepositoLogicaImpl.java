@@ -4,7 +4,13 @@
  */
 package pe.com.ega.sgces.logic;
 
+import java.util.List;
+import org.hibernate.Session;
+import pe.com.ega.sgces.dao.DepositoDao;
+import pe.com.ega.sgces.dao.HibernateUtil;
+import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.model.Cliente;
+import pe.com.ega.sgces.model.Deposito;
 
 /**
  *
@@ -12,24 +18,50 @@ import pe.com.ega.sgces.model.Cliente;
  */
 public class DepositoLogicaImpl implements DepositoLogica{
 
-    @Override
-    public void grabar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    Session session; 
+    DepositoDao depositoDao;
+
+    public DepositoLogicaImpl() {
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+    }
+
+    public void setDepositoDao(DepositoDao depositoDao) {
+        this.depositoDao = depositoDao;
+        this.depositoDao.setSession(session);
     }
 
     @Override
-    public void actualizar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void insertar(Deposito deposito) {
+        session.beginTransaction();
+        depositoDao.insertar(deposito);
+        session.getTransaction().commit(); 
     }
 
     @Override
-    public void eliminar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void actualizar(Deposito deposito) {
+        session.beginTransaction();
+        depositoDao.actualizar(deposito);
+        session.getTransaction().commit(); 
+        
     }
 
     @Override
-    public Cliente buscarPorCodigo(String id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void eliminar(Deposito deposito) {
+        session.beginTransaction();
+        depositoDao.eliminar(deposito);
+        session.getTransaction().commit(); 
     }
+
+    @Override
+    public Deposito buscarPorCodigo(Integer id) {
+       return depositoDao.buscarPorCodigo(id);
+    }
+
+    @Override
+    public List<Deposito> buscarTodos() {
+        return depositoDao.buscarTodos();
+    }
+    
     
 }
