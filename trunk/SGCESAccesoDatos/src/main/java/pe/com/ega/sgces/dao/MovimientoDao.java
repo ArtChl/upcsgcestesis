@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.dao;
 
+import java.util.List;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Movimiento;
 
@@ -18,4 +19,5 @@ public interface MovimientoDao {
     public Movimiento buscarPorCodigo(Integer id);
     public void setSession(Session session);
     public Movimiento buscarTurno(String cerrado);
+    public List buscarMonto(String tipo, String turno) throws Exception;
 }

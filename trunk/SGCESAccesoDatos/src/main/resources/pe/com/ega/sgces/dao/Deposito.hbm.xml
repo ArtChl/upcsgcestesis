@@ -13,7 +13,7 @@
             <column name="idpuntoventa" not-null="true" />
             <column name="idcaja" not-null="true" />
         </many-to-one>
-        <property name="montototal" type="java.lang.Long">
+        <property name="montototal" type="java.lang.Double">
             <column name="montototal" />
         </property>
         <property name="fecharegistro" type="date">

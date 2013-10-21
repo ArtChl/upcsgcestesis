@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.dao;
 
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Deposito;
 
@@ -44,6 +45,13 @@ public class DepositoDaoImpl implements DepositoDao{
     @Override
     public void setSession(Session session) {
         this.session = session;
+    }
+
+    @Override
+    public List buscarMonto(String tipo, String turno) throws Exception{
+       Query query = session.createQuery("select sum(montototal) from Deposito where idtipopago='"+tipo+"' and idturno='"+turno+"'");
+       List results = query.list();
+       return results;
     }
     
 }

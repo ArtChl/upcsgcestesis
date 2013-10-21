@@ -24,7 +24,7 @@ public class TurnoLogicaImpl implements TurnoLogica{
     {
         session = HibernateUtil.getSessionFactory().openSession();
         interfaceLogica= new InterfaceLogicaImpl();
-        interfaceLogica.setInterfaceDao(new InterfaceDaoImpl());
+         interfaceLogica.setInterfaceDao(new InterfaceDaoImpl());
     }
     
     Session session; 

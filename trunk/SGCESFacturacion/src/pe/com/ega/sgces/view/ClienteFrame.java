@@ -65,7 +65,7 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
         jLabel1.setText("Razon Social :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 60, 80, 14);
+        jLabel1.setBounds(20, 60, 80, 16);
 
         jrucCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,13 +78,13 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(jrucCliente);
-        jrucCliente.setBounds(100, 30, 170, 20);
+        jrucCliente.setBounds(100, 30, 170, 22);
 
         jLabel2.setText("R.U.C");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 30, 34, 14);
+        jLabel2.setBounds(20, 30, 34, 16);
         jPanel1.add(jrazonCliente);
-        jrazonCliente.setBounds(100, 60, 260, 20);
+        jrazonCliente.setBounds(100, 60, 260, 22);
 
         Registrar.setText("Grabar");
         Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(Registrar);
-        Registrar.setBounds(90, 90, 100, 23);
+        Registrar.setBounds(90, 90, 100, 25);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +102,7 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(200, 90, 110, 23);
+        cancelar.setBounds(200, 90, 110, 25);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents

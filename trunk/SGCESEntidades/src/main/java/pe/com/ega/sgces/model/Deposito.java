@@ -12,7 +12,7 @@ public class Deposito  implements java.io.Serializable {
 
      private int id;
      private Turnopuntoventacaja turnopuntoventacaja;
-     private Long montototal;
+     private Double montototal;
      private Date fecharegistro;
      private String idtipopago;
      private String turno;
@@ -21,7 +21,7 @@ public class Deposito  implements java.io.Serializable {
     public Deposito() {
     }
 
-    public Deposito(int id, Turnopuntoventacaja turnopuntoventacaja, Long montototal, Date fecharegistro, String idtipopago, String turno, String cerrado) {
+    public Deposito(int id, Turnopuntoventacaja turnopuntoventacaja, Double montototal, Date fecharegistro, String idtipopago, String turno, String cerrado) {
         this.id = id;
         this.turnopuntoventacaja = turnopuntoventacaja;
         this.montototal = montototal;
@@ -47,11 +47,11 @@ public class Deposito  implements java.io.Serializable {
         this.turnopuntoventacaja = turnopuntoventacaja;
     }
 
-    public Long getMontototal() {
+    public Double getMontototal() {
         return montototal;
     }
 
-    public void setMontototal(Long montototal) {
+    public void setMontototal(Double montototal) {
         this.montototal = montototal;
     }
 
