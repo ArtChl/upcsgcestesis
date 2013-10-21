@@ -57,4 +57,16 @@ public class DemoClientFacade implements ClientFacade {
         MDIFrame.add(f);
 
   }
+   
+   public void getArqueo() 
+   {
+        ArqueoFrame f = new ArqueoFrame();
+        f.setSize(293,107);
+        f.setTitle("Arqueo");
+        MDIFrame.add(f);
+
+  }
+   
+   
+   
 }

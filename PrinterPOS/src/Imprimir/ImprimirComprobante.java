@@ -52,7 +52,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("       Gracias por su Preferencia");
-            ticket.ImprimirDocumento("COM15");
+            ticket.ImprimirDocumento("COM1");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
     
@@ -93,7 +93,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("________________        ________________");
             ticket.AddPieLinea("    CHOFER                    PLAYERO ");
-            ticket.ImprimirDocumento("COM15");
+            ticket.ImprimirDocumento("COM1");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
     
@@ -126,7 +126,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("Cobrado por: "+String.format("%1$27s",vendedor));
             ticket.AddPieLinea("       Gracias por su Preferencia");
-            ticket.ImprimirDocumento("COM15");
+            ticket.ImprimirDocumento("COM1");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
     
@@ -166,7 +166,7 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("Cobrado por: "+String.format("%1$27s",vendedor));
             ticket.AddPieLinea("       Gracias por su Preferencia");
-            ticket.ImprimirDocumento("COM15");
+            ticket.ImprimirDocumento("COM1");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
     
@@ -211,7 +211,68 @@ public class ImprimirComprobante {
             ticket.AddPieLinea(ticket.DarEspacio());
             ticket.AddPieLinea("Cobrado por: "+String.format("%1$27s",vendedor));
             ticket.AddPieLinea("       Gracias por su Preferencia");
-            ticket.ImprimirDocumento("COM15");
+            ticket.ImprimirDocumento("COM1");
+        }catch(Exception e){System.out.print("\nerror "+e.toString());}
+    }
+    
+     public void imprimirTirada(String caja,String numero, String tipo, String cantidad, String usuario){
+        try{
+            
+            Date date=new Date();
+            SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat hora=new SimpleDateFormat("hh:mm:ss aa");
+            
+            ticket.AddCabecera("        TIRADA DE VALORES A BUZON       ");
+            ticket.AddCabecera(ticket.DarEspacio());
+            ticket.AddCabecera("            GRIFO KAT'S");
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("CAJA : "+String.format("%1$-33s",caja));
+            ticket.AddSubCabecera(fecha.format(date)+"                  "+hora.format(date)+" ");
+            ticket.AddSubCabecera("SOBRE NRO : "+String.format("%1$-28s",numero));  
+            ticket.AddSubCabecera("****************************************");
+            ticket.AddSubCabecera(String.format("%1$-20s",tipo)+" "+String.format("%1$19s",cantidad));
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("TOTAL : "+String.format("%1$32s",cantidad));
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera(ticket.DibujarLinea(40));
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddPieLinea("usuario: "+String.format("%1$-31s",usuario));
+            ticket.AddPieLinea(ticket.DarEspacio());
+            ticket.AddPieLinea("Firma:..................................");
+            ticket.AddPieLinea(ticket.DarEspacio());
+            ticket.AddPieLinea("Nombre:.................................");
+            ticket.AddPieLinea(ticket.DarEspacio());
+            ticket.AddPieLinea("        Gracias por su Preferencia");
+            ticket.ImprimirDocumento("COM1");
+        }catch(Exception e){System.out.print("\nerror "+e.toString());}
+    }
+     
+     public void imprimirArqueo(String caja,String soles, String dolares, String visa, String total , String mastercard, String usuario){
+        try{
+            
+            Date date=new Date();
+            SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat hora=new SimpleDateFormat("hh:mm:ss aa");
+            
+            ticket.AddCabecera("           ARQUEO DE CAJA      ");
+            ticket.AddCabecera(ticket.DarEspacio());
+            ticket.AddCabecera("            GRIFO KAT'S");
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("CAJA : "+String.format("%1$-33s",caja));
+            ticket.AddSubCabecera(fecha.format(date)+"                  "+hora.format(date)+" ");
+            ticket.AddSubCabecera("****************************************");
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("NUEVOS SOLES : "+String.format("%1$25s",soles));
+            ticket.AddSubCabecera("DOLARES (2.80) : "+String.format("%1$23s",dolares));
+            ticket.AddSubCabecera("VISA : "+String.format("%1$33s",visa));
+            ticket.AddSubCabecera("MASTERCARD : "+String.format("%1$27s",mastercard));
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("TOTAL : "+String.format("%1$32s",total));
+            ticket.AddSubCabecera(ticket.DibujarLinea(40));
+            ticket.AddPieLinea("usuario: "+String.format("%1$-31s",usuario));
+            ticket.AddPieLinea(ticket.DarEspacio());
+            ticket.ImprimirDocumento("COM1");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
 }

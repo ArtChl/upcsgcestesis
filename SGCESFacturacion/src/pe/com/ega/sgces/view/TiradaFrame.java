@@ -38,6 +38,7 @@ public class TiradaFrame extends InternalFrame {
         depositoLogica.setDepositoDao(new DepositoDaoImpl());
         turnoLogica =new TurnoLogicaImpl();
         turnoLogica.setTurnoDao(new TurnoDaoImpl());
+        comprobante=new ImprimirComprobante(); 
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -84,11 +85,12 @@ public class TiradaFrame extends InternalFrame {
 
     private void solesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solesActionPerformed
         this.llenardatos("SOLES");
+        
         salir(evt);
     }//GEN-LAST:event_solesActionPerformed
 
     private void dolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresActionPerformed
-        this.llenardatos("DOLARES");
+        this.llenardatos("DOLARES");    
         salir(evt);
     }//GEN-LAST:event_dolaresActionPerformed
 
@@ -112,11 +114,13 @@ public class TiradaFrame extends InternalFrame {
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
         caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(), 1, 1));            
         deposito.setTurnopuntoventacaja(caja);
-        deposito.setMontototal(Long.parseLong(jmonto.getText()));
+        Double dos=Double.parseDouble(jmonto.getText());
+        deposito.setMontototal(dos);
         deposito.setFecharegistro(new Date());
         deposito.setIdtipopago(pago);     
         deposito.setTurno(String.valueOf(turnoLogica.buscarPorCodigo("N").getId()));
         deposito.setCerrado("N");
         depositoLogica.insertar(deposito);
+        comprobante.imprimirTirada("0001","1", pago,jmonto.getText(), "ROSA MARIA DAVILA");
     }
 }

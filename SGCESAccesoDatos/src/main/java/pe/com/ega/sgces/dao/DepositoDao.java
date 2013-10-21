@@ -19,4 +19,5 @@ public interface DepositoDao {
     public Deposito buscarPorCodigo(Integer id);
     public List<Deposito> buscarTodos();   
     public void setSession(Session session);
+    public List buscarMonto(String tipo, String turno) throws Exception ;
 }

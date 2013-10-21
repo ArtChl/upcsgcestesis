@@ -4,6 +4,8 @@
  */
 package pe.com.ega.sgces.dao;
 
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Movimiento;
 
@@ -39,6 +41,13 @@ public class MovimientoDaoImpl implements MovimientoDao{
     @Override
     public Movimiento buscarTurno(String cerrado) {
         return (Movimiento) session.load(Movimiento.class, cerrado);
+    }
+
+    @Override
+    public List buscarMonto(String tipo, String turno) throws Exception{
+       Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
+       List results = query.list();
+       return results;
     }
 
    

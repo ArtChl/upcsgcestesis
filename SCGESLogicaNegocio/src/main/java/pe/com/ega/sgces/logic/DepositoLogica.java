@@ -16,4 +16,5 @@ public interface DepositoLogica {
     public void eliminar(Deposito deposito);
     public Deposito buscarPorCodigo(Integer id);
     public List<Deposito> buscarTodos();
+    public Double buscarMonto(String tipo, String turno);
 }

@@ -5,6 +5,8 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Session;
 import pe.com.ega.sgces.dao.DepositoDao;
 import pe.com.ega.sgces.dao.HibernateUtil;
@@ -61,6 +63,22 @@ public class DepositoLogicaImpl implements DepositoLogica{
     @Override
     public List<Deposito> buscarTodos() {
         return depositoDao.buscarTodos();
+    }
+
+    @Override
+    public Double buscarMonto(String tipo, String turno) {
+         Double monto=0.00;
+        try {
+            session.beginTransaction();
+            List lis=depositoDao.buscarMonto(tipo, turno);
+            session.getTransaction().commit(); 
+            String numero=lis.toString().replace("[", "");
+            numero=numero.replace("]", "");
+            monto=Double.parseDouble(numero);
+        } catch (Exception ex) {
+            monto=0.00;
+        }
+        return monto;
     }
     
     
