@@ -197,8 +197,56 @@ public class KPumpManager
                 System.out.println("status cierre " + statusshiftT);
                 if(statusshiftT.equals("ok"))
                 {
-                    posManager.updateStatusCloseT();
-                    KLogManager.logDebug("Close Shift Succeed ");
+                    System.out.println("entro al ok " + arrayShiftzT[0]);
+                    ArrayList totalizers = pumpMessenger.getTotalizers();
+                    System.out.println("Paso getTotal");
+                    int lista = totalizers.size();
+                    for(int i = 0; i < lista; i++)
+                    {
+                        Element totalizersele = (Element)totalizers.get(i);
+                        Element results = (Element)totalizersele.getElementsByTagName("pump_information_res").item(0);
+                        NodeList nodelist = results.getElementsByTagName("data");
+                        Element data = (Element)nodelist.item(0);
+                        NodeList hoselist = results.getElementsByTagName("hose");
+                        int cantidad = hoselist.getLength();
+                        String hose = "";
+                        String electronic_amount = "";
+                        String electronic_volume = "";
+                        String ppu = "";
+                        String id_cem = "";
+                        for(int j = 0; j < cantidad; j++)
+                        {
+                            Element tota = (Element)hoselist.item(j);
+                            String prueba = tota.getAttribute("price_level");
+                            hose = tota.getAttribute("id");
+                            electronic_amount = tota.getAttribute("electronic_amount");
+                            electronic_volume = tota.getAttribute("electronic_volume");
+                            ppu = tota.getAttribute("ppu");
+                            System.out.println("Antes de Pricelist");
+                            Element prices = pumpMessenger.getPriceList();
+                            System.out.println("Paso Pricelist");
+                            Element resultsp = (Element)prices.getElementsByTagName("res_prices").item(0);
+                            NodeList nodelistp = resultsp.getElementsByTagName("grade");
+                            System.out.println("Cantidad de Nodos " + nodelistp.getLength());
+                            for(int p = 0; p < nodelistp.getLength(); p++)
+                            {
+                                Element element3 = (Element)nodelistp.item(p);
+                                String id = element3.getAttribute("id");
+                                NodeList nodelist1 = element3.getElementsByTagName("level");
+                                Element price = (Element)nodelist1.item(0);
+                                String sppu = price.getAttribute("ppu");
+                                if(ppu.equals(sppu))
+                                    id_cem = id;
+                            }
+
+                            String fecha = arrayShiftzT[0];
+                            String id_surtidor = String.valueOf(i + 1);
+                            posManager.updateTotalizers(hose, electronic_amount, electronic_volume, id_surtidor, id_cem, fecha);
+                        }
+
+                    }
+
+                    posManager.updateStatusCloseD();
                 }
                 if(statusshiftT.equals("no data"))
                 {
@@ -266,7 +314,7 @@ public class KPumpManager
 
                             String fecha = arrayShiftz[0];
                             String id_surtidor = String.valueOf(i + 1);
-                            //posManager.updateTotalizers(hose, electronic_amount, electronic_volume, id_surtidor, id_cem, fecha);
+                            posManager.updateTotalizers(hose, electronic_amount, electronic_volume, id_surtidor, id_cem, fecha);
                         }
 
                     }

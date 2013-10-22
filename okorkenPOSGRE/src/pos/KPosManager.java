@@ -388,12 +388,14 @@ public class KPosManager
         if(connectcen())
         {
             System.out.println("paso nivel 14 " + id_manguera);
-            String sentence = "INSERT INTO PC_OP_PARTEDIGITAL (CodLado,CodManguera,CodArticulo,FechaTurno,LecturaFinal) VALUES (";
+            String sentence = "INSERT INTO TOTALIZADORES (id_surtidor,id_manguera,producto,fecha,mon_total, vol_total, turno) VALUES (";
             sentence = sentence + "'" + id_surtidor + "',";
             sentence = sentence + "'" + id_manguera + "',";
             sentence = sentence + "'" + KProduct.getKallpaCode(producto) + "',";
             sentence = sentence + "'" + KDataFormatter.formatDateForSQLANSI(fecha).trim() + "',";
-            sentence = sentence + "'" + vol_tota + "'" + ")";
+            sentence = sentence + "'" + mon_tota + "',";
+            sentence = sentence + "'" + vol_tota + "',";
+            sentence = sentence + "'" + getTurno() + "'" + ")";
             try
             {
                 PreparedStatement it = connectioncen.prepareStatement(sentence);
@@ -409,7 +411,30 @@ public class KPosManager
         }
         return true;
     }
-
+    public String getTurno(){
+                String maximun = "SELECT ID FROM TURNO WHERE ESTADO='N'";
+                String nextNumber = "";
+                try
+                {
+                    PreparedStatement next = connectioncen.prepareStatement(maximun);
+                    ResultSet rs = next.executeQuery();
+                    if(rs.next())
+                        try
+                        {
+                            nextNumber = String.valueOf(Integer.parseInt(rs.getString(1).trim()) + 1);
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.println("Error while retrieving max number: " + e.getMessage());
+                            nextNumber = "1";
+                        }
+                }
+                catch(SQLException s)
+                {
+                    KLogManager.logDebug("SQL error when getting maximun number: " + s.getMessage());
+                }
+                return nextNumber;
+    }
     public String[][] getPriceChange()
     {
         String ChangP[][] = new String[2][2];
