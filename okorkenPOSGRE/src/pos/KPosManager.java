@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import pump.KDispatch;
 
 // Referenced classes of package pos:
-//            KProduct
+//            KProductasasasasasas
 
 public class KPosManager
 {
