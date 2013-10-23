@@ -275,4 +275,35 @@ public class ImprimirComprobante {
             ticket.ImprimirDocumento("COM1");
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
+     
+     public void imprimirTurno(String caja,String soles, String dolares, String visa, String total , String mastercard, String usuario){
+        try{
+            
+            Date date=new Date();
+            SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat hora=new SimpleDateFormat("hh:mm:ss aa");
+            
+            ticket.AddCabecera("           CIERRE TURNO      ");
+            ticket.AddCabecera(ticket.DarEspacio());
+            ticket.AddCabecera("            GRIFO KAT'S");
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("TURNO : "+String.format("%1$-32s",caja));
+            ticket.AddSubCabecera(fecha.format(date)+"                  "+hora.format(date)+" ");
+            ticket.AddSubCabecera("****************************************");
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("GASOLINA 84 : "+String.format("%1$26s",soles));
+            ticket.AddSubCabecera("GASOLINA 90 : "+String.format("%1$26s",dolares));
+            ticket.AddSubCabecera("GASOLINA 94 : "+String.format("%1$26s",visa));
+            ticket.AddSubCabecera("DIESEL : "+String.format("%1$31s",mastercard));
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("TOTAL : "+String.format("%1$32s",total));
+            ticket.AddSubCabecera(ticket.DibujarLinea(40));
+            ticket.AddPieLinea("usuario: "+String.format("%1$-31s",usuario));
+            ticket.AddPieLinea(ticket.DarEspacio());
+            ticket.ImprimirDocumento("COM1");
+        }catch(Exception e){System.out.print("\nerror "+e.toString());}
+    }
+     
+    
 }
