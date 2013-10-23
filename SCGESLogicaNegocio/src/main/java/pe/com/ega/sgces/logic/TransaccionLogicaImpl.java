@@ -68,5 +68,21 @@ public class TransaccionLogicaImpl implements TransaccionLogica
      public List<Transaccion> buscarTodoDoc(String documento) {
         return transaccionDao.buscarTodosDoc(documento);
     }
+
+    @Override
+    public Double buscarMonto(String tipo, String turno) {
+        Double monto=0.00;
+        try {
+            session.beginTransaction();
+            List lis=transaccionDao.buscarMonto(tipo, turno);
+            session.getTransaction().commit(); 
+            String numero=lis.toString().replace("[", "");
+            numero=numero.replace("]", "");
+            monto=Double.parseDouble(numero);
+        } catch (Exception ex) {
+            monto=0.00;
+        }
+        return monto;
+    }
     
 }

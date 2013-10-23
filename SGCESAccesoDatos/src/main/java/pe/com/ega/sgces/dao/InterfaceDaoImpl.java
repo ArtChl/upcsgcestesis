@@ -6,8 +6,6 @@ package pe.com.ega.sgces.dao;
 
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.InterfaceConfig;
-import pe.com.ega.sgces.model.Transaccion;
-import pe.com.ega.sgces.model.Turno;
 
 /**
  *
@@ -26,8 +24,9 @@ public class InterfaceDaoImpl implements InterfaceDao{
     }
 
     @Override
-    public InterfaceConfig buscarPorCodigo(int codigo) {
-        return (InterfaceConfig) session.load(InterfaceConfig.class, codigo);
+    public InterfaceConfig buscarPorCodigo(int id) {
+        System.out.println("BuscarInterface");
+        return (InterfaceConfig) session.load(InterfaceConfig.class, id);
     }
 
     Session session;

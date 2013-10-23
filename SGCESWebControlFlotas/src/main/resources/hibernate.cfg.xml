@@ -2,14 +2,11 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <!--<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cem44?zeroDateTimeBehavior=convertToNull</property>-->
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/cem44</property>
-    <property name="hibernate.connection.username">cem44</property>
-    <property name="hibernate.connection.password">cem44</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://192.168.1.10:5432/cem44</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">12345678</property>
     <mapping resource="pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Tarjeta.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Movimiento.hbm.xml"/>
@@ -49,6 +46,7 @@
     <mapping resource="pe/com/ega/sgces/dao/Tipocambio.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Opcion.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Vale.hbm.xml"/>
-    <mapping resource="pe/com/ega/sgces/dao/NumComprobante.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/dao/Numcomprobante.hbm.xml"/>
+    <mapping resource="pe/com/ega/sgces/dao/InterfaceConfig.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -6,7 +6,7 @@
     <class name="pe.com.ega.sgces.model.Vale" table="vale" schema="public">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="sequence" />
         </id>
         <property name="cliente" type="string">
             <column name="cliente" length="20" />

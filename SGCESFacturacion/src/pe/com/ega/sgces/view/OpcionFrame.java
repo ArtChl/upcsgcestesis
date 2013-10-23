@@ -97,7 +97,7 @@ public class OpcionFrame extends InternalFrame {
 
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
         MonedaFrame f=new MonedaFrame(desp, "BOL", null);
-            f.setSize(295,204);
+            f.setSize(301,213);
             f.setTitle("Tipo Pago");
             MDIFrame.add(f);
             salir(evt);

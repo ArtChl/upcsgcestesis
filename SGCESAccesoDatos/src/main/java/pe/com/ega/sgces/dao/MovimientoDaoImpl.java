@@ -23,6 +23,7 @@ public class MovimientoDaoImpl implements MovimientoDao{
         
    
     public void insertar(Movimiento movimiento) {
+        System.out.println("Movimiento"+movimiento.getMontorecibido());
         session.save(movimiento);
     }
 

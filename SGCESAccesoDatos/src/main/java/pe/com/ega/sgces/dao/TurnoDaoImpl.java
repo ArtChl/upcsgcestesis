@@ -38,6 +38,7 @@ public class TurnoDaoImpl implements  TurnoDao{
 
     @Override
     public Turno buscarPorCodigo(String estado) {
+         System.out.println("DespachoD"+estado);
         return (Turno)session.createQuery("from Turno where estado='"+estado+"'").uniqueResult();
     }
 

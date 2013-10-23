@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.InterfaceDaoImpl;
 import pe.com.ega.sgces.dao.TurnoDao;
-import pe.com.ega.sgces.dao.UsuarioDao;
 import pe.com.ega.sgces.model.InterfaceConfig;
 import pe.com.ega.sgces.model.Turno;
 
@@ -20,31 +19,33 @@ import pe.com.ega.sgces.model.Turno;
 public class TurnoLogicaImpl implements TurnoLogica{
 
     private InterfaceLogicaImpl interfaceLogica;
+    Session session; 
+    TurnoDao turnoDao;
+    
     public TurnoLogicaImpl()
     {
         session = HibernateUtil.getSessionFactory().openSession();
         interfaceLogica= new InterfaceLogicaImpl();
-         interfaceLogica.setInterfaceDao(new InterfaceDaoImpl());
+        interfaceLogica.setInterfaceDao(new InterfaceDaoImpl());
+        
     }
-    
-    Session session; 
-    TurnoDao turnoDao;
-    
-    
+       
     @Override
     public void insertar(Turno turno) {
         session.beginTransaction();
         turnoDao.insertar(turno);
         session.getTransaction().commit();
-        this.cem44();
-        
+        this.cem44();       
     }
 
     @Override
     public void actualizar(Turno turno) {
+        turno.setEstado("S");
+        turno.setFechacierre(new Date());
         session.beginTransaction();
         turnoDao.actualizar(turno);
         session.getTransaction().commit();
+        
     }
 
     @Override
@@ -56,6 +57,7 @@ public class TurnoLogicaImpl implements TurnoLogica{
 
     @Override
     public Turno buscarPorCodigo(String estado) {
+         
         return turnoDao.buscarPorCodigo(estado);
     }
     
@@ -64,14 +66,15 @@ public class TurnoLogicaImpl implements TurnoLogica{
        this.turnoDao.setSession(session);
     }
     
-    public void cem44()
+    public final void cem44()
     {
-        InterfaceConfig cierre=interfaceLogica.buscarPorCodigo(1);
-        
+        InterfaceConfig cierre=interfaceLogica.buscarPorCodigo(1);     
         cierre.setCambioturno(1);
         cierre.setFechaTotalizadoresElectronicos(new Date());      
         interfaceLogica.actualizar(cierre);
-        System.out.println("estado"+cierre.getCambioturno());
+        System.out.println("estado Cem44");
              
     }
+    
+    
 }

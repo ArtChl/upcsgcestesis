@@ -44,8 +44,8 @@ public class InterfaceLogicaImpl implements InterfaceLogica{
     }
 
     @Override
-    public InterfaceConfig buscarPorCodigo(int codigo) {
-        return this.interfaceDao.buscarPorCodigo(codigo);
+    public InterfaceConfig buscarPorCodigo(int id) {
+        return this.interfaceDao.buscarPorCodigo(id);
     }
     
 }

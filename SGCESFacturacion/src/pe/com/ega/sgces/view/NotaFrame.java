@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
@@ -81,12 +82,13 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         buscar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         comboVale = new javax.swing.JComboBox();
+        montovale = new javax.swing.JTextField();
 
         jPanel1.setLayout(null);
 
         jLabel1.setText("Razon Social :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 60, 80, 14);
+        jLabel1.setBounds(20, 60, 80, 16);
 
         jrucCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,13 +101,13 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(jrucCliente);
-        jrucCliente.setBounds(100, 30, 170, 20);
+        jrucCliente.setBounds(100, 30, 170, 22);
 
         jLabel2.setText("R.U.C");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 30, 34, 14);
+        jLabel2.setBounds(20, 30, 34, 16);
         jPanel1.add(jrazonCliente);
-        jrazonCliente.setBounds(100, 60, 260, 20);
+        jrazonCliente.setBounds(100, 60, 260, 22);
 
         imprimir.setText("Confirmar");
         imprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +116,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(imprimir);
-        imprimir.setBounds(70, 210, 100, 23);
+        imprimir.setBounds(70, 210, 100, 25);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,15 +125,15 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(190, 210, 90, 23);
+        cancelar.setBounds(190, 210, 90, 25);
 
         jLabel3.setText("Placa :");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 120, 32, 14);
+        jLabel3.setBounds(20, 120, 39, 16);
 
         jLabel4.setText("Chofer :");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 150, 50, 14);
+        jLabel4.setBounds(20, 150, 50, 16);
 
         jplaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,15 +141,15 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(jplaca);
-        jplaca.setBounds(100, 120, 90, 20);
+        jplaca.setBounds(100, 120, 90, 22);
         jPanel1.add(jchofer);
-        jchofer.setBounds(100, 150, 260, 20);
+        jchofer.setBounds(100, 150, 260, 22);
 
         jLabel5.setText("Kilometraje :");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(20, 180, 70, 14);
+        jLabel5.setBounds(20, 180, 70, 16);
         jPanel1.add(jkilometrajes);
-        jkilometrajes.setBounds(100, 180, 80, 20);
+        jkilometrajes.setBounds(100, 180, 80, 22);
 
         buscar.setText("Buscar");
         buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,11 +158,11 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(buscar);
-        buscar.setBounds(277, 30, 80, 23);
+        buscar.setBounds(277, 30, 80, 25);
 
         jLabel6.setText("Nro. Vale :");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 90, 70, 14);
+        jLabel6.setBounds(20, 90, 70, 16);
 
         comboVale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +171,13 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         });
         jPanel1.add(comboVale);
         comboVale.setBounds(100, 90, 130, 22);
+
+        montovale.setEditable(false);
+        montovale.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        montovale.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        montovale.setFocusable(false);
+        jPanel1.add(montovale);
+        montovale.setBounds(290, 90, 70, 22);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -183,9 +192,10 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-      // String numVale=transaccionLogica.
-       comprobante = new ImprimirComprobante();
-       if(temporal.getId()==1){        
+       System.out.println("Monto"+desp.getMontosoles()+"///"+Double.parseDouble(montovale.getText()));
+       if(desp.getMontosoles()==Double.parseDouble(montovale.getText())){
+          comprobante = new ImprimirComprobante();
+          if(temporal.getId()==1){        
            System.out.println("Cliente"+temporal.getId());
            Cliente temporal1 = new Cliente();
            //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
@@ -226,6 +236,11 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            limpiar();
            salir(evt);
        }
+      }else{
+          final JPanel panel = new JPanel();
+          JOptionPane.showMessageDialog(panel, "No coincide los Montos", "Error", JOptionPane.ERROR_MESSAGE);
+      }
+       
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -260,6 +275,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
                   jplaca.setText(vale.getPlaca());
                   transaccion.setNumerotiket(vale.getNumero());
                   valeTemporal=vale;
+                  montovale.setText(String.valueOf(vale.getMonto()));
               }else{
                   
               }
@@ -283,6 +299,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private javax.swing.JTextField jplaca;
     private javax.swing.JTextField jrazonCliente;
     private javax.swing.JTextField jrucCliente;
+    private javax.swing.JTextField montovale;
     // End of variables declaration//GEN-END:variables
     private void salir (java.awt.event.ActionEvent evt){
        actionPerformed(evt);
