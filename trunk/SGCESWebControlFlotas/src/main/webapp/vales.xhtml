@@ -46,11 +46,11 @@
                 <h:outputText value="#{Vale.numero}" />  
             </p:column>
             
-            <p:column id="NotaColumn" filterBy="#{Vale.chofer}"   
+            <p:column id="ChoferColumn" filterBy="#{Vale.chofer}"   
                 headerText="Chofer"  
                 filterMatchMode="startsWith" style="text-align: center">
             <f:facet name="header">  
-            <h:outputText value="Despacho" />  
+            <h:outputText value="Chofer" />  
             </f:facet>      
                 <h:outputText value="#{Vale.chofer}" />  
             </p:column>
@@ -79,13 +79,13 @@
             </p:column> 
             
             <p:column headerText="Fecha Despacho" style="background-color: burlywood; text-align: center" >  
-                <h:outputText value="#{Vale.fechaDespacho}" >
+                <h:outputText value="#{Vale.fechadespacho}" >
                 <f:convertDateTime pattern="dd/MM/yyyy" /> 
                 </h:outputText>
             </p:column>
             
             <p:column headerText="Hora Despacho" style="background-color: burlywood; text-align: center">  
-                <h:outputText value="#{Vale.horaDespacho}" />
+                <h:outputText value="#{Vale.horadespacho}" />
             </p:column>
             
            <p:column headerText="Monto" style="text-align: right">

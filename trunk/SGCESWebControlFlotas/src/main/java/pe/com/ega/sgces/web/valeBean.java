@@ -113,8 +113,7 @@ public class valeBean implements Serializable{
             context.addMessage(null, new FacesMessage("Datos Almacenados Correctamente", "Salvado"));
             vale = new Vale();
         } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage("Datos No se almacenado"+comprobantes.getNumero(), "Error"));
-            //usuarioDao.cerrarError();
+            context.addMessage(null, new FacesMessage("Datos No Almacenado", "Error"));
         }
     }
     
@@ -126,7 +125,6 @@ public class valeBean implements Serializable{
             vale = new Vale();
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage("Datos No se han Actualizado", "Actualizado"));
-           // usuarioDao.cerrarError();
         }
     
     }

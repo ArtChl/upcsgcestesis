@@ -161,14 +161,14 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            temporal1.setRazonsocial(jrazonCliente.getText());
                clienteLogica.grabar(temporal1);
                MonedaFrame f=new MonedaFrame(desp, "TFAC", temporal1);
-                    f.setSize(295,204);
+                    f.setSize(301,213);
                     f.setTitle("Tipo Pago");
                     MDIFrame.add(f);
                     salir(evt);
                       
        }else{
                 MonedaFrame f=new MonedaFrame(desp, "TFAC", cliente);
-                    f.setSize(295,204);
+                    f.setSize(301,213);
                     f.setTitle("Tipo Pago");
                     MDIFrame.add(f);
                     salir(evt);          

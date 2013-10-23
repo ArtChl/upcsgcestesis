@@ -20,5 +20,6 @@ public interface TransaccionDao {
     public List<Transaccion> buscarTodos();
     public List<Transaccion> buscarTodosDoc(String documento);
     public List<Transaccion> buscarListaId(String id);
+    public List buscarMonto(String tipo, String turno) throws Exception ;
     public void setSession(Session session);
 }

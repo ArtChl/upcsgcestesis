@@ -25,42 +25,58 @@
     </h:form>
      <h:form id="frmNuevo">
             <p:commandButton value="Print" type="button" icon="ui-icon-print">  
-            <p:printer target=":frmPrincipal:datatable" />  
+                <p:printer target=":frmPrincipal:datatable" />  
         </p:commandButton>  
     </h:form> 
     <!--Tabla donde se contiene la informacion de todos los registros--> 
      <h:form id="frmPrincipal">  
         <p:growl id="principal"/> 
         <p:dataTable id="datatable" var="Transaccion" value="#{transsaccionBean.transaccions}"  paginator="true" rows="10"
-                     sortBy="#{Transaccion.idEstado}" sortOrder="descending" >  
+                     sortBy="#{Transaccion.facturado}" sortOrder="descending" >  
             
             <f:facet name="header">  
             Vales consumidos
             </f:facet> 
             
+            <p:column id="turno" filterBy="#{Transaccion.idestado}"   
+                headerText="Turno"  
+                filterMatchMode="startsWith" style="text-align: center; width: 50px"> 
+            <f:facet name="header">  
+            <h:outputText value="turno" />  
+            </f:facet>     
+                <h:outputText value="#{Transaccion.idestado}" />  
+            </p:column>      
+            
             <p:column id="valeColumn" filterBy="#{Transaccion.numeroTiket}"   
                 headerText="Vale"  
-                filterMatchMode="startsWith" style="text-align: center"> 
+                filterMatchMode="startsWith" style="text-align: center; width: 80px"> 
             <f:facet name="header">  
             <h:outputText value="Vale" />  
             </f:facet>     
-            <h:outputText value="#{Transaccion.numeroTiket}" />  
+            <h:outputText value="#{Transaccion.numerotiket}" />  
             </p:column>
             
-            <p:column id="NotaColumn" filterBy="#{Transaccion.numeroVale}"   
+            <p:column id="NotaColumn" filterBy="#{Transaccion.numerovale}"   
                 headerText="Despacho"  
                 filterMatchMode="startsWith" style="text-align: center">
             <f:facet name="header">  
             <h:outputText value="Despacho" />  
             </f:facet>      
-            <h:outputText value="#{Transaccion.numeroVale}" />  
+            <h:outputText value="#{Transaccion.numerovale}" />  
+            </p:column>
+            
+            <p:column id="fecha"  headerText="Fecha"  style="text-align: center; width: 80px"> 
+            <f:facet name="header">  
+            <h:outputText value="Fecha" />  
+            </f:facet>     
+                <h:outputText value="#{Transaccion.fecharegistro}" />  
             </p:column>
             
             <p:column headerText="Placa" style="text-align: center">
             <f:facet name="header">  
             <h:outputText value="Placa" />  
             </f:facet>      
-                <h:outputText value="#{Transaccion.numeroPlaca}" />  
+                <h:outputText value="#{Transaccion.numeroplaca}" />  
             </p:column> 
             
             <p:column headerText="Producto" style="text-align: center"> 
@@ -74,14 +90,14 @@
             <f:facet name="header">  
             <h:outputText value="Galones" />  
             </f:facet>      
-                <h:outputText value="#{Transaccion.nroGalones}"/>  
+                <h:outputText value="#{Transaccion.nrogalones}"/>  
             </p:column>
                  
             <p:column headerText="Monto" style="text-align: right">
             <f:facet name="header">  
             <h:outputText value="Monto" />  
             </f:facet>      
-                <h:outputText value="#{Transaccion.montoTotal}" > 
+                <h:outputText value="#{Transaccion.montototal}" > 
                     <f:convertNumber  type="currency" currencySymbol=" " groupingUsed="true" locale="en"/>
                 </h:outputText> 
             </p:column> 
@@ -91,7 +107,7 @@
             </f:facet> 
             
             <p:summaryRow>  
-            <p:column colspan="5" style="text-align:right">  
+            <p:column colspan="7" style="text-align:right">  
                 Total:  
             </p:column>  
             <p:column style="text-align:right">

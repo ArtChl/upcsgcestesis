@@ -17,4 +17,5 @@ public interface TransaccionLogica {
     public List<Transaccion> buscarListaId(String id);
     public List<Transaccion> buscarTodo();
     public List<Transaccion> buscarTodoDoc(String documento);
+    public Double buscarMonto(String tipo, String turno);
 }

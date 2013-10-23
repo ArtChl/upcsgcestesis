@@ -18,12 +18,13 @@ public class ValeDaoImpl implements ValeDao{
 
     Session session;
     public void insertar(Vale usuario) {
-       // Transaction tx;
-       // tx =session.beginTransaction();
+        System.out.println("Vale:"+usuario.getCliente());
+        Transaction tx;
+        tx =session.beginTransaction();
         usuario.setEstado(1);
         session.save(usuario);
-       // tx.commit();
-        System.out.println("Vale:"+usuario.getCliente());
+        tx.commit();
+        
     }
 
     public void actualizar(Vale usuario) {
@@ -39,7 +40,7 @@ public class ValeDaoImpl implements ValeDao{
     }
 
     public List<Vale> buscarTodos(String cliente) {
-        return session.createQuery("from Vale where cliente='"+cliente+"'").list();
+        return session.createQuery("from Vale where cliente='"+cliente+"' and estado='1'").list();
     }
     
     public List<Vale> buscarConsumo(String cliente) {

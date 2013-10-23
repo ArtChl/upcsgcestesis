@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.dao;
 
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Transaccion;
 
@@ -49,6 +50,14 @@ public class TransaccionDaoImpl implements TransaccionDao{
     public List<Transaccion> buscarTodosDoc(String documento) {
         System.out.println(documento);
         return session.createQuery("from Transaccion where idtipotransaccion='"+documento+"'").list();
+    }
+
+    @Override
+    public List buscarMonto(String tipo, String turno) throws Exception {
+       Query query = session.createQuery("select sum(montototal) from Transaccion where producto='"+tipo+"' and idestado='"+turno+"'");
+       System.out.println("consulta"+query.getQueryString());
+       List results = query.list();
+       return results;
     }
     
 }
