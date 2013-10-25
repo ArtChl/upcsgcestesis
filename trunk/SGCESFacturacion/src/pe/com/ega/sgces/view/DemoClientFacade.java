@@ -67,6 +67,15 @@ public class DemoClientFacade implements ClientFacade {
 
   }
    
+    public void getAnular() 
+   {
+        ComprobanteFrame f = new ComprobanteFrame();
+        f.setSize(528,202);
+        f.setTitle("Anular Comprobante");
+        MDIFrame.add(f);
+
+  }
+   
    
    
 }

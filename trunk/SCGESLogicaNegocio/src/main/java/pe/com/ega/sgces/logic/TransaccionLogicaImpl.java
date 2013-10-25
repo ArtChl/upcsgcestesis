@@ -23,11 +23,14 @@ public class TransaccionLogicaImpl implements TransaccionLogica
 {
     Session session; 
     TransaccionDao transaccionDao;
+    DespachoLogicaImpl despachoLogica;
   
     
     public TransaccionLogicaImpl()
     {
         session = HibernateUtil.getSessionFactory().openSession();
+        despachoLogica=new DespachoLogicaImpl();
+        despachoLogica.setDespachoDao(new DespachoDaoImpl());
      
     }
     
@@ -83,6 +86,25 @@ public class TransaccionLogicaImpl implements TransaccionLogica
             monto=0.00;
         }
         return monto;
+    }
+
+    @Override
+    public void actualizar(Transaccion transaccion) {
+        System.out.println("Entro despacho1"+transaccion.getAnulado());
+        if(transaccion.getAnulado()==true){
+            System.out.println("Entro despacho2");
+            transaccion.getDespacho().setIdestado(1);
+            despachoLogica.actualizar(transaccion.getDespacho());
+        }
+        session.beginTransaction();
+        transaccionDao.actualizar(transaccion);
+        session.getTransaction().commit(); 
+          
+    }
+
+    @Override
+    public List<Transaccion> buscarTurno(int turno) {
+        return transaccionDao.buscarTurno(turno);
     }
     
 }

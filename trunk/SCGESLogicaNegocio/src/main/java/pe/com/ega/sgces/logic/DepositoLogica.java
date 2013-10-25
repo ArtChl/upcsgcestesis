@@ -11,7 +11,7 @@ import pe.com.ega.sgces.model.Deposito;
  * @author CHRISTIAN
  */
 public interface DepositoLogica {
-     public void insertar(Deposito deposito);
+    public void insertar(Deposito deposito);
     public void actualizar(Deposito deposito);
     public void eliminar(Deposito deposito);
     public Deposito buscarPorCodigo(Integer id);

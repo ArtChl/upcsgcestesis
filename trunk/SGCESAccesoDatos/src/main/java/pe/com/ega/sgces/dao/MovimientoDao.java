@@ -19,5 +19,6 @@ public interface MovimientoDao {
     public Movimiento buscarPorCodigo(Integer id);
     public void setSession(Session session);
     public Movimiento buscarTurno(String cerrado);
+    public Movimiento buscarTransaccion(String transaccion);
     public List buscarMonto(String tipo, String turno) throws Exception;
 }

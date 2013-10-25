@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import org.hibernate.Session;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.MovimientoDao;
+import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Movimiento;
 
 /**
@@ -57,6 +58,17 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
         return monto;
     }
 
+    @Override
+    public Movimiento buscarTransaccion(String transaccion) {
+        return movimientoDao.buscarTransaccion(transaccion);
+    }
+
+    @Override
+    public void eliminar(Movimiento movimiento) {
+        session.beginTransaction();
+        movimientoDao.eliminar(movimiento);
+        session.getTransaction().commit(); 
+    }
     
     
 }

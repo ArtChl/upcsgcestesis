@@ -280,12 +280,14 @@ public class ClientApplication implements MDIController,LoginController {
     ApplicationFunction n2 = new ApplicationFunction("Operacion",null);
     ApplicationFunction n3 = new ApplicationFunction("Caja",null);
     ApplicationFunction n11 = new ApplicationFunction("Usuario","USUARIO","cliente.png","getUsuario");
-    ApplicationFunction n21 = new ApplicationFunction("Despacho","DESPACHO","car.png","getDespacho");
+    ApplicationFunction n21 = new ApplicationFunction("Emision Ticket","DESPACHO","car.png","getDespacho");
+    ApplicationFunction n22 = new ApplicationFunction("Anulacion","ANULACION","Export16.gif","getAnular");
     ApplicationFunction n31 = new ApplicationFunction("Cierre","CIERRE","print16.gif","getCierre");
     ApplicationFunction n32 = new ApplicationFunction("Arqueo","ARQUEO","copy16.gif","getArqueo");
     ApplicationFunction n33 = new ApplicationFunction("Tirada Buzon","TIRADA","paste16.gif","getTirada");
     n1.add(n11);
     n2.add(n21);
+    n2.add(n22);
     n3.add(n31);
     n3.add(n32);
     n3.add(n33);

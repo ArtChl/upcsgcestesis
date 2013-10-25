@@ -18,6 +18,7 @@ public interface TransaccionDao {
     public void eliminar(Transaccion transaccion);
     public Transaccion buscarPorCodigo(Integer id);
     public List<Transaccion> buscarTodos();
+    public List<Transaccion> buscarTurno(int turno);
     public List<Transaccion> buscarTodosDoc(String documento);
     public List<Transaccion> buscarListaId(String id);
     public List buscarMonto(String tipo, String turno) throws Exception ;
