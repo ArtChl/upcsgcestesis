@@ -16,4 +16,5 @@ public interface DespachoLogica {
     public void eliminar(Despacho despacho);
     public Despacho buscarPorCodigo(Integer id);
     public List<Despacho> buscarTodos();
+     public void actualizar(Despacho despacho);
 }

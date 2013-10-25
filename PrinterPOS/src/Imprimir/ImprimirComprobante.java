@@ -305,5 +305,31 @@ public class ImprimirComprobante {
         }catch(Exception e){System.out.print("\nerror "+e.toString());}
     }
      
+     public void imprimirAnular(String comprobante,String importe,String usuario){
+        try{
+            
+            Date date=new Date();
+            SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat hora=new SimpleDateFormat("hh:mm:ss aa");
+            
+            ticket.AddCabecera("       ** COMPROBANTE DE EXTORNO **     ");
+            ticket.AddCabecera(ticket.DarEspacio());
+            ticket.AddCabecera("               GRIFO KAT'S");
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("COMPROBANTE ANULADO : "+String.format("%1$-18s",comprobante));
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera("IMPORTE ORIGINAL : "+String.format("%1$-21s",importe));
+            ticket.AddSubCabecera("FECHA - HORA :  "+fecha.format(date)+" - "+hora.format(date));
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera(ticket.DarEspacio());
+            ticket.AddSubCabecera(ticket.DarEspacio());         
+            ticket.AddPieLinea("IMPRESO POR : "+String.format("%1$-26s",usuario));
+            ticket.AddPieLinea(ticket.DarEspacio());
+            ticket.ImprimirDocumento("COM1");
+        }catch(Exception e){System.out.print("\nerror "+e.toString());}
+    }
+     
     
 }
