@@ -21,4 +21,5 @@ public interface MovimientoDao {
     public Movimiento buscarTurno(String cerrado);
     public Movimiento buscarTransaccion(String transaccion);
     public List buscarMonto(String tipo, String turno) throws Exception;
+    public List buscarMontoVuelto(String tipo, String turno) throws Exception;
 }

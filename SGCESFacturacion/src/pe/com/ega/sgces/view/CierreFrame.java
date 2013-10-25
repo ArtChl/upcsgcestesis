@@ -80,14 +80,12 @@ public class CierreFrame extends InternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bturnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bturnoActionPerformed
-              System.out.println("DespachoLL");
               turno=turnoLogica.buscarPorCodigo("N");
               List<Despacho> despachos=(List<Despacho>) despachoLogica.buscarTodos();                   
               ArrayList<Arqueo> arqueos=arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
-              System.out.println("Monto"+arqueos.get(0).getCantidad()+" "+arqueos.get(1).getCantidad()+" "+arqueos.get(2).getCantidad()+" "+arqueos.get(3).getCantidad());
-              System.out.println("Despacho"+turno.getId());
+              System.out.println("Cierre Cero"+arqueos.get(0).getCantidad()+" "+arqueos.get(1).getCantidad()+" "+arqueos.get(2).getCantidad()+" "+arqueos.get(3).getCantidad());
               if(despachos.size()==0){
-               if(arqueos.get(0).getCantidad()==0 &&arqueos.get(1).getCantidad()==0 && arqueos.get(2).getCantidad()==0 && arqueos.get(3).getCantidad()==0){
+               if(redondear(arqueos.get(0).getCantidad())==0 &&redondear(arqueos.get(1).getCantidad())==0 && redondear(arqueos.get(2).getCantidad())==0 && redondear(arqueos.get(3).getCantidad())==0){
                 Double total=0.0;
                 ArrayList<Cierre> lista=cierreLogica.buscarPorCodigo(String.valueOf(turno.getId()));
                 for (Cierre arqueo1 : lista) {
@@ -129,7 +127,6 @@ public class CierreFrame extends InternalFrame {
     }
      private void turno() 
     {
-        System.out.println("Cierre Entro");
         Turno x=new Turno();
         x.setEstacionservicio(new  Estacionservicio(1));
         x.setFechaapertura(new Date());
@@ -138,8 +135,7 @@ public class CierreFrame extends InternalFrame {
            
     }
      
-     private void turnoCaja(){
-         System.out.println("Cierre Entro2");  
+     private void turnoCaja(){ 
         Turnopuntoventacaja cajax= new Turnopuntoventacaja();
         int turno2= turnoLogica.buscarPorCodigo("N").getId();
         cajax.setId(new TurnopuntoventacajaId(turno2,1,1));
@@ -149,5 +145,7 @@ public class CierreFrame extends InternalFrame {
         cajax.setFecharegistro(new Date());
         turnopuntoventacajaLogica.insertar(cajax);
      }
+     
+     
 
 }
