@@ -33,21 +33,40 @@ public class ArqueoLogicaImpl implements ArqueoLogica{
     public ArrayList<Arqueo> buscarPorCodigo(String turno) {
          ArrayList<Arqueo> arqueos= new ArrayList<>();
          ArrayList<String> lista= new ArrayList<>();
-         lista.add("SOLES");
          lista.add("DOLARES");
+         lista.add("SOLES");
          lista.add("VISA");
          lista.add("MASTERCARD");
-         
+         Double soles=0.0;
+         Double solesDolares=0.0;
          for (int i = 0; i < lista.size(); i++) {
             String string = lista.get(i);
             Arqueo arqueo=new Arqueo();
-            arqueo.setComprobante(string);
+            arqueo.setComprobante(string);     
             Double mov=movimientoLogica.buscarMonto(string,turno);
+            Double vuelto=movimientoLogica.buscarMontoVuelto(string,turno);
+            soles=redondear(mov-vuelto);
             Double dep=depositoLogica.buscarMonto(string,turno);
-            arqueo.setCantidad(mov-dep);
-            arqueos.add(arqueo);           
+            if(arqueo.getComprobante().equalsIgnoreCase("SOLES")) {
+                soles=soles-solesDolares;
+                System.out.println("Soles"+soles);
+            }
+            if(arqueo.getComprobante().equalsIgnoreCase("DOLARES")) {
+                arqueo.setCantidad(redondear((mov-dep)/2.65)); 
+                solesDolares=vuelto;
+                System.out.println("Vueltos Dolares"+solesDolares);
+            }else{
+                arqueo.setCantidad(soles-dep);      
+                 
+            } 
+            arqueos.add(arqueo); 
         }
          return arqueos;
     }
+    
+    public static double redondear(double numero) 
+       {        
+           return Math.rint(numero*100)/100; 
+       }
     
 }

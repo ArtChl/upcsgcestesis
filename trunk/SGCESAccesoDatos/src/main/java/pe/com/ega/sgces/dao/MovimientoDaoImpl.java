@@ -47,7 +47,8 @@ public class MovimientoDaoImpl implements MovimientoDao{
 
     @Override
     public List buscarMonto(String tipo, String turno) throws Exception{
-       Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
+       //Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
+       Query query = session.createQuery("select sum(montorecibido) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();
        return results;
     }
@@ -55,6 +56,14 @@ public class MovimientoDaoImpl implements MovimientoDao{
     @Override
     public Movimiento buscarTransaccion(String transaccion) {
         return (Movimiento) session.createQuery("from Movimiento where idtransaccion="+transaccion).uniqueResult();
+    }
+
+    @Override
+    public List buscarMontoVuelto(String tipo, String turno) throws Exception {
+       //Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'"); 
+       Query query = session.createQuery("select sum(montodevuelto) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
+       List results = query.list();
+       return results;
     }
 
    

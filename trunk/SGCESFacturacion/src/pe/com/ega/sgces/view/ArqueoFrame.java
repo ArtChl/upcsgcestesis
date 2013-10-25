@@ -7,22 +7,12 @@ package pe.com.ega.sgces.view;
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import org.openswing.swing.mdi.client.InternalFrame;
-import org.openswing.swing.mdi.client.MDIFrame;
-import pe.com.ega.sgces.dao.DespachoDaoImpl;
-import pe.com.ega.sgces.dao.TransaccionDaoImpl;
 import pe.com.ega.sgces.dao.TurnoDaoImpl;
-import pe.com.ega.sgces.logic.ArqueoLogica;
 import pe.com.ega.sgces.logic.ArqueoLogicaImpl;
-import pe.com.ega.sgces.logic.DespachoLogicaImpl;
-import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
-import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Arqueo;
-import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
-import pe.com.ega.sgces.model.Transaccion;
 
 /**
  *
@@ -73,8 +63,8 @@ public class ArqueoFrame extends InternalFrame {
             System.out.println("total"+total);
             }
             ImprimirComprobante comprobante = new ImprimirComprobante();
-            comprobante.imprimirArqueo("0001", String.valueOf(redondear(lista.get(0).getCantidad()))
-                    , String.valueOf(redondear(lista.get(1).getCantidad())),String.valueOf(redondear(lista.get(2).getCantidad())),
+            comprobante.imprimirArqueo("0001", String.valueOf(redondear(lista.get(1).getCantidad()))
+                    , String.valueOf(redondear(lista.get(0).getCantidad())),String.valueOf(redondear(lista.get(2).getCantidad())),
                      String.valueOf(redondear(total))
                     , String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");
             salir(evt);

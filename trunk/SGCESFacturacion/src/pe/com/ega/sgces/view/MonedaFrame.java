@@ -173,10 +173,10 @@ public class MonedaFrame extends InternalFrame {
         if(desp.getMontosoles()<Double.parseDouble(pago.getText())*2.65){
             if("BOL".equals(moneda)){
                 imprimirBoleta(desp, evt);
-                llenarMovimientoDolares(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+                llenarMovimientoDolares(transaccion, moneda, Double.parseDouble(pago.getText())*2.65,pago.getText());
             }else{
                 imprimirFactura(desp, cliente, evt);
-                llenarMovimientoDolares(transaccion, moneda, Double.parseDouble(pago.getText())*2.65);
+                llenarMovimientoDolares(transaccion, moneda, Double.parseDouble(pago.getText())*2.65,pago.getText());
             }
         }else{
             final JPanel panel = new JPanel();
@@ -310,7 +310,7 @@ public class MonedaFrame extends InternalFrame {
         
     }
     
-    private void llenarMovimientoDolares(Transaccion transaccion, String pag, Double monto){
+    private void llenarMovimientoDolares(Transaccion transaccion, String pag, Double monto, String montes){
         movimiento.setTransaccion(transaccion);
         movimiento.setPago(pag);
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
@@ -318,6 +318,7 @@ public class MonedaFrame extends InternalFrame {
         movimiento.setTurnopuntoventacaja(caja);
         movimiento.setMontototal(desp.getMontosoles());
         movimiento.setMontorecibido(monto);
+        movimiento.setNrooperacion(montes);
         movimiento.setTipo("DOLARES");
         movimiento.setTurno(desp.getTurno());
         movimiento.setCerrado("N");

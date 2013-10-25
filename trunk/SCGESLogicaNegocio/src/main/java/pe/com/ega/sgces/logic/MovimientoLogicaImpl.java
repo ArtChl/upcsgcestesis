@@ -69,6 +69,22 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
         movimientoDao.eliminar(movimiento);
         session.getTransaction().commit(); 
     }
+
+    @Override
+    public Double buscarMontoVuelto(String tipo, String turno) {
+        Double monto=0.00;
+        try {
+            session.beginTransaction();
+            List lis=movimientoDao.buscarMontoVuelto(tipo, turno);
+            session.getTransaction().commit(); 
+            String numero=lis.toString().replace("[", "");
+            numero=numero.replace("]", "");
+            monto=Double.parseDouble(numero);
+        } catch (Exception ex) {
+            monto=0.00;
+        }
+        return monto;
+    }
     
     
 }
