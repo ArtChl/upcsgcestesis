@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<project name="tutorialant" basedir="." default="build">
+
+    <property name="src.dir" value="src"/>
+    <property name="jar.name" value="antTest.jar"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="build.dir" value="classes"/>
+    <property name="name" value="TutorialAnt"/>
+
+    <path id="master-classpath">
+        <pathelement path="${build.dir}"/>
+    </path>
+
+    <target name="build" description="Compilar los archivos fuente">
+         <mkdir dir="${build.dir}"/>
+        <javac destdir="${build.dir}"  debug="true"
+               deprecation="false" optimize="false" failonerror="true">
+            <src path="${src.dir}"/>
+            <classpath refid="master-classpath"/>
+        </javac>
+    </target>
+
+</project>
