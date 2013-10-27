@@ -6,12 +6,10 @@ package pe.com.ega.sgces.logic;
 
 import java.util.List;
 import org.hibernate.Session;
-import pe.com.ega.sgces.dao.DespachoDao;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.dao.TransaccionDetalleDao;
-import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Transacciondetalle;
 
@@ -47,6 +45,7 @@ public class TransaccionLogicaImpl implements TransaccionLogica
         this.transaccionDao.setSession(session);
     }
     
+    @Override
     public void grabar(Transaccion transaccion) {
         session.beginTransaction();
         transaccionDao.insertar(transaccion);
@@ -56,34 +55,37 @@ public class TransaccionLogicaImpl implements TransaccionLogica
         session.getTransaction().commit(); 
     }
 
+    @Override
     public Transaccion buscarPorCodigo(Integer id) {
         return transaccionDao.buscarPorCodigo(id);
     }
 
+    @Override
     public List<Transaccion> buscarListaId(String id) {
         return transaccionDao.buscarListaId(id);
     }
 
+    @Override
     public List<Transaccion> buscarTodo() {
         return transaccionDao.buscarTodos();
     }
     
+    @Override
      public List<Transaccion> buscarTodoDoc(String documento) {
         return transaccionDao.buscarTodosDoc(documento);
     }
 
     @Override
     public Double buscarMonto(String tipo, String turno) {
-        Double monto=0.00;
-        try {
-            session.beginTransaction();
+        Double monto;
+        try{
             List lis=transaccionDao.buscarMonto(tipo, turno);
             session.getTransaction().commit(); 
             String numero=lis.toString().replace("[", "");
             numero=numero.replace("]", "");
             monto=Double.parseDouble(numero);
         } catch (Exception ex) {
-            monto=0.00;
+                   monto=0.00;
         }
         return monto;
     }

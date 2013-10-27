@@ -25,11 +25,16 @@ public class DespachoLogicaImpl implements DespachoLogica {
        
     }
     
+    /**
+     *
+     * @param despachoDao
+     */
     public void setDespachoDao(DespachoDao despachoDao) {
        this.despachoDao= despachoDao;
        this.despachoDao.setSession(session);
     }
     
+    @Override
     public void grabar(Despacho despacho) {
         session.beginTransaction();
         if(despacho.getId() == 0) 
@@ -44,16 +49,19 @@ public class DespachoLogicaImpl implements DespachoLogica {
         session.close();
     }
 
+    @Override
     public void eliminar(Despacho despacho) {
         session.beginTransaction();
         despachoDao.eliminar(despacho);
         session.getTransaction().commit();
     }
 
+    @Override
     public Despacho buscarPorCodigo(Integer id) {
         return despachoDao.buscarPorCodigo(id);
     }
 
+    @Override
     public List<Despacho> buscarTodos() {      
         return despachoDao.buscarTodos(session);     
     }

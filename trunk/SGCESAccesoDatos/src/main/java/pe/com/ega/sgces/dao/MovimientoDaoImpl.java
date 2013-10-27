@@ -7,7 +7,6 @@ package pe.com.ega.sgces.dao;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Movimiento;
 
 /**
@@ -46,7 +45,7 @@ public class MovimientoDaoImpl implements MovimientoDao{
     }
 
     @Override
-    public List buscarMonto(String tipo, String turno) throws Exception{
+    public List buscarMonto(String tipo, String turno){
        //Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
        Query query = session.createQuery("select sum(montorecibido) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();
@@ -59,7 +58,7 @@ public class MovimientoDaoImpl implements MovimientoDao{
     }
 
     @Override
-    public List buscarMontoVuelto(String tipo, String turno) throws Exception {
+    public List buscarMontoVuelto(String tipo, String turno) {
        //Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'"); 
        Query query = session.createQuery("select sum(montodevuelto) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();

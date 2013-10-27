@@ -62,7 +62,7 @@ public class TransaccionDaoImpl implements TransaccionDao{
     }
 
     @Override
-    public List buscarMonto(String tipo, String turno) throws Exception {
+    public List buscarMonto(String tipo, String turno) {
        Query query = session.createQuery("select sum(montototal) from Transaccion where producto='"+tipo+"' and idestado='"+turno+"'");
        System.out.println("consulta"+query.getQueryString());
        List results = query.list();

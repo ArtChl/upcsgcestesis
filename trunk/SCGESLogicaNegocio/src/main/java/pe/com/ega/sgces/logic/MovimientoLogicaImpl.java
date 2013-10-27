@@ -5,12 +5,9 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.hibernate.Session;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.MovimientoDao;
-import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Movimiento;
 
 /**
@@ -32,30 +29,26 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
 
     }
     
+    @Override
     public void grabar(Movimiento movimiento) {
         session.beginTransaction();
         movimientoDao.insertar(movimiento);
         session.getTransaction().commit(); 
     }
 
+    @Override
     public Movimiento buscarPorCodigo(Integer id) {
         return movimientoDao.buscarPorCodigo(id);
     }
 
     @Override
     public Double buscarMonto(String tipo, String turno) {
-        Double monto=0.00;
-        try {
-            session.beginTransaction();
-            List lis=movimientoDao.buscarMonto(tipo, turno);
-            session.getTransaction().commit(); 
-            String numero=lis.toString().replace("[", "");
-            numero=numero.replace("]", "");
-            monto=Double.parseDouble(numero);
-        } catch (Exception ex) {
-            monto=0.00;
-        }
-        return monto;
+        List lis=movimientoDao.buscarMonto(tipo, turno);
+
+        String numero=lis.toString().replace("[", "");
+        numero=numero.replace("]", "");
+
+        return Double.parseDouble(numero);
     }
 
     @Override
@@ -72,19 +65,15 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
 
     @Override
     public Double buscarMontoVuelto(String tipo, String turno) {
-        Double monto=0.00;
-        try {
-            session.beginTransaction();
-            List lis=movimientoDao.buscarMontoVuelto(tipo, turno);
-            session.getTransaction().commit(); 
-            String numero=lis.toString().replace("[", "");
-            numero=numero.replace("]", "");
-            monto=Double.parseDouble(numero);
-        } catch (Exception ex) {
-            monto=0.00;
-        }
+        Double monto;
+                try{
+                List lis=movimientoDao.buscarMontoVuelto(tipo, turno);
+                String numero=lis.toString().replace("[", "");
+                numero=numero.replace("]", "");
+                monto=Double.parseDouble(numero);
+         } catch (Exception ex) {
+                    monto=0.00;
+         }
         return monto;
     }
-    
-    
 }

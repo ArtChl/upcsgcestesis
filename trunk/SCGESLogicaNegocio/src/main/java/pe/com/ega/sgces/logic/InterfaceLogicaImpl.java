@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.InterfaceDao;
 import pe.com.ega.sgces.model.InterfaceConfig;
-import pe.com.ega.sgces.model.Turno;
 
 /**
  *
