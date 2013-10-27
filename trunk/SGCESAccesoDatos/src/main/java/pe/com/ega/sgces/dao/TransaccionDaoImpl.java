@@ -7,6 +7,7 @@ package pe.com.ega.sgces.dao;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import pe.com.ega.sgces.model.Trabajador;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**
@@ -73,6 +74,11 @@ public class TransaccionDaoImpl implements TransaccionDao{
     public List<Transaccion> buscarTurno(int turno) {
         System.out.println("codigo turno"+turno);
         return session.createQuery("from Transaccion where idestado="+turno+" and anulado=false").list();
+    }
+
+    @Override
+    public Transaccion buscarPorNumero(String numero) {
+        return (Transaccion)session.createQuery("from Transaccion where numerovale='"+numero+"'").uniqueResult();
     }
     
 }
