@@ -68,9 +68,7 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
         Double monto;
                 try{
                 List lis=movimientoDao.buscarMontoVuelto(tipo, turno);
-                String numero=lis.toString().replace("[", "");
-                numero=numero.replace("]", "");
-                monto=Double.parseDouble(numero);
+                monto=Util.recuperarNumero(lis);
          } catch (Exception ex) {
                     monto=0.00;
          }

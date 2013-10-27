@@ -65,11 +65,8 @@ public class DepositoLogicaImpl implements DepositoLogica{
     public Double buscarMonto(String tipo, String turno) {
         Double monto;
         try{
-        List lis=depositoDao.buscarMonto(tipo, turno);
-        
-        String numero=lis.toString().replace("[", "");
-        numero=numero.replace("]", "");
-            monto=Double.parseDouble(numero);
+            List lis=depositoDao.buscarMonto(tipo, turno); 
+            monto=Util.recuperarNumero(lis);
         } catch (Exception ex) {
             monto=0.00;
         }
