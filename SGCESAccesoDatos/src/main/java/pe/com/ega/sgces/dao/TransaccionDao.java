@@ -17,6 +17,7 @@ public interface TransaccionDao {
     public void actualizar(Transaccion transaccion);
     public void eliminar(Transaccion transaccion);
     public Transaccion buscarPorCodigo(Integer id);
+    public Transaccion buscarPorNumero(String numero);
     public List<Transaccion> buscarTodos();
     public List<Transaccion> buscarTurno(int turno);
     public List<Transaccion> buscarTodosDoc(String documento);
