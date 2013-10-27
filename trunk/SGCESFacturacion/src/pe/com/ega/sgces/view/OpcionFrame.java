@@ -6,14 +6,12 @@ package pe.com.ega.sgces.view;
 
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
-import javax.swing.JOptionPane;
 import org.openswing.swing.mdi.client.InternalFrame;
 import org.openswing.swing.mdi.client.MDIFrame;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
-import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Transaccion;
 
@@ -24,19 +22,10 @@ import pe.com.ega.sgces.model.Transaccion;
 public class OpcionFrame extends InternalFrame {
 
     private Despacho desp;
-    private ImprimirComprobante comprobante;
-    private Transaccion transaccion;
-    private TransaccionLogicaImpl transaccionLogica;
-    private DespachoLogicaImpl despachoLogica;
     
     public OpcionFrame(Despacho codigo) {
         initComponents();
         desp=codigo;
-        transaccion=new Transaccion();
-        transaccionLogica =new TransaccionLogicaImpl();
-        transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
-        despachoLogica=new DespachoLogicaImpl();
-        despachoLogica.setDespachoDao(new DespachoDaoImpl());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

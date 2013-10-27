@@ -156,7 +156,6 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
        if(cliente.getId()==0){        
            System.out.println("Cliente"+cliente.getId());
            Cliente temporal1 = new Cliente();
-           //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
            temporal1.setNumerodocumento(jrucCliente.getText());
            temporal1.setRazonsocial(jrazonCliente.getText());
                clienteLogica.grabar(temporal1);
