@@ -7,9 +7,7 @@ package pe.com.ega.sgces.logic;
 import java.util.List;
 import org.hibernate.Session;
 import pe.com.ega.sgces.dao.HibernateUtil;
-import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
 import pe.com.ega.sgces.dao.ValeDao;
-import pe.com.ega.sgces.model.Numcomprobante;
 import pe.com.ega.sgces.model.Vale;
 
 /**

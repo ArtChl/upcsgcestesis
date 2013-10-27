@@ -20,6 +20,6 @@ public interface MovimientoDao {
     public void setSession(Session session);
     public Movimiento buscarTurno(String cerrado);
     public Movimiento buscarTransaccion(String transaccion);
-    public List buscarMonto(String tipo, String turno) throws Exception;
-    public List buscarMontoVuelto(String tipo, String turno) throws Exception;
+    public List buscarMonto(String tipo, String turno);
+    public List buscarMontoVuelto(String tipo, String turno);
 }

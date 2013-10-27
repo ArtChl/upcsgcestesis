@@ -48,7 +48,7 @@ public class DepositoDaoImpl implements DepositoDao{
     }
 
     @Override
-    public List buscarMonto(String tipo, String turno) throws Exception{
+    public List buscarMonto(String tipo, String turno){
        Query query = session.createQuery("select sum(montototal) from Deposito where idtipopago='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();
        return results;
