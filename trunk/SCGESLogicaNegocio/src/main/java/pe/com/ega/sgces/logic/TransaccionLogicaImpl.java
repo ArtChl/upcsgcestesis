@@ -80,10 +80,7 @@ public class TransaccionLogicaImpl implements TransaccionLogica
         Double monto;
         try{
             List lis=transaccionDao.buscarMonto(tipo, turno);
-            session.getTransaction().commit(); 
-            String numero=lis.toString().replace("[", "");
-            numero=numero.replace("]", "");
-            monto=Double.parseDouble(numero);
+            monto=Util.recuperarNumero(lis);
         } catch (Exception ex) {
                    monto=0.00;
         }
