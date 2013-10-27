@@ -19,5 +19,4 @@ public interface DespachoDao {
     public Despacho buscarPorCodigo(Integer id);
     public List<Despacho> buscarTodos(Session s);
     public void setSession(Session session);
-    //public void estado(Despacho despacho);
 }
