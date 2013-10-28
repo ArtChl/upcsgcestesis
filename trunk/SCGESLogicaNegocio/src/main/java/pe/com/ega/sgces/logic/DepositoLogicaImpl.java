@@ -6,49 +6,49 @@ package pe.com.ega.sgces.logic;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.DepositoDao;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.model.Deposito;
 
-/**
- *
- * @author Flopez
- */
+
 public class DepositoLogicaImpl implements DepositoLogica{
 
-    Session session; 
+    SessionFactory session; 
     DepositoDao depositoDao;
 
     public DepositoLogicaImpl() {
         
-        session = HibernateUtil.getSessionFactory().openSession();
     }
 
+    public void setSession(SessionFactory session) {
+        this.session = session;
+    }
+    
     public void setDepositoDao(DepositoDao depositoDao) {
         this.depositoDao = depositoDao;
-        this.depositoDao.setSession(session);
     }
 
     @Override
     public void insertar(Deposito deposito) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         depositoDao.insertar(deposito);
-        session.getTransaction().commit(); 
+        session.getCurrentSession().getTransaction().commit(); 
     }
 
     @Override
     public void actualizar(Deposito deposito) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         depositoDao.actualizar(deposito);
-        session.getTransaction().commit(); 
+        session.getCurrentSession().getTransaction().commit(); 
         
     }
 
     @Override
     public void eliminar(Deposito deposito) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         depositoDao.eliminar(deposito);
-        session.getTransaction().commit(); 
+        session.getCurrentSession().getTransaction().commit(); 
     }
 
     @Override

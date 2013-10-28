@@ -5,6 +5,8 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
+import org.hibernate.SessionFactory;
+import pe.com.ega.sgces.dao.DepositoDao;
 import pe.com.ega.sgces.model.Deposito;
 /**
  *
@@ -17,4 +19,6 @@ public interface DepositoLogica {
     public Deposito buscarPorCodigo(Integer id);
     public List<Deposito> buscarTodos();
     public Double buscarMonto(String tipo, String turno);
+    public void setSession(SessionFactory session);
+    public void setDepositoDao(DepositoDao depositoDao);
 }

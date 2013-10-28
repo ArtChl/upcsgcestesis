@@ -21,14 +21,21 @@ public class TransaccionLogicaImpl implements TransaccionLogica
 {
     Session session; 
     TransaccionDao transaccionDao;
-    DespachoLogicaImpl despachoLogica;
+    DespachoLogica despachoLogica;
+    MovimientoLogica movimientoLogica;
   
-    
     public TransaccionLogicaImpl()
     {
         session = HibernateUtil.getSessionFactory().openSession();
-        despachoLogica=new DespachoLogicaImpl();
-        despachoLogica.setDespachoDao(new DespachoDaoImpl());
+      //this.despachoLogica=despachoLogica;
+     
+    }
+    
+    public TransaccionLogicaImpl(DespachoLogica despachoLogica, MovimientoLogica movimiento)
+    {
+        session = HibernateUtil.getSessionFactory().openSession();
+        this.despachoLogica=despachoLogica;
+        this.movimientoLogica=movimiento;
      
     }
     
@@ -89,16 +96,22 @@ public class TransaccionLogicaImpl implements TransaccionLogica
 
     @Override
     public void actualizar(Transaccion transaccion) {
-        System.out.println("Entro despacho1"+transaccion.getAnulado());
-        if(transaccion.getAnulado()==true){
-            System.out.println("Entro despacho2");
+        
+        try {
+            session.beginTransaction();
+            transaccionDao.actualizar(transaccion);       
+            session.getTransaction().commit(); 
+            System.out.println("Transaccion"+transaccion.getNumerovale());
+            if(transaccion.getAnulado()==true)
+            {
             transaccion.getDespacho().setIdestado(1);
             despachoLogica.actualizar(transaccion.getDespacho());
-        }
-        session.beginTransaction();
-        transaccionDao.actualizar(transaccion);
-        session.getTransaction().commit(); 
-          
+            movimientoLogica.eliminar(movimientoLogica.buscarTransaccion(String.valueOf(transaccion.getId())));
+            }
+            
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        }   
     }
 
     @Override

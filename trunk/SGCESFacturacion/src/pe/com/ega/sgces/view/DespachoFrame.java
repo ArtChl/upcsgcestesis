@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import org.openswing.swing.mdi.client.InternalFrame;
 import org.openswing.swing.mdi.client.MDIFrame;
-import pe.com.ega.sgces.dao.DespachoDaoImpl;
-import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.DespachoLogica;
+import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.model.Despacho;
 
 /**
@@ -16,13 +16,14 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoFrame extends InternalFrame {
 
-    private DespachoLogicaImpl despachoLogic;
+    private DespachoLogica despachoLogic;
+    private MovimientoLogica movimientoLogica;
     private ArrayList<Despacho> transaccions;
 
-    public DespachoFrame() {
+    public DespachoFrame(DespachoLogica despachoLogica, MovimientoLogica movimientoLogica) {
         initComponents();
-        despachoLogic = new DespachoLogicaImpl();      
-        despachoLogic.setDespachoDao(new DespachoDaoImpl());
+        this.despachoLogic = despachoLogica;
+        this.movimientoLogica = movimientoLogica;
         transaccions=new ArrayList<>(); 
         pintarTabla();            
     }
@@ -142,12 +143,11 @@ public class DespachoFrame extends InternalFrame {
         private void select(MouseEvent e){
             int row=tabla.getSelectedRow();
             String txt[] = new String[tabla.getColumnCount()];
-            //String txt[] = "";
             for (int i = 0; i < tabla.getColumnCount(); i++) {
                 txt[i]=String.valueOf(tabla.getValueAt(row, 0));
                 
             }
-            OpcionFrame f=new OpcionFrame(buscar(txt[0]));
+            OpcionFrame f=new OpcionFrame(buscar(txt[0]), despachoLogic, movimientoLogica);
             f.setSize(298,103);
             f.setTitle("Comprobante");
             MDIFrame.add(f);

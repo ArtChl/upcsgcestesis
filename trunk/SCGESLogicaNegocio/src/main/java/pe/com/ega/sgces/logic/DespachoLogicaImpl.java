@@ -5,9 +5,8 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
-import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.DespachoDao;
-import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.model.Despacho;
 
 /**
@@ -16,27 +15,27 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoLogicaImpl implements DespachoLogica {
 
-    Session session;    
+    SessionFactory session;    
     DespachoDao despachoDao;
     
     public DespachoLogicaImpl()
     {
-       session = HibernateUtil.getSessionFactory().openSession();
+      
+    }
        
+    @Override
+    public void setSession(SessionFactory session) {
+        this.session = session;
     }
     
-    /**
-     *
-     * @param despachoDao
-     */
+    @Override
     public void setDespachoDao(DespachoDao despachoDao) {
        this.despachoDao= despachoDao;
-       this.despachoDao.setSession(session);
     }
     
     @Override
     public void grabar(Despacho despacho) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         if(despacho.getId() == 0) 
         {
            despachoDao.insertar(despacho);
@@ -44,16 +43,14 @@ public class DespachoLogicaImpl implements DespachoLogica {
         else{
            despachoDao.actualizar(despacho);
         }
-        session.getTransaction().commit();
-        session.flush();
-        session.close();
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
     public void eliminar(Despacho despacho) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         despachoDao.eliminar(despacho);
-        session.getTransaction().commit();
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
@@ -63,14 +60,14 @@ public class DespachoLogicaImpl implements DespachoLogica {
 
     @Override
     public List<Despacho> buscarTodos() {      
-        return despachoDao.buscarTodos(session);     
+        return despachoDao.buscarTodos();     
     }
 
     @Override
     public void actualizar(Despacho despacho) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         despachoDao.actualizar(despacho);
-        session.getTransaction().commit();
+        session.getCurrentSession().getTransaction().commit();
     }
 
 }

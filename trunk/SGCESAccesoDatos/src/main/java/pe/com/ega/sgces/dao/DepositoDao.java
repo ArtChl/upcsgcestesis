@@ -6,6 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Deposito;
 
 /**
@@ -18,6 +19,6 @@ public interface DepositoDao {
     public void eliminar(Deposito deposito);
     public Deposito buscarPorCodigo(Integer id);
     public List<Deposito> buscarTodos();   
-    public void setSession(Session session);
+    public void setSession(SessionFactory session);
     public List buscarMonto(String tipo, String turno) ;
 }

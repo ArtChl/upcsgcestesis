@@ -12,7 +12,9 @@ import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
 import pe.com.ega.sgces.logic.ClienteLogicaImpl;
+import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
@@ -31,9 +33,10 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
     private TransaccionLogicaImpl transaccionLogica;
-    private DespachoLogicaImpl despachoDao;
+    private DespachoLogica despachoLogica;
+    private MovimientoLogica movimientoLogica;
     
-    public FacturaFrame(Despacho despacho) {
+    public FacturaFrame(Despacho despacho, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica) {
         initComponents();
         desp=despacho;
         clienteLogica=new ClienteLogicaImpl();
@@ -41,8 +44,8 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
         transaccion=new Transaccion();
         transaccionLogica =new TransaccionLogicaImpl();
         transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
-        despachoDao=new DespachoLogicaImpl();
-        despachoDao.setDespachoDao(new DespachoDaoImpl());
+        this.despachoLogica=despachoLogica;
+        this.movimientoLogica=movimientoLogica;
         limpiar();
     }
 
@@ -159,14 +162,14 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            temporal1.setNumerodocumento(jrucCliente.getText());
            temporal1.setRazonsocial(jrazonCliente.getText());
                clienteLogica.grabar(temporal1);
-               MonedaFrame f=new MonedaFrame(desp, "TFAC", temporal1);
+                MonedaFrame f=new MonedaFrame(desp, "TFAC", temporal1,despachoLogica, movimientoLogica);
                     f.setSize(301,213);
                     f.setTitle("Tipo Pago");
                     MDIFrame.add(f);
                     salir(evt);
                       
        }else{
-                MonedaFrame f=new MonedaFrame(desp, "TFAC", cliente);
+                MonedaFrame f=new MonedaFrame(desp, "TFAC", cliente, despachoLogica, movimientoLogica);
                     f.setSize(301,213);
                     f.setTitle("Tipo Pago");
                     MDIFrame.add(f);

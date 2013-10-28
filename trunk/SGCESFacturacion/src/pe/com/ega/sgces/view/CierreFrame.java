@@ -17,7 +17,10 @@ import pe.com.ega.sgces.dao.TurnoDaoImpl;
 import pe.com.ega.sgces.dao.TurnopuntoventacajaDaoImpl;
 import pe.com.ega.sgces.logic.ArqueoLogicaImpl;
 import pe.com.ega.sgces.logic.CierreLogicaImpl;
+import pe.com.ega.sgces.logic.DepositoLogica;
+import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.logic.TurnopuntoventacajaLogicaImpl;
 import pe.com.ega.sgces.model.Arqueo;
@@ -40,20 +43,19 @@ public class CierreFrame extends InternalFrame {
     private Turno turno;
     private ImprimirComprobante imprimircomprobante;
     private CierreLogicaImpl cierreLogica;
-    private DespachoLogicaImpl despachoLogica;
+    private DespachoLogica despachoLogica;
     private ArqueoLogicaImpl arqueoLogica;     
     private TurnopuntoventacajaLogicaImpl turnopuntoventacajaLogica;
     
-    public CierreFrame() {
+    public CierreFrame(MovimientoLogica movimiento, DepositoLogica deposito, DespachoLogica despachoLogica) {
         initComponents();
         turno = new Turno();
         imprimircomprobante = new ImprimirComprobante();
         turnoLogica =new TurnoLogicaImpl();
         cierreLogica = new CierreLogicaImpl();
-        despachoLogica=new DespachoLogicaImpl();
-        arqueoLogica= new ArqueoLogicaImpl();
+        this.despachoLogica=despachoLogica;
+        arqueoLogica= new ArqueoLogicaImpl(movimiento,deposito);
         turnoLogica.setTurnoDao(new TurnoDaoImpl());
-        despachoLogica.setDespachoDao(new DespachoDaoImpl());
         turnopuntoventacajaLogica= new TurnopuntoventacajaLogicaImpl();
         turnopuntoventacajaLogica.setTurnopuntoventacajaDao(new TurnopuntoventacajaDaoImpl());
 

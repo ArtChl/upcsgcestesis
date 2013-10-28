@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import org.openswing.swing.mdi.client.InternalFrame;
 import pe.com.ega.sgces.dao.TurnoDaoImpl;
 import pe.com.ega.sgces.logic.ArqueoLogicaImpl;
+import pe.com.ega.sgces.logic.DepositoLogica;
+import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Arqueo;
-import pe.com.ega.sgces.model.Despacho;
 
 /**
  *
@@ -20,16 +21,12 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class ArqueoFrame extends InternalFrame {
 
-    private Despacho desp;
-    private ImprimirComprobante comprobante;
-    private Arqueo arq;
     private ArqueoLogicaImpl arqueoLogica;
     private TurnoLogicaImpl turnoLogica;
     
-    public ArqueoFrame() {
+    public ArqueoFrame(MovimientoLogica movimiento, DepositoLogica deposito) {
         initComponents();
-        arq=new Arqueo();
-        arqueoLogica =new ArqueoLogicaImpl();
+        arqueoLogica =new ArqueoLogicaImpl(movimiento, deposito);
         turnoLogica =new TurnoLogicaImpl();
         turnoLogica.setTurnoDao(new TurnoDaoImpl());
     }

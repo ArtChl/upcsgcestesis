@@ -19,7 +19,7 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class TransaccionDaoTest {
     
-    Transaccion transaccion;
+   
     TransaccionDao transaccionDao;
     Despacho despacho;
     DespachoDao despachoDao;
@@ -28,13 +28,12 @@ public class TransaccionDaoTest {
     Numcomprobante numComprobante;
     Session session;
     String numero;
-    
+   
     public TransaccionDaoTest() {
         session=HibernateUtil.sessionFactory.openSession();
         transaccionDao=new TransaccionDaoImpl();
         transaccionDao.setSession(session);
         despachoDao=new DespachoDaoImpl();
-        despachoDao.setSession(session);
         turnoDao= new TurnoDaoImpl();
         turnoDao.setSession(session);
         numComprobanteDao=new NumComprobanteDaoImpl();
@@ -42,12 +41,13 @@ public class TransaccionDaoTest {
         numComprobante= numComprobanteDao.buscarPorCodigo(1);
         
     }
-    
+    /*
     @Test
     public void insertarTransaccion(){
-        transaccion= new Transaccion();
+        Transaccion transaccion= new Transaccion();
         despacho=despachoDao.buscarPorCodigo(1);       
         numero="325-"+agregarCeros(String.valueOf(numComprobante.getNumero()),8);
+        System.out.println("numero"+numero);
         transaccion.setDespacho(despacho);
         transaccion.setIdtipotransaccion("NDES");
         transaccion.setIdestado(turnoDao.buscarPorCodigo("N").getId());
@@ -73,31 +73,28 @@ public class TransaccionDaoTest {
         assertEquals(transaccion.getNumerovale(), transaccionR.getNumerovale());
         
     }
-    
-     @Test
-    public void buscarClienteTransaccion(){
-        numero="325-"+agregarCeros(String.valueOf(numComprobante.getNumero()-1),8);       
-        List<Transaccion> transaccions=transaccionDao.buscarListaId("2");
-        
-        assertEquals(2, transaccions.size());
-        
-    }
-/*     
+    */
+   
+   /* 
    @Test
     public void anularTransaccion(){
-        numero="325-"+agregarCeros(String.valueOf(numComprobante.getNumero()-1),8);       
-        transaccion=transaccionDao.buscarPorNumero(numero);
-        transaccion.setAnulado(true);        
+        Transaccion trans= new Transaccion();
+        numero="325-"+agregarCeros(String.valueOf(numComprobante.getNumero()-1),8);  
+        System.out.println("numeroanulado"+numero);
+        trans=transaccionDao.buscarPorNumero(numero);
+        trans.setAnulado(true);
+        System.out.println("transaccion"+trans.getNumerovale());
         session.beginTransaction();
-        transaccionDao.actualizar(transaccion);
+        transaccionDao.actualizar(trans);
         session.getTransaction().commit();
         
-        assertEquals(transaccion.getAnulado(), transaccionDao.buscarPorNumero(numero).getAnulado());
+        assertEquals(trans.getAnulado(), transaccionDao.buscarPorNumero(numero).getAnulado());
         
     }
    
    @Test
-    public void eliminarTransaccion(){       
+    public void eliminarTransaccion(){   
+        Transaccion transaccion= new Transaccion();
         numero="325-"+agregarCeros(String.valueOf(numComprobante.getNumero()-1),8);
         transaccion=transaccionDao.buscarPorNumero(numero);       
         session.beginTransaction();
@@ -112,8 +109,8 @@ public class TransaccionDaoTest {
         assertEquals("NO",eliminado);
         
     }
-  */
-    
+  
+    */
     private static String agregarCeros(String string, int largo)
     {
     	String ceros = "";

@@ -2,6 +2,14 @@ package pe.com.ega.sgces.view;
 
 
 import org.openswing.swing.mdi.client.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pe.com.ega.sgces.logic.DepositoLogica;
+import pe.com.ega.sgces.logic.DepositoLogicaImpl;
+import pe.com.ega.sgces.logic.DespachoLogica;
+import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.MovimientoLogica;
+import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
 
 
 
@@ -15,10 +23,19 @@ import org.openswing.swing.mdi.client.*;
  */
 public class DemoClientFacade implements ClientFacade {
 
-  //private SessionFactory sessions = null;
+  private MovimientoLogica movimientoLogica;
+  private DepositoLogica depositoLogica;
+  private DespachoLogica despachoLogica;
 
   public DemoClientFacade() {
-   // this.sessions = sessions;
+                ApplicationContext context = new ClassPathXmlApplicationContext(
+				"applicationContext.xml");
+		this.movimientoLogica =  context.getBean("movimientoService",
+				MovimientoLogicaImpl.class);
+                this.depositoLogica =  context.getBean("depositoService",
+				DepositoLogicaImpl.class);
+                this.despachoLogica =  context.getBean("despachoService",
+				DespachoLogicaImpl.class);
   }
   
    public void getUsuario() {
@@ -28,21 +45,16 @@ public class DemoClientFacade implements ClientFacade {
   }
    
    public void getDespacho() {
-        DespachoFrame f = new DespachoFrame();
+        DespachoFrame f = new DespachoFrame(despachoLogica,movimientoLogica);
         f.setSize(528,202);
         f.setTitle("Despachos");
         MDIFrame.add(f);
-       
-       //DespachoFrame despachoFrame = new DespachoFrame();
-   //despachoFrame.setVisible(true);
-      // OpcionFrame opcionFrame=new OpcionFrame("113");
-       //opcionFrame.setVisible(true);
 
   }
    
    public void getTirada() 
    {
-        TiradaFrame f = new TiradaFrame();
+        TiradaFrame f = new TiradaFrame(depositoLogica);
         f.setSize(232,184);
         f.setTitle("Tirada Buzon");
         MDIFrame.add(f);
@@ -51,7 +63,7 @@ public class DemoClientFacade implements ClientFacade {
 
    public void getCierre() 
    {
-        CierreFrame f = new CierreFrame();
+        CierreFrame f = new CierreFrame(movimientoLogica, depositoLogica, despachoLogica);
         f.setSize(293,107);
         f.setTitle("Cierre Turno");
         MDIFrame.add(f);
@@ -60,7 +72,7 @@ public class DemoClientFacade implements ClientFacade {
    
    public void getArqueo() 
    {
-        ArqueoFrame f = new ArqueoFrame();
+        ArqueoFrame f = new ArqueoFrame(movimientoLogica, depositoLogica);
         f.setSize(293,107);
         f.setTitle("Arqueo");
         MDIFrame.add(f);
@@ -69,9 +81,9 @@ public class DemoClientFacade implements ClientFacade {
    
     public void getAnular() 
    {
-        ComprobanteFrame f = new ComprobanteFrame();
+        ComprobanteFrame f = new ComprobanteFrame(movimientoLogica,despachoLogica);
         f.setSize(528,202);
-        f.setTitle("Anular Comprobante");
+        f.setTitle("Anular Comprobantes");
         MDIFrame.add(f);
 
   }
