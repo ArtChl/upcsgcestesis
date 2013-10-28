@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<bean id="log4jInitialization"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+		<property name="targetMethod" value="initLogging" />
+		<property name="arguments">
+			<list>
+				<value>classpath:log4j.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:Reporte.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="abastecimientoDao" class="pe.com.imptec.dao.AbastecimientoDaoSql">
+		<property name="dataSource" ref="basicDataSource" />
+	</bean>
+	
+	<bean id="abastecimientoService" class="pe.com.imptec.service.AbastecimientoServiceSql">
+		<property name="abastecimientoDao" ref="abastecimientoDao" />
+	</bean>
+
+
+	<bean id="mArenaDao" class="pe.com.imptec.dao.MArenaDaoSql">
+		<property name="dataSource" ref="basicDataSource" />
+	</bean>
+	
+	<bean id="mArenaService" class="pe.com.imptec.service.MArenaServiceSql">
+		<property name="mArenaDao" ref="mArenaDao" />
+	</bean>
+	
+    <bean id="basicDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName"><value>${DRIVER}</value></property>
+        <property name="username"><value>${USER}</value></property>
+        <property name="password"><value>${PASSWORD}</value></property>
+        <property name="url"><value>${URL}</value></property>
+    </bean>
+</beans>
