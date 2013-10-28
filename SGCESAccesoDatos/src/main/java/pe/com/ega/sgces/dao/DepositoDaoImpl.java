@@ -7,6 +7,7 @@ package pe.com.ega.sgces.dao;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Deposito;
 
 /**
@@ -15,41 +16,41 @@ import pe.com.ega.sgces.model.Deposito;
  */
 public class DepositoDaoImpl implements DepositoDao{
 
-    Session session;
+    SessionFactory session;
+    
+    @Override
+    public void setSession(SessionFactory session) {
+        this.session = session;
+    }
     
     @Override
     public void insertar(Deposito deposito) {
-        session.save(deposito);
+        session.getCurrentSession().save(deposito);
     }
 
     @Override
     public void actualizar(Deposito deposito) {
-        session.update(deposito);
+        session.getCurrentSession().update(deposito);
     }
 
     @Override
     public void eliminar(Deposito deposito) {
-        session.delete(deposito);
+        session.getCurrentSession().delete(deposito);
     }
 
     @Override
     public Deposito buscarPorCodigo(Integer id) {
-        return (Deposito) session.load(Deposito.class, id);
+        return (Deposito) session.getCurrentSession().load(Deposito.class, id);
     }
 
     @Override
     public List<Deposito> buscarTodos() {
-        return session.createQuery("from Deposito").list();
-    }
-
-    @Override
-    public void setSession(Session session) {
-        this.session = session;
+        return session.openSession().createQuery("from Deposito").list();
     }
 
     @Override
     public List buscarMonto(String tipo, String turno){
-       Query query = session.createQuery("select sum(montototal) from Deposito where idtipopago='"+tipo+"' and idturno='"+turno+"'");
+       Query query = session.openSession().createQuery("select sum(montototal) from Deposito where idtipopago='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();
        return results;
     }

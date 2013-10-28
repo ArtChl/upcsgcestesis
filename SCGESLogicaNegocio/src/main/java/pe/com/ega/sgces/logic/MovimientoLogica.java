@@ -5,6 +5,8 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
+import org.hibernate.SessionFactory;
+import pe.com.ega.sgces.dao.MovimientoDao;
 import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Movimiento;
 
@@ -19,4 +21,7 @@ public interface MovimientoLogica {
     public Double buscarMontoVuelto(String tipo, String turno);
     public Movimiento buscarTransaccion(String transaccion);
     public void eliminar(Movimiento movimiento);
+    public void setSession(SessionFactory session);
+    public void setMovimientoDao(MovimientoDao movimientoDao);
+
 }

@@ -8,10 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.openswing.swing.mdi.client.InternalFrame;
-import pe.com.ega.sgces.dao.MovimientoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
 import pe.com.ega.sgces.dao.TurnoDaoImpl;
-import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
+import pe.com.ega.sgces.logic.DespachoLogica;
+import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Transaccion;
@@ -24,20 +24,20 @@ public class ComprobanteFrame extends InternalFrame {
 
     private TransaccionLogicaImpl transaccionLogica;
     private ArrayList<Transaccion> transaccions;
-    private MovimientoLogicaImpl movimientoLogica;
+    private MovimientoLogica movimientoLogica;
     private TurnoLogicaImpl turnoLogica;
     private ImprimirComprobante comprobante;
+    private DespachoLogica despachoLogica;
 
-    public ComprobanteFrame() {
+    public ComprobanteFrame(MovimientoLogica movimiento, DespachoLogica despachoLogica) {
         initComponents();
         turnoLogica =new TurnoLogicaImpl();
         turnoLogica.setTurnoDao(new TurnoDaoImpl());
-        transaccionLogica = new TransaccionLogicaImpl();      
+        transaccionLogica = new TransaccionLogicaImpl(despachoLogica, movimiento);      
         transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
         transaccions=new ArrayList<>(); 
-        movimientoLogica =new MovimientoLogicaImpl();
-        movimientoLogica.setMovimientoDao(new MovimientoDaoImpl());
-        comprobante = new ImprimirComprobante();
+        this.comprobante=new ImprimirComprobante();
+        this.despachoLogica=despachoLogica;
         pintarTabla();            
     }
 
@@ -105,7 +105,7 @@ public class ComprobanteFrame extends InternalFrame {
 
   try {
       int turno2=turnoLogica.buscarPorCodigo("N").getId();
-  transaccions=(ArrayList<Transaccion>) transaccionLogica.buscarTurno(turno2);
+      transaccions=(ArrayList<Transaccion>) transaccionLogica.buscarTurno(turno2);
   } catch (Exception ex) {
 //TODO Agregar log de errores.
   }
@@ -167,7 +167,7 @@ public class ComprobanteFrame extends InternalFrame {
              if (JOptionPane.showConfirmDialog(new JFrame(),"Desea Eliminar Comprobante?", "Confirmacion",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                  Transaccion tr= buscar(txt[0]);
                  transaccionLogica.actualizar(tr);
-                 movimientoLogica.eliminar(movimientoLogica.buscarTransaccion(String.valueOf(tr.getId())));
+                 System.out.println("Transaccion"+tr.getIdtipotransaccion()+" "+tr.getNumerovale());
                  comprobante.imprimirAnular(tr.getIdtipotransaccion()+"-"+tr.getNumerovale(), String.valueOf(tr.getMontototal()), "Lopez Cordova");
                  salir(e);       
              }
@@ -180,7 +180,6 @@ public class ComprobanteFrame extends InternalFrame {
       int cod= Integer.parseInt(codigo);
       Transaccion desp=null;
       for(Transaccion t:transaccions){
-           System.out.println("Hola"+t.getId());
             if(cod==t.getId()){
                 desp=t;
                 break;

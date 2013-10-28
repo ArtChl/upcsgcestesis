@@ -18,6 +18,7 @@ public class CierreLogicaImpl implements CierreLogica{
 
     Session session; 
     TransaccionLogicaImpl transaccionLogica;
+    DespachoLogica despachoLogica;
 
     public CierreLogicaImpl() {
          session = HibernateUtil.getSessionFactory().openSession();

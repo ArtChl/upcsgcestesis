@@ -5,8 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
-import org.hibernate.Session;
-import pe.com.ega.sgces.dao.HibernateUtil;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.MovimientoDao;
 import pe.com.ega.sgces.model.Movimiento;
 
@@ -16,24 +15,28 @@ import pe.com.ega.sgces.model.Movimiento;
  */
 public class MovimientoLogicaImpl implements MovimientoLogica{
 
-    Session session; 
+    SessionFactory session; 
     MovimientoDao movimientoDao;
 
     public MovimientoLogicaImpl() {
-        session = HibernateUtil.getSessionFactory().openSession();
     }
     
+    
+    @Override
+    public void setSession(SessionFactory session) {
+        this.session = session;
+    }
+    
+    @Override
     public void setMovimientoDao(MovimientoDao movimientoDao) {
         this.movimientoDao = movimientoDao;
-        this.movimientoDao.setSession(session);
-
     }
     
     @Override
     public void grabar(Movimiento movimiento) {
-        session.beginTransaction();
-        movimientoDao.insertar(movimiento);
-        session.getTransaction().commit(); 
+       session.getCurrentSession().beginTransaction();
+       movimientoDao.insertar(movimiento);
+       session.getCurrentSession().getTransaction().commit(); 
     }
 
     @Override
@@ -43,12 +46,15 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
 
     @Override
     public Double buscarMonto(String tipo, String turno) {
-        List lis=movimientoDao.buscarMonto(tipo, turno);
-
-        String numero=lis.toString().replace("[", "");
-        numero=numero.replace("]", "");
-
-        return Double.parseDouble(numero);
+        Double monto;
+         try{
+                List lis=movimientoDao.buscarMonto(tipo, turno);
+                System.out.println("Monto"+lis.toString());
+                monto=Util.recuperarNumero(lis);
+         } catch (Exception ex) {
+                    monto=0.00;
+         }
+        return monto;
     }
 
     @Override
@@ -58,16 +64,17 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
 
     @Override
     public void eliminar(Movimiento movimiento) {
-        session.beginTransaction();
+       session.getCurrentSession().beginTransaction();
         movimientoDao.eliminar(movimiento);
-        session.getTransaction().commit(); 
+       session.getCurrentSession().getTransaction().commit(); 
     }
 
     @Override
     public Double buscarMontoVuelto(String tipo, String turno) {
         Double monto;
-                try{
-                List lis=movimientoDao.buscarMontoVuelto(tipo, turno);
+         System.out.println("Monto");
+         try{
+                List lis=movimientoDao.buscarMontoVuelto(tipo, turno);         
                 monto=Util.recuperarNumero(lis);
          } catch (Exception ex) {
                     monto=0.00;

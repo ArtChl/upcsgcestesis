@@ -7,6 +7,7 @@ package pe.com.ega.sgces.dao;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Movimiento;
 
 /**
@@ -15,55 +16,61 @@ import pe.com.ega.sgces.model.Movimiento;
  */
 public class MovimientoDaoImpl implements MovimientoDao{
 
-    Session session;
+    SessionFactory session;
+         
+   
     
-    public void setSession(Session session) {
+    @Override
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
-        
-   
+    
+    @Override
     public void insertar(Movimiento movimiento) {
-        System.out.println("Movimiento"+movimiento.getMontorecibido());
-        session.save(movimiento);
+        session.getCurrentSession().save(movimiento);
     }
 
+    @Override
     public void actualizar(Movimiento movimiento) {
-        session.update(movimiento);
+        session.getCurrentSession().update(movimiento);
     }
 
+    @Override
     public void eliminar(Movimiento movimiento) {
-        session.delete(movimiento);
+        session.getCurrentSession().delete(movimiento);
     }
 
+    @Override
     public Movimiento buscarPorCodigo(Integer id) {
-        return (Movimiento) session.load(Movimiento.class, id);
+        return (Movimiento) session.getCurrentSession().load(Movimiento.class, id);
     }
 
     @Override
     public Movimiento buscarTurno(String cerrado) {
-        return (Movimiento) session.load(Movimiento.class, cerrado);
+        return (Movimiento) session.getCurrentSession().load(Movimiento.class, cerrado);
     }
 
     @Override
     public List buscarMonto(String tipo, String turno){
        //Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
-       Query query = session.createQuery("select sum(montorecibido) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
+       Query query = session.openSession().createQuery("select sum(montorecibido) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();
        return results;
     }
 
     @Override
     public Movimiento buscarTransaccion(String transaccion) {
-        return (Movimiento) session.createQuery("from Movimiento where idtransaccion="+transaccion).uniqueResult();
+        return (Movimiento) session.openSession().createQuery("from Movimiento where idtransaccion="+transaccion).uniqueResult();
     }
 
     @Override
     public List buscarMontoVuelto(String tipo, String turno) {
        //Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'"); 
-       Query query = session.createQuery("select sum(montodevuelto) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
+       Query query = session.openSession().createQuery("select sum(montodevuelto) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();
        return results;
     }
+
 
    
     

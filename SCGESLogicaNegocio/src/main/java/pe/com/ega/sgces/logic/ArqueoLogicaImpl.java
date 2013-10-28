@@ -17,16 +17,12 @@ import pe.com.ega.sgces.model.Arqueo;
  */
 public class ArqueoLogicaImpl implements ArqueoLogica{
 
-    Session session; 
-    MovimientoLogicaImpl movimientoLogica;
-    DepositoLogicaImpl depositoLogica;
+    MovimientoLogica movimientoLogica;
+    DepositoLogica depositoLogica;
 
-    public ArqueoLogicaImpl() {
-         session = HibernateUtil.getSessionFactory().openSession();
-         movimientoLogica = new MovimientoLogicaImpl();
-         movimientoLogica.setMovimientoDao(new MovimientoDaoImpl());
-         depositoLogica = new DepositoLogicaImpl();
-         depositoLogica.setDepositoDao(new DepositoDaoImpl());
+    public ArqueoLogicaImpl(MovimientoLogica movimiento, DepositoLogica deposito) {
+         this.movimientoLogica = movimiento;
+         this.depositoLogica = deposito;
     }
      
     @Override

@@ -10,12 +10,12 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.openswing.swing.mdi.client.InternalFrame;
-import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.MovimientoDaoImpl;
 import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
 import pe.com.ega.sgces.dao.TurnoDaoImpl;
-import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.DespachoLogica;
+import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
 import pe.com.ega.sgces.logic.NumComprobanteLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
@@ -39,14 +39,14 @@ public class MonedaFrame extends InternalFrame {
     private Transaccion transaccion;
     private Movimiento movimiento;
     private TransaccionLogicaImpl transaccionLogica;
-    private DespachoLogicaImpl despachoLogica;
-    private MovimientoLogicaImpl movimientoLogica;
+    private DespachoLogica despachoLogica;
+    private MovimientoLogica movimientoLogica;
     private TurnoLogicaImpl turnoLogica;
     private String moneda;
     private Cliente cliente;
     private NumComprobanteLogicaImpl numdao;
     
-    public MonedaFrame(Despacho codigo, String tipo, Cliente cli) 
+    public MonedaFrame(Despacho codigo, String tipo, Cliente cli, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica) 
     {
         initComponents();
         desp=codigo;
@@ -56,10 +56,8 @@ public class MonedaFrame extends InternalFrame {
         movimiento=new Movimiento();
         transaccionLogica =new TransaccionLogicaImpl();
         transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
-        despachoLogica=new DespachoLogicaImpl();
-        despachoLogica.setDespachoDao(new DespachoDaoImpl());
-        movimientoLogica=new MovimientoLogicaImpl();
-        movimientoLogica.setMovimientoDao(new MovimientoDaoImpl());
+        this.despachoLogica=despachoLogica;
+        this.movimientoLogica=movimientoLogica;
         turnoLogica =new TurnoLogicaImpl();
         turnoLogica.setTurnoDao(new TurnoDaoImpl());
         numdao = new NumComprobanteLogicaImpl();

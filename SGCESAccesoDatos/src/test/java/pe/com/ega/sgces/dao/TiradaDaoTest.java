@@ -7,11 +7,7 @@ package pe.com.ega.sgces.dao;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
@@ -30,11 +26,10 @@ public class TiradaDaoTest {
     public TiradaDaoTest() {
         session=HibernateUtil.sessionFactory.openSession();
         depositoDao= new DepositoDaoImpl();
-        depositoDao.setSession(session);
         turnoDao=new TurnoDaoImpl();
         turnoDao.setSession(session);
     }
-    @Test
+  /*  @Test
     public void insertDeposito(){
         List<Deposito> listaI=depositoDao.buscarTodos();
         

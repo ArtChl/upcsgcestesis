@@ -10,6 +10,7 @@ import java.util.Date;
 import org.openswing.swing.mdi.client.InternalFrame;
 import pe.com.ega.sgces.dao.DepositoDaoImpl;
 import pe.com.ega.sgces.dao.TurnoDaoImpl;
+import pe.com.ega.sgces.logic.DepositoLogica;
 import pe.com.ega.sgces.logic.DepositoLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Deposito;
@@ -27,15 +28,14 @@ public class TiradaFrame extends InternalFrame {
     private Despacho desp;
     private ImprimirComprobante comprobante;
     private Deposito deposito;
-    private DepositoLogicaImpl depositoLogica;
+    private DepositoLogica depositoLogica;
     private TurnoLogicaImpl turnoLogica;
   
     
-    public TiradaFrame() {
+    public TiradaFrame(DepositoLogica depositoLogica) {
         initComponents();
         deposito=new Deposito();
-        depositoLogica =new DepositoLogicaImpl();
-        depositoLogica.setDepositoDao(new DepositoDaoImpl());
+        this.depositoLogica =depositoLogica;
         turnoLogica =new TurnoLogicaImpl();
         turnoLogica.setTurnoDao(new TurnoDaoImpl());
         comprobante=new ImprimirComprobante(); 

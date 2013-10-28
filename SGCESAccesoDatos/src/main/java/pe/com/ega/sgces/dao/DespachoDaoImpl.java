@@ -6,7 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.SQLQuery;
-import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Despacho;
 
 /**
@@ -15,32 +15,38 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoDaoImpl implements DespachoDao{
 
-    Session session;
+    SessionFactory session;
 
-    public void setSession(Session session) {
+    @Override
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
         
+    @Override
     public void insertar(Despacho despacho) {
-        session.save(despacho);
+        session.getCurrentSession().save(despacho);
     }
 
+    @Override
     public void actualizar(Despacho despacho) {
         String query = "update despacho set idestado=0 where id="+ despacho.getId();
-        SQLQuery s=session.createSQLQuery(query);
+        SQLQuery s=session.openSession().createSQLQuery(query);
         s.executeUpdate();
     }
 
+    @Override
     public void eliminar(Despacho despacho) {
-        session.delete(despacho);
+        session.getCurrentSession().delete(despacho);
     }
 
+    @Override
     public Despacho buscarPorCodigo(Integer id) {
-        return (Despacho) session.load(Despacho.class, id);
+        return (Despacho) session.getCurrentSession().load(Despacho.class, id);
     }
 
-    public List<Despacho> buscarTodos(Session s) {
-         return s.createQuery("from Despacho where idestado=1").list();
+    @Override
+    public List<Despacho> buscarTodos() {
+         return session.openSession().createQuery("from Despacho where idestado=1").list();
     }
     
 }

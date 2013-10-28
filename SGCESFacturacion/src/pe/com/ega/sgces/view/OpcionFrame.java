@@ -10,7 +10,9 @@ import org.openswing.swing.mdi.client.InternalFrame;
 import org.openswing.swing.mdi.client.MDIFrame;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
+import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Transaccion;
@@ -22,10 +24,14 @@ import pe.com.ega.sgces.model.Transaccion;
 public class OpcionFrame extends InternalFrame {
 
     private Despacho desp;
+    private DespachoLogica despachoLogic;
+    private MovimientoLogica movimientoLogica;
     
-    public OpcionFrame(Despacho codigo) {
+    public OpcionFrame(Despacho codigo, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica) {
         initComponents();
-        desp=codigo;
+        this.desp=codigo;
+        this.despachoLogic=despachoLogica;
+        this.movimientoLogica= movimientoLogica;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -69,7 +75,7 @@ public class OpcionFrame extends InternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
-        FacturaFrame f=new FacturaFrame(desp);
+        FacturaFrame f=new FacturaFrame(desp,despachoLogic, movimientoLogica);
             f.setSize(391,151);
             f.setTitle("Factura");
             MDIFrame.add(f);
@@ -85,7 +91,7 @@ public class OpcionFrame extends InternalFrame {
     }//GEN-LAST:event_despachoActionPerformed
 
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
-        MonedaFrame f=new MonedaFrame(desp, "BOL", null);
+        MonedaFrame f=new MonedaFrame(desp, "BOL", null, despachoLogic, movimientoLogica);
             f.setSize(301,213);
             f.setTitle("Tipo Pago");
             MDIFrame.add(f);
