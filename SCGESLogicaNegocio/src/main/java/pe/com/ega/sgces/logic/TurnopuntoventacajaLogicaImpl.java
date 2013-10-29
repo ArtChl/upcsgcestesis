@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.TurnopuntoventacajaDao;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
@@ -15,25 +16,26 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
  */
 public class TurnopuntoventacajaLogicaImpl implements TurnopuntoventacajaLogica {
 
+    SessionFactory session; 
+    TurnopuntoventacajaDao turnopuntoventacajaDao;
+    
     public TurnopuntoventacajaLogicaImpl()
     {
-        session = HibernateUtil.getSessionFactory().openSession();
     }
     
-    Session session; 
-    TurnopuntoventacajaDao turnopuntoventacajaDao;
+    public void setSession(SessionFactory session) {
+        this.session = session;
+    }
 
     public void setTurnopuntoventacajaDao(TurnopuntoventacajaDao turnopuntoventacajaDao) {
         this.turnopuntoventacajaDao = turnopuntoventacajaDao;
-        this.turnopuntoventacajaDao.setSession(session);
     }
     
     @Override
     public void insertar(Turnopuntoventacaja turno) {
-        System.out.println("Turno"+turno.getTurno());
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         this.turnopuntoventacajaDao.insertar(turno);
-        session.getTransaction().commit();
+        session.getCurrentSession().getTransaction().commit();
     }
     
 }

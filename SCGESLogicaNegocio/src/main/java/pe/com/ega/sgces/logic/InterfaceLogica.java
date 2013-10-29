@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
+import pe.com.ega.sgces.dao.InterfaceDao;
 import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.InterfaceConfig;
 import pe.com.ega.sgces.model.Turno;
@@ -16,4 +17,5 @@ public interface InterfaceLogica {
     public void insertar(InterfaceConfig turno);
     public void actualizar(InterfaceConfig turno);
     public InterfaceConfig buscarPorCodigo(int codigo);
+    public void setInterfaceDao(InterfaceDao interfaceDao);
 }

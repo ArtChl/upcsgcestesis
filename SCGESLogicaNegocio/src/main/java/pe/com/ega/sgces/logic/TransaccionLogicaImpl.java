@@ -5,9 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
-import org.hibernate.Session;
-import pe.com.ega.sgces.dao.DespachoDaoImpl;
-import pe.com.ega.sgces.dao.HibernateUtil;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.dao.TransaccionDetalleDao;
 import pe.com.ega.sgces.model.Transaccion;
@@ -19,27 +17,32 @@ import pe.com.ega.sgces.model.Transacciondetalle;
  */
 public class TransaccionLogicaImpl implements TransaccionLogica
 {
-    Session session; 
+    SessionFactory session; 
     TransaccionDao transaccionDao;
     DespachoLogica despachoLogica;
     MovimientoLogica movimientoLogica;
-  
+ 
     public TransaccionLogicaImpl()
     {
-        session = HibernateUtil.getSessionFactory().openSession();
-      //this.despachoLogica=despachoLogica;
-     
+      
     }
     
-    public TransaccionLogicaImpl(DespachoLogica despachoLogica, MovimientoLogica movimiento)
-    {
-        session = HibernateUtil.getSessionFactory().openSession();
-        this.despachoLogica=despachoLogica;
-        this.movimientoLogica=movimiento;
-     
+    @Override
+    public void setDespachoLogica(DespachoLogica despachoLogica) {
+        this.despachoLogica = despachoLogica;
     }
-    
+
+    @Override
+    public void setMovimientoLogica(MovimientoLogica movimientoLogica) {
+        this.movimientoLogica = movimientoLogica;
+    }
    
+    @Override
+    public void setSession(SessionFactory session) {
+        this.session = session;
+    }
+    
+    @Override
     public void setTransaccionDao(TransaccionDao transaccionDao) {
         this.transaccionDao = transaccionDao;
         this.transaccionDao.setSession(session);
@@ -54,12 +57,12 @@ public class TransaccionLogicaImpl implements TransaccionLogica
     
     @Override
     public void grabar(Transaccion transaccion) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         transaccionDao.insertar(transaccion);
         for (Transacciondetalle detalle : transaccion.getTransacciondetalles()) {
             transacciondetalleDao.insertar(detalle);
         }
-        session.getTransaction().commit(); 
+        session.getCurrentSession().getTransaction().commit(); 
     }
 
     @Override
@@ -98,9 +101,9 @@ public class TransaccionLogicaImpl implements TransaccionLogica
     public void actualizar(Transaccion transaccion) {
         
         try {
-            session.beginTransaction();
+            session.getCurrentSession().beginTransaction();
             transaccionDao.actualizar(transaccion);       
-            session.getTransaction().commit(); 
+            session.getCurrentSession().getTransaction().commit(); 
             System.out.println("Transaccion"+transaccion.getNumerovale());
             if(transaccion.getAnulado()==true)
             {
@@ -110,7 +113,7 @@ public class TransaccionLogicaImpl implements TransaccionLogica
             }
             
         } catch (Exception e) {
-            session.getTransaction().rollback();
+            session.getCurrentSession().getTransaction().rollback();
         }   
     }
 
