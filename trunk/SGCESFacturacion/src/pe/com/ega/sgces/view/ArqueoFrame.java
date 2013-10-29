@@ -12,6 +12,7 @@ import pe.com.ega.sgces.dao.TurnoDaoImpl;
 import pe.com.ega.sgces.logic.ArqueoLogicaImpl;
 import pe.com.ega.sgces.logic.DepositoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
+import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Arqueo;
 
@@ -22,13 +23,12 @@ import pe.com.ega.sgces.model.Arqueo;
 public class ArqueoFrame extends InternalFrame {
 
     private ArqueoLogicaImpl arqueoLogica;
-    private TurnoLogicaImpl turnoLogica;
+    private TurnoLogica turnoLogica;
     
-    public ArqueoFrame(MovimientoLogica movimiento, DepositoLogica deposito) {
+    public ArqueoFrame(MovimientoLogica movimiento, DepositoLogica deposito, TurnoLogica turnoLogica) {
         initComponents();
         arqueoLogica =new ArqueoLogicaImpl(movimiento, deposito);
-        turnoLogica =new TurnoLogicaImpl();
-        turnoLogica.setTurnoDao(new TurnoDaoImpl());
+        this.turnoLogica =turnoLogica;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

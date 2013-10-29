@@ -10,16 +10,14 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.openswing.swing.mdi.client.InternalFrame;
-import pe.com.ega.sgces.dao.MovimientoDaoImpl;
 import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
-import pe.com.ega.sgces.dao.TurnoDaoImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
-import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
 import pe.com.ega.sgces.logic.NumComprobanteLogicaImpl;
+import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
-import pe.com.ega.sgces.logic.TurnoLogicaImpl;
+import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Movimiento;
@@ -38,15 +36,15 @@ public class MonedaFrame extends InternalFrame {
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
     private Movimiento movimiento;
-    private TransaccionLogicaImpl transaccionLogica;
+    private TransaccionLogica transaccionLogica;
     private DespachoLogica despachoLogica;
     private MovimientoLogica movimientoLogica;
-    private TurnoLogicaImpl turnoLogica;
+    private TurnoLogica turnoLogica;
     private String moneda;
     private Cliente cliente;
     private NumComprobanteLogicaImpl numdao;
     
-    public MonedaFrame(Despacho codigo, String tipo, Cliente cli, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica) 
+    public MonedaFrame(Despacho codigo, String tipo, Cliente cli, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica) 
     {
         initComponents();
         desp=codigo;
@@ -54,12 +52,10 @@ public class MonedaFrame extends InternalFrame {
         cliente=cli;
         transaccion=new Transaccion();
         movimiento=new Movimiento();
-        transaccionLogica =new TransaccionLogicaImpl();
-        transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
+        this.transaccionLogica = transaccionLogica;
         this.despachoLogica=despachoLogica;
         this.movimientoLogica=movimientoLogica;
-        turnoLogica =new TurnoLogicaImpl();
-        turnoLogica.setTurnoDao(new TurnoDaoImpl());
+        this.turnoLogica =turnoLogica;
         numdao = new NumComprobanteLogicaImpl();
         numdao.setValeDao(new NumComprobanteDaoImpl()); 
     }
