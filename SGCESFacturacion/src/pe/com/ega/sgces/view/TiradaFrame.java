@@ -8,14 +8,10 @@ import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import java.util.Date;
 import org.openswing.swing.mdi.client.InternalFrame;
-import pe.com.ega.sgces.dao.DepositoDaoImpl;
-import pe.com.ega.sgces.dao.TurnoDaoImpl;
 import pe.com.ega.sgces.logic.DepositoLogica;
-import pe.com.ega.sgces.logic.DepositoLogicaImpl;
-import pe.com.ega.sgces.logic.TurnoLogicaImpl;
+import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Despacho;
-import pe.com.ega.sgces.model.Turno;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
 
@@ -29,15 +25,14 @@ public class TiradaFrame extends InternalFrame {
     private ImprimirComprobante comprobante;
     private Deposito deposito;
     private DepositoLogica depositoLogica;
-    private TurnoLogicaImpl turnoLogica;
+    private TurnoLogica turnoLogica;
   
     
-    public TiradaFrame(DepositoLogica depositoLogica) {
+    public TiradaFrame(DepositoLogica depositoLogica, TurnoLogica turnoLogica) {
         initComponents();
         deposito=new Deposito();
         this.depositoLogica =depositoLogica;
-        turnoLogica =new TurnoLogicaImpl();
-        turnoLogica.setTurnoDao(new TurnoDaoImpl());
+        this.turnoLogica =turnoLogica;
         comprobante=new ImprimirComprobante(); 
     }
     @SuppressWarnings("unchecked")

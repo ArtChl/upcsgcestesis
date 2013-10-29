@@ -18,7 +18,52 @@
 		</property>
 	</bean>
         	
-	<bean id="movimientoService" class="pe.com.ega.sgces.logic.MovimientoLogicaImpl">
+	<bean id="cierreService" class="pe.com.ega.sgces.logic.CierreLogicaImpl">
+		<property name="transaccionLogica" ref="transaccionService" />
+                <property name="despachoLogica" ref="despachoService" />
+                <property name="arqueoLogica" ref="arqueoService" />
+                <property name="turnoLogica" ref="turnoService" />
+                <property name="turnopuntoventacajaLogica" ref="turnopuntoventacajaService" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="arqueoService" class="pe.com.ega.sgces.logic.ArqueoLogicaImpl">
+                <property name="movimientoLogica" ref="movimientoService" />
+                <property name="depositoLogica" ref="depositoService" />
+	</bean>
+        
+        <bean id="turnopuntoventacajaService" class="pe.com.ega.sgces.logic.TurnopuntoventacajaLogicaImpl">
+                <property name="turnopuntoventacajaDao" ref="turnopuntoventacajaDao" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+         <bean id="turnopuntoventacajaDao" class="pe.com.ega.sgces.dao.TurnopuntoventacajaDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="transaccionService" class="pe.com.ega.sgces.logic.TransaccionLogicaImpl">
+		<property name="transaccionDao" ref="transaccionDao" />
+                <property name="despachoLogica" ref="despachoService" />
+                <property name="movimientoLogica" ref="movimientoService" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="transaccionDao" class="pe.com.ega.sgces.dao.TransaccionDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        
+        <bean id="turnoService" class="pe.com.ega.sgces.logic.TurnoLogicaImpl">
+		<property name="turnoDao" ref="turnoDao" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="turnoDao" class="pe.com.ega.sgces.dao.TurnoDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        
+        <bean id="movimientoService" class="pe.com.ega.sgces.logic.MovimientoLogicaImpl">
 		<property name="movimientoDao" ref="movimientoDao" />
                 <property name="session" ref="miSessionFactory" />
 	</bean>
@@ -110,8 +155,13 @@
                 <prop key="hibernate.c3p0.max_statement">50</prop>
                 <prop key="hibernate.c3p0.testConnectionOnCheckout">false</prop>
                 <prop key="hibernate.current_session_context_class">thread</prop>
+
                 </props>
             </property>
-        </bean>  
+        </bean>
+        
+     
+          
+       
  
 </beans>

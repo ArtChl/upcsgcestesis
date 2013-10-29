@@ -9,11 +9,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.openswing.swing.mdi.client.InternalFrame;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
-import pe.com.ega.sgces.dao.TurnoDaoImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
+import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
-import pe.com.ega.sgces.logic.TurnoLogicaImpl;
+import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**
@@ -22,22 +22,19 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class ComprobanteFrame extends InternalFrame {
 
-    private TransaccionLogicaImpl transaccionLogica;
+    private TransaccionLogica transaccionLogica;
     private ArrayList<Transaccion> transaccions;
-    private MovimientoLogica movimientoLogica;
-    private TurnoLogicaImpl turnoLogica;
+    private TurnoLogica turnoLogica;
     private ImprimirComprobante comprobante;
-    private DespachoLogica despachoLogica;
 
-    public ComprobanteFrame(MovimientoLogica movimiento, DespachoLogica despachoLogica) {
+    public ComprobanteFrame(TurnoLogica turnoLogica, MovimientoLogica movimientoLogica, DespachoLogica despachoLogica, TransaccionLogica transaccionLogica) {
         initComponents();
-        turnoLogica =new TurnoLogicaImpl();
-        turnoLogica.setTurnoDao(new TurnoDaoImpl());
-        transaccionLogica = new TransaccionLogicaImpl(despachoLogica, movimiento);      
-        transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
+        this.turnoLogica =turnoLogica;
+        this.transaccionLogica = transaccionLogica;
+                //new TransaccionLogicaImpl(despachoLogica, movimientoLogica);      
+        //transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
         transaccions=new ArrayList<>(); 
         this.comprobante=new ImprimirComprobante();
-        this.despachoLogica=despachoLogica;
         pintarTabla();            
     }
 
@@ -167,7 +164,6 @@ public class ComprobanteFrame extends InternalFrame {
              if (JOptionPane.showConfirmDialog(new JFrame(),"Desea Eliminar Comprobante?", "Confirmacion",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                  Transaccion tr= buscar(txt[0]);
                  transaccionLogica.actualizar(tr);
-                 System.out.println("Transaccion"+tr.getIdtipotransaccion()+" "+tr.getNumerovale());
                  comprobante.imprimirAnular(tr.getIdtipotransaccion()+"-"+tr.getNumerovale(), String.valueOf(tr.getMontototal()), "Lopez Cordova");
                  salir(e);       
              }

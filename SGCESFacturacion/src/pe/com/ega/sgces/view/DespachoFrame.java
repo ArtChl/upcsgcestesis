@@ -8,6 +8,8 @@ import org.openswing.swing.mdi.client.InternalFrame;
 import org.openswing.swing.mdi.client.MDIFrame;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
+import pe.com.ega.sgces.logic.TransaccionLogica;
+import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.model.Despacho;
 
 /**
@@ -18,12 +20,16 @@ public class DespachoFrame extends InternalFrame {
 
     private DespachoLogica despachoLogic;
     private MovimientoLogica movimientoLogica;
+    private TurnoLogica turnoLogica;
+    private TransaccionLogica transaccionLogica;
     private ArrayList<Despacho> transaccions;
 
-    public DespachoFrame(DespachoLogica despachoLogica, MovimientoLogica movimientoLogica) {
+    public DespachoFrame(DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica) {
         initComponents();
         this.despachoLogic = despachoLogica;
         this.movimientoLogica = movimientoLogica;
+        this.turnoLogica= turnoLogica;
+        this.transaccionLogica=transaccionLogica;
         transaccions=new ArrayList<>(); 
         pintarTabla();            
     }
@@ -147,7 +153,7 @@ public class DespachoFrame extends InternalFrame {
                 txt[i]=String.valueOf(tabla.getValueAt(row, 0));
                 
             }
-            OpcionFrame f=new OpcionFrame(buscar(txt[0]), despachoLogic, movimientoLogica);
+            OpcionFrame f=new OpcionFrame(buscar(txt[0]), despachoLogic, movimientoLogica, turnoLogica, transaccionLogica);
             f.setSize(298,103);
             f.setTitle("Comprobante");
             MDIFrame.add(f);
