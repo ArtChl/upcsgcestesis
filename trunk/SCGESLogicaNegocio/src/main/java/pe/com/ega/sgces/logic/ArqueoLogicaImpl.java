@@ -5,10 +5,6 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.ArrayList;
-import org.hibernate.Session;
-import pe.com.ega.sgces.dao.DepositoDaoImpl;
-import pe.com.ega.sgces.dao.HibernateUtil;
-import pe.com.ega.sgces.dao.MovimientoDaoImpl;
 import pe.com.ega.sgces.model.Arqueo;
 
 /**
@@ -23,6 +19,18 @@ public class ArqueoLogicaImpl implements ArqueoLogica{
     public ArqueoLogicaImpl(MovimientoLogica movimiento, DepositoLogica deposito) {
          this.movimientoLogica = movimiento;
          this.depositoLogica = deposito;
+    }
+
+    public ArqueoLogicaImpl() {
+    }
+
+    
+    public void setMovimientoLogica(MovimientoLogica movimientoLogica) {
+        this.movimientoLogica = movimientoLogica;
+    }
+
+    public void setDepositoLogica(DepositoLogica depositoLogica) {
+        this.depositoLogica = depositoLogica;
     }
      
     @Override

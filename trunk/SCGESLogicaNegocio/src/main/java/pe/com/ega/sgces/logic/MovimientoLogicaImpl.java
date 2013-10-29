@@ -49,7 +49,6 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
         Double monto;
          try{
                 List lis=movimientoDao.buscarMonto(tipo, turno);
-                System.out.println("Monto"+lis.toString());
                 monto=Util.recuperarNumero(lis);
          } catch (Exception ex) {
                     monto=0.00;
@@ -72,7 +71,6 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
     @Override
     public Double buscarMontoVuelto(String tipo, String turno) {
         Double monto;
-         System.out.println("Monto");
          try{
                 List lis=movimientoDao.buscarMontoVuelto(tipo, turno);         
                 monto=Util.recuperarNumero(lis);

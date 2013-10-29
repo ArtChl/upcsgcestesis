@@ -5,10 +5,8 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.DepositoDao;
-import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.model.Deposito;
 
 

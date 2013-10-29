@@ -22,6 +22,7 @@ public class InterfaceLogicaImpl implements InterfaceLogica{
         session = HibernateUtil.getSessionFactory().openSession();
     }
     
+    @Override
     public void setInterfaceDao(InterfaceDao interfaceDao) {
         this.interfaceDao = interfaceDao;
         this.interfaceDao.setSession(session);

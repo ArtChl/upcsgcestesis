@@ -5,8 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.Date;
-import org.hibernate.Session;
-import pe.com.ega.sgces.dao.HibernateUtil;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.InterfaceDaoImpl;
 import pe.com.ega.sgces.dao.TurnoDao;
 import pe.com.ega.sgces.model.InterfaceConfig;
@@ -18,23 +17,31 @@ import pe.com.ega.sgces.model.Turno;
  */
 public class TurnoLogicaImpl implements TurnoLogica{
 
-    private InterfaceLogicaImpl interfaceLogica;
-    Session session; 
+    private InterfaceLogica interfaceLogica;
+    SessionFactory session;  
     TurnoDao turnoDao;
     
     public TurnoLogicaImpl()
     {
-        session = HibernateUtil.getSessionFactory().openSession();
         interfaceLogica= new InterfaceLogicaImpl();
-        interfaceLogica.setInterfaceDao(new InterfaceDaoImpl());
-        
+        interfaceLogica.setInterfaceDao(new InterfaceDaoImpl());    
     }
-       
+      
+    @Override
+    public void setSession(SessionFactory session) {
+        this.session = session;
+    }
+    
+    @Override
+    public void setTurnoDao(TurnoDao turnoDao) {
+       this.turnoDao= turnoDao;
+    }
+    
     @Override
     public void insertar(Turno turno) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         turnoDao.insertar(turno);
-        session.getTransaction().commit();
+        session.getCurrentSession().getTransaction().commit();
         this.cem44();       
     }
 
@@ -42,30 +49,24 @@ public class TurnoLogicaImpl implements TurnoLogica{
     public void actualizar(Turno turno) {
         turno.setEstado("S");
         turno.setFechacierre(new Date());
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         turnoDao.actualizar(turno);
-        session.getTransaction().commit();
-        
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
     public void eliminar(Turno turno) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         turnoDao.eliminar(turno);
-        session.getTransaction().commit();
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
-    public Turno buscarPorCodigo(String estado) {
-         
+    public Turno buscarPorCodigo(String estado) 
+    {    
         return turnoDao.buscarPorCodigo(estado);
     }
-    
-    public void setTurnoDao(TurnoDao turnoDao) {
-       this.turnoDao= turnoDao;
-       this.turnoDao.setSession(session);
-    }
-    
+      
     public final void cem44()
     {
         InterfaceConfig cierre=interfaceLogica.buscarPorCodigo(1);     
@@ -74,7 +75,5 @@ public class TurnoLogicaImpl implements TurnoLogica{
         interfaceLogica.actualizar(cierre);
         System.out.println("estado Cem44");
              
-    }
-    
-    
+    }   
 }

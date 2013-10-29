@@ -5,6 +5,9 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
+import org.hibernate.SessionFactory;
+import pe.com.ega.sgces.dao.MovimientoDao;
+import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**
@@ -20,4 +23,8 @@ public interface TransaccionLogica {
     public List<Transaccion> buscarTurno(int turno);
     public List<Transaccion> buscarTodoDoc(String documento);
     public Double buscarMonto(String tipo, String turno);
+    public void setSession(SessionFactory session);
+    public void setTransaccionDao(TransaccionDao transaccionDao);
+    public void setDespachoLogica(DespachoLogica despachoLogica);
+    public void setMovimientoLogica(MovimientoLogica movimientoLogica);        
 }

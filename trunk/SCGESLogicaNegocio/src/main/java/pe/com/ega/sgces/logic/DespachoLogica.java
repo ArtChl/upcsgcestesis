@@ -21,4 +21,5 @@ public interface DespachoLogica {
     public void actualizar(Despacho despacho);
     public void setSession(SessionFactory session);
     public void setDespachoDao(DespachoDao despachoDao);
+
 }
