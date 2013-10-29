@@ -13,6 +13,8 @@ import pe.com.ega.sgces.model.InterfaceConfig;
  */
 public class InterfaceDaoImpl implements InterfaceDao{
 
+    Session session;
+    
     @Override
     public void insertar(InterfaceConfig turno) {
         session.save(turno);
@@ -29,11 +31,8 @@ public class InterfaceDaoImpl implements InterfaceDao{
         return (InterfaceConfig) session.load(InterfaceConfig.class, id);
     }
 
-    Session session;
-
     @Override
     public void setSession(Session session) {
         this.session = session;
-    }
-    
+    }  
 }

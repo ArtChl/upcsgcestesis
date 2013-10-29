@@ -4,8 +4,7 @@
  */
 package pe.com.ega.sgces.dao;
 
-import org.hibernate.Session;
-import pe.com.ega.sgces.model.Deposito;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Turno;
 
 /**
@@ -14,32 +13,34 @@ import pe.com.ega.sgces.model.Turno;
  */
 public class TurnoDaoImpl implements  TurnoDao{
 
-    Session session;
+    SessionFactory session;
 
     @Override
-    public void setSession(Session session) {
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
     
     @Override
     public void insertar(Turno turno) {
-        session.save(turno);
+        session.getCurrentSession().save(turno);
     }
 
     @Override
     public void actualizar(Turno turno) {
-        session.update(turno);
+        session.getCurrentSession().update(turno);
     }
 
     @Override
     public void eliminar(Turno turno) {
-        session.delete(turno);
+        session.getCurrentSession().delete(turno);
     }
 
     @Override
     public Turno buscarPorCodigo(String estado) {
-         System.out.println("DespachoD"+estado);
-        return (Turno)session.createQuery("from Turno where estado='"+estado+"'").uniqueResult();
+        session.getCurrentSession().beginTransaction();
+        Turno turno=(Turno)session.getCurrentSession().createQuery("from Turno where estado='"+estado+"'").uniqueResult();
+        session.getCurrentSession().flush();
+        return turno;
     }
 
  

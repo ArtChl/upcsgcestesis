@@ -17,6 +17,7 @@ public class UsuariodaoImpl implements UsuarioDao{
 
     Session session;
 
+    @Override
     public void setSession(Session session) {
         this.session = session;
     }

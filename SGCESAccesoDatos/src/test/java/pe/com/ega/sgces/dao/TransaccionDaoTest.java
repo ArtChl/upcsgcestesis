@@ -4,14 +4,9 @@
  */
 package pe.com.ega.sgces.dao;
 
-import java.util.List;
 import org.hibernate.Session;
-import static org.junit.Assert.*;
-import org.junit.Test;
-import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Numcomprobante;
-import pe.com.ega.sgces.model.Transaccion;
 
 /**
  *
@@ -29,6 +24,7 @@ public class TransaccionDaoTest {
     Session session;
     String numero;
    
+    /*
     public TransaccionDaoTest() {
         session=HibernateUtil.sessionFactory.openSession();
         transaccionDao=new TransaccionDaoImpl();
