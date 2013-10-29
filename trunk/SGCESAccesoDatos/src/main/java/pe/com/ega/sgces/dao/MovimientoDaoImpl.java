@@ -6,20 +6,14 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Movimiento;
 
-/**
- *
- * @author FLOPEZ
- */
+
 public class MovimientoDaoImpl implements MovimientoDao{
 
     SessionFactory session;
-         
-   
-    
+        
     @Override
     public void setSession(SessionFactory session) {
         this.session = session;
@@ -52,26 +46,27 @@ public class MovimientoDaoImpl implements MovimientoDao{
 
     @Override
     public List buscarMonto(String tipo, String turno){
-       //Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
+       session.getCurrentSession().beginTransaction();
        Query query = session.openSession().createQuery("select sum(montorecibido) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();
+       session.getCurrentSession().flush();
        return results;
     }
 
     @Override
     public Movimiento buscarTransaccion(String transaccion) {
-        return (Movimiento) session.openSession().createQuery("from Movimiento where idtransaccion="+transaccion).uniqueResult();
+        session.getCurrentSession().beginTransaction();
+        Movimiento movimiento=(Movimiento) session.openSession().createQuery("from Movimiento where idtransaccion="+transaccion).uniqueResult();
+        session.getCurrentSession().flush();
+        return movimiento;
     }
 
     @Override
     public List buscarMontoVuelto(String tipo, String turno) {
-       //Query query = session.createQuery("select sum(montototal) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'"); 
+       session.getCurrentSession().beginTransaction();
        Query query = session.openSession().createQuery("select sum(montodevuelto) from Movimiento where tipo='"+tipo+"' and idturno='"+turno+"'");
        List results = query.list();
+       session.getCurrentSession().flush();
        return results;
-    }
-
-
-   
-    
+    }    
 }

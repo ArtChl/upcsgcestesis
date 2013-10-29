@@ -4,8 +4,6 @@
  */
 package pe.com.ega.sgces.dao;
 
-import org.hibernate.Session;
-import pe.com.ega.sgces.model.InterfaceConfig;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 
 /**
@@ -14,7 +12,5 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
  */
 public interface TurnopuntoventacajaDao {
     
-    public void insertar(Turnopuntoventacaja turno);
-    public void setSession(Session session);
-    
+    public void insertar(Turnopuntoventacaja turno);  
 }

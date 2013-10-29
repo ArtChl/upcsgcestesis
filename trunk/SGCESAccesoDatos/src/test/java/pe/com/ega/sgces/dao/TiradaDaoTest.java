@@ -24,10 +24,7 @@ public class TiradaDaoTest {
     private Session session;
     private TurnoDao turnoDao;
     public TiradaDaoTest() {
-        session=HibernateUtil.sessionFactory.openSession();
-        depositoDao= new DepositoDaoImpl();
-        turnoDao=new TurnoDaoImpl();
-        turnoDao.setSession(session);
+    
     }
   /*  @Test
     public void insertDeposito(){

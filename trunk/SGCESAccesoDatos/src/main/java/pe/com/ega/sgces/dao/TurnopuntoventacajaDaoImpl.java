@@ -4,8 +4,8 @@
  */
 package pe.com.ega.sgces.dao;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 
 /**
@@ -14,17 +14,17 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
  */
 public class TurnopuntoventacajaDaoImpl implements TurnopuntoventacajaDao{
 
-    Session session;
+    SessionFactory session;
 
+    public void setSession(SessionFactory session) {
+        this.session = session;
+    }
     
     @Override
     public void insertar(Turnopuntoventacaja turno) {
-        session.save(turno);
+        session.getCurrentSession().save(turno);
     }
 
-    @Override
-    public void setSession(Session session) {
-        this.session = session;
-    }
+    
     
 }

@@ -6,6 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Turno;
 
@@ -18,5 +19,5 @@ public interface TurnoDao {
     public void actualizar(Turno turno);
     public void eliminar(Turno turno);
     public Turno buscarPorCodigo(String estado);  
-    public void setSession(Session session);
+    public void setSession(SessionFactory session);
 }

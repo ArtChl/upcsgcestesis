@@ -6,6 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**
@@ -23,5 +24,5 @@ public interface TransaccionDao {
     public List<Transaccion> buscarTodosDoc(String documento);
     public List<Transaccion> buscarListaId(String id);
     public List buscarMonto(String tipo, String turno) ;
-    public void setSession(Session session);
+    public void setSession(SessionFactory session);
 }
