@@ -56,7 +56,7 @@ public class ArqueoLogicaImpl implements ArqueoLogica{
                 System.out.println("Soles"+soles);
             }
             if(arqueo.getComprobante().equalsIgnoreCase("DOLARES")) {
-                arqueo.setCantidad(redondear((mov-dep)/2.65)); 
+                arqueo.setCantidad(redondear((mov/2.65-dep))); 
                 solesDolares=vuelto;
                 System.out.println("Vueltos Dolares"+solesDolares);
             }else{

@@ -62,11 +62,19 @@ public class CierreLogicaImpl implements CierreLogica{
     }
     
     @Override
-    public String cierreTurno() {
+    public String cierreTurno(Turno turno) {
+              List<Despacho> despachos=null;
+              ArrayList<Arqueo> arqueos=null;
               String resultado=null;
-              Turno turno=turnoLogica.buscarPorCodigo("N");
-              List<Despacho> despachos=(List<Despacho>) despachoLogica.buscarTodos();  
-              ArrayList<Arqueo> arqueos=arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
+              Turno turno2=null;
+              try {
+                turno2=turnoLogica.buscarPorCodigo("N");
+                despachos=(List<Despacho>) despachoLogica.buscarTodos();  
+                arqueos=arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
+                } catch (Exception e) {
+                    System.out.println("error"+e.toString());
+               }
+              
               if(despachos.isEmpty()){
                if(redondear(arqueos.get(0).getCantidad())==0 &&redondear(arqueos.get(1).getCantidad())==0 && redondear(arqueos.get(2).getCantidad())==0 && redondear(arqueos.get(3).getCantidad())==0){            
                 Double total=0.0;
@@ -74,10 +82,11 @@ public class CierreLogicaImpl implements CierreLogica{
                 for (Cierre arqueo1 : lista) {
                     total=total+arqueo1.getCantidad();
                 }      
-                //imprimircomprobante.imprimirTurno("0001", String.valueOf(redondear(lista.get(0).getCantidad())), String.valueOf(redondear(lista.get(1).getCantidad())),String.valueOf(redondear(lista.get(2).getCantidad())),String.valueOf(redondear(total)),String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");                
+                imprimircomprobante.imprimirTurno("0001", String.valueOf(redondear(lista.get(0).getCantidad())), String.valueOf(redondear(lista.get(1).getCantidad())),String.valueOf(redondear(lista.get(2).getCantidad())),String.valueOf(redondear(total)),String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");                
                 
                   try {
-                       turnoLogica.actualizar(turno);
+                       System.out.println("Mensaje Cierre");
+                       turnoLogica.actualizar(turno2);
                        resultado="Cierre";
                    } catch (Exception e) {
                        System.out.println("Cierre"+e.toString());

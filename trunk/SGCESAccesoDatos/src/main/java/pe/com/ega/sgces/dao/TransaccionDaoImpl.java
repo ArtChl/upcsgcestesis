@@ -26,17 +26,17 @@ public class TransaccionDaoImpl implements TransaccionDao{
     public void insertar(Transaccion transaccion) {
         transaccion.setFacturado(false);
         transaccion.setAnulado(false);
-        session.openSession().save(transaccion);
+        session.getCurrentSession().save(transaccion);
     }
 
     @Override
     public void actualizar(Transaccion transaccion) {
-        session.openSession().update(transaccion);
+        session.getCurrentSession().update(transaccion);
     }
 
     @Override
     public void eliminar(Transaccion transaccion) {
-        session.openSession().delete(transaccion);
+        session.getCurrentSession().delete(transaccion);
     }
 
     @Override
@@ -47,49 +47,54 @@ public class TransaccionDaoImpl implements TransaccionDao{
     @Override
     public List<Transaccion> buscarTodos() {
          session.getCurrentSession().beginTransaction();
-         List<Transaccion> lista=session.openSession().createQuery("from Transaccion").list();
-         session.getCurrentSession().flush();
+         List<Transaccion> lista;
+         lista = session.getCurrentSession().createQuery("from Transaccion").list();
+        // session.close();
          return  lista;
     }
 
     @Override
     public List<Transaccion> buscarListaId(String id) {
         session.getCurrentSession().beginTransaction();
-        List<Transaccion> lista=session.openSession().createQuery("from Transaccion where idcliente='"+id+"' and idtipotransaccion='NDES' and facturado=false and anulado=false").list();
-        session.getCurrentSession().flush();
+        List<Transaccion> lista;
+        lista = session.getCurrentSession().createQuery("from Transaccion where idcliente='"+id+"' and idtipotransaccion='NDES' and facturado=false and anulado=false").list();
+        //session.close();
         return  lista;
     }
 
     @Override
     public List<Transaccion> buscarTodosDoc(String documento) {
         session.getCurrentSession().beginTransaction();
-        List<Transaccion> lista= session.openSession().createQuery("from Transaccion where idtipotransaccion='"+documento+"'").list();
-        session.getCurrentSession().flush();
+        List<Transaccion> lista= session.getCurrentSession().createQuery("from Transaccion where idtipotransaccion='"+documento+"'").list();
+        //session.close();
         return lista;
     }
 
     @Override
     public List buscarMonto(String tipo, String turno) {
        session.getCurrentSession().beginTransaction();
-       Query query = session.openSession().createQuery("select sum(montototal) from Transaccion where producto='"+tipo+"' and idestado='"+turno+"'");
+       Query query;
+        query = session.getCurrentSession().createQuery("select sum(montototal) from Transaccion where producto='"+tipo+"' and idestado='"+turno+"'");
        List results = query.list();
-       session.getCurrentSession().flush();
+       //session.close();
        return results;
     }
 
     @Override
     public List<Transaccion> buscarTurno(int turno) {
         session.getCurrentSession().beginTransaction();
-        List<Transaccion> lista=session.openSession().createQuery("from Transaccion where idestado="+turno+" and anulado=false").list();
-        session.getCurrentSession().flush();
+        List<Transaccion> lista;
+        lista = session.getCurrentSession().createQuery("from Transaccion where idestado="+turno+" and anulado=false").list();
+        //session.close();
         return lista;
     }
 
     @Override
     public Transaccion buscarPorNumero(String numero) {
         session.getCurrentSession().beginTransaction();
-        Transaccion trans= (Transaccion)session.openSession().createQuery("from Transaccion where numerovale='"+numero+"'").uniqueResult();
-        session.getCurrentSession().flush();
+        Transaccion trans;
+        trans = (Transaccion)session.getCurrentSession().createQuery("from Transaccion where numerovale='"+numero+"'").uniqueResult();
+        //session.close();
         return trans;
     }
     

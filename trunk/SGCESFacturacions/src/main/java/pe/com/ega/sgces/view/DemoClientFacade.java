@@ -69,9 +69,9 @@ public class DemoClientFacade implements ClientFacade {
    
    public void getTirada() 
    {
-        TiradaFrame f = new TiradaFrame(depositoLogica, turnoLogica);
-        f.setSize(232,184);
-        f.setTitle("Tirada Buzon");
+        TiradaFrame f = new TiradaFrame(depositoLogica);
+        f.setSize(210,233);
+        f.setTitle("Tirada");
         MDIFrame.add(f);
 
   }

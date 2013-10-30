@@ -49,12 +49,10 @@ public class ArqueoLogicaImpl implements ArqueoLogica{
             Double dep=depositoLogica.buscarMonto(string,turno);
             if(arqueo.getComprobante().equalsIgnoreCase("SOLES")) {
                 soles=soles-solesDolares;
-                System.out.println("Soles"+soles);
             }
             if(arqueo.getComprobante().equalsIgnoreCase("DOLARES")) {
                 arqueo.setCantidad(redondear((mov-dep)/2.65)); 
                 solesDolares=vuelto;
-                System.out.println("Vueltos Dolares"+solesDolares);
             }else{
                 arqueo.setCantidad(soles-dep);      
                  

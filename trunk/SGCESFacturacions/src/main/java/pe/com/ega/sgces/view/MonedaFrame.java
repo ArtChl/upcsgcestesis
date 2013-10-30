@@ -11,12 +11,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.openswing.swing.mdi.client.InternalFrame;
 import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
-import pe.com.ega.sgces.dao.TransaccionDaoImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.NumComprobanteLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogica;
-import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
@@ -58,6 +56,7 @@ public class MonedaFrame extends InternalFrame {
         this.turnoLogica =turnoLogica;
         numdao = new NumComprobanteLogicaImpl();
         numdao.setValeDao(new NumComprobanteDaoImpl()); 
+        comprobante = new ImprimirComprobante();
     }
 
     @SuppressWarnings("unchecked")
@@ -145,14 +144,14 @@ public class MonedaFrame extends InternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void solesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solesActionPerformed
-        System.out.println("Pago"+pago.getText()+"//"+desp.getMontosoles());
+        System.out.println("documento"+moneda);
         if(desp.getMontosoles()<Double.parseDouble(pago.getText())){
             if("BOL".equals(moneda)){
                 imprimirBoleta(desp, evt);
-                llenarMovimientoSoles(transaccion, moneda, Double.parseDouble(pago.getText()));
+                llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText()),"","SOLES");
             }else{
                 imprimirFactura(desp, cliente, evt);
-                llenarMovimientoSoles(transaccion, moneda, Double.parseDouble(pago.getText()));
+                llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText()),"","SOLES");
             }
         }else{
             final JPanel panel = new JPanel();
@@ -163,14 +162,13 @@ public class MonedaFrame extends InternalFrame {
     }//GEN-LAST:event_solesActionPerformed
 
     private void dolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresActionPerformed
-        System.out.println("Pago"+pago.getText()+"//"+desp.getMontosoles());
         if(desp.getMontosoles()<Double.parseDouble(pago.getText())*2.65){
             if("BOL".equals(moneda)){
                 imprimirBoleta(desp, evt);
-                llenarMovimientoDolares(transaccion, moneda, Double.parseDouble(pago.getText())*2.65,pago.getText());
+                llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65,"","DOLARES");
             }else{
                 imprimirFactura(desp, cliente, evt);
-                llenarMovimientoDolares(transaccion, moneda, Double.parseDouble(pago.getText())*2.65,pago.getText());
+                llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText())*2.65,"","DOLARES");
             }
         }else{
             final JPanel panel = new JPanel();
@@ -181,10 +179,10 @@ public class MonedaFrame extends InternalFrame {
     private void tarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetaActionPerformed
         if("BOL".equals(moneda)){
             imprimirBoleta(desp, evt);
-            llenarMovimientoTarjeta(transaccion, moneda, numtarjeta.getText());
+            llenarMovimiento(transaccion, moneda,0.0, numtarjeta.getText(),"TARJETA");
         }else{
             imprimirFactura(desp, cliente, evt);
-            llenarMovimientoTarjeta(transaccion, moneda, numtarjeta.getText());
+            llenarMovimiento(transaccion, moneda,0.0, numtarjeta.getText(),"TARJETA");
         }
     }//GEN-LAST:event_tarjetaActionPerformed
 
@@ -215,10 +213,10 @@ public class MonedaFrame extends InternalFrame {
     // End of variables declaration//GEN-END:variables
 
    public void imprimirBoleta(Despacho desp, java.awt.event.ActionEvent evt){
-       System.out.println("Despacho"+desp.getId()+desp.getCaraproducto().getProducto()+desp.getCaraproducto().getCara());
-        comprobante=new ImprimirComprobante();    
-        llenardatos(desp);       
+       System.out.println("Cliente");    
+        llenardatos(desp,cliente);       
         try {
+            System.out.println("hola imprimir");
             transaccionLogica.grabar(transaccion);
             despachoLogica.grabar(desp);
             comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre()
@@ -228,13 +226,11 @@ public class MonedaFrame extends InternalFrame {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
        
         }finally{
-          //  transaccion=new Transaccion();
         }
    }
    public void imprimirFactura(Despacho desp, Cliente cli,java.awt.event.ActionEvent evt){
-       System.out.println("Cliente"+cliente.getId());
-       comprobante = new ImprimirComprobante();
-       llenardatosF(desp,cli);
+       System.out.println("Cliente"+cliente.getId());  
+       llenardatos(desp,cli);
        try {
                transaccionLogica.grabar(transaccion);
                despachoLogica.grabar(desp);
@@ -243,7 +239,7 @@ public class MonedaFrame extends InternalFrame {
                  , String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "TBOL");
                salir(evt);
        } catch (Exception e) {
-           JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+              JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
        }
                
            
@@ -258,13 +254,20 @@ public class MonedaFrame extends InternalFrame {
         dispose();
     }
 
-    private void llenardatos(Despacho desp) {
+    private void llenardatos(Despacho desp, Cliente cliente) {
         
         Numcomprobante comprobantes= numdao.buscarPorCodigo(2);
         
         transaccion.setDespacho(desp);
         transaccion.setIdtipotransaccion("TBOL");
-        transaccion.setIdestado(turnoLogica.buscarPorCodigo("N").getId());
+        int codigo=0;
+        try {
+            codigo=turnoLogica.buscarPorCodigo("N").getId();
+        } catch (Exception e) {
+            System.out.println("TurnoCodigo"+e.toString());
+        }
+        
+        transaccion.setIdestado(codigo);
         transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
         transaccion.setNumerovale("325-"+agregarCeros(String.valueOf(comprobantes.getNumero()),8));
         transaccion.setNumero(comprobantes.getNumero());
@@ -276,25 +279,39 @@ public class MonedaFrame extends InternalFrame {
         transaccion.setTurno(desp.getTurno());
         comprobantes.setNumero(comprobantes.getNumero()+1);
         numdao.actualizar(comprobantes);
-        Cliente clie= new Cliente();
-        clie.setId(1);
-        transaccion.setCliente(clie);
+
+       if(cliente.getId()==2){
+            System.out.println("Cliente"+cliente.getId());
+            transaccion.setCliente(cliente);
+            
+        }else{
+            transaccion.setCliente(cliente);
+        }
         
-       
     }
     
-    private void llenarMovimientoSoles(Transaccion transaccion, String pag, Double monto){
+    private void llenarMovimiento(Transaccion transaccion, String pag, Double monto, String tarjeta, String tipo){
         movimiento.setTransaccion(transaccion);
         movimiento.setPago(pag);
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
         caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(),1,1));
         movimiento.setTurnopuntoventacaja(caja);
-        movimiento.setMontototal(desp.getMontosoles());
-        movimiento.setMontorecibido(monto);
-        movimiento.setTipo("SOLES");
+        movimiento.setMontototal(desp.getMontosoles());       
+        if(tipo=="TARJETA"){
+            movimiento.setTipo(tarjeta);
+            movimiento.setNrooperacion(numtarjeta.getText());
+            movimiento.setTipo((String)tarjetas.getSelectedItem());
+            movimiento.setMontorecibido(desp.getMontosoles());
+            movimiento.setMontodevuelto(0.0);
+        }else{
+            movimiento.setTipo(tipo);  
+            movimiento.setMontorecibido(monto);
+            movimiento.setMontodevuelto(monto-desp.getMontosoles());
+            
+        }
+
         movimiento.setTurno(desp.getTurno());
-        movimiento.setCerrado("N");
-        movimiento.setMontodevuelto(monto-desp.getMontosoles());
+        movimiento.setCerrado("N"); 
         movimiento.setFecharegistro(new Date());
         try {
             movimientoLogica.grabar(movimiento);
@@ -303,72 +320,7 @@ public class MonedaFrame extends InternalFrame {
         }
         
     }
-    
-    private void llenarMovimientoDolares(Transaccion transaccion, String pag, Double monto, String montes){
-        movimiento.setTransaccion(transaccion);
-        movimiento.setPago(pag);
-        Turnopuntoventacaja caja= new Turnopuntoventacaja();
-        caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(),1,1));
-        movimiento.setTurnopuntoventacaja(caja);
-        movimiento.setMontototal(desp.getMontosoles());
-        movimiento.setMontorecibido(monto);
-        movimiento.setNrooperacion(montes);
-        movimiento.setTipo("DOLARES");
-        movimiento.setTurno(desp.getTurno());
-        movimiento.setCerrado("N");
-        movimiento.setMontodevuelto(monto-desp.getMontosoles());
-        movimiento.setFecharegistro(new Date());
-        try {
-            movimientoLogica.grabar(movimiento);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-    }
-    
-    private void llenarMovimientoTarjeta(Transaccion transaccion, String pag, String monto){
-        movimiento.setTransaccion(transaccion);
-        movimiento.setPago(pag);
-        Turnopuntoventacaja caja= new Turnopuntoventacaja();
-        caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(),1,1));
-        movimiento.setTurnopuntoventacaja(caja);
-        movimiento.setMontototal(desp.getMontosoles());
-        movimiento.setMontorecibido(desp.getMontosoles());
-        movimiento.setTipo((String)tarjetas.getSelectedItem());
-        movimiento.setTurno(desp.getTurno());
-        movimiento.setCerrado("N");
-        movimiento.setMontodevuelto(0.0);
-        movimiento.setNrooperacion(monto);
-        movimiento.setFecharegistro(new Date());
-        try {
-            movimientoLogica.grabar(movimiento);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-    }
-    
-    private void llenardatosF(Despacho desp, Cliente nuevo) {
-        Numcomprobante comprobantes= numdao.buscarPorCodigo(3);
-        
-        transaccion.setDespacho(desp);
-        transaccion.setIdtipotransaccion("TFAC");
-        transaccion.setIdestado(turnoLogica.buscarPorCodigo("N").getId());
-        transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumerovale("325-"+agregarCeros(String.valueOf(comprobantes.getNumero()),8));
-        transaccion.setNumero(comprobantes.getNumero());
-        transaccion.setNrogalones(desp.getNrogalones());
-        transaccion.setPreciounitario(desp.getPreciounitario());
-        transaccion.setProducto(desp.getProducto().getNombre());
-        transaccion.setMontototal(desp.getMontosoles());
-        transaccion.setFecharegistro(desp.getFecharegistro());
-        transaccion.setCliente(nuevo);
-        transaccion.setTurno(desp.getTurno());
-        
-        comprobantes.setNumero(comprobantes.getNumero()+1);
-        numdao.actualizar(comprobantes);
-    }
-    
+   
     private static String agregarCeros(String string, int largo)
     {
     	String ceros = "";

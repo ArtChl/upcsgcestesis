@@ -63,7 +63,6 @@ public class TurnoLogicaImpl implements TurnoLogica{
     
     public void setTurnoDao(TurnoDao turnoDao) {
        this.turnoDao= turnoDao;
-       this.turnoDao.setSession(session);
     }
     
     public final void cem44()
@@ -72,7 +71,6 @@ public class TurnoLogicaImpl implements TurnoLogica{
         cierre.setCambioturno(1);
         cierre.setFechaTotalizadoresElectronicos(new Date());      
         interfaceLogica.actualizar(cierre);
-        System.out.println("estado Cem44");
              
     }
     

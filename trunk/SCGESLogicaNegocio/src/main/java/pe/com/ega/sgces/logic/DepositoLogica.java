@@ -17,6 +17,7 @@ public interface DepositoLogica {
     public Deposito buscarPorCodigo(Integer id);
     public List<Deposito> buscarTodos();
     public Double buscarMonto(String tipo, String turno);
+    public String depositar(String tipo, String monto);
     //public void setSession(SessionFactory session);
    // public void setDepositoDao(DepositoDao depositoDao);
 }

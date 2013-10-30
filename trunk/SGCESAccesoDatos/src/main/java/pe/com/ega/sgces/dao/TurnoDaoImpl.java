@@ -27,7 +27,7 @@ public class TurnoDaoImpl implements  TurnoDao{
 
     @Override
     public void actualizar(Turno turno) {
-        session.getCurrentSession().update(turno);
+        session.getCurrentSession().saveOrUpdate(turno);
     }
 
     @Override
@@ -38,11 +38,9 @@ public class TurnoDaoImpl implements  TurnoDao{
     @Override
     public Turno buscarPorCodigo(String estado) {
         session.getCurrentSession().beginTransaction();
-        Turno turno=(Turno)session.getCurrentSession().createQuery("from Turno where estado='"+estado+"'").uniqueResult();
-        session.getCurrentSession().flush();
+        Turno turno;
+        turno = (Turno)session.getCurrentSession().createQuery("from Turno where estado='"+estado+"'").uniqueResult();
+        session.close();
         return turno;
-    }
-
- 
-    
+    } 
 }

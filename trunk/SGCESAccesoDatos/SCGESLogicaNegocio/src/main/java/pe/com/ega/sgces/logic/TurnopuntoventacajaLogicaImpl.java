@@ -25,12 +25,10 @@ public class TurnopuntoventacajaLogicaImpl implements TurnopuntoventacajaLogica 
 
     public void setTurnopuntoventacajaDao(TurnopuntoventacajaDao turnopuntoventacajaDao) {
         this.turnopuntoventacajaDao = turnopuntoventacajaDao;
-        this.turnopuntoventacajaDao.setSession(session);
     }
     
     @Override
     public void insertar(Turnopuntoventacaja turno) {
-        System.out.println("Turno"+turno.getTurno());
         session.beginTransaction();
         this.turnopuntoventacajaDao.insertar(turno);
         session.getTransaction().commit();

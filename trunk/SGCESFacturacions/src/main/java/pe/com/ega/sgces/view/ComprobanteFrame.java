@@ -29,10 +29,8 @@ public class ComprobanteFrame extends InternalFrame {
         initComponents();
         this.turnoLogica =turnoLogica;
         this.transaccionLogica = transaccionLogica;
-                //new TransaccionLogicaImpl(despachoLogica, movimientoLogica);      
-        //transaccionLogica.setTransaccionDao(new TransaccionDaoImpl());
         transaccions=new ArrayList<>(); 
-        this.comprobante=new ImprimirComprobante();
+        
         pintarTabla();            
     }
 
@@ -72,9 +70,9 @@ public class ComprobanteFrame extends InternalFrame {
         jScrollPane1.setBounds(10, 40, 492, 120);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel1.setText("Despachos Pendientes x Facturar");
+        jLabel1.setText("Comprobante Emitidos");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 10, 216, 16);
+        jLabel1.setBounds(10, 10, 160, 16);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -161,11 +159,11 @@ public class ComprobanteFrame extends InternalFrame {
             }
              if (JOptionPane.showConfirmDialog(new JFrame(),"Desea Eliminar Comprobante?", "Confirmacion",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                  Transaccion tr= buscar(txt[0]);
-                 transaccionLogica.actualizar(tr);
-                 comprobante.imprimirAnular(tr.getIdtipotransaccion()+"-"+tr.getNumerovale(), String.valueOf(tr.getMontototal()), "Lopez Cordova");
+                 tr.setAnulado(true);
+                 transaccionLogica.actualizar(tr);  
+                 pintarTabla();
                  salir(e);       
              }
-      
         }
        
   }
