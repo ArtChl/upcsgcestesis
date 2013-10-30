@@ -27,7 +27,6 @@ public class InterfaceDaoImpl implements InterfaceDao{
 
     @Override
     public InterfaceConfig buscarPorCodigo(int id) {
-        System.out.println("BuscarInterface");
         return (InterfaceConfig) session.load(InterfaceConfig.class, id);
     }
 

@@ -7,6 +7,7 @@ package pe.com.ega.sgces.logic;
 import java.util.ArrayList;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Cierre;
+import pe.com.ega.sgces.model.Turno;
 
 /**
  *
@@ -14,5 +15,5 @@ import pe.com.ega.sgces.model.Cierre;
  */
 public interface CierreLogica {
     public ArrayList<Cierre> buscarPorCodigo(String turno);
-    public String cierreTurno();
+    public String cierreTurno(Turno turno);
 }

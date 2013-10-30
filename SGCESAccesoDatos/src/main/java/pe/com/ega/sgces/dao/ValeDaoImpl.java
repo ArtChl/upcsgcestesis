@@ -20,7 +20,6 @@ public class ValeDaoImpl implements ValeDao{
     
     @Override
     public void insertar(Vale usuario) {
-        System.out.println("Vale:"+usuario.getCliente());
         Transaction tx;
         tx =session.beginTransaction();
         usuario.setEstado(1);

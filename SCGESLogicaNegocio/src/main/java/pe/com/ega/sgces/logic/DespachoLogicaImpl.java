@@ -70,4 +70,6 @@ public class DespachoLogicaImpl implements DespachoLogica {
         session.getCurrentSession().getTransaction().commit();
     }
 
+   
+
 }

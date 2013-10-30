@@ -22,9 +22,5 @@ public interface TransaccionLogica {
     public List<Transaccion> buscarTodo();
     public List<Transaccion> buscarTurno(int turno);
     public List<Transaccion> buscarTodoDoc(String documento);
-    public Double buscarMonto(String tipo, String turno);
-    public void setSession(SessionFactory session);
-    public void setTransaccionDao(TransaccionDao transaccionDao);
-    public void setDespachoLogica(DespachoLogica despachoLogica);
-    public void setMovimientoLogica(MovimientoLogica movimientoLogica);        
+    public Double buscarMonto(String tipo, String turno);     
 }

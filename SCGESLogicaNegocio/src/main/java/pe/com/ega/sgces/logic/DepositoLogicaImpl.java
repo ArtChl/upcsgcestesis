@@ -4,21 +4,34 @@
  */
 package pe.com.ega.sgces.logic;
 
+import Imprimir.ImprimirComprobante;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.DepositoDao;
 import pe.com.ega.sgces.model.Deposito;
+import pe.com.ega.sgces.model.Turnopuntoventacaja;
+import pe.com.ega.sgces.model.TurnopuntoventacajaId;
 
 
 public class DepositoLogicaImpl implements DepositoLogica{
 
     SessionFactory session; 
     DepositoDao depositoDao;
+    TurnoLogica turnoLogica;
+    Deposito deposito;
+    ImprimirComprobante imprimircomprobante;
 
     public DepositoLogicaImpl() {
-        
+        deposito=new Deposito();
+        imprimircomprobante = new ImprimirComprobante();
     }
 
+    
+    public void setTurnoLogica(TurnoLogica turnoLogica) {
+        this.turnoLogica = turnoLogica;
+    }
+    
     public void setSession(SessionFactory session) {
         this.session = session;
     }
@@ -70,6 +83,23 @@ public class DepositoLogicaImpl implements DepositoLogica{
         }
         return monto;
     }
-      
-    }    
+
+    @Override
+    public String depositar(String monto, String pago) 
+    {
+        String mensaje=null;
+        Turnopuntoventacaja caja= new Turnopuntoventacaja();
+        caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(), 1, 1));            
+        deposito.setTurnopuntoventacaja(caja);
+        Double dos=Double.parseDouble(monto);
+        deposito.setMontototal(dos);
+        deposito.setFecharegistro(new Date());
+        deposito.setIdtipopago(pago);     
+        deposito.setTurno(String.valueOf(turnoLogica.buscarPorCodigo("N").getId()));
+        deposito.setCerrado("N");
+        this.insertar(deposito);
+        imprimircomprobante.imprimirTirada("0001","1", pago,monto, "ROSA MARIA DAVILA");
+        return mensaje;
+    }  
+ }    
 

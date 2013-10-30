@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
+import Imprimir.ImprimirComprobante;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.TransaccionDao;
@@ -21,47 +22,42 @@ public class TransaccionLogicaImpl implements TransaccionLogica
     TransaccionDao transaccionDao;
     DespachoLogica despachoLogica;
     MovimientoLogica movimientoLogica;
+    TransaccionDetalleDao transacciondetalleDao;
+    ImprimirComprobante comprobante;
  
     public TransaccionLogicaImpl()
     {
-      
+      this.comprobante=new ImprimirComprobante();
     }
-    
-    @Override
+
+    public void setSession(SessionFactory session) {
+        this.session = session;
+    }
     public void setDespachoLogica(DespachoLogica despachoLogica) {
         this.despachoLogica = despachoLogica;
     }
 
-    @Override
+
     public void setMovimientoLogica(MovimientoLogica movimientoLogica) {
         this.movimientoLogica = movimientoLogica;
     }
    
-    @Override
-    public void setSession(SessionFactory session) {
-        this.session = session;
-    }
-    
-    @Override
     public void setTransaccionDao(TransaccionDao transaccionDao) {
         this.transaccionDao = transaccionDao;
-        this.transaccionDao.setSession(session);
-
     }
     
-    TransaccionDetalleDao transacciondetalleDao;
+
     public void setTransaccionDetalleDao(TransaccionDetalleDao transacciondetalleDao) {
         this.transacciondetalleDao = transacciondetalleDao; 
-        this.transaccionDao.setSession(session);
     }
     
     @Override
     public void grabar(Transaccion transaccion) {
         session.getCurrentSession().beginTransaction();
         transaccionDao.insertar(transaccion);
-        for (Transacciondetalle detalle : transaccion.getTransacciondetalles()) {
+        /*for (Transacciondetalle detalle : transaccion.getTransacciondetalles()) {
             transacciondetalleDao.insertar(detalle);
-        }
+        }*/
         session.getCurrentSession().getTransaction().commit(); 
     }
 
@@ -98,23 +94,27 @@ public class TransaccionLogicaImpl implements TransaccionLogica
     }
 
     @Override
-    public void actualizar(Transaccion transaccion) {
-        
+    public void actualizar(Transaccion transaccion) { 
+        System.out.println("Transaccion"+transaccion.getNumerovale());
         try {
             session.getCurrentSession().beginTransaction();
             transaccionDao.actualizar(transaccion);       
-            session.getCurrentSession().getTransaction().commit(); 
+            
             System.out.println("Transaccion"+transaccion.getNumerovale());
             if(transaccion.getAnulado()==true)
             {
             transaccion.getDespacho().setIdestado(1);
             despachoLogica.actualizar(transaccion.getDespacho());
             movimientoLogica.eliminar(movimientoLogica.buscarTransaccion(String.valueOf(transaccion.getId())));
+            comprobante.imprimirAnular(transaccion.getIdtipotransaccion()+"-"+transaccion.getNumerovale(), String.valueOf(transaccion.getMontototal()), "Lopez Cordova");
             }
             
         } catch (Exception e) {
+            System.out.println("Error Anulacion"+e.toString());
             session.getCurrentSession().getTransaction().rollback();
-        }   
+        } finally{
+            session.getCurrentSession().getTransaction().commit(); 
+        }  
     }
 
     @Override

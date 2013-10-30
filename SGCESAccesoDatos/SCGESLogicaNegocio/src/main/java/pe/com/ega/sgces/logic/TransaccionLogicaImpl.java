@@ -90,9 +90,7 @@ public class TransaccionLogicaImpl implements TransaccionLogica
 
     @Override
     public void actualizar(Transaccion transaccion) {
-        System.out.println("Entro despacho1"+transaccion.getAnulado());
         if(transaccion.getAnulado()==true){
-            System.out.println("Entro despacho2");
             transaccion.getDespacho().setIdestado(1);
             despachoLogica.actualizar(transaccion.getDespacho());
         }

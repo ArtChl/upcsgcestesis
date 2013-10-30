@@ -43,6 +43,7 @@
         
         <bean id="transaccionService" class="pe.com.ega.sgces.logic.TransaccionLogicaImpl">
 		<property name="transaccionDao" ref="transaccionDao" />
+                <property name="transaccionDetalleDao" ref="transacciondetalleDao" />
                 <property name="despachoLogica" ref="despachoService" />
                 <property name="movimientoLogica" ref="movimientoService" />
                 <property name="session" ref="miSessionFactory" />
@@ -52,7 +53,10 @@
 		<property name="session" ref="miSessionFactory" />
 	</bean>
         
-        
+         <bean id="transacciondetalleDao" class="pe.com.ega.sgces.dao.TransaccionDetalleDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+            
         <bean id="turnoService" class="pe.com.ega.sgces.logic.TurnoLogicaImpl">
 		<property name="turnoDao" ref="turnoDao" />
                 <property name="session" ref="miSessionFactory" />
@@ -75,6 +79,7 @@
         <bean id="depositoService" class="pe.com.ega.sgces.logic.DepositoLogicaImpl">
 		<property name="depositoDao" ref="depositoDao" />
                 <property name="session" ref="miSessionFactory" />
+                <property name="turnoLogica" ref="turnoService" />
 	</bean>
 	
         <bean id="depositoDao" class="pe.com.ega.sgces.dao.DepositoDaoImpl">

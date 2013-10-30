@@ -11,6 +11,7 @@ import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TurnoLogica;
+import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 
 /**
@@ -91,7 +92,9 @@ public class OpcionFrame extends InternalFrame {
     }//GEN-LAST:event_despachoActionPerformed
 
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
-        MonedaFrame f=new MonedaFrame(desp, "BOL", null, despachoLogic, movimientoLogica, turnoLogica, transaccionLogica);
+        Cliente cliente=new Cliente();
+        cliente.setId(2);
+        MonedaFrame f=new MonedaFrame(desp, "BOL", cliente, despachoLogic, movimientoLogica, turnoLogica, transaccionLogica);
             f.setSize(301,213);
             f.setTitle("Tipo Pago");
             MDIFrame.add(f);

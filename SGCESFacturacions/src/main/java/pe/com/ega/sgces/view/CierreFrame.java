@@ -21,10 +21,12 @@ import pe.com.ega.sgces.logic.TurnoLogica;
 public class CierreFrame extends InternalFrame {
 
     private CierreLogica cierreLogica;
+    private TurnoLogica turnoLogica;
     
     public CierreFrame(MovimientoLogica movimiento, DepositoLogica deposito, DespachoLogica despachoLogica, TurnoLogica turnoLogica, CierreLogica cierreLogica) {
         initComponents();
         this.cierreLogica = cierreLogica;
+        this.turnoLogica= turnoLogica;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -48,7 +50,7 @@ public class CierreFrame extends InternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bturnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bturnoActionPerformed
-              String mensaje=cierreLogica.cierreTurno();
+              String mensaje=cierreLogica.cierreTurno(turnoLogica.buscarPorCodigo("N"));
               System.out.println("Mensaje"+mensaje);
               if(mensaje.equalsIgnoreCase("Cierre"))
               {
