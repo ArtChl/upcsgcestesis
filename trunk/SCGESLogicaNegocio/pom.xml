@@ -40,11 +40,6 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>SGCESEntidades</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
       <artifactId>SGCESAccesoDatos</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -82,12 +77,6 @@
 	<groupId>commons-dbcp</groupId>
 	<artifactId>commons-dbcp</artifactId>
 	<version>1.4</version>
-    </dependency>
-    <dependency>
-      <groupId>com.ega.sgces</groupId>
-      <artifactId>PrinterPOSM</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <type>jar</type>
     </dependency>
   </dependencies>
 </project>
