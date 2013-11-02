@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
+import org.apache.log4j.Logger;
 import Imprimir.ImprimirComprobante;
 import java.util.List;
 import org.hibernate.SessionFactory;
@@ -18,6 +19,7 @@ import pe.com.ega.sgces.model.Transacciondetalle;
  */
 public class TransaccionLogicaImpl implements TransaccionLogica
 {
+    private final static Logger logger = Logger.getLogger(TransaccionLogicaImpl.class);
     SessionFactory session; 
     private TransaccionDao transaccionDao;
     private DespachoLogica despachoLogica;
@@ -85,6 +87,7 @@ public class TransaccionLogicaImpl implements TransaccionLogica
             List lis=transaccionDao.buscarMonto(tipo, turno);
             monto=Util.recuperarNumero(lis);
         } catch (Exception ex) {
+            logger.error("Mensaje:\n"+ex.getMessage());
                    monto=0.00;
         }
         return monto;
@@ -92,12 +95,10 @@ public class TransaccionLogicaImpl implements TransaccionLogica
 
     @Override
     public void actualizar(Transaccion transaccion) { 
-        System.out.println("Transaccion"+transaccion.getNumerovale());
         try {
             session.getCurrentSession().beginTransaction();
             transaccionDao.actualizar(transaccion);       
             
-            System.out.println("Transaccion"+transaccion.getNumerovale());
             if(transaccion.getAnulado()==true)
             {
             transaccion.getDespacho().setIdestado(1);
@@ -107,7 +108,7 @@ public class TransaccionLogicaImpl implements TransaccionLogica
             }
             
         } catch (Exception e) {
-            System.out.println("Error Anulacion"+e.toString());
+            logger.error("Mensaje:\n"+e.getMessage());
             session.getCurrentSession().getTransaction().rollback();
         } finally{
             session.getCurrentSession().getTransaction().commit(); 

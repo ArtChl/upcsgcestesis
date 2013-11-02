@@ -51,7 +51,6 @@ public class CierreFrame extends InternalFrame {
 
     private void bturnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bturnoActionPerformed
               String mensaje=cierreLogica.cierreTurno(turnoLogica.buscarPorCodigo("N"));
-              System.out.println("Mensaje"+mensaje);
               if(mensaje.equalsIgnoreCase("Cierre"))
               {
                   salir(evt);

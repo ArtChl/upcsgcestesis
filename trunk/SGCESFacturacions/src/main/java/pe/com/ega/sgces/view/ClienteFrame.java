@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.view;
 
+import org.apache.log4j.Logger;
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
+    private final static Logger logger = Logger.getLogger(ClienteFrame.class);
     private Despacho desp;
     private ClienteLogicaImpl clienteDao;
     private Cliente cliente;
@@ -119,7 +121,6 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
 
            Cliente temporal1 = new Cliente();
-           //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
            temporal1.setNumerodocumento(jrucCliente.getText());
            temporal1.setRazonsocial(jrazonCliente.getText());
            if(clienteDao.buscarPorCodigo(jrucCliente.getText())!=null)
@@ -136,6 +137,7 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
                limpiar();
                salir(evt);
            } catch (Exception e) {
+               logger.error("Mensaje:\n"+e.getMessage());
                 JOptionPane.showMessageDialog(null, "Error al Grabar", "Error", JOptionPane.ERROR_MESSAGE);
                      
            }

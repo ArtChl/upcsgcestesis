@@ -12,10 +12,11 @@ import pe.com.ega.sgces.dao.DepositoDao;
 import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
-
+import org.apache.log4j.Logger;
 
 public class DepositoLogicaImpl implements DepositoLogica{
 
+    private final static Logger logger = Logger.getLogger(DepositoLogicaImpl.class);
     SessionFactory session; 
     private DepositoDao depositoDao;
     private TurnoLogica turnoLogica;
@@ -79,6 +80,7 @@ public class DepositoLogicaImpl implements DepositoLogica{
             List lis=depositoDao.buscarMonto(tipo, turno); 
             monto=Util.recuperarNumero(lis);
         } catch (Exception ex) {
+            logger.error("Mensaje:\n"+ex.getMessage());
             monto=0.00;
         }
         return monto;
@@ -98,6 +100,7 @@ public class DepositoLogicaImpl implements DepositoLogica{
         deposito.setTurno(String.valueOf(turnoLogica.buscarPorCodigo("N").getId()));
         deposito.setCerrado("N");
         this.insertar(deposito);
+        //TODO Borrar el nombre en duro
         imprimircomprobante.imprimirTirada("0001","1", pago,monto, "ROSA MARIA DAVILA");
         return mensaje;
     }  
