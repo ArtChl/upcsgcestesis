@@ -205,14 +205,12 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
           if(temporal.getId()==1){        
            System.out.println("Cliente"+temporal.getId());
            Cliente temporal1 = new Cliente();
-           //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
            temporal1.setNumerodocumento(jrucCliente.getText());
            temporal1.setRazonsocial(jrazonCliente.getText());
            try {
                llenardatos(desp,cliente);
            transaccionLogica.grabar(transaccion);
            despachoLogica.grabar(desp); 
-           //System.out.println("Vale"+valeTemporal.getId());
            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
            Date now = new Date();
            valeTemporal.setFechadespacho(now);

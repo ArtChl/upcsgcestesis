@@ -120,7 +120,7 @@ salir(evt);      // TODO add your handling code here:
   //la lista
         
         ArrayList<Usuario> transaccions=new ArrayList<Usuario>();
-       // TecnicoBean t=new TecnicoBean();
+     
         try {
 
             transaccions=(ArrayList<Usuario>) usuariLogica.buscarTodos();
@@ -152,7 +152,6 @@ salir(evt);      // TODO add your handling code here:
             System.out.println(tabla.getValueAt(fila,0));
             String valor=(String) tabla.getValueAt(fila,0);
             String x=String.valueOf(valor);
-         //   FrameClienteM.jcodigo.setText(x);
             setVisible(false);
       }
    });
@@ -161,30 +160,7 @@ salir(evt);      // TODO add your handling code here:
   tabla.setModel(modelo);
   //ASIGNAR LA TABLA SCROOLPANEL
   jScrollPane1.setViewportView(tabla);
-  /*
-
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Producto", "Cantidad", "Precio"
-            }
-        ));
-        jScrollPane1.setViewportView(tabla);
-
-   * */
 }
-  /*  public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UsuarioFrame().setVisible(true);
-            }
-        });
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
