@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.view;
 
+import org.apache.log4j.Logger;
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
@@ -35,6 +36,7 @@ import pe.com.ega.sgces.model.Vale;
  */
 public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
+    private final static Logger logger = Logger.getLogger(NotaFrame.class);
     private Despacho desp;
     private ClienteLogicaImpl clienteLogica;
     private Cliente cliente;
@@ -199,11 +201,11 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-       System.out.println("Monto"+desp.getMontosoles()+"///"+Double.parseDouble(montovale.getText()));
+       
        if(desp.getMontosoles()==Double.parseDouble(montovale.getText())){
           comprobante = new ImprimirComprobante();
           if(temporal.getId()==1){        
-           System.out.println("Cliente"+temporal.getId());
+           
            Cliente temporal1 = new Cliente();
            temporal1.setNumerodocumento(jrucCliente.getText());
            temporal1.setRazonsocial(jrazonCliente.getText());
@@ -223,7 +225,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
            limpiar();
            salir(evt);
            } catch (Exception e) {
-               System.out.println("e");
+               logger.error("Mensaje:\n"+e.getMessage());
            }          
        }else{
            llenardatos(desp,cliente);
@@ -265,6 +267,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             temporal=new Cliente();
             temporal.setId(0);          
         } catch (Exception e){
+            logger.error("Mensaje:\n"+e.getMessage());
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
             temporal.setId(1);
         }   
@@ -281,8 +284,6 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
                   transaccion.setNumerotiket(vale.getNumero());
                   valeTemporal=vale;
                   montovale.setText(String.valueOf(vale.getMonto()));
-              }else{
-                  
               }
         }
     }//GEN-LAST:event_comboValeActionPerformed
@@ -360,6 +361,7 @@ public class NotaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             comboVale.addItem(vale.getNumero());
         }
         } catch (Exception e) {
+            logger.error("Mensaje:\n"+e.getMessage());
            JOptionPane.showMessageDialog(null, "No se Encontro Vales", "Error", JOptionPane.ERROR_MESSAGE);
         }
        

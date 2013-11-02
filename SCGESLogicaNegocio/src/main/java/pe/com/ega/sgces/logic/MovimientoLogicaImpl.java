@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.MovimientoDao;
 import pe.com.ega.sgces.model.Movimiento;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -15,6 +16,7 @@ import pe.com.ega.sgces.model.Movimiento;
  */
 public class MovimientoLogicaImpl implements MovimientoLogica{
 
+    private final static Logger logger = Logger.getLogger(MovimientoLogicaImpl.class);
     SessionFactory session; 
     private MovimientoDao movimientoDao;
 
@@ -51,6 +53,7 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
                 List lis=movimientoDao.buscarMonto(tipo, turno);
                 monto=Util.recuperarNumero(lis);
          } catch (Exception ex) {
+             logger.error("Mensaje:\n"+ex.getMessage());
                     monto=0.00;
          }
         return monto;
@@ -75,6 +78,7 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
                 List lis=movimientoDao.buscarMontoVuelto(tipo, turno);         
                 monto=Util.recuperarNumero(lis);
          } catch (Exception ex) {
+             logger.error("Mensaje:\n"+ex.getMessage());
                     monto=0.00;
          }
         return monto;

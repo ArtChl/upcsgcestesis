@@ -1,5 +1,6 @@
 
 package pe.com.ega.sgces.view;
+import org.apache.log4j.Logger;
 import Imprimir.ImprimirComprobante;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,6 +21,7 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class ComprobanteFrame extends InternalFrame {
 
+    private final static Logger logger = Logger.getLogger(ComprobanteFrame.class);
     private TransaccionLogica transaccionLogica;
     private ArrayList<Transaccion> transaccions;
     private TurnoLogica turnoLogica;
@@ -92,14 +94,13 @@ public class ComprobanteFrame extends InternalFrame {
    }
    
   private void pintarTabla(){
-  System.out.println("se llamo a pintar tabla");
   String[] titulo=new String[]{"Cod","Numero","Tipo","Producto","Monto","Fecha"};
 
   try {
       int turno2=turnoLogica.buscarPorCodigo("N").getId();
       transaccions=(ArrayList<Transaccion>) transaccionLogica.buscarTurno(turno2);
   } catch (Exception ex) {
-//TODO Agregar log de errores.
+logger.error("Mensaje:\n"+ex.getMessage());
   }
 
   Object[][] arre=new Object[transaccions.size()][6];

@@ -20,6 +20,8 @@ import pe.com.ega.sgces.dao.UsuariodaoImpl;
 import pe.com.ega.sgces.logic.UsuarioLogicaImpl;
 import pe.com.ega.sgces.model.Usuario;
 
+import org.apache.log4j.Logger;
+
 
 /**
  *
@@ -27,6 +29,7 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuarioFrame extends javax.swing.JFrame {
 
+    private final static Logger logger = Logger.getLogger(UsuarioFrame.class);
     private UsuarioLogicaImpl usuariLogica;
     
     public UsuarioFrame() {
@@ -113,7 +116,6 @@ salir(evt);      // TODO add your handling code here:
     * @param args the command line arguments
     */
     private void pintarTabla(){
-  System.out.println("se llamo a pintar tabla");
   String[] titulo=new String[]{"Codigo","Nombre","Direccion","Fecha"};
 
   //LENAR DE DATOS EL MODELO
@@ -126,7 +128,7 @@ salir(evt);      // TODO add your handling code here:
             transaccions=(ArrayList<Usuario>) usuariLogica.buscarTodos();
 
         } catch (Exception ex) {
-
+                logger.error("Mensaje:\n"+ex.getMessage());
         }
 
   //recuperar la lista

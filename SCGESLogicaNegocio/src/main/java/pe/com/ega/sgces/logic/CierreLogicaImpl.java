@@ -8,6 +8,7 @@ import Imprimir.ImprimirComprobante;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Arqueo;
 import pe.com.ega.sgces.model.Caja;
@@ -25,6 +26,7 @@ import pe.com.ega.sgces.model.TurnopuntoventacajaId;
  */
 public class CierreLogicaImpl implements CierreLogica{
 
+    private final static Logger logger = Logger.getLogger(CierreLogicaImpl.class);
     SessionFactory session; 
     private TransaccionLogica transaccionLogica;
     private DespachoLogica despachoLogica;
@@ -61,6 +63,7 @@ public class CierreLogicaImpl implements CierreLogica{
         this.turnopuntoventacajaLogica = turnopuntoventacajaLogica;
     }
     
+    //TODO Lanzar errores personalizados en lugar de cadenas REGLAS DE NEGOCIO
     @Override
     public String cierreTurno(Turno turno) {
               List<Despacho> despachos=null;
@@ -72,7 +75,7 @@ public class CierreLogicaImpl implements CierreLogica{
                 despachos=(List<Despacho>) despachoLogica.buscarTodos();  
                 arqueos=arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
                 } catch (Exception e) {
-                    System.out.println("error"+e.toString());
+                    logger.error("Mensaje:\n"+e.getMessage());
                }
               
               if(despachos.isEmpty()){
@@ -85,11 +88,10 @@ public class CierreLogicaImpl implements CierreLogica{
                 imprimircomprobante.imprimirTurno("0001", String.valueOf(redondear(lista.get(0).getCantidad())), String.valueOf(redondear(lista.get(1).getCantidad())),String.valueOf(redondear(lista.get(2).getCantidad())),String.valueOf(redondear(total)),String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");                
                 
                   try {
-                       System.out.println("Mensaje Cierre");
                        turnoLogica.actualizar(turno2);
                        resultado="Cierre";
                    } catch (Exception e) {
-                       System.out.println("Cierre"+e.toString());
+                       logger.error("Mensaje:\n"+e.getMessage());
                        resultado="Cierre";
                    }
                    
@@ -119,7 +121,7 @@ public class CierreLogicaImpl implements CierreLogica{
         try {
             turnoLogica.insertar(x);
         } catch (Exception e) {
-            System.out.println("Insertar"+e.toString());
+            logger.error("Mensaje:\n"+e.getMessage());
         }
         
            
@@ -131,7 +133,7 @@ public class CierreLogicaImpl implements CierreLogica{
         try {
             turno2= turnoLogica.buscarPorCodigo("N").getId();
         } catch (Exception e) {
-            System.out.println("Insertar"+e.toString());
+            logger.error("Mensaje:\n"+e.getMessage());
         }
         
         
@@ -144,7 +146,7 @@ public class CierreLogicaImpl implements CierreLogica{
         try {
             turnopuntoventacajaLogica.insertar(cajax);
         } catch (Exception e) {
-            System.out.println("Error Caja"+e.toString());
+            logger.error("Mensaje:\n"+e.getMessage());
         }
         
      }

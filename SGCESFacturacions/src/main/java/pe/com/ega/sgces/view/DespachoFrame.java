@@ -11,6 +11,7 @@ import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.model.Despacho;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -18,6 +19,7 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoFrame extends InternalFrame {
 
+    private final static Logger logger = Logger.getLogger(DespachoFrame.class);
     private DespachoLogica despachoLogic;
     private MovimientoLogica movimientoLogica;
     private TurnoLogica turnoLogica;
@@ -93,13 +95,12 @@ public class DespachoFrame extends InternalFrame {
    }
    
   private void pintarTabla(){
-  System.out.println("se llamo a pintar tabla");
   String[] titulo=new String[]{"Codigo","Fecha","Cara","Producto","Precio","Galones","Monto"};
 
   try {
   transaccions=(ArrayList<Despacho>) despachoLogic.buscarTodos();
   } catch (Exception ex) {
-//TODO Agregar log de errores.
+      logger.error("Mensaje:\n"+ex.getMessage());
   }
 
   Object[][] arre=new Object[transaccions.size()][7];

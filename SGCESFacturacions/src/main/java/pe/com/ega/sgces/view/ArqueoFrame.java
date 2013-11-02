@@ -55,9 +55,7 @@ public class ArqueoFrame extends InternalFrame {
             Double total=0.0;
             ArrayList<Arqueo> lista=arqueoLogica.buscarPorCodigo(String.valueOf(turnoLogica.buscarPorCodigo("N").getId()));
             for (Arqueo arqueo1 : lista) {
-                System.out.println("parcial"+arqueo1.getCantidad());
             total=total+arqueo1.getCantidad();
-            System.out.println("total"+total);
             }
             ImprimirComprobante comprobante = new ImprimirComprobante();
             comprobante.imprimirArqueo("0001", String.valueOf(redondear(lista.get(1).getCantidad()))

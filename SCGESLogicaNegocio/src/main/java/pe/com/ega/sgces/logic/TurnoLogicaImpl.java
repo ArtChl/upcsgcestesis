@@ -72,8 +72,6 @@ public class TurnoLogicaImpl implements TurnoLogica{
         InterfaceConfig cierre=interfaceLogica.buscarPorCodigo(1);     
         cierre.setCambioturno(1);
         cierre.setFechaTotalizadoresElectronicos(new Date());      
-        interfaceLogica.actualizar(cierre);
-        System.out.println("estado Cem44");
-             
+        interfaceLogica.actualizar(cierre);             
     }   
 }

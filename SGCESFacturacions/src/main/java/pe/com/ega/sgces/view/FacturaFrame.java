@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.view;
 
+import org.apache.log4j.Logger;
 import Imprimir.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
@@ -26,6 +27,7 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
+    private final static Logger logger = Logger.getLogger(FacturaFrame.class);
     private Despacho desp;
     private ClienteLogicaImpl clienteLogica;
     private Cliente cliente;
@@ -143,6 +145,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             cliente=clienteLogica.buscarPorCodigo(rucCliente);
             jrazonCliente.setText(cliente.getRazonsocial());
         } catch (Exception e){
+            logger.error("Mensaje:\n"+e.getMessage());
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
             cliente= new Cliente();
             cliente.setId(0);
@@ -155,10 +158,9 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-       System.out.println("Cliente"+cliente.getId());
+       
        comprobante = new ImprimirComprobante();
        if(cliente.getId()==0){        
-           System.out.println("Cliente"+cliente.getId());
            Cliente temporal1 = new Cliente();
            temporal1.setNumerodocumento(jrucCliente.getText());
            temporal1.setRazonsocial(jrazonCliente.getText());
@@ -188,6 +190,7 @@ public class FacturaFrame extends org.openswing.swing.mdi.client.InternalFrame {
             cliente=clienteLogica.buscarPorCodigo(rucCliente);
             jrazonCliente.setText(cliente.getRazonsocial());
         } catch (Exception e){
+            logger.error("Mensaje:\n"+e.getMessage());
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
             cliente= new Cliente();
             cliente.setId(0);
