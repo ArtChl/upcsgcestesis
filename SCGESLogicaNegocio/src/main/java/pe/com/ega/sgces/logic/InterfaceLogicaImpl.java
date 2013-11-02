@@ -16,7 +16,7 @@ import pe.com.ega.sgces.model.InterfaceConfig;
 public class InterfaceLogicaImpl implements InterfaceLogica{
 
     Session session; 
-    InterfaceDao interfaceDao;
+    private InterfaceDao interfaceDao;
 
     public InterfaceLogicaImpl() {
         session = HibernateUtil.getSessionFactory().openSession();

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import org.hibernate.Session;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.dao.ClienteDao;
-import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.HibernateUtil;
 
 /**

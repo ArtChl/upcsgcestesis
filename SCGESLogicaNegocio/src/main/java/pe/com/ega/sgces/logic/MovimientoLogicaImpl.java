@@ -16,7 +16,7 @@ import pe.com.ega.sgces.model.Movimiento;
 public class MovimientoLogicaImpl implements MovimientoLogica{
 
     SessionFactory session; 
-    MovimientoDao movimientoDao;
+    private MovimientoDao movimientoDao;
 
     public MovimientoLogicaImpl() {
     }

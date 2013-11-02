@@ -19,11 +19,11 @@ import pe.com.ega.sgces.model.Transacciondetalle;
 public class TransaccionLogicaImpl implements TransaccionLogica
 {
     SessionFactory session; 
-    TransaccionDao transaccionDao;
-    DespachoLogica despachoLogica;
-    MovimientoLogica movimientoLogica;
-    TransaccionDetalleDao transacciondetalleDao;
-    ImprimirComprobante comprobante;
+    private TransaccionDao transaccionDao;
+    private DespachoLogica despachoLogica;
+    private MovimientoLogica movimientoLogica;
+    private TransaccionDetalleDao transacciondetalleDao;
+    private ImprimirComprobante comprobante;
  
     public TransaccionLogicaImpl()
     {
