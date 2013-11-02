@@ -17,7 +17,7 @@ import pe.com.ega.sgces.model.Numcomprobante;
 public class NumComprobanteLogicaImpl implements NumComprobanteLogica{
 
     Session session; 
-    NumComprobanteDao valeDao;
+    private NumComprobanteDao valeDao;
     
     public NumComprobanteLogicaImpl() {
         session = HibernateUtil.getSessionFactory().openSession();

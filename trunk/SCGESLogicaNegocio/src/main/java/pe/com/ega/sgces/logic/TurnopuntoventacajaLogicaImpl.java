@@ -17,7 +17,7 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
 public class TurnopuntoventacajaLogicaImpl implements TurnopuntoventacajaLogica {
 
     SessionFactory session; 
-    TurnopuntoventacajaDao turnopuntoventacajaDao;
+    private TurnopuntoventacajaDao turnopuntoventacajaDao;
     
     public TurnopuntoventacajaLogicaImpl()
     {

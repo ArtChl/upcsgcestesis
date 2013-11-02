@@ -19,7 +19,7 @@ public class TurnoLogicaImpl implements TurnoLogica{
 
     private InterfaceLogica interfaceLogica;
     SessionFactory session;  
-    TurnoDao turnoDao;
+    private TurnoDao turnoDao;
     
     public TurnoLogicaImpl()
     {

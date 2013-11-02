@@ -26,12 +26,12 @@ import pe.com.ega.sgces.model.TurnopuntoventacajaId;
 public class CierreLogicaImpl implements CierreLogica{
 
     SessionFactory session; 
-    TransaccionLogica transaccionLogica;
-    DespachoLogica despachoLogica;
-    TurnopuntoventacajaLogica turnopuntoventacajaLogica;
-    ArqueoLogica arqueoLogica;
-    TurnoLogica turnoLogica;
-    ImprimirComprobante imprimircomprobante;
+    private TransaccionLogica transaccionLogica;
+    private DespachoLogica despachoLogica;
+    private TurnopuntoventacajaLogica turnopuntoventacajaLogica;
+    private ArqueoLogica arqueoLogica;
+    private TurnoLogica turnoLogica;
+    private ImprimirComprobante imprimircomprobante;
 
     public CierreLogicaImpl() {
             imprimircomprobante = new ImprimirComprobante();

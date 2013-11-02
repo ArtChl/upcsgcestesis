@@ -17,10 +17,10 @@ import pe.com.ega.sgces.model.TurnopuntoventacajaId;
 public class DepositoLogicaImpl implements DepositoLogica{
 
     SessionFactory session; 
-    DepositoDao depositoDao;
-    TurnoLogica turnoLogica;
-    Deposito deposito;
-    ImprimirComprobante imprimircomprobante;
+    private DepositoDao depositoDao;
+    private TurnoLogica turnoLogica;
+    private Deposito deposito;
+    private ImprimirComprobante imprimircomprobante;
 
     public DepositoLogicaImpl() {
         deposito=new Deposito();

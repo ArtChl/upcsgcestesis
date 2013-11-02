@@ -16,7 +16,7 @@ import pe.com.ega.sgces.model.Despacho;
 public class DespachoLogicaImpl implements DespachoLogica {
 
     SessionFactory session;    
-    DespachoDao despachoDao;
+    private DespachoDao despachoDao;
     
     public DespachoLogicaImpl()
     {

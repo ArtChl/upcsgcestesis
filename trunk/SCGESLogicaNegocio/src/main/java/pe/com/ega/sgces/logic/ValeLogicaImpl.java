@@ -17,7 +17,7 @@ import pe.com.ega.sgces.model.Vale;
 public class ValeLogicaImpl implements ValeLogica{
 
     Session session; 
-    ValeDao valeDao;
+    private ValeDao valeDao;
     
     public ValeLogicaImpl() {
         session = HibernateUtil.getSessionFactory().openSession();

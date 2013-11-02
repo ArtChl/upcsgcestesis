@@ -13,8 +13,8 @@ import pe.com.ega.sgces.model.Arqueo;
  */
 public class ArqueoLogicaImpl implements ArqueoLogica{
 
-    MovimientoLogica movimientoLogica;
-    DepositoLogica depositoLogica;
+    private MovimientoLogica movimientoLogica;
+    private DepositoLogica depositoLogica;
 
     public ArqueoLogicaImpl(MovimientoLogica movimiento, DepositoLogica deposito) {
          this.movimientoLogica = movimiento;
