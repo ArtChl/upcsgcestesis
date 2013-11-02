@@ -55,9 +55,6 @@ public class TransaccionLogicaImpl implements TransaccionLogica
     public void grabar(Transaccion transaccion) {
         session.getCurrentSession().beginTransaction();
         transaccionDao.insertar(transaccion);
-        /*for (Transacciondetalle detalle : transaccion.getTransacciondetalles()) {
-            transacciondetalleDao.insertar(detalle);
-        }*/
         session.getCurrentSession().getTransaction().commit(); 
     }
 

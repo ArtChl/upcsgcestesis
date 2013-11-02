@@ -27,15 +27,11 @@ public class ClientApplication implements MDIController,LoginController {
 
 
   private DemoClientFacade clientFacade = null;
-  private Hashtable domains = new Hashtable();
   private String username = null;
 
   public ClientApplication() {
 
     try {
-      // create the SessionFactory from hibernate.cfg.xml
-      //SessionFactory sessions = new Configuration().configure().buildSessionFactory();
-      //createConnection(sessions);
       clientFacade = new DemoClientFacade();
 
 
@@ -54,7 +50,7 @@ public class ClientApplication implements MDIController,LoginController {
         orderStateDomain.addDomainPair("GASOLINA 97","97");
         orderStateDomain.addDomainPair("DIESEL PRO+ ECO","DIESEL");
         orderStateDomain.addDomainPair("GLP","GLP");
-        //domains.clear();
+        
         domains.put(
         orderStateDomain.getDomainId(),
         orderStateDomain
@@ -65,7 +61,7 @@ public class ClientApplication implements MDIController,LoginController {
         orderStateDomain1.addDomainPair("MUNICIPALIDAD BELLAVISTA","MUNICIPALIDAD BELLAVISTA");
         orderStateDomain1.addDomainPair("TRANSPORTES ESMERALDA","TRANSPORTES ESMERALDA");
         orderStateDomain1.addDomainPair("MUNICIPALIDAD SAN MIGUEL","MUNICIPALIDAD SAN MIGUEL");
-        //domains.clear();
+        
         domains.put(
         orderStateDomain1.getDomainId(),
         orderStateDomain1
@@ -95,7 +91,6 @@ public class ClientApplication implements MDIController,LoginController {
       ClientSettings.VIEW_BACKGROUND_SEL_COLOR = true;
       ClientSettings.VIEW_MANDATORY_SYMBOL = true;
 
-      //MDIFrame mdi = new MDIFrame(this);
       LoginDialog d = new LoginDialog(null,false,this);
     }
     catch (Throwable ex) {

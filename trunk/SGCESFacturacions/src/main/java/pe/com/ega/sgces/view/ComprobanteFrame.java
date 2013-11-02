@@ -23,9 +23,8 @@ public class ComprobanteFrame extends InternalFrame {
     private TransaccionLogica transaccionLogica;
     private ArrayList<Transaccion> transaccions;
     private TurnoLogica turnoLogica;
-    private ImprimirComprobante comprobante;
 
-    public ComprobanteFrame(TurnoLogica turnoLogica, MovimientoLogica movimientoLogica, DespachoLogica despachoLogica, TransaccionLogica transaccionLogica) {
+    public ComprobanteFrame(TurnoLogica turnoLogica, TransaccionLogica transaccionLogica) {
         initComponents();
         this.turnoLogica =turnoLogica;
         this.transaccionLogica = transaccionLogica;
@@ -134,7 +133,7 @@ public class ComprobanteFrame extends InternalFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-           // select(e);
+          
         }
 
         @Override
@@ -152,7 +151,7 @@ public class ComprobanteFrame extends InternalFrame {
          private void select(MouseEvent e){
             int row=tabla.getSelectedRow();
             String txt[] = new String[tabla.getColumnCount()];
-            //String txt[] = "";
+            
             for (int i = 0; i < tabla.getColumnCount(); i++) {
                 txt[i]=String.valueOf(tabla.getValueAt(row, 0));
                 

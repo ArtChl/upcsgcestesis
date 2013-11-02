@@ -23,7 +23,7 @@ public class CierreFrame extends InternalFrame {
     private CierreLogica cierreLogica;
     private TurnoLogica turnoLogica;
     
-    public CierreFrame(MovimientoLogica movimiento, DepositoLogica deposito, DespachoLogica despachoLogica, TurnoLogica turnoLogica, CierreLogica cierreLogica) {
+    public CierreFrame(TurnoLogica turnoLogica, CierreLogica cierreLogica) {
         initComponents();
         this.cierreLogica = cierreLogica;
         this.turnoLogica= turnoLogica;

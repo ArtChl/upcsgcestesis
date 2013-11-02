@@ -131,7 +131,7 @@ public class DespachoFrame extends InternalFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-           // select(e);
+          
         }
 
         @Override
