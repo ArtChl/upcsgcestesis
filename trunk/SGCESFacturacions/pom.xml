@@ -33,8 +33,18 @@
             <url>https://openswing.googlecode.com/svn/</url>
         </repository>
         <repository>
+        <id>OSS Staging</id>
+        <name>Sonatype Staging Repository</name>
+        <url>http://oss.sonatype.org/content/groups/staging/</url>
+        </repository>
+        <repository>
       <id>java.net</id>
       <url>http://download.java.net/maven/2/</url>
+    </repository>
+    <repository>
+      <id>unknown-jars-temp-repo</id>
+      <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+      <url>file:${project.basedir}/lib</url>
     </repository>
   </repositories>
   <dependencies>
@@ -58,7 +68,12 @@
 	<groupId>commons-pool</groupId>
 	<artifactId>commons-pool</artifactId>
 	<version>1.6</version>
-    </dependency>           
+    </dependency> 
+    <dependency>
+        <groupId>com.seaglasslookandfeel</groupId>
+        <artifactId>seaglasslookandfeel</artifactId>
+        <version>0.2</version>
+    </dependency>        
     <dependency>
 	<groupId>postgresql</groupId>
 	<artifactId>postgresql</artifactId>
@@ -237,7 +252,11 @@
 	<artifactId>mysql-connector-java</artifactId>
 	<version>5.1.26</version>
     </dependency>
-            
+    <dependency>
+      <groupId>unknown.binary</groupId>
+      <artifactId>AbsoluteLayout</artifactId>
+      <version>SNAPSHOT</version>
+    </dependency>
   </dependencies>
   
 </project>
