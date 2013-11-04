@@ -37,14 +37,14 @@ public class CierreFrame extends InternalFrame {
 
         jPanel1.setLayout(null);
 
-        bturno.setText("TURNO");
+        bturno.setText("CERRAR TURNO");
         bturno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bturnoActionPerformed(evt);
             }
         });
         jPanel1.add(bturno);
-        bturno.setBounds(100, 10, 80, 50);
+        bturno.setBounds(100, 10, 210, 50);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
