@@ -230,6 +230,11 @@ public class ClientApplication implements MDIController,LoginController {
 
   public static void main(String[] argv) {
     new ClientApplication();
+    try {
+    UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+} catch (Exception e) {
+    e.printStackTrace();
+}
   }
 
 
@@ -243,6 +248,7 @@ public class ClientApplication implements MDIController,LoginController {
    MDIFrame mdi = new MDIFrame(this);
   }
 
+  
 
 
   /**
