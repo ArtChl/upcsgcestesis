@@ -78,7 +78,7 @@ public class DemoClientFacade implements ClientFacade {
 
    public void getCierre() 
    {
-        CierreFrame f = new CierreFrame(movimientoLogica, depositoLogica, despachoLogica, turnoLogica, cierreLogica);
+        CierreFrame f = new CierreFrame(turnoLogica, cierreLogica);
         f.setSize(422,118);
         f.setTitle("Cierre Turno");
         MDIFrame.add(f);
@@ -96,7 +96,7 @@ public class DemoClientFacade implements ClientFacade {
    
     public void getAnular() 
    {
-        ComprobanteFrame f = new ComprobanteFrame(turnoLogica, movimientoLogica, despachoLogica, transaccionLogica);
+        ComprobanteFrame f = new ComprobanteFrame(turnoLogica,transaccionLogica);
         f.setSize(528,202);
         f.setTitle("Anular Comprobantes");
         MDIFrame.add(f);
