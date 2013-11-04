@@ -79,7 +79,7 @@ public class DemoClientFacade implements ClientFacade {
    public void getCierre() 
    {
         CierreFrame f = new CierreFrame(movimientoLogica, depositoLogica, despachoLogica, turnoLogica, cierreLogica);
-        f.setSize(293,107);
+        f.setSize(422,118);
         f.setTitle("Cierre Turno");
         MDIFrame.add(f);
 
