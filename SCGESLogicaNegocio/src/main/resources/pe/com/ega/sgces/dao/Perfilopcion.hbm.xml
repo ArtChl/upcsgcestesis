@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Perfilopcion" table="perfilopcion" schema="public">
+        <composite-id name="id" class="pe.com.ega.sgces.model.PerfilopcionId">
+            <key-property name="idopcion" type="int">
+                <column name="idopcion" />
+            </key-property>
+            <key-property name="idperfil" type="int">
+                <column name="idperfil" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="perfil" class="pe.com.ega.sgces.model.Perfil" update="false" insert="false" fetch="select">
+            <column name="idperfil" not-null="true" />
+        </many-to-one>
+        <many-to-one name="opcion" class="pe.com.ega.sgces.model.Opcion" update="false" insert="false" fetch="select">
+            <column name="idopcion" not-null="true" />
+        </many-to-one>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

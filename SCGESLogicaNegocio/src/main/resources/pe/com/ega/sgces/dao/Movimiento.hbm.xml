@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Movimiento" table="movimiento" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence" />
+        </id>
+        <many-to-one name="turnopuntoventacaja" class="pe.com.ega.sgces.model.Turnopuntoventacaja" fetch="select">
+            <column name="idturno" not-null="true" />
+            <column name="idpuntoventa" not-null="true" />
+            <column name="idcaja" not-null="true" />
+        </many-to-one>
+        <many-to-one name="transaccion" class="pe.com.ega.sgces.model.Transaccion" fetch="select">
+            <column name="idtransaccion" not-null="true" />
+        </many-to-one>
+        <property name="pago" type="string">
+            <column name="pago" />
+        </property>
+        <property name="montorecibido" type="java.lang.Double">
+            <column name="montorecibido" precision="17" scale="17" />
+        </property>
+        <property name="montototal" type="java.lang.Double">
+            <column name="montototal" precision="17" scale="17" />
+        </property>
+        <property name="montodevuelto" type="java.lang.Double">
+            <column name="montodevuelto" precision="17" scale="17" />
+        </property>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <property name="nrooperacion" type="string">
+            <column name="nrooperacion" length="20" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="20" />
+        </property>
+        <property name="turno" type="string">
+            <column name="turno" length="50" />
+        </property>
+        <property name="cerrado" type="string">
+            <column name="cerrado" length="2" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Turno" table="turno" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence" />
+        </id>
+        <many-to-one name="estacionservicio" class="pe.com.ega.sgces.model.Estacionservicio" fetch="select">
+            <column name="idestacionservicio" not-null="true" />
+        </many-to-one>
+        <property name="fechaapertura" type="date">
+            <column name="fechaapertura" length="13" />
+        </property>
+        <property name="fechacierre" type="date">
+            <column name="fechacierre" length="13" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="1" />
+        </property>
+        <set name="turnopuntoventacajas" inverse="true">
+            <key>
+                <column name="idturno" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Turnopuntoventacaja" />
+        </set>
+    </class>
+</hibernate-mapping>

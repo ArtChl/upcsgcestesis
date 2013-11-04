@@ -17,34 +17,11 @@
 			</list>
 		</property>
 	</bean>
-        	
-	<bean id="despachoService" class="pe.com.ega.sgces.logic.DespachoLogicaImpl">
-		<property name="despachoDao" ref="despachoDao" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="despachoDao" class="pe.com.ega.sgces.dao.DespachoDaoImpl">
+        		
+	<bean id="movimientoDao" class="pe.com.ega.sgces.dao.MovimientoDaoImpl">
 		<property name="session" ref="miSessionFactory" />
 	</bean>
-        
-        
-        <bean id="movimientoService" class="pe.com.ega.sgces.logic.MovimientoLogicaImpl">
-		<property name="movimientoDao" ref="movimientoDao" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="movimientoDao" class="pe.com.ega.sgces.dao.MovimientoDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="depositoService" class="pe.com.ega.sgces.logic.DepositoLogicaImpl">
-		<property name="depositoDao" ref="depositoDao" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-
-        <bean id="depositoDao" class="pe.com.ega.sgces.dao.DepositoDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
+	
 	   
         <bean id="miDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
             <property name="driverClassName" value="org.postgresql.Driver"/>
@@ -114,5 +91,4 @@
                 </props>
             </property>
         </bean>  
- 
 </beans>

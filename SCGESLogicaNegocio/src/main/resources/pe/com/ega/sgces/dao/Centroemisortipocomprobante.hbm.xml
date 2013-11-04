@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Centroemisortipocomprobante" table="centroemisortipocomprobante" schema="public">
+        <composite-id name="id" class="pe.com.ega.sgces.model.CentroemisortipocomprobanteId">
+            <key-property name="idtipocomprobante" type="int">
+                <column name="idtipocomprobante" />
+            </key-property>
+            <key-property name="idcentroemisor" type="int">
+                <column name="idcentroemisor" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="centroemisor" class="pe.com.ega.sgces.model.Centroemisor" update="false" insert="false" fetch="select">
+            <column name="idcentroemisor" not-null="true" />
+        </many-to-one>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>
