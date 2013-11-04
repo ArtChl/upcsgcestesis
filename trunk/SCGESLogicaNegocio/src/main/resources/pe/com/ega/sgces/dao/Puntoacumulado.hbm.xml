@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Puntoacumulado" table="puntoacumulado" schema="public">
+        <composite-id name="id" class="pe.com.ega.sgces.model.PuntoacumuladoId">
+            <key-property name="idtransaccion" type="int">
+                <column name="idtransaccion" />
+            </key-property>
+            <key-property name="idtarjeta" type="int">
+                <column name="idtarjeta" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tarjeta" class="pe.com.ega.sgces.model.Tarjeta" update="false" insert="false" fetch="select">
+            <column name="idtarjeta" not-null="true" />
+        </many-to-one>
+        <many-to-one name="transaccion" class="pe.com.ega.sgces.model.Transaccion" update="false" insert="false" fetch="select">
+            <column name="idtransaccion" not-null="true" />
+        </many-to-one>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <property name="numeropuntos" type="java.lang.Integer">
+            <column name="numeropuntos" />
+        </property>
+    </class>
+</hibernate-mapping>

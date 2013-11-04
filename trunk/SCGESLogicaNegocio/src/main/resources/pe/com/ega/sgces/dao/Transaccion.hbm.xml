@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/10/2013 09:33:41 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pe.com.ega.sgces.model.Transaccion" table="transaccion" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence" />
+        </id>
+        <many-to-one name="cliente" class="pe.com.ega.sgces.model.Cliente" fetch="select">
+            <column name="idcliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="despacho" class="pe.com.ega.sgces.model.Despacho" fetch="select">
+            <column name="iddespacho" not-null="true" />
+        </many-to-one>
+        <property name="idtipotransaccion" type="string">
+            <column name="idtipotransaccion" />
+        </property>
+        <property name="idestado" type="java.lang.Integer">
+            <column name="idestado" />
+        </property>
+        <property name="numero" type="java.lang.Integer">
+            <column name="numero" />
+        </property>
+        <property name="numerotransaccion" type="string">
+            <column name="numerotransaccion" length="20" />
+        </property>
+        <property name="numeroplaca" type="string">
+            <column name="numeroplaca" length="20" />
+        </property>
+        <property name="numerovale" type="string">
+            <column name="numerovale" length="20" />
+        </property>
+        <property name="numerotiket" type="string">
+            <column name="numerotiket" length="20" />
+        </property>
+        <property name="producto" type="string">
+            <column name="producto" length="20" />
+        </property>
+        <property name="montototal" type="java.lang.Double">
+            <column name="montototal" precision="17" scale="17" />
+        </property>
+        <property name="nrogalones" type="java.lang.Double">
+            <column name="nrogalones" precision="17" scale="17" />
+        </property>
+        <property name="preciounitario" type="java.lang.Double">
+            <column name="preciounitario" precision="17" scale="17" />
+        </property>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <property name="facturado" type="java.lang.Boolean">
+            <column name="facturado" />
+        </property>
+        <property name="anulado" type="java.lang.Boolean">
+            <column name="anulado" />
+        </property>
+        <property name="turno" type="string">
+            <column name="turno" length="20" />
+        </property>
+        <set name="puntoacumulados" inverse="true">
+            <key>
+                <column name="idtransaccion" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Puntoacumulado" />
+        </set>
+        <set name="transacciondetalles" inverse="true">
+            <key>
+                <column name="idtransaccion" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Transacciondetalle" />
+        </set>
+        <set name="movimientos" inverse="true">
+            <key>
+                <column name="idtransaccion" not-null="true" />
+            </key>
+            <one-to-many class="pe.com.ega.sgces.model.Movimiento" />
+        </set>
+    </class>
+</hibernate-mapping>
