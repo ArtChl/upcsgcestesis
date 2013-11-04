@@ -25,6 +25,7 @@ public class ArqueoFrame extends InternalFrame {
     private ArqueoLogicaImpl arqueoLogica;
     private TurnoLogica turnoLogica;
     
+    
     public ArqueoFrame(MovimientoLogica movimiento, DepositoLogica deposito, TurnoLogica turnoLogica) {
         initComponents();
         arqueoLogica =new ArqueoLogicaImpl(movimiento, deposito);
