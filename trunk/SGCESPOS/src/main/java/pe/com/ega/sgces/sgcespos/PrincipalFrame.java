@@ -4,16 +4,23 @@
  */
 package pe.com.ega.sgces.sgcespos;
 
+import java.awt.Color;
+import java.awt.Component;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pe.com.ega.sgces.logic.ArqueoLogica;
@@ -103,6 +110,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         anular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PUNTO DE VENTA PLAYA");
         setBackground(new java.awt.Color(255, 0, 0));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -460,9 +468,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
   tabla.getColumnModel().getColumn(1).setMaxWidth(0);
   tabla.getColumnModel().getColumn(1).setMinWidth(0);
   tabla.getColumnModel().getColumn(1).setPreferredWidth(0);
+  tabla.getColumnModel().getColumn(0).setHeaderRenderer(new MyRenderer(Color.orange,Color.orange));
   for (int x = 2; x < tabla.getColumnCount(); x++) {
     tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
     tabla.getColumnModel().getColumn(x).setResizable(false);
+    if(x>2)tabla.getColumnModel().getColumn(x).setCellRenderer(render);
   }
   jScrollPane1.setViewportView(tabla); 
 }
@@ -537,4 +547,18 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private java.awt.Panel panel4;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
+TableCellRenderer render = new DefaultTableCellRenderer() { 
+public Component getTableCellRendererComponent(JTable table, Object value, 
+boolean isSelected, boolean hasFocus, int row, int column) {  
+JLabel l = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); 
+l.setHorizontalAlignment(SwingConstants.RIGHT); 
+if(hasFocus) 
+l.setForeground(Color.RED); 
+else 
+l.setForeground(Color.BLACK); 
+return l; 
+} 
+}; 
+
+
 }
