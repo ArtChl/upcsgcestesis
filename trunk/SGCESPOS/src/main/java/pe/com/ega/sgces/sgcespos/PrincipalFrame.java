@@ -48,7 +48,9 @@ public class PrincipalFrame extends javax.swing.JFrame {
   private CierreLogica cierreLogica;
   private ArrayList<Despacho> transaccions;
   private ArqueoLogica arqueoLogica;
+ // private DespachoLogica despachoLogica;
   private String numero;
+  
     public PrincipalFrame() {
         initComponents();
         this.setSize(554, 424);
@@ -84,14 +86,21 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         panel1 = new java.awt.Panel();
-        emitir = new javax.swing.JButton();
-        anular = new javax.swing.JButton();
+        boleta = new javax.swing.JButton();
+        factura = new javax.swing.JButton();
+        nota = new javax.swing.JButton();
+        panel3 = new java.awt.Panel();
+        boleta1 = new javax.swing.JButton();
+        factura1 = new javax.swing.JButton();
+        nota1 = new javax.swing.JButton();
         panel2 = new java.awt.Panel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        panel4 = new java.awt.Panel();
+        anular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 0));
@@ -101,38 +110,97 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(null);
 
-        panel1.setBackground(new java.awt.Color(0, 204, 0));
+        panel1.setBackground(new java.awt.Color(102, 255, 102));
         panel1.setLayout(null);
 
-        emitir.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        emitir.setForeground(new java.awt.Color(51, 51, 51));
-        emitir.setMnemonic(KeyEvent.VK_E);
-        emitir.setText("EMITIR COMPROBANTE");
-        emitir.addActionListener(new java.awt.event.ActionListener() {
+        boleta.setBackground(new java.awt.Color(0, 204, 0));
+        boleta.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        boleta.setForeground(new java.awt.Color(255, 255, 255));
+        boleta.setMnemonic(KeyEvent.VK_E);
+        boleta.setText("BOLETA");
+        boleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emitirActionPerformed(evt);
+                boletaActionPerformed(evt);
             }
         });
-        panel1.add(emitir);
-        emitir.setBounds(10, 10, 320, 100);
+        panel1.add(boleta);
+        boleta.setBounds(10, 10, 170, 100);
 
-        anular.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        anular.setMnemonic(KeyEvent.VK_N);
-        anular.setText("ANULAR COMPROBANTE");
-        anular.addActionListener(new java.awt.event.ActionListener() {
+        factura.setBackground(new java.awt.Color(0, 204, 0));
+        factura.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        factura.setForeground(new java.awt.Color(255, 255, 255));
+        factura.setMnemonic(KeyEvent.VK_E);
+        factura.setText("FACTURA");
+        factura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anularActionPerformed(evt);
+                facturaActionPerformed(evt);
             }
         });
-        panel1.add(anular);
-        anular.setBounds(360, 10, 330, 100);
+        panel1.add(factura);
+        factura.setBounds(190, 10, 150, 100);
+
+        nota.setBackground(new java.awt.Color(0, 204, 0));
+        nota.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        nota.setForeground(new java.awt.Color(255, 255, 255));
+        nota.setMnemonic(KeyEvent.VK_E);
+        nota.setText("DESPACHO");
+        nota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notaActionPerformed(evt);
+            }
+        });
+        panel1.add(nota);
+        nota.setBounds(350, 10, 160, 100);
+
+        panel3.setBackground(new java.awt.Color(0, 204, 0));
+        panel3.setLayout(null);
+
+        boleta1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        boleta1.setForeground(new java.awt.Color(51, 51, 51));
+        boleta1.setMnemonic(KeyEvent.VK_E);
+        boleta1.setText("BOLETA");
+        boleta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boleta1ActionPerformed(evt);
+            }
+        });
+        panel3.add(boleta1);
+        boleta1.setBounds(10, 10, 150, 100);
+
+        factura1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        factura1.setForeground(new java.awt.Color(51, 51, 51));
+        factura1.setMnemonic(KeyEvent.VK_E);
+        factura1.setText("FACTURA");
+        factura1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                factura1ActionPerformed(evt);
+            }
+        });
+        panel3.add(factura1);
+        factura1.setBounds(170, 10, 150, 100);
+
+        nota1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nota1.setForeground(new java.awt.Color(51, 51, 51));
+        nota1.setMnemonic(KeyEvent.VK_E);
+        nota1.setText("FACTURA");
+        nota1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nota1ActionPerformed(evt);
+            }
+        });
+        panel3.add(nota1);
+        nota1.setBounds(330, 10, 150, 100);
+
+        panel1.add(panel3);
+        panel3.setBounds(10, 280, 490, 120);
 
         jPanel2.add(panel1);
-        panel1.setBounds(10, 280, 700, 120);
+        panel1.setBounds(10, 280, 520, 120);
 
-        panel2.setBackground(new java.awt.Color(255, 255, 0));
+        panel2.setBackground(new java.awt.Color(255, 255, 204));
         panel2.setLayout(null);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 102));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setMnemonic(KeyEvent.VK_A);
         jButton1.setText("ARQUEO");
@@ -144,6 +212,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         panel2.add(jButton1);
         jButton1.setBounds(10, 10, 120, 63);
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 102));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton2.setMnemonic(KeyEvent.VK_T);
         jButton2.setText("TIRADA");
@@ -155,7 +224,9 @@ public class PrincipalFrame extends javax.swing.JFrame {
         panel2.add(jButton2);
         jButton2.setBounds(10, 90, 120, 66);
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 0, 0));
         jButton3.setMnemonic(KeyEvent.VK_C);
         jButton3.setText("CIERRE");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +235,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
         panel2.add(jButton3);
-        jButton3.setBounds(10, 260, 120, 100);
+        jButton3.setBounds(10, 250, 120, 110);
 
         jPanel2.add(panel2);
         panel2.setBounds(730, 30, 140, 370);
@@ -172,6 +243,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jScrollPane1.setMinimumSize(new java.awt.Dimension(200, 290));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(492, 190));
 
+        tabla.setAutoCreateRowSorter(true);
         tabla.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -190,16 +262,37 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 "Codigo", "Transaccion", "Surtidor", "Producto", "Precio", "Galones", "Monto"
             }
         ));
-        tabla.setAutoscrolls(false);
+        tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabla.setMaximumSize(new java.awt.Dimension(200, 290));
         tabla.setMinimumSize(new java.awt.Dimension(200, 290));
         tabla.setPreferredSize(new java.awt.Dimension(452, 190));
         tabla.setRequestFocusEnabled(false);
         tabla.setRowHeight(36);
+        tabla.setSelectionBackground(new java.awt.Color(255, 255, 0));
+        tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tabla);
 
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(10, 30, 700, 220);
+
+        panel4.setBackground(new java.awt.Color(255, 153, 102));
+        panel4.setLayout(null);
+
+        anular.setBackground(new java.awt.Color(255, 153, 0));
+        anular.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        anular.setForeground(new java.awt.Color(255, 255, 255));
+        anular.setMnemonic(KeyEvent.VK_N);
+        anular.setText("ANULAR");
+        anular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anularActionPerformed(evt);
+            }
+        });
+        panel4.add(anular);
+        anular.setBounds(10, 10, 150, 100);
+
+        jPanel2.add(panel4);
+        panel4.setBounds(540, 280, 170, 120);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 880, 420);
@@ -207,13 +300,13 @@ public class PrincipalFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emitirActionPerformed
+    private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
             OpcionFrame f=new OpcionFrame(buscar(numero), despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
             f.setSize(298,103);
             f.setTitle("Comprobante");
             f.setLocationRelativeTo(null);
             f.setVisible(true);
-    }//GEN-LAST:event_emitirActionPerformed
+    }//GEN-LAST:event_boletaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Double total=0.0;
@@ -264,6 +357,34 @@ public class PrincipalFrame extends javax.swing.JFrame {
         f.setVisible(true);
         f.setSize(520,217);
     }//GEN-LAST:event_anularActionPerformed
+
+    private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
+          FacturaFrame f=new FacturaFrame(buscar(numero),despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
+            f.setSize(391,166);
+            f.setTitle("Factura");
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
+    }//GEN-LAST:event_facturaActionPerformed
+
+    private void notaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notaActionPerformed
+         NotaFrame f=new NotaFrame(buscar(numero));
+            f.setSize(391,290);
+            f.setTitle("Nota Despacho");
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
+    }//GEN-LAST:event_notaActionPerformed
+
+    private void boleta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boleta1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boleta1ActionPerformed
+
+    private void factura1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factura1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_factura1ActionPerformed
+
+    private void nota1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nota1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,14 +520,21 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anular;
-    private javax.swing.JButton emitir;
+    private javax.swing.JButton boleta;
+    private javax.swing.JButton boleta1;
+    private javax.swing.JButton factura;
+    private javax.swing.JButton factura1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton nota;
+    private javax.swing.JButton nota1;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
+    private java.awt.Panel panel3;
+    private java.awt.Panel panel4;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
