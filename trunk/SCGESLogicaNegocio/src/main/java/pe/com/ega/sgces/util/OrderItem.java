@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Imprimir;
+package pe.com.ega.sgces.util;
 
 /**
  *
@@ -28,12 +28,10 @@ public class OrderItem {
         return delimitado[3];
     }
     public String GeneraItem(String cantidad, String nombre, String precio,String total){
-        //return cantidad+temp[0]+nombre+temp[0]+precio+temp[0]+total;
         return String.format("%1$-6s",cantidad)+String.format("%1$-20s",nombre)+String.format("%1$6s",precio)+String.format("%1$8s",total);
     }
     
     public String GeneraItemBoleta(String cantidad, String nombre, String precio,String total){
-        //return cantidad+temp[0]+nombre+temp[0]+precio+temp[0]+total;
         return String.format("%1$-10s",cantidad)+String.format("%1$-10s",nombre)+String.format("%1$6s",precio)+String.format("%1$14s",total);
     }
 }
