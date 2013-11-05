@@ -6,6 +6,7 @@ package pe.com.ega.sgces.sgcespos;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.FocusAdapter;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -38,6 +39,7 @@ import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Arqueo;
+import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 
 
@@ -79,6 +81,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
 				CierreLogicaImpl.class);
          pintarTabla();
          arqueoLogica =new ArqueoLogicaImpl(movimientoLogica, depositoLogica);
+         this.getRootPane().setDefaultButton(boleta);
+         boleta.requestFocus();
        
     }
 
@@ -101,9 +105,9 @@ public class PrincipalFrame extends javax.swing.JFrame {
         factura1 = new javax.swing.JButton();
         nota1 = new javax.swing.JButton();
         panel2 = new java.awt.Panel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        arqueo = new javax.swing.JButton();
+        tirada = new javax.swing.JButton();
+        cierre = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         panel4 = new java.awt.Panel();
@@ -115,16 +119,17 @@ public class PrincipalFrame extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setEnabled(false);
         jPanel2.setLayout(null);
 
-        panel1.setBackground(new java.awt.Color(102, 255, 102));
+        panel1.setBackground(new java.awt.Color(255, 255, 255));
         panel1.setLayout(null);
 
-        boleta.setBackground(new java.awt.Color(0, 204, 0));
-        boleta.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        boleta.setForeground(new java.awt.Color(255, 255, 255));
-        boleta.setMnemonic(KeyEvent.VK_E);
+        boleta.setBackground(new java.awt.Color(133, 238, 75));
+        boleta.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        boleta.setForeground(new java.awt.Color(51, 51, 51));
+        boleta.setMnemonic(KeyEvent.VK_B);
         boleta.setText("BOLETA");
         boleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,12 +137,12 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
         panel1.add(boleta);
-        boleta.setBounds(10, 10, 170, 100);
+        boleta.setBounds(0, 10, 170, 100);
 
-        factura.setBackground(new java.awt.Color(0, 204, 0));
-        factura.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        factura.setForeground(new java.awt.Color(255, 255, 255));
-        factura.setMnemonic(KeyEvent.VK_E);
+        factura.setBackground(new java.awt.Color(133, 238, 75));
+        factura.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        factura.setForeground(new java.awt.Color(51, 51, 51));
+        factura.setMnemonic(KeyEvent.VK_F);
         factura.setText("FACTURA");
         factura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,12 +150,12 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
         panel1.add(factura);
-        factura.setBounds(190, 10, 150, 100);
+        factura.setBounds(180, 10, 160, 100);
 
-        nota.setBackground(new java.awt.Color(0, 204, 0));
-        nota.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        nota.setForeground(new java.awt.Color(255, 255, 255));
-        nota.setMnemonic(KeyEvent.VK_E);
+        nota.setBackground(new java.awt.Color(133, 238, 75));
+        nota.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        nota.setForeground(new java.awt.Color(51, 51, 51));
+        nota.setMnemonic(KeyEvent.VK_D);
         nota.setText("DESPACHO");
         nota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +163,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
         panel1.add(nota);
-        nota.setBounds(350, 10, 160, 100);
+        nota.setBounds(350, 10, 170, 100);
 
         panel3.setBackground(new java.awt.Color(0, 204, 0));
         panel3.setLayout(null);
@@ -203,47 +208,49 @@ public class PrincipalFrame extends javax.swing.JFrame {
         panel3.setBounds(10, 280, 490, 120);
 
         jPanel2.add(panel1);
-        panel1.setBounds(10, 280, 520, 120);
+        panel1.setBounds(10, 280, 530, 120);
 
-        panel2.setBackground(new java.awt.Color(255, 255, 204));
+        panel2.setBackground(new java.awt.Color(255, 255, 255));
         panel2.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setMnemonic(KeyEvent.VK_A);
-        jButton1.setText("ARQUEO");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        arqueo.setBackground(new java.awt.Color(255, 235, 90));
+        arqueo.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
+        arqueo.setForeground(new java.awt.Color(51, 51, 51));
+        arqueo.setMnemonic(KeyEvent.VK_R);
+        arqueo.setText("<html><center><p>ARQUEO DE</p><p>CAJA</p></center></html>");
+        arqueo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                arqueoActionPerformed(evt);
             }
         });
-        panel2.add(jButton1);
-        jButton1.setBounds(10, 10, 120, 63);
+        panel2.add(arqueo);
+        arqueo.setBounds(0, 0, 140, 63);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 102));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setMnemonic(KeyEvent.VK_T);
-        jButton2.setText("TIRADA");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        tirada.setBackground(new java.awt.Color(255, 235, 90));
+        tirada.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
+        tirada.setForeground(new java.awt.Color(51, 51, 51));
+        tirada.setMnemonic(KeyEvent.VK_T);
+        tirada.setText("<html><center><p>TIRADA A</p><p>BUZON</p></center></html>");
+        tirada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                tiradaActionPerformed(evt);
             }
         });
-        panel2.add(jButton2);
-        jButton2.setBounds(10, 90, 120, 66);
+        panel2.add(tirada);
+        tirada.setBounds(0, 80, 140, 66);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 0));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 0, 0));
-        jButton3.setMnemonic(KeyEvent.VK_C);
-        jButton3.setText("CIERRE");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cierre.setBackground(new java.awt.Color(255, 235, 90));
+        cierre.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
+        cierre.setForeground(new java.awt.Color(51, 51, 51));
+        cierre.setMnemonic(KeyEvent.VK_C);
+        cierre.setText("<html><center><p>CIERRE DE</p><p>TURNO</p></center></html>");
+        cierre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cierreActionPerformed(evt);
             }
         });
-        panel2.add(jButton3);
-        jButton3.setBounds(10, 250, 120, 110);
+        panel2.add(cierre);
+        cierre.setBounds(0, 160, 140, 70);
 
         jPanel2.add(panel2);
         panel2.setBounds(730, 30, 140, 370);
@@ -252,14 +259,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(492, 190));
 
         tabla.setAutoCreateRowSorter(true);
-        tabla.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        tabla.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tabla.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        tabla.setForeground(new java.awt.Color(51, 51, 51));
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -270,26 +274,31 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 "Codigo", "Transaccion", "Surtidor", "Producto", "Precio", "Galones", "Monto"
             }
         ));
+        tabla.setAutoscrolls(false);
         tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabla.setFocusTraversalPolicyProvider(true);
+        tabla.setFocusable(false);
         tabla.setMaximumSize(new java.awt.Dimension(200, 290));
         tabla.setMinimumSize(new java.awt.Dimension(200, 290));
         tabla.setPreferredSize(new java.awt.Dimension(452, 190));
-        tabla.setRequestFocusEnabled(false);
         tabla.setRowHeight(36);
         tabla.setSelectionBackground(new java.awt.Color(255, 255, 0));
         tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tabla.getTableHeader().setResizingAllowed(false);
+        tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla);
+        tabla.getAccessibleContext().setAccessibleParent(tabla);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 30, 700, 220);
+        jScrollPane1.setBounds(10, 30, 700, 230);
 
-        panel4.setBackground(new java.awt.Color(255, 153, 102));
+        panel4.setBackground(new java.awt.Color(255, 255, 255));
         panel4.setLayout(null);
 
-        anular.setBackground(new java.awt.Color(255, 153, 0));
-        anular.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        anular.setForeground(new java.awt.Color(255, 255, 255));
-        anular.setMnemonic(KeyEvent.VK_N);
+        anular.setBackground(new java.awt.Color(255, 62, 79));
+        anular.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        anular.setForeground(new java.awt.Color(51, 51, 51));
+        anular.setMnemonic(KeyEvent.VK_A);
         anular.setText("ANULAR");
         anular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,10 +306,10 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
         panel4.add(anular);
-        anular.setBounds(10, 10, 150, 100);
+        anular.setBounds(0, 10, 170, 100);
 
         jPanel2.add(panel4);
-        panel4.setBounds(540, 280, 170, 120);
+        panel4.setBounds(540, 280, 200, 120);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 880, 420);
@@ -308,15 +317,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
-            OpcionFrame f=new OpcionFrame(buscar(numero), despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
-            f.setSize(298,103);
-            f.setTitle("Comprobante");
-            f.setLocationRelativeTo(null);
-            f.setVisible(true);
-    }//GEN-LAST:event_boletaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void arqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arqueoActionPerformed
         Double total=0.0;
             ArrayList<Arqueo> lista=arqueoLogica.buscarPorCodigo(String.valueOf(turnoLogica.buscarPorCodigo("N").getId()));
             for (Arqueo arqueo1 : lista) {
@@ -327,17 +328,17 @@ public class PrincipalFrame extends javax.swing.JFrame {
                     , String.valueOf(redondear(lista.get(0).getCantidad())),String.valueOf(redondear(lista.get(2).getCantidad())),
                      String.valueOf(redondear(total))
                     , String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_arqueoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void tiradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiradaActionPerformed
         TiradaFrame f = new TiradaFrame(depositoLogica);
-        f.setSize(210,233);
+        f.setSize(509,325);
         f.setTitle("Tirada");
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_tiradaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void cierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierreActionPerformed
         String mensaje=cierreLogica.cierreTurno(turnoLogica.buscarPorCodigo("N"));
               if(mensaje.equalsIgnoreCase("Cierre"))
               {
@@ -349,50 +350,74 @@ public class PrincipalFrame extends javax.swing.JFrame {
                   if(mensaje.equalsIgnoreCase("Caja no Cuadrada"))
                   {
                        final JPanel panel = new JPanel();
-                       JOptionPane.showMessageDialog(panel,mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+                       new OkCancelDialog(this,true,mensaje).setVisible(true);
                   }else{
                         final JPanel panel = new JPanel();
-                        JOptionPane.showMessageDialog(panel, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+                        new OkCancelDialog(this,true,mensaje).setVisible(true);
                   }
               }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_cierreActionPerformed
 
     private void anularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anularActionPerformed
         ComprobanteFrame f = new ComprobanteFrame(turnoLogica,transaccionLogica);
-        f.setSize(528,202);
-        f.setTitle("Anular Comprobantes");
+        f.setSize(857,489);
+        f.setTitle("ANULAR COMPROBANTE");
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-        f.setSize(520,217);
     }//GEN-LAST:event_anularActionPerformed
 
-    private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
-          FacturaFrame f=new FacturaFrame(buscar(numero),despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
-            f.setSize(391,166);
-            f.setTitle("Factura");
-            f.setLocationRelativeTo(null);
-            f.setVisible(true);
-    }//GEN-LAST:event_facturaActionPerformed
-
-    private void notaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notaActionPerformed
-         NotaFrame f=new NotaFrame(buscar(numero));
-            f.setSize(391,290);
-            f.setTitle("Nota Despacho");
-            f.setLocationRelativeTo(null);
-            f.setVisible(true);
-    }//GEN-LAST:event_notaActionPerformed
-
-    private void boleta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boleta1ActionPerformed
+    private void nota1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_boleta1ActionPerformed
+    }//GEN-LAST:event_nota1ActionPerformed
 
     private void factura1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factura1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_factura1ActionPerformed
 
-    private void nota1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota1ActionPerformed
+    private void boleta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boleta1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nota1ActionPerformed
+    }//GEN-LAST:event_boleta1ActionPerformed
+
+    private void notaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notaActionPerformed
+        try{
+        NotaFrame f=new NotaFrame(buscar(numero));
+        f.setSize(573,553);
+        f.setTitle("NOTA DE DESPACHO");
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+        } catch (Exception e) {
+            new OkDialog(this,true,"No ha Seleccionado Despacho !!!").setVisible(true);
+        }
+       
+    }//GEN-LAST:event_notaActionPerformed
+
+    private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
+        try{
+        FacturaFrame f=new FacturaFrame(buscar(numero),despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
+        f.setSize(627,301);
+        f.setTitle("EMISION DE FACTURA");
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+        } catch (Exception e) {
+            new OkDialog(this,true,"No ha Seleccionado Despacho !!!").setVisible(true);
+        }
+       
+    }//GEN-LAST:event_facturaActionPerformed
+
+    private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setId(2);
+            MonedaFrame f = new MonedaFrame(buscar(numero), "BOL", cliente, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
+            f.setSize(528, 395);
+            f.setTitle("TIPO DE PAGO");
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
+        } catch (Exception e) {
+            new OkDialog(this,true,"No ha Seleccionado Despacho !!!").setVisible(true);
+        }
+       
+    }//GEN-LAST:event_boletaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -472,7 +497,9 @@ public class PrincipalFrame extends javax.swing.JFrame {
   for (int x = 2; x < tabla.getColumnCount(); x++) {
     tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
     tabla.getColumnModel().getColumn(x).setResizable(false);
-    if(x>2)tabla.getColumnModel().getColumn(x).setCellRenderer(render);
+    if(x>2) {
+          tabla.getColumnModel().getColumn(x).setCellRenderer(render);
+      }
   }
   jScrollPane1.setViewportView(tabla); 
 }
@@ -530,13 +557,12 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anular;
+    private javax.swing.JButton arqueo;
     private javax.swing.JButton boleta;
     private javax.swing.JButton boleta1;
+    private javax.swing.JButton cierre;
     private javax.swing.JButton factura;
     private javax.swing.JButton factura1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton nota;
@@ -546,16 +572,20 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private java.awt.Panel panel3;
     private java.awt.Panel panel4;
     private javax.swing.JTable tabla;
+    private javax.swing.JButton tirada;
     // End of variables declaration//GEN-END:variables
 TableCellRenderer render = new DefaultTableCellRenderer() { 
+@Override 
 public Component getTableCellRendererComponent(JTable table, Object value, 
 boolean isSelected, boolean hasFocus, int row, int column) {  
 JLabel l = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); 
 l.setHorizontalAlignment(SwingConstants.RIGHT); 
-if(hasFocus) 
-l.setForeground(Color.RED); 
-else 
-l.setForeground(Color.BLACK); 
+if(hasFocus) {
+        l.setForeground(Color.RED);
+    } 
+else {
+        l.setForeground(Color.BLACK);
+    } 
 return l; 
 } 
 }; 
