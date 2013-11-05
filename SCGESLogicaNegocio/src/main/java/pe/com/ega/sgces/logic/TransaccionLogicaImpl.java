@@ -5,7 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import org.apache.log4j.Logger;
-import Imprimir.ImprimirComprobante;
+import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.TransaccionDao;

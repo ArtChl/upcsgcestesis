@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Imprimir;
+package pe.com.ega.sgces.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class ImprimirComprobante {
 
-    public Ticket ticket = new Ticket();
+    public static Ticket ticket = new Ticket();
        
     public void imprimirFacturaDetalle(){
         try{

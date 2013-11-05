@@ -2,20 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Imprimir;
+package pe.com.ega.sgces.util;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 public class Ticket{
     
     public Ticket(){}
-        static ArrayList<String> CabezaLineas=new ArrayList<String>();
-        static ArrayList<String> subCabezaLineas=new ArrayList<String>();
-        static ArrayList<String> subCabezaLineas1=new ArrayList<String>();
-        static ArrayList<String> items=new ArrayList<String>();
-        static ArrayList<String> totales=new ArrayList<String>();
-        static ArrayList<String> LineasPie=new ArrayList<String>();
+        static ArrayList<String> CabezaLineas=new ArrayList<>();
+        static ArrayList<String> subCabezaLineas=new ArrayList<>();
+        static ArrayList<String> subCabezaLineas1=new ArrayList<>();
+        static ArrayList<String> items=new ArrayList<>();
+        static ArrayList<String> totales=new ArrayList<>();
+        static ArrayList<String> LineasPie=new ArrayList<>();
         public static void AddCabecera(String line){CabezaLineas.add(line);}
         public static void AddSubCabecera(String line){subCabezaLineas.add(line);}
         public static void AddFinItem(String line){subCabezaLineas1.add(line);}
@@ -59,7 +60,6 @@ public class Ticket{
        }
        public static void ImprimirDocumento(String impresora){
             try{
-                //FileWriter imp = new FileWriter("LPT1");
                 
                 FileWriter imp = new FileWriter(impresora);
                 

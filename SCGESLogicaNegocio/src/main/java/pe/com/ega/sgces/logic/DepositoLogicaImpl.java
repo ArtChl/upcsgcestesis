@@ -4,7 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
-import Imprimir.ImprimirComprobante;
+import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.SessionFactory;
