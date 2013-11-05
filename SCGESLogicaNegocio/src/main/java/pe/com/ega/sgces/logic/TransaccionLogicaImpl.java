@@ -4,15 +4,13 @@
  */
 package pe.com.ega.sgces.logic;
 
+import pe.com.ega.sgces.util.Util;
 import org.apache.log4j.Logger;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.TransaccionDao;
-import pe.com.ega.sgces.dao.TransaccionDetalleDao;
 import pe.com.ega.sgces.model.Transaccion;
-import pe.com.ega.sgces.model.Transacciondetalle;
-
 /**
  *
  * @author CHRISTIAN
@@ -24,7 +22,6 @@ public class TransaccionLogicaImpl implements TransaccionLogica
     private TransaccionDao transaccionDao;
     private DespachoLogica despachoLogica;
     private MovimientoLogica movimientoLogica;
-    private TransaccionDetalleDao transacciondetalleDao;
     private ImprimirComprobante comprobante;
  
     public TransaccionLogicaImpl()
@@ -47,12 +44,7 @@ public class TransaccionLogicaImpl implements TransaccionLogica
     public void setTransaccionDao(TransaccionDao transaccionDao) {
         this.transaccionDao = transaccionDao;
     }
-    
-
-    public void setTransaccionDetalleDao(TransaccionDetalleDao transacciondetalleDao) {
-        this.transacciondetalleDao = transacciondetalleDao; 
-    }
-    
+        
     @Override
     public void grabar(Transaccion transaccion) {
         session.getCurrentSession().beginTransaction();

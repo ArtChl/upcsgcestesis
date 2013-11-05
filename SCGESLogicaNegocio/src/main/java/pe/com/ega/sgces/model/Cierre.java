@@ -13,15 +13,7 @@ public class Cierre {
     private String producto;
     private Double cantidad;
 
-    public Cierre() {
-    }
-
     
-    public Cierre(String comprobante, Double cantidad) {
-        this.producto = comprobante;
-        this.cantidad = cantidad;
-    }
-
     public String getProducto() {
         return producto;
     }

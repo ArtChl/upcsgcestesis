@@ -4,7 +4,6 @@
  */
 package pe.com.ega.sgces.dao;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 
@@ -14,7 +13,7 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
  */
 public class TurnopuntoventacajaDaoImpl implements TurnopuntoventacajaDao{
 
-    SessionFactory session;
+    private SessionFactory session;
 
     public void setSession(SessionFactory session) {
         this.session = session;

@@ -9,7 +9,6 @@ import java.util.Date;
  */
 public class Varillajeajuste  implements java.io.Serializable {
 
-
      private int id;
      private Varillaje varillaje;
      private Integer volumen;
@@ -17,19 +16,6 @@ public class Varillajeajuste  implements java.io.Serializable {
      private Date fecharegistro;
 
     public Varillajeajuste() {
-    }
-
-	
-    public Varillajeajuste(int id, Varillaje varillaje) {
-        this.id = id;
-        this.varillaje = varillaje;
-    }
-    public Varillajeajuste(int id, Varillaje varillaje, Integer volumen, String concepto, Date fecharegistro) {
-       this.id = id;
-       this.varillaje = varillaje;
-       this.volumen = volumen;
-       this.concepto = concepto;
-       this.fecharegistro = fecharegistro;
     }
    
     public int getId() {

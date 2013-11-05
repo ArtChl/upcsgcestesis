@@ -15,11 +15,6 @@ public class PuntoacumuladoId  implements java.io.Serializable {
     public PuntoacumuladoId() {
     }
 
-    public PuntoacumuladoId(int idtransaccion, int idtarjeta) {
-       this.idtransaccion = idtransaccion;
-       this.idtarjeta = idtarjeta;
-    }
-   
     public int getIdtransaccion() {
         return this.idtransaccion;
     }
@@ -34,27 +29,6 @@ public class PuntoacumuladoId  implements java.io.Serializable {
     public void setIdtarjeta(int idtarjeta) {
         this.idtarjeta = idtarjeta;
     }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof PuntoacumuladoId) ) return false;
-		 PuntoacumuladoId castOther = ( PuntoacumuladoId ) other; 
-         
-		 return (this.getIdtransaccion()==castOther.getIdtransaccion())
- && (this.getIdtarjeta()==castOther.getIdtarjeta());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getIdtransaccion();
-         result = 37 * result + this.getIdtarjeta();
-         return result;
-   }   
-
-
 }
 
 

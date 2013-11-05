@@ -14,7 +14,7 @@ import pe.com.ega.sgces.model.Numcomprobante;
  */
 public class NumComprobanteDaoImpl implements NumComprobanteDao{
 
-    Session session;
+   private Session session;
     @Override
     public void insertar(Numcomprobante usuario) {
         session.save(usuario);

@@ -5,9 +5,6 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
-import org.hibernate.SessionFactory;
-import pe.com.ega.sgces.dao.MovimientoDao;
-import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**

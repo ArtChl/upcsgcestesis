@@ -11,32 +11,11 @@ import java.util.Set;
  */
 public class Caja  implements java.io.Serializable {
 
-
      private int id;
      private Trabajador trabajador;
      private String codigo;
      private Date fecharegistro;
      private Set<Turnopuntoventacaja> turnopuntoventacajas = new HashSet<Turnopuntoventacaja>(0);
-
-    public Caja() {
-    }
-
-    public Caja(int id) {
-        this.id = id;
-      
-    }
-	
-    public Caja(int id, Trabajador trabajador) {
-        this.id = id;
-        this.trabajador = trabajador;
-    }
-    public Caja(int id, Trabajador trabajador, String codigo, Date fecharegistro, Set<Turnopuntoventacaja> turnopuntoventacajas) {
-       this.id = id;
-       this.trabajador = trabajador;
-       this.codigo = codigo;
-       this.fecharegistro = fecharegistro;
-       this.turnopuntoventacajas = turnopuntoventacajas;
-    }
    
     public int getId() {
         return this.id;

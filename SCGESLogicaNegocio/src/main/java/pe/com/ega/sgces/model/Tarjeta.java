@@ -23,22 +23,6 @@ public class Tarjeta  implements java.io.Serializable {
 
     public Tarjeta() {
     }
-
-	
-    public Tarjeta(int id, Cliente cliente) {
-        this.id = id;
-        this.cliente = cliente;
-    }
-    public Tarjeta(int id, Cliente cliente, String nombrechofer, String numeroplaca, Date fechacaducidad, Date fecharegistro, Set<Subcuenta> subcuentas, Set<Puntoacumulado> puntoacumulados) {
-       this.id = id;
-       this.cliente = cliente;
-       this.nombrechofer = nombrechofer;
-       this.numeroplaca = numeroplaca;
-       this.fechacaducidad = fechacaducidad;
-       this.fecharegistro = fecharegistro;
-       this.subcuentas = subcuentas;
-       this.puntoacumulados = puntoacumulados;
-    }
    
     public int getId() {
         return this.id;

@@ -15,11 +15,6 @@ public class UsuarioperfilId  implements java.io.Serializable {
     public UsuarioperfilId() {
     }
 
-    public UsuarioperfilId(int idusuario, int idperfil) {
-       this.idusuario = idusuario;
-       this.idperfil = idperfil;
-    }
-   
     public int getIdusuario() {
         return this.idusuario;
     }
@@ -34,26 +29,6 @@ public class UsuarioperfilId  implements java.io.Serializable {
     public void setIdperfil(int idperfil) {
         this.idperfil = idperfil;
     }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof UsuarioperfilId) ) return false;
-		 UsuarioperfilId castOther = ( UsuarioperfilId ) other; 
-         
-		 return (this.getIdusuario()==castOther.getIdusuario())
- && (this.getIdperfil()==castOther.getIdperfil());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getIdusuario();
-         result = 37 * result + this.getIdperfil();
-         return result;
-   }   
-
 
 }
 

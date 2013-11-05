@@ -17,22 +17,6 @@ public class Centroemisor  implements java.io.Serializable {
      private String emisor;
      private Date fecharegistro;
      private Set<Centroemisortipocomprobante> centroemisortipocomprobantes = new HashSet<Centroemisortipocomprobante>(0);
-
-    public Centroemisor() {
-    }
-
-	
-    public Centroemisor(int id, Puntoventa puntoventa) {
-        this.id = id;
-        this.puntoventa = puntoventa;
-    }
-    public Centroemisor(int id, Puntoventa puntoventa, String emisor, Date fecharegistro, Set<Centroemisortipocomprobante> centroemisortipocomprobantes) {
-       this.id = id;
-       this.puntoventa = puntoventa;
-       this.emisor = emisor;
-       this.fecharegistro = fecharegistro;
-       this.centroemisortipocomprobantes = centroemisortipocomprobantes;
-    }
    
     public int getId() {
         return this.id;

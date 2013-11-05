@@ -20,11 +20,6 @@ public class Numcomprobante  implements java.io.Serializable {
     public Numcomprobante(int codigo) {
         this.codigo = codigo;
     }
-    public Numcomprobante(int codigo, String tipo, Integer numero) {
-       this.codigo = codigo;
-       this.tipo = tipo;
-       this.numero = numero;
-    }
    
     public int getCodigo() {
         return this.codigo;

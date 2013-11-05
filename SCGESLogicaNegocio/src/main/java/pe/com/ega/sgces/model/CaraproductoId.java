@@ -8,18 +8,9 @@ package pe.com.ega.sgces.model;
  */
 public class CaraproductoId  implements java.io.Serializable {
 
-
      private int idcara;
      private int idproducto;
 
-    public CaraproductoId() {
-    }
-
-    public CaraproductoId(int idcara, int idproducto) {
-       this.idcara = idcara;
-       this.idproducto = idproducto;
-    }
-   
     public int getIdcara() {
         return this.idcara;
     }
@@ -34,26 +25,6 @@ public class CaraproductoId  implements java.io.Serializable {
     public void setIdproducto(int idproducto) {
         this.idproducto = idproducto;
     }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof CaraproductoId) ) return false;
-		 CaraproductoId castOther = ( CaraproductoId ) other; 
-         
-		 return (this.getIdcara()==castOther.getIdcara())
- && (this.getIdproducto()==castOther.getIdproducto());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getIdcara();
-         result = 37 * result + this.getIdproducto();
-         return result;
-   }   
-
 
 }
 

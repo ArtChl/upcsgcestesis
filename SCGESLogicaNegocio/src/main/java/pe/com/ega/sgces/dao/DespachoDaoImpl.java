@@ -8,15 +8,13 @@ import java.util.List;
 import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Despacho;
-import pe.com.ega.sgces.model.Lista;
-
 /**
  *
  * @author Flopez
  */
 public class DespachoDaoImpl implements DespachoDao{
 
-    SessionFactory session;
+    private SessionFactory session;
 
     @Override
     public void setSession(SessionFactory session) {

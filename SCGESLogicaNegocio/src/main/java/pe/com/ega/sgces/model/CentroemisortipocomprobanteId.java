@@ -11,14 +11,6 @@ public class CentroemisortipocomprobanteId  implements java.io.Serializable {
 
      private int idtipocomprobante;
      private int idcentroemisor;
-
-    public CentroemisortipocomprobanteId() {
-    }
-
-    public CentroemisortipocomprobanteId(int idtipocomprobante, int idcentroemisor) {
-       this.idtipocomprobante = idtipocomprobante;
-       this.idcentroemisor = idcentroemisor;
-    }
    
     public int getIdtipocomprobante() {
         return this.idtipocomprobante;
@@ -34,26 +26,6 @@ public class CentroemisortipocomprobanteId  implements java.io.Serializable {
     public void setIdcentroemisor(int idcentroemisor) {
         this.idcentroemisor = idcentroemisor;
     }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof CentroemisortipocomprobanteId) ) return false;
-		 CentroemisortipocomprobanteId castOther = ( CentroemisortipocomprobanteId ) other; 
-         
-		 return (this.getIdtipocomprobante()==castOther.getIdtipocomprobante())
- && (this.getIdcentroemisor()==castOther.getIdcentroemisor());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getIdtipocomprobante();
-         result = 37 * result + this.getIdcentroemisor();
-         return result;
-   }   
-
 
 }
 

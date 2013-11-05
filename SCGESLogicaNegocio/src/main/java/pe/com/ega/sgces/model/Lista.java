@@ -24,12 +24,6 @@ public class Lista  implements java.io.Serializable {
     public Lista(int id) {
         this.id = id;
     }
-    public Lista(int id, String nombre, Date fecharegistro, Set<Listavalor> listavalors) {
-       this.id = id;
-       this.nombre = nombre;
-       this.fecharegistro = fecharegistro;
-       this.listavalors = listavalors;
-    }
    
     public int getId() {
         return this.id;

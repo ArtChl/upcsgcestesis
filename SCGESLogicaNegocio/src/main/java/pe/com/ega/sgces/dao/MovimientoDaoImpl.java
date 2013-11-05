@@ -12,7 +12,7 @@ import pe.com.ega.sgces.model.Movimiento;
 
 public class MovimientoDaoImpl implements MovimientoDao{
 
-    SessionFactory session;
+    private SessionFactory session;
         
     @Override
     public void setSession(SessionFactory session) {

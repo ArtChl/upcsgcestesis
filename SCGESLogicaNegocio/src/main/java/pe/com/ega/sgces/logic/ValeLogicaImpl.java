@@ -29,32 +29,38 @@ public class ValeLogicaImpl implements ValeLogica{
         this.valeDao.setSession(session);
     }
 
+    @Override
     public void insertar(Vale usuario) {     
         session.beginTransaction();
         valeDao.insertar(usuario);
         session.getTransaction().commit(); 
     }
 
+    @Override
     public void actualizar(Vale usuario) {
         session.beginTransaction();
         valeDao.actualizar(usuario);
         session.getTransaction().commit(); 
     }
 
+    @Override
     public void eliminar(Vale usuario) {
         session.beginTransaction();
         valeDao.eliminar(usuario);
         session.getTransaction().commit(); 
     }
 
+    @Override
     public Vale buscarPorCodigo(Integer id) {
         return valeDao.buscarPorCodigo(id);
     }
 
+    @Override
     public List<Vale> buscarTodos(String cliente) {
         return valeDao.buscarTodos(cliente);
     }
     
+    @Override
     public List<Vale> buscarConsumo(String cliente) {
         return valeDao.buscarConsumo(cliente);
     }

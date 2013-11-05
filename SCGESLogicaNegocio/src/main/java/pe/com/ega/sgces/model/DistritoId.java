@@ -13,15 +13,6 @@ public class DistritoId  implements java.io.Serializable {
      private String idprovincia;
      private String iddepartamento;
 
-    public DistritoId() {
-    }
-
-    public DistritoId(String id, String idprovincia, String iddepartamento) {
-       this.id = id;
-       this.idprovincia = idprovincia;
-       this.iddepartamento = iddepartamento;
-    }
-   
     public String getId() {
         return this.id;
     }

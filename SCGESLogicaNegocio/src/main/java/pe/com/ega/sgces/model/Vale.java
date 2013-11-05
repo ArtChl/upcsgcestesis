@@ -29,20 +29,7 @@ public class Vale  implements java.io.Serializable {
     public Vale(int id) {
         this.id = id;
     }
-    public Vale(int id, String cliente, String numero, String producto, Double monto, String chofer, String placa, Date fecha, Integer estado, Date fechadespacho, String horadespacho) {
-       this.id = id;
-       this.cliente = cliente;
-       this.numero = numero;
-       this.producto = producto;
-       this.monto = monto;
-       this.chofer = chofer;
-       this.placa = placa;
-       this.fecha = fecha;
-       this.estado = estado;
-       this.fechadespacho = fechadespacho;
-       this.horadespacho = horadespacho;
-    }
-   
+    
     public int getId() {
         return this.id;
     }

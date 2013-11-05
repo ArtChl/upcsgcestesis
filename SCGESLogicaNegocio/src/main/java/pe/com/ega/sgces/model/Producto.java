@@ -28,19 +28,7 @@ public class Producto  implements java.io.Serializable {
 	
     public Producto(int id) {
         this.id = id;
-    }
-    public Producto(int id, Integer idtipoproducto, String nombre, Date fecharegistro, Set<Transacciondetalle> transacciondetalles, Set<Caraproducto> caraproductos, Set<Tanque> tanques, Set<Subcuenta> subcuentas, Set<Despacho> despachos) {
-       this.id = id;
-       this.idtipoproducto = idtipoproducto;
-       this.nombre = nombre;
-       this.fecharegistro = fecharegistro;
-       this.transacciondetalles = transacciondetalles;
-       this.caraproductos = caraproductos;
-       this.tanques = tanques;
-       this.subcuentas = subcuentas;
-       this.despachos = despachos;
-    }
-   
+    }   
     public int getId() {
         return this.id;
     }

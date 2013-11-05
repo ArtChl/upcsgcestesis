@@ -19,6 +19,7 @@ import pe.com.ega.sgces.model.Puntoventa;
 import pe.com.ega.sgces.model.Turno;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
+import pe.com.ega.sgces.util.Formato;
 
 /**
  *
@@ -79,13 +80,13 @@ public class CierreLogicaImpl implements CierreLogica{
                }
               
               if(despachos.isEmpty()){
-               if(redondear(arqueos.get(0).getCantidad())==0 &&redondear(arqueos.get(1).getCantidad())==0 && redondear(arqueos.get(2).getCantidad())==0 && redondear(arqueos.get(3).getCantidad())==0){            
+               if(Formato.redondear(arqueos.get(0).getCantidad())==0 &&Formato.redondear(arqueos.get(1).getCantidad())==0 && Formato.redondear(arqueos.get(2).getCantidad())==0 && Formato.redondear(arqueos.get(3).getCantidad())==0){            
                 Double total=0.0;
                 ArrayList<Cierre> lista=this.buscarPorCodigo(String.valueOf(turno.getId()));
                 for (Cierre arqueo1 : lista) {
                     total=total+arqueo1.getCantidad();
                 }      
-                imprimircomprobante.imprimirTurno("0001", String.valueOf(redondear(lista.get(0).getCantidad())), String.valueOf(redondear(lista.get(1).getCantidad())),String.valueOf(redondear(lista.get(2).getCantidad())),String.valueOf(redondear(total)),String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");                
+                imprimircomprobante.imprimirTurno("0001", String.valueOf(Formato.redondear(lista.get(0).getCantidad())), String.valueOf(Formato.redondear(lista.get(1).getCantidad())),String.valueOf(Formato.redondear(lista.get(2).getCantidad())),String.valueOf(Formato.redondear(total)),String.valueOf(Formato.redondear(lista.get(3).getCantidad())), "ROSARIO");                
                 
                   try {
                        turnoLogica.actualizar(turno2);
@@ -104,12 +105,6 @@ public class CierreLogicaImpl implements CierreLogica{
                 resultado="Despachos Pendientes por Facturar";
             }
               return resultado;
-    }
-
-
-    public static double redondear(double numero) 
-    {        
-           return Math.rint(numero*100)/100; 
     }
     
     private void turno() 
@@ -136,13 +131,19 @@ public class CierreLogicaImpl implements CierreLogica{
             logger.error("Mensaje:\n"+e.getMessage());
         }
         
+        TurnopuntoventacajaId turnoPuntoVentaCajaId = new TurnopuntoventacajaId();
+        turnoPuntoVentaCajaId.setIdcaja(1);
+        turnoPuntoVentaCajaId.setIdturno(turno2);
+        turnoPuntoVentaCajaId.setIdpuntoventa(1);
         
-        cajax.setId(new TurnopuntoventacajaId(turno2,1,1));
-        cajax.setCaja(new Caja(1));
+        cajax.setId(turnoPuntoVentaCajaId);
+        Caja caja = new Caja();
+        caja.setId(1);
+        cajax.setCaja(caja);
         cajax.setPuntoventa(new Puntoventa(1));
         cajax.setTurno(turnoLogica.buscarPorCodigo("N"));
         cajax.setFecharegistro(new Date());
-        System.out.println("Error Caja"+turno2);
+        
         try {
             turnopuntoventacajaLogica.insertar(cajax);
         } catch (Exception e) {

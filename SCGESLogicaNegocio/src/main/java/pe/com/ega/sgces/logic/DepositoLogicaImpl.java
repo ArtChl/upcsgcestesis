@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
+import pe.com.ega.sgces.util.Util;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ import org.apache.log4j.Logger;
 public class DepositoLogicaImpl implements DepositoLogica{
 
     private final static Logger logger = Logger.getLogger(DepositoLogicaImpl.class);
-    SessionFactory session; 
+    private SessionFactory session; 
     private DepositoDao depositoDao;
     private TurnoLogica turnoLogica;
     private Deposito deposito;
@@ -27,7 +28,6 @@ public class DepositoLogicaImpl implements DepositoLogica{
         deposito=new Deposito();
         imprimircomprobante = new ImprimirComprobante();
     }
-
     
     public void setTurnoLogica(TurnoLogica turnoLogica) {
         this.turnoLogica = turnoLogica;
@@ -90,8 +90,14 @@ public class DepositoLogicaImpl implements DepositoLogica{
     public String depositar(String monto, String pago) 
     {
         String mensaje=null;
+        
+        TurnopuntoventacajaId turnoPuntoVentaCajaId = new TurnopuntoventacajaId();
+        turnoPuntoVentaCajaId.setIdcaja(1);
+        turnoPuntoVentaCajaId.setIdturno(turnoLogica.buscarPorCodigo("N").getId());
+        turnoPuntoVentaCajaId.setIdpuntoventa(1);
+        
         Turnopuntoventacaja caja= new Turnopuntoventacaja();
-        caja.setId(new TurnopuntoventacajaId(turnoLogica.buscarPorCodigo("N").getId(), 1, 1));            
+        caja.setId(turnoPuntoVentaCajaId);            
         deposito.setTurnopuntoventacaja(caja);
         Double dos=Double.parseDouble(monto);
         deposito.setMontototal(dos);

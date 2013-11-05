@@ -17,19 +17,6 @@ public class Impresorapuntoventa  implements java.io.Serializable {
 
     public Impresorapuntoventa() {
     }
-
-	
-    public Impresorapuntoventa(ImpresorapuntoventaId id, Impresora impresora, Puntoventa puntoventa) {
-        this.id = id;
-        this.impresora = impresora;
-        this.puntoventa = puntoventa;
-    }
-    public Impresorapuntoventa(ImpresorapuntoventaId id, Impresora impresora, Puntoventa puntoventa, Date fecharegistro) {
-       this.id = id;
-       this.impresora = impresora;
-       this.puntoventa = puntoventa;
-       this.fecharegistro = fecharegistro;
-    }
    
     public ImpresorapuntoventaId getId() {
         return this.id;

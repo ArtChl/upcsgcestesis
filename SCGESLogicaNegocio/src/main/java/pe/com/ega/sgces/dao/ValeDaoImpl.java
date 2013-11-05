@@ -5,7 +5,6 @@
 package pe.com.ega.sgces.dao;
 
 import java.util.List;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pe.com.ega.sgces.model.Vale;
@@ -16,7 +15,7 @@ import pe.com.ega.sgces.model.Vale;
  */
 public class ValeDaoImpl implements ValeDao{
 
-    Session session;
+    private Session session;
     
     @Override
     public void insertar(Vale usuario) {

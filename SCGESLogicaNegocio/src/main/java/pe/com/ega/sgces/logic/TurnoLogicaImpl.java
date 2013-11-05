@@ -18,7 +18,7 @@ import pe.com.ega.sgces.model.Turno;
 public class TurnoLogicaImpl implements TurnoLogica{
 
     private InterfaceLogica interfaceLogica;
-    SessionFactory session;  
+    private SessionFactory session;  
     private TurnoDao turnoDao;
     
     public TurnoLogicaImpl()

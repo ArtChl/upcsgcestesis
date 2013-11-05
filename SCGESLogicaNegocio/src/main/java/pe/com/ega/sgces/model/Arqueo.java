@@ -15,13 +15,7 @@ public class Arqueo {
 
     public Arqueo() {
     }
-
     
-    public Arqueo(String comprobante, Double cantidad) {
-        this.comprobante = comprobante;
-        this.cantidad = cantidad;
-    }
-
     public String getComprobante() {
         return comprobante;
     }

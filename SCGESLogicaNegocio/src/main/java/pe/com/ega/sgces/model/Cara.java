@@ -17,22 +17,6 @@ public class Cara  implements java.io.Serializable {
      private Date fecharegistro;
      private String codigo;
      private Set<Caraproducto> caraproductos = new HashSet<>(0);
-
-    public Cara() {
-    }
-
-	
-    public Cara(int id, Surtidor surtidor) {
-        this.id = id;
-        this.surtidor = surtidor;
-    }
-    public Cara(int id, Surtidor surtidor, Date fecharegistro, String codigo, Set<Caraproducto> caraproductos) {
-       this.id = id;
-       this.surtidor = surtidor;
-       this.fecharegistro = fecharegistro;
-       this.codigo = codigo;
-       this.caraproductos = caraproductos;
-    }
    
     public int getId() {
         return this.id;

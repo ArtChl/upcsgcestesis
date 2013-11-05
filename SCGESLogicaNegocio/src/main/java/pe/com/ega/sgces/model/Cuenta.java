@@ -23,28 +23,6 @@ public class Cuenta  implements java.io.Serializable {
      private Integer limitecredito;
      private Integer limitediario;
      private Set<Subcuenta> subcuentas = new HashSet<Subcuenta>(0);
-
-    public Cuenta() {
-    }
-
-	
-    public Cuenta(int id, Cliente cliente) {
-        this.id = id;
-        this.cliente = cliente;
-    }
-    public Cuenta(int id, Cliente cliente, Integer tienelimitecredito, Integer tienelimitediario, Integer periodofacturacion, Integer idtipoperiodofacturacion, Integer nrodiasvencimiento, Date fecharegistro, Integer limitecredito, Integer limitediario, Set<Subcuenta> subcuentas) {
-       this.id = id;
-       this.cliente = cliente;
-       this.tienelimitecredito = tienelimitecredito;
-       this.tienelimitediario = tienelimitediario;
-       this.periodofacturacion = periodofacturacion;
-       this.idtipoperiodofacturacion = idtipoperiodofacturacion;
-       this.nrodiasvencimiento = nrodiasvencimiento;
-       this.fecharegistro = fecharegistro;
-       this.limitecredito = limitecredito;
-       this.limitediario = limitediario;
-       this.subcuentas = subcuentas;
-    }
    
     public int getId() {
         return this.id;

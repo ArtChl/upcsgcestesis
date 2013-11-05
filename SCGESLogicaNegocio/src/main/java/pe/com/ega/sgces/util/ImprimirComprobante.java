@@ -59,7 +59,6 @@ public class ImprimirComprobante {
     public void imprimirVale(String cliente,String chofer, String placa, String producto, String Galones, String numero){
         try{
             
-            System.out.println("Chofer"+chofer+"placa"+placa+"producto"+producto+"galones"+Galones+"numero"+numero);
             Date date=new Date();
             SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat hora=new SimpleDateFormat("hh:mm:ss aa");
@@ -100,7 +99,6 @@ public class ImprimirComprobante {
     public void imprimirBoleta(String vendedor, String total, String precio, String producto, String Galones, String numero, String emisor, String ruc, String impresora, String comprobante){
         try{
             
-            System.out.println("Chofer"+total+"placa"+precio+"producto"+producto+"galones"+Galones+"numero"+numero);
             Date date=new Date();
             SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat hora=new SimpleDateFormat("hh:mm:ss aa");
@@ -133,7 +131,6 @@ public class ImprimirComprobante {
     public void imprimirFactura(String cliente, String rucCliente, String vendedor, String total, String subtotal, String igv,String precio, String producto, String Galones, String numero, String emisor, String ruc, String impresora, String comprobante){
         try{
             
-            System.out.println("Chofer"+total+"placa"+precio+"producto"+producto+"galones"+Galones+"numero"+numero);
             Date date=new Date();
             SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat hora=new SimpleDateFormat("hh:mm:ss aa");
@@ -173,7 +170,6 @@ public class ImprimirComprobante {
     public void imprimirNotaDespacho(String kilometraje,String placa, String chofer, String cliente, String rucCliente, String vendedor, String total, String subtotal, String igv,String precio, String producto, String Galones, String numero, String emisor, String ruc, String impresora, String comprobante){
         try{
             
-            System.out.println("Chofer"+total+"placa"+precio+"producto"+producto+"galones"+Galones+"numero"+numero);
             Date date=new Date();
             SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat hora=new SimpleDateFormat("hh:mm:ss aa");

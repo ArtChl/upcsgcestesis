@@ -15,7 +15,7 @@ import pe.com.ega.sgces.model.Deposito;
  */
 public class DepositoDaoImpl implements DepositoDao{
 
-    SessionFactory session;
+    private SessionFactory session;
     
     @Override
     public void setSession(SessionFactory session) {

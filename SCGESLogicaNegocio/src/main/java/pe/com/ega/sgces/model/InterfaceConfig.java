@@ -14,20 +14,6 @@ public class InterfaceConfig  implements java.io.Serializable {
      private Integer cambioturno;
      private Integer cierredia;
      private Date fechaTotalizadoresElectronicos;
-
-    public InterfaceConfig() {
-    }
-
-	
-    public InterfaceConfig(int codigo) {
-        this.codigo = codigo;
-    }
-    public InterfaceConfig(int codigo, Integer cambioturno, Integer cierredia, Date fechaTotalizadoresElectronicos) {
-       this.codigo = codigo;
-       this.cambioturno = cambioturno;
-       this.cierredia = cierredia;
-       this.fechaTotalizadoresElectronicos = fechaTotalizadoresElectronicos;
-    }
    
     public int getCodigo() {
         return this.codigo;

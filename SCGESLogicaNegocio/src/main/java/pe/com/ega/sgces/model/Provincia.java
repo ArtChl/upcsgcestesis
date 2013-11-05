@@ -18,18 +18,6 @@ public class Provincia  implements java.io.Serializable {
 
     public Provincia() {
     }
-
-	
-    public Provincia(ProvinciaId id, Departamento departamento) {
-        this.id = id;
-        this.departamento = departamento;
-    }
-    public Provincia(ProvinciaId id, Departamento departamento, String nombre, Set<Distrito> distritos) {
-       this.id = id;
-       this.departamento = departamento;
-       this.nombre = nombre;
-       this.distritos = distritos;
-    }
    
     public ProvinciaId getId() {
         return this.id;

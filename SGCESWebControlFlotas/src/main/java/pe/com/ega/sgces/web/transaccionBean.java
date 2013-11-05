@@ -78,54 +78,8 @@ public class transaccionBean implements Serializable{
         for (Transaccion string : transaccions) {
             nim = Double.parseDouble(String.valueOf(string.getMontototal()));
             total = total+nim;
-            System.out.println("Suma"+total);
         }
         return Float.parseFloat(String.valueOf(total));
     }
-    /* 
-    public void prepararUsuario(Integer id) {
-        usuario=usuarioDao.buscraPorId(id);
-    }
     
-    public void inicioUsuario() {
-        usuario = new Usuario();
-    }
-    
-    public void agregarUsuario() {
-        FacesContext context = FacesContext.getCurrentInstance(); 
-        try {
-            usuarioDao.insertar(usuario);                     
-            context.addMessage(null, new FacesMessage("Datos Almacenados Correctamente", "Salvado"));
-            usuario = new Usuario();
-        } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage("Datos No se han eliminado", "Salvado"));
-            usuarioDao.cerrarError();
-        }
-    }
-    
-    public void actualizarUsuario(){
-        FacesContext context = FacesContext.getCurrentInstance(); 
-        try {
-            usuarioDao.actualizar(usuario);              
-            context.addMessage(null, new FacesMessage("Datos Actualizados Correctamente", "Actualizado"));
-            usuario = new Usuario();
-        } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage("Datos No se han Actualizado", "Actualizado"));
-            usuarioDao.cerrarError();
-        }
-    
-    }
-    
-    public void eliminarCliente(){
-        FacesContext context = FacesContext.getCurrentInstance(); 
-        try {
-            usuarioDao.eliminar(usuario);            
-            context.addMessage(null, new FacesMessage("Datos Eliminados Correctamente", "Eliminados"));
-            usuario = new Usuario();
-        } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage("Datos No se han eliminado", "Eliminados"));
-            usuarioDao.cerrarError();
-        }
-    
-    }*/
 }

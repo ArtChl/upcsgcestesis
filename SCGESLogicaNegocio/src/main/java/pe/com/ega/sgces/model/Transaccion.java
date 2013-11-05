@@ -36,36 +36,6 @@ public class Transaccion  implements java.io.Serializable {
 
     public Transaccion() {
     }
-
-	
-    public Transaccion(int id, Cliente cliente, Despacho despacho) {
-        this.id = id;
-        this.cliente = cliente;
-        this.despacho = despacho;
-    }
-    public Transaccion(int id, Cliente cliente, Despacho despacho, String idtipotransaccion, Integer idestado, Integer numero, String numerotransaccion, String numeroplaca, String numerovale, String numerotiket, String producto, Double montototal, Double nrogalones, Double preciounitario, Date fecharegistro, Boolean facturado, Boolean anulado, String turno, Set<Puntoacumulado> puntoacumulados, Set<Transacciondetalle> transacciondetalles, Set<Movimiento> movimientos) {
-       this.id = id;
-       this.cliente = cliente;
-       this.despacho = despacho;
-       this.idtipotransaccion = idtipotransaccion;
-       this.idestado = idestado;
-       this.numero = numero;
-       this.numerotransaccion = numerotransaccion;
-       this.numeroplaca = numeroplaca;
-       this.numerovale = numerovale;
-       this.numerotiket = numerotiket;
-       this.producto = producto;
-       this.montototal = montototal;
-       this.nrogalones = nrogalones;
-       this.preciounitario = preciounitario;
-       this.fecharegistro = fecharegistro;
-       this.facturado = facturado;
-       this.anulado = anulado;
-       this.turno = turno;
-       this.puntoacumulados = puntoacumulados;
-       this.transacciondetalles = transacciondetalles;
-       this.movimientos = movimientos;
-    }
    
     public int getId() {
         return this.id;

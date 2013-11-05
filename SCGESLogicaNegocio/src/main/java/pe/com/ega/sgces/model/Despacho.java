@@ -24,30 +24,6 @@ public class Despacho  implements java.io.Serializable {
      private String hora;
      private String idcem;
      private Set<Transaccion> transaccions = new HashSet<Transaccion>(0);
-
-    public Despacho() {
-    }
-
-	
-    public Despacho(int id, Producto producto, Caraproducto caraproducto) {
-        this.id = id;
-        this.producto = producto;
-        this.caraproducto = caraproducto;
-    }
-    public Despacho(int id, Producto producto, Caraproducto caraproducto, Integer idestado, Double montosoles, Double nrogalones, Double preciounitario, Date fecharegistro, String turno, String hora, String idcem, Set<Transaccion> transaccions) {
-       this.id = id;
-       this.producto = producto;
-       this.caraproducto = caraproducto;
-       this.idestado = idestado;
-       this.montosoles = montosoles;
-       this.nrogalones = nrogalones;
-       this.preciounitario = preciounitario;
-       this.fecharegistro = fecharegistro;
-       this.turno = turno;
-       this.hora = hora;
-       this.idcem = idcem;
-       this.transaccions = transaccions;
-    }
    
     public int getId() {
         return this.id;

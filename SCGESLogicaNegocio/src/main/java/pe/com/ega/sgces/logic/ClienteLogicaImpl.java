@@ -21,25 +21,29 @@ public class ClienteLogicaImpl implements ClienteLogica{
         session = HibernateUtil.getSessionFactory().openSession();
     }
     
-    Session session;
-    ClienteDao clienteDao;
+    private Session session;
+    private ClienteDao clienteDao;
+    
     public void setClienteDao(ClienteDao clienteDao) {
         this.clienteDao = clienteDao; 
         this.clienteDao.setSession(session);
     }
     
+    @Override
     public void grabar(Cliente cliente) {
         session.beginTransaction();
         clienteDao.insertar(cliente);   
         session.getTransaction().commit();
     }
 
+    @Override
     public void eliminar(Cliente cliente) {
         session.beginTransaction();
         clienteDao.eliminar(cliente);
         session.getTransaction().commit();
     }
 
+    @Override
     public Cliente buscarPorCodigo(String id) {
         Cliente razon=null;
         ArrayList<Cliente> clientes=(ArrayList<Cliente>) clienteDao.buscarTodos();
@@ -52,6 +56,7 @@ public class ClienteLogicaImpl implements ClienteLogica{
         return razon;
     }
 
+    @Override
     public void actualizar(Cliente cliente) {
         session.beginTransaction();
         clienteDao.actualizar(cliente);   

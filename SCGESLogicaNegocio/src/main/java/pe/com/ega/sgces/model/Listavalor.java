@@ -27,15 +27,7 @@ public class Listavalor  implements java.io.Serializable {
         this.id = id;
         this.lista = lista;
     }
-    public Listavalor(int id, Listavalor listavalor, Lista lista, String nombre, Date fecharegistro, Set<Listavalor> listavalors) {
-       this.id = id;
-       this.listavalor = listavalor;
-       this.lista = lista;
-       this.nombre = nombre;
-       this.fecharegistro = fecharegistro;
-       this.listavalors = listavalors;
-    }
-   
+    
     public int getId() {
         return this.id;
     }

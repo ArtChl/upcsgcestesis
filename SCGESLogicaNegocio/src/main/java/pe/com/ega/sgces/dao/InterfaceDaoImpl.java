@@ -13,7 +13,7 @@ import pe.com.ega.sgces.model.InterfaceConfig;
  */
 public class InterfaceDaoImpl implements InterfaceDao{
 
-    Session session;
+    private Session session;
     
     @Override
     public void insertar(InterfaceConfig turno) {
