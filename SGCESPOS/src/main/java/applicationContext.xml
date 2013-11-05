@@ -43,7 +43,6 @@
         
         <bean id="transaccionService" class="pe.com.ega.sgces.logic.TransaccionLogicaImpl">
 		<property name="transaccionDao" ref="transaccionDao" />
-                <property name="transaccionDetalleDao" ref="transacciondetalleDao" />
                 <property name="despachoLogica" ref="despachoService" />
                 <property name="movimientoLogica" ref="movimientoService" />
                 <property name="session" ref="miSessionFactory" />

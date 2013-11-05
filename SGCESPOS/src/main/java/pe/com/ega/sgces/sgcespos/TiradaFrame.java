@@ -6,6 +6,7 @@ package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
+import org.openswing.swing.mdi.client.InternalFrame;
 import pe.com.ega.sgces.logic.DepositoLogica;
 
 /**
@@ -13,14 +14,13 @@ import pe.com.ega.sgces.logic.DepositoLogica;
  * @author FLOPEZ
  */
 public class TiradaFrame extends JFrame {
-
+    
     private DepositoLogica depositoLogica;
-
+    
     public TiradaFrame(DepositoLogica depositoLogica) {
         initComponents();
-        this.depositoLogica = depositoLogica;
+        this.depositoLogica =depositoLogica;
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -32,9 +32,15 @@ public class TiradaFrame extends JFrame {
         jmonto = new javax.swing.JTextField();
         soles = new javax.swing.JButton();
         visa = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
+        master.setBackground(new java.awt.Color(255, 235, 90));
+        master.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         master.setText("MASTER");
         master.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -42,8 +48,10 @@ public class TiradaFrame extends JFrame {
             }
         });
         jPanel1.add(master);
-        master.setBounds(100, 140, 100, 50);
+        master.setBounds(300, 120, 180, 70);
 
+        dolares.setBackground(new java.awt.Color(133, 238, 75));
+        dolares.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         dolares.setText("DOLARES");
         dolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,18 +59,20 @@ public class TiradaFrame extends JFrame {
             }
         });
         jPanel1.add(dolares);
-        dolares.setBounds(100, 90, 100, 50);
+        dolares.setBounds(20, 200, 190, 70);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         jLabel1.setText("MONTO :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 32, 90, 30);
+        jLabel1.setBounds(80, 50, 150, 30);
 
-        jmonto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jmonto.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         jmonto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jPanel1.add(jmonto);
-        jmonto.setBounds(110, 33, 80, 30);
+        jmonto.setBounds(220, 40, 140, 40);
 
+        soles.setBackground(new java.awt.Color(51, 153, 255));
+        soles.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         soles.setText("SOLES");
         soles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +80,10 @@ public class TiradaFrame extends JFrame {
             }
         });
         jPanel1.add(soles);
-        soles.setBounds(0, 90, 100, 50);
+        soles.setBounds(20, 120, 190, 70);
 
+        visa.setBackground(new java.awt.Color(255, 235, 90));
+        visa.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         visa.setText("VISA");
         visa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,46 +91,52 @@ public class TiradaFrame extends JFrame {
             }
         });
         jPanel1.add(visa);
-        visa.setBounds(0, 140, 100, 50);
+        visa.setBounds(300, 200, 180, 70);
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 255));
+        jPanel1.add(jSeparator1);
+        jSeparator1.setBounds(230, 110, 50, 160);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void masterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masterActionPerformed
-        depositoLogica.depositar(jmonto.getText(), "MASTERCARD");
+        depositoLogica.depositar(jmonto.getText(),"MASTERCARD");       
         salir(evt);
     }//GEN-LAST:event_masterActionPerformed
 
     private void dolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresActionPerformed
-        depositoLogica.depositar(jmonto.getText(), "DOLARES");
+        depositoLogica.depositar(jmonto.getText(),"DOLARES");    
         salir(evt);
     }//GEN-LAST:event_dolaresActionPerformed
 
     private void solesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solesActionPerformed
-        depositoLogica.depositar(jmonto.getText(), "SOLES");
+        depositoLogica.depositar(jmonto.getText(),"SOLES");    
         salir(evt);
     }//GEN-LAST:event_solesActionPerformed
 
     private void visaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaActionPerformed
-        depositoLogica.depositar(jmonto.getText(), "VISA");
+        depositoLogica.depositar(jmonto.getText(),"VISA");    
         salir(evt);
     }//GEN-LAST:event_visaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dolares;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jmonto;
     private javax.swing.JButton master;
     private javax.swing.JButton soles;
     private javax.swing.JButton visa;
     // End of variables declaration//GEN-END:variables
-
-    private void salir(java.awt.event.ActionEvent evt) {
-        actionPerformed(evt);
-    }
+   private void salir (java.awt.event.ActionEvent evt){
+       actionPerformed(evt);
+   }
 
     private void actionPerformed(ActionEvent evt) {
         setVisible(false);
         dispose();
     }
+
 }

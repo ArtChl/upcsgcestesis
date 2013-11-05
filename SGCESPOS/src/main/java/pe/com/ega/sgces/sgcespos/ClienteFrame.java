@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
@@ -19,7 +20,7 @@ import pe.com.ega.sgces.model.Despacho;
  *
  * @author FLOPEZ
  */
-public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
+public class ClienteFrame extends JFrame {
 
     private ClienteLogicaImpl clienteDao;
     private TransaccionLogicaImpl transaccionDao;
@@ -52,12 +53,18 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
         Registrar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
 
+        setResizable(false);
+        setEnabled(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel1.setText("Razon Social :");
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel1.setText("RAZON SOCIAL :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 60, 80, 16);
+        jLabel1.setBounds(30, 110, 210, 29);
 
+        jrucCliente.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         jrucCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrucClienteActionPerformed(evt);
@@ -69,31 +76,40 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
             }
         });
         jPanel1.add(jrucCliente);
-        jrucCliente.setBounds(100, 30, 170, 22);
+        jrucCliente.setBounds(240, 50, 170, 40);
 
-        jLabel2.setText("R.U.C");
+        jLabel2.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel2.setText("R.U.C               :");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 30, 34, 16);
-        jPanel1.add(jrazonCliente);
-        jrazonCliente.setBounds(100, 60, 260, 22);
+        jLabel2.setBounds(30, 50, 210, 29);
 
-        Registrar.setText("Grabar");
+        jrazonCliente.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jPanel1.add(jrazonCliente);
+        jrazonCliente.setBounds(240, 110, 380, 40);
+
+        Registrar.setBackground(new java.awt.Color(133, 238, 75));
+        Registrar.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        Registrar.setForeground(new java.awt.Color(51, 51, 51));
+        Registrar.setText("ACEPTAR");
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistrarActionPerformed(evt);
             }
         });
         jPanel1.add(Registrar);
-        Registrar.setBounds(90, 90, 100, 25);
+        Registrar.setBounds(90, 190, 200, 80);
 
-        cancelar.setText("Cancelar");
+        cancelar.setBackground(new java.awt.Color(255, 62, 79));
+        cancelar.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        cancelar.setForeground(new java.awt.Color(51, 51, 51));
+        cancelar.setText("CANCELAR");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(200, 90, 110, 25);
+        cancelar.setBounds(340, 190, 180, 80);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents

@@ -29,6 +29,7 @@ import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Numcomprobante;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Vale;
+import pe.com.ega.sgces.util.Formato;
 
 /**
  *
@@ -49,6 +50,7 @@ public class NotaFrame extends JFrame {
     private ValeLogicaImpl valedao;
     ArrayList<Vale> lista;
     private NumComprobanteLogicaImpl numdao;
+    private Formato f;
 
     public NotaFrame(Despacho despacho) {
         initComponents();
@@ -87,17 +89,21 @@ public class NotaFrame extends JFrame {
         jchofer = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jkilometrajes = new javax.swing.JTextField();
-        buscar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         comboVale = new javax.swing.JComboBox();
         montovale = new javax.swing.JTextField();
 
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel1.setText("Razon Social :");
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel1.setText("R. SOCIAL :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 60, 80, 16);
+        jLabel1.setBounds(30, 90, 150, 29);
 
+        jrucCliente.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         jrucCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrucClienteActionPerformed(evt);
@@ -109,88 +115,110 @@ public class NotaFrame extends JFrame {
             }
         });
         jPanel1.add(jrucCliente);
-        jrucCliente.setBounds(100, 30, 170, 22);
+        jrucCliente.setBounds(190, 30, 190, 40);
 
-        jLabel2.setText("R.U.C");
+        jLabel2.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel2.setText("R.U.C :");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 30, 34, 16);
-        jPanel1.add(jrazonCliente);
-        jrazonCliente.setBounds(100, 60, 260, 22);
+        jLabel2.setBounds(30, 40, 130, 29);
 
-        imprimir.setText("Confirmar");
+        jrazonCliente.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jPanel1.add(jrazonCliente);
+        jrazonCliente.setBounds(190, 90, 350, 40);
+
+        imprimir.setBackground(new java.awt.Color(133, 238, 75));
+        imprimir.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        imprimir.setForeground(new java.awt.Color(51, 51, 51));
+        imprimir.setText("ACEPTAR");
         imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imprimirActionPerformed(evt);
             }
         });
         jPanel1.add(imprimir);
-        imprimir.setBounds(70, 210, 100, 25);
+        imprimir.setBounds(100, 400, 170, 80);
 
-        cancelar.setText("Cancelar");
+        cancelar.setBackground(new java.awt.Color(255, 62, 79));
+        cancelar.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        cancelar.setForeground(new java.awt.Color(51, 51, 51));
+        cancelar.setText("CANCELAR");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(190, 210, 90, 25);
+        cancelar.setBounds(300, 400, 180, 80);
 
-        jLabel3.setText("Placa :");
+        jLabel3.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel3.setText("PLACA :");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 120, 39, 16);
+        jLabel3.setBounds(30, 210, 120, 30);
 
-        jLabel4.setText("Chofer :");
+        jLabel4.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel4.setText("CHOFER :");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 150, 50, 16);
+        jLabel4.setBounds(30, 270, 130, 30);
 
+        jplaca.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         jplaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jplacaActionPerformed(evt);
             }
         });
         jPanel1.add(jplaca);
-        jplaca.setBounds(100, 120, 90, 22);
+        jplaca.setBounds(190, 210, 170, 40);
+
+        jchofer.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         jPanel1.add(jchofer);
-        jchofer.setBounds(100, 150, 260, 22);
+        jchofer.setBounds(190, 270, 260, 40);
 
-        jLabel5.setText("Kilometraje :");
+        jLabel5.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel5.setText("KILOMETRO :");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(20, 180, 70, 16);
+        jLabel5.setBounds(30, 330, 180, 29);
+
+        jkilometrajes.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         jPanel1.add(jkilometrajes);
-        jkilometrajes.setBounds(100, 180, 80, 22);
+        jkilometrajes.setBounds(190, 330, 170, 40);
 
-        buscar.setText("Buscar");
-        buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buscar);
-        buscar.setBounds(277, 30, 80, 25);
-
-        jLabel6.setText("Nro. Vale :");
+        jLabel6.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel6.setText("NRO VALE :");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 90, 70, 16);
+        jLabel6.setBounds(30, 150, 190, 29);
 
+        comboVale.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         comboVale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboValeActionPerformed(evt);
             }
         });
         jPanel1.add(comboVale);
-        comboVale.setBounds(100, 90, 130, 22);
+        comboVale.setBounds(190, 150, 210, 40);
 
         montovale.setEditable(false);
+        montovale.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         montovale.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         montovale.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         montovale.setFocusable(false);
         jPanel1.add(montovale);
-        montovale.setBounds(290, 90, 70, 22);
+        montovale.setBounds(440, 150, 100, 40);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrucClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrucClienteActionPerformed
+        String rucCliente = jrucCliente.getText();
+        try {
+            cliente = clienteLogica.buscarPorCodigo(rucCliente);
+            jrazonCliente.setText(cliente.getRazonsocial());
+            llenarcombo(cliente.getNumerodocumento());
+            temporal = new Cliente();
+            temporal.setId(0);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            temporal.setId(1);
+        }
     }//GEN-LAST:event_jrucClienteActionPerformed
 
     private void jrucClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusGained
@@ -220,7 +248,7 @@ public class NotaFrame extends JFrame {
                     valeTemporal.setEstado(0);
                     valedao.actualizar(valeTemporal);
                     comprobante.imprimirNotaDespacho(jkilometrajes.getText(), jplaca.getText(), jchofer.getText(), cliente.getRazonsocial(),
-                            String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Redondear(desp.getMontosoles() * 0.82)), String.valueOf(Redondear(desp.getMontosoles() * 0.18)), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
+                            String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Formato.redondear(desp.getMontosoles() * 0.82)), String.valueOf(Formato.redondear(desp.getMontosoles() * 0.18)), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
                     limpiar();
                     salir(evt);
                 } catch (Exception e) {
@@ -237,7 +265,7 @@ public class NotaFrame extends JFrame {
                 valeTemporal.setEstado(0);
                 valedao.actualizar(valeTemporal);
                 comprobante.imprimirNotaDespacho(jkilometrajes.getText(), jplaca.getText(), jchofer.getText(), cliente.getRazonsocial(),
-                        String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Redondear(desp.getMontosoles() * 0.82)), String.valueOf(Redondear(desp.getMontosoles() * 0.18)), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
+                        String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Formato.redondear(desp.getMontosoles() * 0.82)), String.valueOf(Formato.redondear(desp.getMontosoles() * 0.18)), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
                 limpiar();
                 salir(evt);
             }
@@ -256,20 +284,6 @@ public class NotaFrame extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jplacaActionPerformed
 
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        String rucCliente = jrucCliente.getText();
-        try {
-            cliente = clienteLogica.buscarPorCodigo(rucCliente);
-            jrazonCliente.setText(cliente.getRazonsocial());
-            llenarcombo(cliente.getNumerodocumento());
-            temporal = new Cliente();
-            temporal.setId(0);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
-            temporal.setId(1);
-        }
-    }//GEN-LAST:event_buscarActionPerformed
-
     private void comboValeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboValeActionPerformed
         for (Vale vale : lista) {
             if (vale.getNumero() == (String) comboVale.getSelectedItem()) {
@@ -284,7 +298,6 @@ public class NotaFrame extends JFrame {
         }
     }//GEN-LAST:event_comboValeActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buscar;
     private javax.swing.JButton cancelar;
     private javax.swing.JComboBox comboVale;
     private javax.swing.JButton imprimir;

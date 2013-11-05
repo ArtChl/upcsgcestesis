@@ -4,7 +4,6 @@
  */
 package pe.com.ega.sgces.sgcespos;
 
-import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -23,6 +22,7 @@ import pe.com.ega.sgces.model.Numcomprobante;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
+import pe.com.ega.sgces.util.ImprimirComprobante;
 
 /**
  *
@@ -73,55 +73,78 @@ public class MonedaFrame extends JFrame {
         tarjetas = new javax.swing.JComboBox();
         numtarjeta = new javax.swing.JTextField();
 
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
+        soles.setBackground(new java.awt.Color(51, 153, 255));
+        soles.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         soles.setText("SOLES");
+        soles.setMaximumSize(new java.awt.Dimension(123, 37));
+        soles.setMinimumSize(new java.awt.Dimension(123, 37));
+        soles.setPreferredSize(new java.awt.Dimension(123, 37));
         soles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 solesActionPerformed(evt);
             }
         });
         jPanel1.add(soles);
-        soles.setBounds(10, 120, 80, 40);
+        soles.setBounds(30, 240, 150, 80);
 
+        dolares.setBackground(new java.awt.Color(133, 238, 75));
+        dolares.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         dolares.setText("DOLARES");
+        dolares.setMaximumSize(new java.awt.Dimension(123, 37));
+        dolares.setMinimumSize(new java.awt.Dimension(123, 37));
+        dolares.setPreferredSize(new java.awt.Dimension(123, 37));
         dolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dolaresActionPerformed(evt);
             }
         });
         jPanel1.add(dolares);
-        dolares.setBounds(100, 120, 90, 40);
+        dolares.setBounds(190, 240, 160, 80);
 
+        tarjeta.setBackground(new java.awt.Color(255, 235, 90));
+        tarjeta.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         tarjeta.setText("TARJETA");
+        tarjeta.setMaximumSize(new java.awt.Dimension(123, 37));
+        tarjeta.setMinimumSize(new java.awt.Dimension(123, 37));
+        tarjeta.setPreferredSize(new java.awt.Dimension(123, 37));
         tarjeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tarjetaActionPerformed(evt);
             }
         });
         jPanel1.add(tarjeta);
-        tarjeta.setBounds(200, 120, 85, 40);
+        tarjeta.setBounds(360, 240, 140, 80);
 
-        jLabel1.setText("Pago Efectivo:");
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel1.setText("PAGO :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 20, 80, 16);
+        jLabel1.setBounds(30, 40, 100, 30);
 
+        pago.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pagoActionPerformed(evt);
             }
         });
         jPanel1.add(pago);
-        pago.setBounds(100, 20, 70, 22);
+        pago.setBounds(190, 30, 140, 35);
 
-        jLabel2.setText("Tarjeta");
+        jLabel2.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel2.setText("TARJETA :");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 50, 70, 16);
+        jLabel2.setBounds(30, 90, 120, 30);
 
-        numero.setText("Numero:");
+        numero.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        numero.setText("NUMERO :");
         jPanel1.add(numero);
-        numero.setBounds(20, 80, 70, 16);
+        numero.setBounds(30, 150, 120, 30);
 
+        tarjetas.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         tarjetas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VISA", "MASTERCARD", " " }));
         tarjetas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,15 +152,16 @@ public class MonedaFrame extends JFrame {
             }
         });
         jPanel1.add(tarjetas);
-        tarjetas.setBounds(100, 50, 140, 22);
+        tarjetas.setBounds(190, 90, 140, 40);
 
+        numtarjeta.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         numtarjeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numtarjetaActionPerformed(evt);
             }
         });
         jPanel1.add(numtarjeta);
-        numtarjeta.setBounds(100, 80, 150, 22);
+        numtarjeta.setBounds(190, 150, 310, 40);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents

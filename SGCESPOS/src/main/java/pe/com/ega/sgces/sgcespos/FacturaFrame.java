@@ -59,15 +59,19 @@ public class FacturaFrame extends JFrame {
         jrazonCliente = new javax.swing.JTextField();
         imprimir = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
-        buscar = new javax.swing.JButton();
         bcliente = new javax.swing.JButton();
 
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel1.setText("Razon Social :");
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel1.setText("RAZON SOCIAL :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 60, 80, 16);
+        jLabel1.setBounds(40, 80, 200, 40);
 
+        jrucCliente.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         jrucCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrucClienteActionPerformed(evt);
@@ -79,54 +83,64 @@ public class FacturaFrame extends JFrame {
             }
         });
         jPanel1.add(jrucCliente);
-        jrucCliente.setBounds(100, 30, 170, 22);
+        jrucCliente.setBounds(240, 30, 170, 40);
 
-        jLabel2.setText("R.U.C");
+        jLabel2.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jLabel2.setText("R.U.C :");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 30, 34, 16);
-        jPanel1.add(jrazonCliente);
-        jrazonCliente.setBounds(100, 60, 260, 22);
+        jLabel2.setBounds(40, 30, 150, 40);
 
-        imprimir.setText("Confirmar");
+        jrazonCliente.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jPanel1.add(jrazonCliente);
+        jrazonCliente.setBounds(240, 80, 350, 40);
+
+        imprimir.setBackground(new java.awt.Color(133, 238, 75));
+        imprimir.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        imprimir.setText("ACEPTAR");
         imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imprimirActionPerformed(evt);
             }
         });
         jPanel1.add(imprimir);
-        imprimir.setBounds(150, 90, 90, 25);
+        imprimir.setBounds(40, 160, 180, 80);
 
-        cancelar.setText("Cancelar");
+        cancelar.setBackground(new java.awt.Color(255, 235, 90));
+        cancelar.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        cancelar.setText("CANCELAR");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(260, 90, 83, 25);
+        cancelar.setBounds(420, 160, 170, 80);
 
-        buscar.setText("Buscar");
-        buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buscar);
-        buscar.setBounds(277, 30, 80, 25);
-
-        bcliente.setText("Cliente");
+        bcliente.setBackground(new java.awt.Color(51, 153, 255));
+        bcliente.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        bcliente.setText("NUEVO");
+        bcliente.setEnabled(false);
         bcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bclienteActionPerformed(evt);
             }
         });
         jPanel1.add(bcliente);
-        bcliente.setBounds(50, 90, 90, 25);
+        bcliente.setBounds(230, 160, 170, 80);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrucClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrucClienteActionPerformed
+        String rucCliente = jrucCliente.getText();
+        try {
+            cliente = clienteLogica.buscarPorCodigo(rucCliente);
+            jrazonCliente.setText(cliente.getRazonsocial());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            cliente = new Cliente();
+            cliente.setId(0);
+        }
     }//GEN-LAST:event_jrucClienteActionPerformed
 
     private void jrucClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusLost
@@ -153,16 +167,16 @@ public class FacturaFrame extends JFrame {
             temporal1.setRazonsocial(jrazonCliente.getText());
             clienteLogica.grabar(temporal1);
             MonedaFrame f = new MonedaFrame(desp, "TFAC", temporal1, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
-            f.setSize(301, 213);
-            f.setTitle("Tipo Pago");
+            f.setSize(528, 395);
+            f.setTitle("TIPO DE PAGO");
             f.setLocationRelativeTo(null);
             f.setVisible(true);
             salir(evt);
 
         } else {
             MonedaFrame f = new MonedaFrame(desp, "TFAC", cliente, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
-            f.setSize(301, 213);
-            f.setTitle("Tipo Pago");
+            f.setSize(528, 395);
+            f.setTitle("TIPO DE PAGO");
             f.setLocationRelativeTo(null);
             f.setVisible(true);
             salir(evt);
@@ -173,27 +187,15 @@ public class FacturaFrame extends JFrame {
         salir(evt);
     }//GEN-LAST:event_cancelarActionPerformed
 
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        String rucCliente = jrucCliente.getText();
-        try {
-            cliente = clienteLogica.buscarPorCodigo(rucCliente);
-            jrazonCliente.setText(cliente.getRazonsocial());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
-            cliente = new Cliente();
-            cliente.setId(0);
-        }
-    }//GEN-LAST:event_buscarActionPerformed
-
     private void bclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclienteActionPerformed
         ClienteFrame f = new ClienteFrame(desp);
-        f.setSize(391, 151);
-        f.setTitle("Cliente Temporal");
-        MDIFrame.add(f);
+        f.setSize(658, 343);
+        f.setTitle("CLIENTE TEMPORAL");
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
     }//GEN-LAST:event_bclienteActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bcliente;
-    private javax.swing.JButton buscar;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton imprimir;
     private javax.swing.JLabel jLabel1;
