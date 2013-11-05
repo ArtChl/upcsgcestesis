@@ -15,31 +15,30 @@ import org.apache.log4j.Logger;
  *
  * @author FLOPEZ
  */
-public class MovimientoLogicaImpl implements MovimientoLogica{
+public class MovimientoLogicaImpl implements MovimientoLogica {
 
     private final static Logger logger = Logger.getLogger(MovimientoLogicaImpl.class);
-    private SessionFactory session; 
+    private SessionFactory session;
     private MovimientoDao movimientoDao;
 
     public MovimientoLogicaImpl() {
     }
-    
-    
+
     @Override
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-    
+
     @Override
     public void setMovimientoDao(MovimientoDao movimientoDao) {
         this.movimientoDao = movimientoDao;
     }
-    
+
     @Override
     public void grabar(Movimiento movimiento) {
-       session.getCurrentSession().beginTransaction();
-       movimientoDao.insertar(movimiento);
-       session.getCurrentSession().getTransaction().commit(); 
+        session.getCurrentSession().beginTransaction();
+        movimientoDao.insertar(movimiento);
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
@@ -50,13 +49,13 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
     @Override
     public Double buscarMonto(String tipo, String turno) {
         Double monto;
-         try{
-                List lis=movimientoDao.buscarMonto(tipo, turno);
-                monto=Util.recuperarNumero(lis);
-         } catch (Exception ex) {
-             logger.error("Mensaje:\n"+ex.getMessage());
-                    monto=0.00;
-         }
+        try {
+            List lis = movimientoDao.buscarMonto(tipo, turno);
+            monto = Util.recuperarNumero(lis);
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
+            monto = 0.00;
+        }
         return monto;
     }
 
@@ -67,21 +66,21 @@ public class MovimientoLogicaImpl implements MovimientoLogica{
 
     @Override
     public void eliminar(Movimiento movimiento) {
-       session.getCurrentSession().beginTransaction();
+        session.getCurrentSession().beginTransaction();
         movimientoDao.eliminar(movimiento);
-       session.getCurrentSession().getTransaction().commit(); 
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
     public Double buscarMontoVuelto(String tipo, String turno) {
         Double monto;
-         try{
-                List lis=movimientoDao.buscarMontoVuelto(tipo, turno);         
-                monto=Util.recuperarNumero(lis);
-         } catch (Exception ex) {
-             logger.error("Mensaje:\n"+ex.getMessage());
-                    monto=0.00;
-         }
+        try {
+            List lis = movimientoDao.buscarMontoVuelto(tipo, turno);
+            monto = Util.recuperarNumero(lis);
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
+            monto = 0.00;
+        }
         return monto;
     }
 }

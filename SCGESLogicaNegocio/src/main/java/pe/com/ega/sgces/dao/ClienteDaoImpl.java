@@ -12,7 +12,7 @@ import pe.com.ega.sgces.model.Cliente;
  *
  * @author Flopez
  */
-public class ClienteDaoImpl implements ClienteDao{
+public class ClienteDaoImpl implements ClienteDao {
 
     private Session session;
 
@@ -20,7 +20,7 @@ public class ClienteDaoImpl implements ClienteDao{
     public void setSession(Session session) {
         this.session = session;
     }
-            
+
     @Override
     public void insertar(Cliente cliente) {
         session.save(cliente);
@@ -43,7 +43,6 @@ public class ClienteDaoImpl implements ClienteDao{
 
     @Override
     public List<Cliente> buscarTodos() {
-         return session.createQuery("from Cliente").list();
+        return session.createQuery("from Cliente").list();
     }
-   
 }

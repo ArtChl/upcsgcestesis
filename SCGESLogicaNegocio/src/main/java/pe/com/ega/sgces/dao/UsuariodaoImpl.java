@@ -13,7 +13,7 @@ import pe.com.ega.sgces.model.Usuario;
  *
  * @author Administrador
  */
-public class UsuariodaoImpl implements UsuarioDao{
+public class UsuariodaoImpl implements UsuarioDao {
 
     private Session session;
 
@@ -21,11 +21,11 @@ public class UsuariodaoImpl implements UsuarioDao{
     public void setSession(Session session) {
         this.session = session;
     }
-        
+
     @Override
     public Usuario buscarPorUsuario(Usuario usuario) {
-        String sql="select u from Usuario u where login=:user and clave=:pass";
-        Query query= session.createQuery(sql);
+        String sql = "select u from Usuario u where login=:user and clave=:pass";
+        Query query = session.createQuery(sql);
         query.setString("user", usuario.getLogin());
         query.setString("pass", usuario.getClave());
         return (Usuario) query.uniqueResult();
@@ -53,6 +53,6 @@ public class UsuariodaoImpl implements UsuarioDao{
 
     @Override
     public List<Usuario> buscarTodos() {
-         return session.createQuery("from Usuario").list();
+        return session.createQuery("from Usuario").list();
     }
 }

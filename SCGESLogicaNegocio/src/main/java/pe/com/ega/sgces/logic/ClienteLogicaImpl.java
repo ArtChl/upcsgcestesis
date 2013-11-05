@@ -14,25 +14,23 @@ import pe.com.ega.sgces.dao.HibernateUtil;
  *
  * @author CHRISTIAN
  */
-public class ClienteLogicaImpl implements ClienteLogica{
+public class ClienteLogicaImpl implements ClienteLogica {
 
-    public ClienteLogicaImpl()
-    {
+    public ClienteLogicaImpl() {
         session = HibernateUtil.getSessionFactory().openSession();
     }
-    
     private Session session;
     private ClienteDao clienteDao;
-    
+
     public void setClienteDao(ClienteDao clienteDao) {
-        this.clienteDao = clienteDao; 
+        this.clienteDao = clienteDao;
         this.clienteDao.setSession(session);
     }
-    
+
     @Override
     public void grabar(Cliente cliente) {
         session.beginTransaction();
-        clienteDao.insertar(cliente);   
+        clienteDao.insertar(cliente);
         session.getTransaction().commit();
     }
 
@@ -45,11 +43,11 @@ public class ClienteLogicaImpl implements ClienteLogica{
 
     @Override
     public Cliente buscarPorCodigo(String id) {
-        Cliente razon=null;
-        ArrayList<Cliente> clientes=(ArrayList<Cliente>) clienteDao.buscarTodos();
+        Cliente razon = null;
+        ArrayList<Cliente> clientes = (ArrayList<Cliente>) clienteDao.buscarTodos();
         for (Cliente cliente : clientes) {
-            if(id.equalsIgnoreCase(cliente.getNumerodocumento())){
-                razon=cliente;
+            if (id.equalsIgnoreCase(cliente.getNumerodocumento())) {
+                razon = cliente;
                 break;
             }
         }
@@ -59,8 +57,7 @@ public class ClienteLogicaImpl implements ClienteLogica{
     @Override
     public void actualizar(Cliente cliente) {
         session.beginTransaction();
-        clienteDao.actualizar(cliente);   
+        clienteDao.actualizar(cliente);
         session.getTransaction().commit();
     }
-    
 }

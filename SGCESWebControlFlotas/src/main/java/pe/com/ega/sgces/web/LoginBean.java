@@ -25,7 +25,7 @@ import pe.com.ega.sgces.model.Usuario;
 public class LoginBean implements Serializable{
 
     private Usuario usuario;
-    UsuarioLogicaImpl usuariodao;
+    private UsuarioLogicaImpl usuariodao;
 
     public LoginBean() {
         usuariodao = new UsuarioLogicaImpl();

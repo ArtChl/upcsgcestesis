@@ -13,13 +13,14 @@ import pe.com.ega.sgces.logic.DepositoLogica;
  * @author FLOPEZ
  */
 public class TiradaFrame extends JFrame {
-    
+
     private DepositoLogica depositoLogica;
-    
+
     public TiradaFrame(DepositoLogica depositoLogica) {
         initComponents();
-        this.depositoLogica =depositoLogica;
+        this.depositoLogica = depositoLogica;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,25 +85,24 @@ public class TiradaFrame extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void masterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masterActionPerformed
-        depositoLogica.depositar(jmonto.getText(),"MASTERCARD");       
+        depositoLogica.depositar(jmonto.getText(), "MASTERCARD");
         salir(evt);
     }//GEN-LAST:event_masterActionPerformed
 
     private void dolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresActionPerformed
-        depositoLogica.depositar(jmonto.getText(),"DOLARES");    
+        depositoLogica.depositar(jmonto.getText(), "DOLARES");
         salir(evt);
     }//GEN-LAST:event_dolaresActionPerformed
 
     private void solesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solesActionPerformed
-        depositoLogica.depositar(jmonto.getText(),"SOLES");    
+        depositoLogica.depositar(jmonto.getText(), "SOLES");
         salir(evt);
     }//GEN-LAST:event_solesActionPerformed
 
     private void visaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaActionPerformed
-        depositoLogica.depositar(jmonto.getText(),"VISA");    
+        depositoLogica.depositar(jmonto.getText(), "VISA");
         salir(evt);
     }//GEN-LAST:event_visaActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dolares;
     private javax.swing.JLabel jLabel1;
@@ -112,13 +112,13 @@ public class TiradaFrame extends JFrame {
     private javax.swing.JButton soles;
     private javax.swing.JButton visa;
     // End of variables declaration//GEN-END:variables
-   private void salir (java.awt.event.ActionEvent evt){
-       actionPerformed(evt);
-   }
+
+    private void salir(java.awt.event.ActionEvent evt) {
+        actionPerformed(evt);
+    }
 
     private void actionPerformed(ActionEvent evt) {
         setVisible(false);
         dispose();
     }
-
 }

@@ -14,13 +14,12 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
  */
 public class TurnopuntoventacajaLogicaImpl implements TurnopuntoventacajaLogica {
 
-    private SessionFactory session; 
+    private SessionFactory session;
     private TurnopuntoventacajaDao turnopuntoventacajaDao;
-    
-    public TurnopuntoventacajaLogicaImpl()
-    {
+
+    public TurnopuntoventacajaLogicaImpl() {
     }
-    
+
     public void setSession(SessionFactory session) {
         this.session = session;
     }
@@ -28,12 +27,11 @@ public class TurnopuntoventacajaLogicaImpl implements TurnopuntoventacajaLogica 
     public void setTurnopuntoventacajaDao(TurnopuntoventacajaDao turnopuntoventacajaDao) {
         this.turnopuntoventacajaDao = turnopuntoventacajaDao;
     }
-    
+
     @Override
     public void insertar(Turnopuntoventacaja turno) {
         session.getCurrentSession().beginTransaction();
         this.turnopuntoventacajaDao.insertar(turno);
         session.getCurrentSession().getTransaction().commit();
     }
-    
 }

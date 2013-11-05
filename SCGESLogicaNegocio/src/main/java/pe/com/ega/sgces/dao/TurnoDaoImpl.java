@@ -11,7 +11,7 @@ import pe.com.ega.sgces.model.Turno;
  *
  * @author Flopez
  */
-public class TurnoDaoImpl implements  TurnoDao{
+public class TurnoDaoImpl implements TurnoDao {
 
     private SessionFactory session;
 
@@ -19,7 +19,7 @@ public class TurnoDaoImpl implements  TurnoDao{
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-    
+
     @Override
     public void insertar(Turno turno) {
         session.getCurrentSession().save(turno);
@@ -39,8 +39,8 @@ public class TurnoDaoImpl implements  TurnoDao{
     public Turno buscarPorCodigo(String estado) {
         session.getCurrentSession().beginTransaction();
         Turno turno;
-        turno = (Turno)session.getCurrentSession().createQuery("from Turno where estado='"+estado+"'").uniqueResult();
+        turno = (Turno) session.getCurrentSession().createQuery("from Turno where estado='" + estado + "'").uniqueResult();
         session.close();
         return turno;
-    } 
+    }
 }

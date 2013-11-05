@@ -9,8 +9,8 @@ package pe.com.ega.sgces.util;
  * @author CHRISTIAN
  */
 public class Formato {
-        public static double redondear(double numero) 
-       {        
-           return Math.rint(numero*100)/100; 
-       }
+
+    public static double redondear(double numero) {
+        return Math.rint(numero * 100) / 100;
+    }
 }

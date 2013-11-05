@@ -12,9 +12,10 @@ import pe.com.ega.sgces.model.Numcomprobante;
  *
  * @author FLOPEZ
  */
-public class NumComprobanteDaoImpl implements NumComprobanteDao{
+public class NumComprobanteDaoImpl implements NumComprobanteDao {
 
-   private Session session;
+    private Session session;
+
     @Override
     public void insertar(Numcomprobante usuario) {
         session.save(usuario);
@@ -34,15 +35,14 @@ public class NumComprobanteDaoImpl implements NumComprobanteDao{
     public Numcomprobante buscarPorCodigo(int id) {
         return (Numcomprobante) session.load(Numcomprobante.class, id);
     }
-  
+
     @Override
     public List<Numcomprobante> buscarConsumo(String cliente) {
-        return session.createQuery("from Vale where cliente='"+cliente+"' and estado=1").list();
+        return session.createQuery("from Vale where cliente='" + cliente + "' and estado=1").list();
     }
-    
+
     @Override
     public void setSession(Session session) {
-       this.session = session;
+        this.session = session;
     }
-    
 }

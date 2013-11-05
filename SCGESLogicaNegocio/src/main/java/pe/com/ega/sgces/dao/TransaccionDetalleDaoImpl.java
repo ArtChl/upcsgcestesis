@@ -12,15 +12,15 @@ import pe.com.ega.sgces.model.Transacciondetalle;
  *
  * @author Flopez
  */
-public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
+public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao {
 
-   private SessionFactory session;
+    private SessionFactory session;
 
     @Override
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-        
+
     @Override
     public void insertar(Transacciondetalle detalle) {
         session.getCurrentSession().save(detalle);
@@ -43,10 +43,9 @@ public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
 
     @Override
     public List<Transacciondetalle> buscarTodos() {
-         session.getCurrentSession().beginTransaction();
-         List<Transacciondetalle> lista=session.openSession().createQuery("from Transacciondetalle").list();
-         session.getCurrentSession().flush();
-         return  lista;
+        session.getCurrentSession().beginTransaction();
+        List<Transacciondetalle> lista = session.openSession().createQuery("from Transacciondetalle").list();
+        session.getCurrentSession().flush();
+        return lista;
     }
-    
 }

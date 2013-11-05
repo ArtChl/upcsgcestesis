@@ -13,15 +13,15 @@ import pe.com.ega.sgces.model.Deposito;
  *
  * @author Flopez
  */
-public class DepositoDaoImpl implements DepositoDao{
+public class DepositoDaoImpl implements DepositoDao {
 
     private SessionFactory session;
-    
+
     @Override
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-    
+
     @Override
     public void insertar(Deposito deposito) {
         session.getCurrentSession().save(deposito);
@@ -45,20 +45,17 @@ public class DepositoDaoImpl implements DepositoDao{
     @Override
     public List<Deposito> buscarTodos() {
         session.getCurrentSession().beginTransaction();
-        List<Deposito> lista=session.openSession().createQuery("from Deposito").list();
+        List<Deposito> lista = session.openSession().createQuery("from Deposito").list();
         session.getCurrentSession().flush();
         return lista;
     }
 
     @Override
-    public List buscarMonto(String tipo, String turno){
-       session.getCurrentSession().beginTransaction();
-       Query query = session.openSession().createQuery("select sum(montototal) from Deposito where idtipopago='"+tipo+"' and idturno='"+turno+"'");
-       List results = query.list();
-       session.getCurrentSession().flush();
-       return results;
+    public List buscarMonto(String tipo, String turno) {
+        session.getCurrentSession().beginTransaction();
+        Query query = session.openSession().createQuery("select sum(montototal) from Deposito where idtipopago='" + tipo + "' and idturno='" + turno + "'");
+        List results = query.list();
+        session.getCurrentSession().flush();
+        return results;
     }
-
-    
-    
 }

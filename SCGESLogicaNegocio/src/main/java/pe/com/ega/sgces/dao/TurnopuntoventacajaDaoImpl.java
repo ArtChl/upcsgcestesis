@@ -11,19 +11,16 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
  *
  * @author Flopez
  */
-public class TurnopuntoventacajaDaoImpl implements TurnopuntoventacajaDao{
+public class TurnopuntoventacajaDaoImpl implements TurnopuntoventacajaDao {
 
     private SessionFactory session;
 
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-    
+
     @Override
     public void insertar(Turnopuntoventacaja turno) {
         session.getCurrentSession().save(turno);
     }
-
-    
-    
 }

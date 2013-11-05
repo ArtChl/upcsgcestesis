@@ -4,7 +4,6 @@
  */
 package pe.com.ega.sgces.sgcespos;
 
-
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.TransaccionLogica;
@@ -23,16 +22,17 @@ public class OpcionFrame extends javax.swing.JFrame {
     private MovimientoLogica movimientoLogica;
     private TurnoLogica turnoLogica;
     private TransaccionLogica transaccionLogica;
-    
+
     public OpcionFrame(Despacho codigo, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica) {
         initComponents();
-        this.desp=codigo;
-        this.despachoLogic=despachoLogica;
-        this.movimientoLogica= movimientoLogica;
-        this.turnoLogica= turnoLogica;
-        this.transaccionLogica=transaccionLogica;
+        this.desp = codigo;
+        this.despachoLogic = despachoLogica;
+        this.movimientoLogica = movimientoLogica;
+        this.turnoLogica = turnoLogica;
+        this.transaccionLogica = transaccionLogica;
         this.setLocationRelativeTo(null);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -75,38 +75,34 @@ public class OpcionFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
-        FacturaFrame f=new FacturaFrame(desp,despachoLogic, movimientoLogica, turnoLogica, transaccionLogica);
-            f.setSize(391,166);
-            f.setTitle("Factura");
-            f.setLocationRelativeTo(null);
-            f.setVisible(true);
+        FacturaFrame f = new FacturaFrame(desp, despachoLogic, movimientoLogica, turnoLogica, transaccionLogica);
+        f.setSize(391, 166);
+        f.setTitle("Factura");
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
     }//GEN-LAST:event_facturaActionPerformed
 
     private void despachoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despachoActionPerformed
-       NotaFrame f=new NotaFrame(desp);
-            f.setSize(391,290);
-            f.setTitle("Nota Despacho");
-            f.setLocationRelativeTo(null);
-            f.setVisible(true);
+        NotaFrame f = new NotaFrame(desp);
+        f.setSize(391, 290);
+        f.setTitle("Nota Despacho");
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
     }//GEN-LAST:event_despachoActionPerformed
 
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
-        Cliente cliente=new Cliente();
+        Cliente cliente = new Cliente();
         cliente.setId(2);
-        MonedaFrame f=new MonedaFrame(desp, "BOL", cliente, despachoLogic, movimientoLogica, turnoLogica, transaccionLogica);
-            f.setSize(301,213);
-            f.setTitle("Tipo Pago");
-            f.setLocationRelativeTo(null);
-            f.setVisible(true);
+        MonedaFrame f = new MonedaFrame(desp, "BOL", cliente, despachoLogic, movimientoLogica, turnoLogica, transaccionLogica);
+        f.setSize(301, 213);
+        f.setTitle("Tipo Pago");
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
     }//GEN-LAST:event_boletaActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boleta;
     private javax.swing.JButton despacho;
     private javax.swing.JButton factura;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-   
-  
-
 }
