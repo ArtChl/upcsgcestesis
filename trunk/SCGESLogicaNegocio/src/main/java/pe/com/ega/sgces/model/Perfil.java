@@ -25,13 +25,6 @@ public class Perfil  implements java.io.Serializable {
     public Perfil(int id) {
         this.id = id;
     }
-    public Perfil(int id, String nombre, Date fecharegistro, Set<Usuarioperfil> usuarioperfils, Set<Perfilopcion> perfilopcions) {
-       this.id = id;
-       this.nombre = nombre;
-       this.fecharegistro = fecharegistro;
-       this.usuarioperfils = usuarioperfils;
-       this.perfilopcions = perfilopcions;
-    }
    
     public int getId() {
         return this.id;

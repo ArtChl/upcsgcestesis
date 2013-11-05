@@ -15,11 +15,6 @@ public class PerfilopcionId  implements java.io.Serializable {
     public PerfilopcionId() {
     }
 
-    public PerfilopcionId(int idopcion, int idperfil) {
-       this.idopcion = idopcion;
-       this.idperfil = idperfil;
-    }
-   
     public int getIdopcion() {
         return this.idopcion;
     }
@@ -34,27 +29,6 @@ public class PerfilopcionId  implements java.io.Serializable {
     public void setIdperfil(int idperfil) {
         this.idperfil = idperfil;
     }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof PerfilopcionId) ) return false;
-		 PerfilopcionId castOther = ( PerfilopcionId ) other; 
-         
-		 return (this.getIdopcion()==castOther.getIdopcion())
- && (this.getIdperfil()==castOther.getIdperfil());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getIdopcion();
-         result = 37 * result + this.getIdperfil();
-         return result;
-   }   
-
-
 }
 
 

@@ -4,10 +4,7 @@
  */
 package pe.com.ega.sgces.dao;
 
-import java.util.List;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Turno;
 
 /**

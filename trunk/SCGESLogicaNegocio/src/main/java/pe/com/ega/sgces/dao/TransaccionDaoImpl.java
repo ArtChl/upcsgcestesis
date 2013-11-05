@@ -15,7 +15,7 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class TransaccionDaoImpl implements TransaccionDao{
 
-    SessionFactory session;
+    private SessionFactory session;
 
     @Override
     public void setSession(SessionFactory session) {
@@ -49,7 +49,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
          session.getCurrentSession().beginTransaction();
          List<Transaccion> lista;
          lista = session.getCurrentSession().createQuery("from Transaccion").list();
-        // session.close();
          return  lista;
     }
 
@@ -58,7 +57,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
         session.getCurrentSession().beginTransaction();
         List<Transaccion> lista;
         lista = session.getCurrentSession().createQuery("from Transaccion where idcliente='"+id+"' and idtipotransaccion='NDES' and facturado=false and anulado=false").list();
-        //session.close();
         return  lista;
     }
 
@@ -66,7 +64,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
     public List<Transaccion> buscarTodosDoc(String documento) {
         session.getCurrentSession().beginTransaction();
         List<Transaccion> lista= session.getCurrentSession().createQuery("from Transaccion where idtipotransaccion='"+documento+"'").list();
-        //session.close();
         return lista;
     }
 
@@ -76,7 +73,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
        Query query;
         query = session.getCurrentSession().createQuery("select sum(montototal) from Transaccion where producto='"+tipo+"' and idestado='"+turno+"'");
        List results = query.list();
-       //session.close();
        return results;
     }
 
@@ -85,7 +81,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
         session.getCurrentSession().beginTransaction();
         List<Transaccion> lista;
         lista = session.getCurrentSession().createQuery("from Transaccion where idestado="+turno+" and anulado=false").list();
-        //session.close();
         return lista;
     }
 
@@ -94,7 +89,6 @@ public class TransaccionDaoImpl implements TransaccionDao{
         session.getCurrentSession().beginTransaction();
         Transaccion trans;
         trans = (Transaccion)session.getCurrentSession().createQuery("from Transaccion where numerovale='"+numero+"'").uniqueResult();
-        //session.close();
         return trans;
     }
     

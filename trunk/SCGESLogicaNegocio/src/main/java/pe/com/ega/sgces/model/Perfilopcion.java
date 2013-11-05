@@ -17,19 +17,6 @@ public class Perfilopcion  implements java.io.Serializable {
 
     public Perfilopcion() {
     }
-
-	
-    public Perfilopcion(PerfilopcionId id, Perfil perfil, Opcion opcion) {
-        this.id = id;
-        this.perfil = perfil;
-        this.opcion = opcion;
-    }
-    public Perfilopcion(PerfilopcionId id, Perfil perfil, Opcion opcion, Date fecharegistro) {
-       this.id = id;
-       this.perfil = perfil;
-       this.opcion = opcion;
-       this.fecharegistro = fecharegistro;
-    }
    
     public PerfilopcionId getId() {
         return this.id;

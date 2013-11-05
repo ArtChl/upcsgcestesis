@@ -24,24 +24,6 @@ public class Tanque  implements java.io.Serializable {
 
     public Tanque() {
     }
-
-	
-    public Tanque(int id, Producto producto, Estacionservicio estacionservicio) {
-        this.id = id;
-        this.producto = producto;
-        this.estacionservicio = estacionservicio;
-    }
-    public Tanque(int id, Producto producto, Estacionservicio estacionservicio, Date fecharegistro, Integer capacidad, Integer numero, Integer alturavarillaje, Integer alturasensor, Set<Varillaje> varillajes) {
-       this.id = id;
-       this.producto = producto;
-       this.estacionservicio = estacionservicio;
-       this.fecharegistro = fecharegistro;
-       this.capacidad = capacidad;
-       this.numero = numero;
-       this.alturavarillaje = alturavarillaje;
-       this.alturasensor = alturasensor;
-       this.varillajes = varillajes;
-    }
    
     public int getId() {
         return this.id;

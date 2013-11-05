@@ -23,22 +23,6 @@ public class Varillaje  implements java.io.Serializable {
 
     public Varillaje() {
     }
-
-	
-    public Varillaje(int id, Tanque tanque) {
-        this.id = id;
-        this.tanque = tanque;
-    }
-    public Varillaje(int id, Tanque tanque, Date fechalectura, Integer medicionvolumen, Integer medicionagua, String fechanegocio, Date fecharegistro, Set<Varillajeajuste> varillajeajustes) {
-       this.id = id;
-       this.tanque = tanque;
-       this.fechalectura = fechalectura;
-       this.medicionvolumen = medicionvolumen;
-       this.medicionagua = medicionagua;
-       this.fechanegocio = fechanegocio;
-       this.fecharegistro = fecharegistro;
-       this.varillajeajustes = varillajeajustes;
-    }
    
     public int getId() {
         return this.id;

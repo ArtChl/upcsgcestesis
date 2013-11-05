@@ -16,20 +16,7 @@ public class Usuarioperfil  implements java.io.Serializable {
      private Date fecharegistro;
 
     public Usuarioperfil() {
-    }
-
-	
-    public Usuarioperfil(UsuarioperfilId id, Perfil perfil, Usuario usuario) {
-        this.id = id;
-        this.perfil = perfil;
-        this.usuario = usuario;
-    }
-    public Usuarioperfil(UsuarioperfilId id, Perfil perfil, Usuario usuario, Date fecharegistro) {
-       this.id = id;
-       this.perfil = perfil;
-       this.usuario = usuario;
-       this.fecharegistro = fecharegistro;
-    }
+    }	
    
     public UsuarioperfilId getId() {
         return this.id;

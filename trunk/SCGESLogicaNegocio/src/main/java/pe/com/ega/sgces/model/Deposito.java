@@ -18,19 +18,6 @@ public class Deposito  implements java.io.Serializable {
      private String turno;
      private String cerrado;
 
-    public Deposito() {
-    }
-
-    public Deposito(int id, Turnopuntoventacaja turnopuntoventacaja, Double montototal, Date fecharegistro, String idtipopago, String turno, String cerrado) {
-        this.id = id;
-        this.turnopuntoventacaja = turnopuntoventacaja;
-        this.montototal = montototal;
-        this.fecharegistro = fecharegistro;
-        this.idtipopago = idtipopago;
-        this.turno = turno;
-        this.cerrado = cerrado;
-    }
-
     public int getId() {
         return id;
     }

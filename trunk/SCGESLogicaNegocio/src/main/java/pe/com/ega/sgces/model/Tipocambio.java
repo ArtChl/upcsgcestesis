@@ -9,7 +9,6 @@ import java.util.Date;
  */
 public class Tipocambio  implements java.io.Serializable {
 
-
      private int id;
      private Long cambio;
      private Integer idmoneda;
@@ -21,12 +20,6 @@ public class Tipocambio  implements java.io.Serializable {
 	
     public Tipocambio(int id) {
         this.id = id;
-    }
-    public Tipocambio(int id, Long cambio, Integer idmoneda, Date fecharegistro) {
-       this.id = id;
-       this.cambio = cambio;
-       this.idmoneda = idmoneda;
-       this.fecharegistro = fecharegistro;
     }
    
     public int getId() {

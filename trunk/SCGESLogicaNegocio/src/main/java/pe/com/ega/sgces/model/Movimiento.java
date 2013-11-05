@@ -25,22 +25,6 @@ public class Movimiento  implements java.io.Serializable {
 
     public Movimiento() {
     }
-
-    public Movimiento(int id, Turnopuntoventacaja turnopuntoventacaja, Transaccion transaccion, String pago, Double montorecibido, Double montototal, Double montodevuelto, Date fecharegistro, String nrooperacion, String tipo, String turno, String cerrado) {
-        this.id = id;
-        this.turnopuntoventacaja = turnopuntoventacaja;
-        this.transaccion = transaccion;
-        this.pago = pago;
-        this.montorecibido = montorecibido;
-        this.montototal = montototal;
-        this.montodevuelto = montodevuelto;
-        this.fecharegistro = fecharegistro;
-        this.nrooperacion = nrooperacion;
-        this.tipo = tipo;
-        this.turno = turno;
-        this.cerrado = cerrado;
-    }
-
     public int getId() {
         return id;
     }

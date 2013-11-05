@@ -4,6 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
+import pe.com.ega.sgces.util.Util;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.MovimientoDao;
@@ -17,7 +18,7 @@ import org.apache.log4j.Logger;
 public class MovimientoLogicaImpl implements MovimientoLogica{
 
     private final static Logger logger = Logger.getLogger(MovimientoLogicaImpl.class);
-    SessionFactory session; 
+    private SessionFactory session; 
     private MovimientoDao movimientoDao;
 
     public MovimientoLogicaImpl() {

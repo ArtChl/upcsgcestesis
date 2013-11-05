@@ -15,7 +15,7 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuariodaoImpl implements UsuarioDao{
 
-    Session session;
+    private Session session;
 
     @Override
     public void setSession(Session session) {

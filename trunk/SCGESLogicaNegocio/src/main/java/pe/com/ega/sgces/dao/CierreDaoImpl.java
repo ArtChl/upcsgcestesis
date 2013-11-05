@@ -12,9 +12,9 @@ import org.hibernate.Session;
  */
 public class CierreDaoImpl implements CierreDao{
     
-    Session session;
-
+    private Session session;
  
+    @Override
     public void setSession(Session session) {
         this.session = session;
     }

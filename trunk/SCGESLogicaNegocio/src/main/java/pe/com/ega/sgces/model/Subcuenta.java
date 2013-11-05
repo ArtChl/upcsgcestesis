@@ -22,26 +22,7 @@ public class Subcuenta  implements java.io.Serializable {
 
     public Subcuenta() {
     }
-
-	
-    public Subcuenta(int id, Cuenta cuenta, Producto producto, Tarjeta tarjeta) {
-        this.id = id;
-        this.cuenta = cuenta;
-        this.producto = producto;
-        this.tarjeta = tarjeta;
-    }
-    public Subcuenta(int id, Cuenta cuenta, Producto producto, Tarjeta tarjeta, String descriocion, Integer idtipomoneda, Integer saldo, Integer limitecredito, Date fecharegistro) {
-       this.id = id;
-       this.cuenta = cuenta;
-       this.producto = producto;
-       this.tarjeta = tarjeta;
-       this.descriocion = descriocion;
-       this.idtipomoneda = idtipomoneda;
-       this.saldo = saldo;
-       this.limitecredito = limitecredito;
-       this.fecharegistro = fecharegistro;
-    }
-   
+       
     public int getId() {
         return this.id;
     }

@@ -137,7 +137,6 @@ public class valeBean implements Serializable{
             vale = new Vale();
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage("Datos No se han eliminado", "Eliminados"));
-           // usuarioDao.cerrarError();
         }
     
     }

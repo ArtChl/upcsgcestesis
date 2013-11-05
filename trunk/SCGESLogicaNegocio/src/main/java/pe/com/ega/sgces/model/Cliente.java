@@ -20,24 +20,6 @@ public class Cliente  implements java.io.Serializable {
      private Set<Transaccion> transaccions = new HashSet<Transaccion>(0);
      private Set<Tarjeta> tarjetas = new HashSet<Tarjeta>(0);
      private Set<Cuenta> cuentas = new HashSet<Cuenta>(0);
-
-    public Cliente() {
-    }
-
-	
-    public Cliente(int id) {
-        this.id = id;
-    }
-    public Cliente(int id, String numerodocumento, String razonsocial, Integer idtipodocumento, Date fecharegistro, Set<Transaccion> transaccions, Set<Tarjeta> tarjetas, Set<Cuenta> cuentas) {
-       this.id = id;
-       this.numerodocumento = numerodocumento;
-       this.razonsocial = razonsocial;
-       this.idtipodocumento = idtipodocumento;
-       this.fecharegistro = fecharegistro;
-       this.transaccions = transaccions;
-       this.tarjetas = tarjetas;
-       this.cuentas = cuentas;
-    }
    
     public int getId() {
         return this.id;

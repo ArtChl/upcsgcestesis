@@ -26,15 +26,6 @@ public class Impresora  implements java.io.Serializable {
     public Impresora(int id) {
         this.id = id;
     }
-    public Impresora(int id, String nombre, String descripcion, String puerto, Date fecharegistro, Set<Impresorapuntoventa> impresorapuntoventas) {
-       this.id = id;
-       this.nombre = nombre;
-       this.descripcion = descripcion;
-       this.puerto = puerto;
-       this.fecharegistro = fecharegistro;
-       this.impresorapuntoventas = impresorapuntoventas;
-    }
-   
     public int getId() {
         return this.id;
     }

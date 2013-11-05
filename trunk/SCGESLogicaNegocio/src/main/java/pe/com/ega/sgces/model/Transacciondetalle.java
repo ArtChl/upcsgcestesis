@@ -20,21 +20,6 @@ public class Transacciondetalle  implements java.io.Serializable {
     public Transacciondetalle() {
     }
 
-	
-    public Transacciondetalle(int id, Producto producto, Transaccion transaccion) {
-        this.id = id;
-        this.producto = producto;
-        this.transaccion = transaccion;
-    }
-    public Transacciondetalle(int id, Producto producto, Transaccion transaccion, Long monto, Integer cantidad, Date fecharegistro) {
-       this.id = id;
-       this.producto = producto;
-       this.transaccion = transaccion;
-       this.monto = monto;
-       this.cantidad = cantidad;
-       this.fecharegistro = fecharegistro;
-    }
-   
     public int getId() {
         return this.id;
     }

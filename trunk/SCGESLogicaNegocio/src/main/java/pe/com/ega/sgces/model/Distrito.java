@@ -16,21 +16,7 @@ public class Distrito  implements java.io.Serializable {
      private String nombre;
      private Set<Estacionservicio> estacionservicios = new HashSet<Estacionservicio>(0);
 
-    public Distrito() {
-    }
-
-	
-    public Distrito(DistritoId id, Provincia provincia) {
-        this.id = id;
-        this.provincia = provincia;
-    }
-    public Distrito(DistritoId id, Provincia provincia, String nombre, Set<Estacionservicio> estacionservicios) {
-       this.id = id;
-       this.provincia = provincia;
-       this.nombre = nombre;
-       this.estacionservicios = estacionservicios;
-    }
-   
+       
     public DistritoId getId() {
         return this.id;
     }

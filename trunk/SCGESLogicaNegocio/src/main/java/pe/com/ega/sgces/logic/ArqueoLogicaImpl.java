@@ -6,6 +6,7 @@ package pe.com.ega.sgces.logic;
 
 import java.util.ArrayList;
 import pe.com.ega.sgces.model.Arqueo;
+import pe.com.ega.sgces.util.Formato;
 
 /**
  *
@@ -49,13 +50,13 @@ public class ArqueoLogicaImpl implements ArqueoLogica{
             arqueo.setComprobante(string);     
             Double mov=movimientoLogica.buscarMonto(string,turno);
             Double vuelto=movimientoLogica.buscarMontoVuelto(string,turno);
-            soles=redondear(mov-vuelto);
+            soles=Formato.redondear(mov-vuelto);
             Double dep=depositoLogica.buscarMonto(string,turno);
             if(arqueo.getComprobante().equalsIgnoreCase("SOLES")) {
                 soles=soles-solesDolares;
             }
             if(arqueo.getComprobante().equalsIgnoreCase("DOLARES")) {
-                arqueo.setCantidad(redondear((mov/2.65-dep))); 
+                arqueo.setCantidad(Formato.redondear((mov/2.65-dep))); 
                 solesDolares=vuelto;
             }else{
                 arqueo.setCantidad(soles-dep);      
@@ -66,9 +67,5 @@ public class ArqueoLogicaImpl implements ArqueoLogica{
          return arqueos;
     }
     
-    public static double redondear(double numero) 
-       {        
-           return Math.rint(numero*100)/100; 
-       }
     
 }

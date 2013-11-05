@@ -5,9 +5,7 @@
 package pe.com.ega.sgces.dao;
 
 import java.util.List;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Transacciondetalle;
 
 /**
@@ -16,7 +14,7 @@ import pe.com.ega.sgces.model.Transacciondetalle;
  */
 public class TransaccionDetalleDaoImpl implements TransaccionDetalleDao{
 
-    SessionFactory session;
+   private SessionFactory session;
 
     @Override
     public void setSession(SessionFactory session) {

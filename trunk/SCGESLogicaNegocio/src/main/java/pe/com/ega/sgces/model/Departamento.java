@@ -14,19 +14,6 @@ public class Departamento  implements java.io.Serializable {
      private String id;
      private String nombre;
      private Set<Provincia> provincias = new HashSet<Provincia>(0);
-
-    public Departamento() {
-    }
-
-	
-    public Departamento(String id) {
-        this.id = id;
-    }
-    public Departamento(String id, String nombre, Set<Provincia> provincias) {
-       this.id = id;
-       this.nombre = nombre;
-       this.provincias = provincias;
-    }
    
     public String getId() {
         return this.id;

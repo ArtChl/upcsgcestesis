@@ -29,27 +29,6 @@ public class Surtidor  implements java.io.Serializable {
     public Surtidor() {
     }
 
-	
-    public Surtidor(int id, Estacionservicio estacionservicio) {
-        this.id = id;
-        this.estacionservicio = estacionservicio;
-    }
-    public Surtidor(int id, Estacionservicio estacionservicio, Integer idmarca, Integer idmodelo, String descripcion, String nombre, Integer nrocaras, String numeroserie, Date fecharegistro, Integer idfamiliaelectronica, Integer nromangueras, String lote, Set<Cara> caras) {
-       this.id = id;
-       this.estacionservicio = estacionservicio;
-       this.idmarca = idmarca;
-       this.idmodelo = idmodelo;
-       this.descripcion = descripcion;
-       this.nombre = nombre;
-       this.nrocaras = nrocaras;
-       this.numeroserie = numeroserie;
-       this.fecharegistro = fecharegistro;
-       this.idfamiliaelectronica = idfamiliaelectronica;
-       this.nromangueras = nromangueras;
-       this.lote = lote;
-       this.caras = caras;
-    }
-   
     public int getId() {
         return this.id;
     }

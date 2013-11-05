@@ -13,7 +13,7 @@ import pe.com.ega.sgces.model.Turno;
  */
 public class TurnoDaoImpl implements  TurnoDao{
 
-    SessionFactory session;
+    private SessionFactory session;
 
     @Override
     public void setSession(SessionFactory session) {

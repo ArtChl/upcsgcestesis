@@ -4,9 +4,6 @@
  */
 package pe.com.ega.sgces.logic;
 
-import org.hibernate.SessionFactory;
-import pe.com.ega.sgces.dao.TurnopuntoventacajaDao;
-import pe.com.ega.sgces.model.Movimiento;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 
 /**

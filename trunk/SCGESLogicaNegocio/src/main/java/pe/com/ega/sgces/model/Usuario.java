@@ -22,20 +22,6 @@ public class Usuario  implements java.io.Serializable {
     public Usuario() {
     }
 
-	
-    public Usuario(int id, Trabajador trabajador) {
-        this.id = id;
-        this.trabajador = trabajador;
-    }
-    public Usuario(int id, Trabajador trabajador, String login, String clave, Date fecharegistro, Set<Usuarioperfil> usuarioperfils) {
-       this.id = id;
-       this.trabajador = trabajador;
-       this.login = login;
-       this.clave = clave;
-       this.fecharegistro = fecharegistro;
-       this.usuarioperfils = usuarioperfils;
-    }
-   
     public int getId() {
         return this.id;
     }

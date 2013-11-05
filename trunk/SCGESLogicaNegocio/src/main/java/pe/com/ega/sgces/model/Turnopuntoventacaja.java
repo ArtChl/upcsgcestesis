@@ -22,23 +22,6 @@ public class Turnopuntoventacaja  implements java.io.Serializable {
 
     public Turnopuntoventacaja() {
     }
-
-	
-    public Turnopuntoventacaja(TurnopuntoventacajaId id, Caja caja, Turno turno, Puntoventa puntoventa) {
-        this.id = id;
-        this.caja = caja;
-        this.turno = turno;
-        this.puntoventa = puntoventa;
-    }
-    public Turnopuntoventacaja(TurnopuntoventacajaId id, Caja caja, Turno turno, Puntoventa puntoventa, Date fecharegistro, Set<Deposito> depositos, Set<Movimiento> movimientos) {
-       this.id = id;
-       this.caja = caja;
-       this.turno = turno;
-       this.puntoventa = puntoventa;
-       this.fecharegistro = fecharegistro;
-       this.depositos = depositos;
-       this.movimientos = movimientos;
-    }
    
     public TurnopuntoventacajaId getId() {
         return this.id;

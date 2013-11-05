@@ -30,28 +30,6 @@ public class Trabajador  implements java.io.Serializable {
     public Trabajador() {
     }
 
-	
-    public Trabajador(int id, Estacionservicio estacionservicio) {
-        this.id = id;
-        this.estacionservicio = estacionservicio;
-    }
-    public Trabajador(int id, Estacionservicio estacionservicio, String nombre, String apellidopaterno, String apellidomaterno, String dni, String correo, String telefono, Integer idcargo, Integer idestadocivil, Date fechanacimiento, Date fecharegistro, Set<Usuario> usuarios, Set<Caja> cajas) {
-       this.id = id;
-       this.estacionservicio = estacionservicio;
-       this.nombre = nombre;
-       this.apellidopaterno = apellidopaterno;
-       this.apellidomaterno = apellidomaterno;
-       this.dni = dni;
-       this.correo = correo;
-       this.telefono = telefono;
-       this.idcargo = idcargo;
-       this.idestadocivil = idestadocivil;
-       this.fechanacimiento = fechanacimiento;
-       this.fecharegistro = fecharegistro;
-       this.usuarios = usuarios;
-       this.cajas = cajas;
-    }
-   
     public int getId() {
         return this.id;
     }

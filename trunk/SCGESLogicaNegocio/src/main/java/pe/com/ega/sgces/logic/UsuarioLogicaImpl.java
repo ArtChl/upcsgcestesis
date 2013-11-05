@@ -29,10 +29,12 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
         this.usuarioDao.setSession(session);
     }
     
+    @Override
     public Usuario buscarPorUsuario(Usuario usuario) {
         return usuarioDao.buscarPorUsuario(usuario);
     }
 
+    @Override
     public void grabar(Usuario usuario) {
         session.beginTransaction();
         if(usuario.getId() == 0)
@@ -45,10 +47,12 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
         session.getTransaction().commit();
     }
 
+    @Override
     public Usuario buscarPorCodigo(Integer id) {
         return usuarioDao.buscarPorCodigo(id);
     }
 
+    @Override
     public List<Usuario> buscarTodos() {
         return usuarioDao.buscarTodos();
     }

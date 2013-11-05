@@ -64,9 +64,7 @@ public class Ticket{
                 FileWriter imp = new FileWriter(impresora);
                 
                 char[] Caracter = new char[] { 0x1B, 'R',18};
-                //imp.write(Caracter);
                 for(int cabecera=0;cabecera<CabezaLineas.size();cabecera++){
-                  //  imp.write(CabezaLineas.get(cabecera));
                     imp.write(CabezaLineas.get(cabecera));
                 }
                 for(int subcabecera=0;subcabecera<subCabezaLineas.size();subcabecera++){
@@ -103,8 +101,7 @@ public class Ticket{
                 subCabezaLineas.removeAll(subCabezaLineas);
                 items.removeAll(items);
                 totales.removeAll(totales);
-                LineasPie.removeAll(LineasPie);
-                 
+                LineasPie.removeAll(LineasPie);                 
             }
       }
        public static void ImprimirDocumento(String impresora,boolean abrir,

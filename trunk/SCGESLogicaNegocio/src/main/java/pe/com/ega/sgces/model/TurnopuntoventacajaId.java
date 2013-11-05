@@ -15,12 +15,6 @@ public class TurnopuntoventacajaId  implements java.io.Serializable {
 
     public TurnopuntoventacajaId() {
     }
-
-    public TurnopuntoventacajaId(int idturno, int idpuntoventa, int idcaja) {
-       this.idturno = idturno;
-       this.idpuntoventa = idpuntoventa;
-       this.idcaja = idcaja;
-    }
    
     public int getIdturno() {
         return this.idturno;
@@ -43,29 +37,6 @@ public class TurnopuntoventacajaId  implements java.io.Serializable {
     public void setIdcaja(int idcaja) {
         this.idcaja = idcaja;
     }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof TurnopuntoventacajaId) ) return false;
-		 TurnopuntoventacajaId castOther = ( TurnopuntoventacajaId ) other; 
-         
-		 return (this.getIdturno()==castOther.getIdturno())
- && (this.getIdpuntoventa()==castOther.getIdpuntoventa())
- && (this.getIdcaja()==castOther.getIdcaja());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getIdturno();
-         result = 37 * result + this.getIdpuntoventa();
-         result = 37 * result + this.getIdcaja();
-         return result;
-   }   
-
-
 }
 
 

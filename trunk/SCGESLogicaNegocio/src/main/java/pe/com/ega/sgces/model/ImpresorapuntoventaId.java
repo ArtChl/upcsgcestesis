@@ -11,14 +11,6 @@ public class ImpresorapuntoventaId  implements java.io.Serializable {
 
      private int idpuntoventa;
      private int idimpresora;
-
-    public ImpresorapuntoventaId() {
-    }
-
-    public ImpresorapuntoventaId(int idpuntoventa, int idimpresora) {
-       this.idpuntoventa = idpuntoventa;
-       this.idimpresora = idimpresora;
-    }
    
     public int getIdpuntoventa() {
         return this.idpuntoventa;
@@ -34,26 +26,6 @@ public class ImpresorapuntoventaId  implements java.io.Serializable {
     public void setIdimpresora(int idimpresora) {
         this.idimpresora = idimpresora;
     }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof ImpresorapuntoventaId) ) return false;
-		 ImpresorapuntoventaId castOther = ( ImpresorapuntoventaId ) other; 
-         
-		 return (this.getIdpuntoventa()==castOther.getIdpuntoventa())
- && (this.getIdimpresora()==castOther.getIdimpresora());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getIdpuntoventa();
-         result = 37 * result + this.getIdimpresora();
-         return result;
-   }   
-
 
 }
 

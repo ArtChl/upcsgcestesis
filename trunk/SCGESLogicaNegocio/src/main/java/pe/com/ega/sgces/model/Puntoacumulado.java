@@ -18,21 +18,7 @@ public class Puntoacumulado  implements java.io.Serializable {
 
     public Puntoacumulado() {
     }
-
-	
-    public Puntoacumulado(PuntoacumuladoId id, Tarjeta tarjeta, Transaccion transaccion) {
-        this.id = id;
-        this.tarjeta = tarjeta;
-        this.transaccion = transaccion;
-    }
-    public Puntoacumulado(PuntoacumuladoId id, Tarjeta tarjeta, Transaccion transaccion, Date fecharegistro, Integer numeropuntos) {
-       this.id = id;
-       this.tarjeta = tarjeta;
-       this.transaccion = transaccion;
-       this.fecharegistro = fecharegistro;
-       this.numeropuntos = numeropuntos;
-    }
-   
+    
     public PuntoacumuladoId getId() {
         return this.id;
     }

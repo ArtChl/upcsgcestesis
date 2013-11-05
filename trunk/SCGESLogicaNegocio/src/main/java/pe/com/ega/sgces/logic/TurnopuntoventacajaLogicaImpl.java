@@ -4,9 +4,7 @@
  */
 package pe.com.ega.sgces.logic;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import pe.com.ega.sgces.dao.HibernateUtil;
 import pe.com.ega.sgces.dao.TurnopuntoventacajaDao;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 
@@ -16,7 +14,7 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
  */
 public class TurnopuntoventacajaLogicaImpl implements TurnopuntoventacajaLogica {
 
-    SessionFactory session; 
+    private SessionFactory session; 
     private TurnopuntoventacajaDao turnopuntoventacajaDao;
     
     public TurnopuntoventacajaLogicaImpl()

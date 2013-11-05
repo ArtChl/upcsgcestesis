@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pe.com.ega.sgces.logic;
+package pe.com.ega.sgces.util;
 
 import java.util.List;
 

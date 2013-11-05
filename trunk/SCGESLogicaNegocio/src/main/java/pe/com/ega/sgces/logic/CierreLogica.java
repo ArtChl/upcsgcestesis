@@ -5,7 +5,6 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.ArrayList;
-import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Cierre;
 import pe.com.ega.sgces.model.Turno;
 

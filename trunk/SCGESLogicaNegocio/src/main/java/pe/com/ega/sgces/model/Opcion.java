@@ -24,12 +24,6 @@ public class Opcion  implements java.io.Serializable {
     public Opcion(int id) {
         this.id = id;
     }
-    public Opcion(int id, String nombre, Date fecharegistro, Set<Perfilopcion> perfilopcions) {
-       this.id = id;
-       this.nombre = nombre;
-       this.fecharegistro = fecharegistro;
-       this.perfilopcions = perfilopcions;
-    }
    
     public int getId() {
         return this.id;

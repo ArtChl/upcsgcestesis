@@ -14,11 +14,6 @@ public class ProvinciaId  implements java.io.Serializable {
 
     public ProvinciaId() {
     }
-
-    public ProvinciaId(String id, String iddepartamento) {
-       this.id = id;
-       this.iddepartamento = iddepartamento;
-    }
    
     public String getId() {
         return this.id;
@@ -34,27 +29,6 @@ public class ProvinciaId  implements java.io.Serializable {
     public void setIddepartamento(String iddepartamento) {
         this.iddepartamento = iddepartamento;
     }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof ProvinciaId) ) return false;
-		 ProvinciaId castOther = ( ProvinciaId ) other; 
-         
-		 return ( (this.getId()==castOther.getId()) || ( this.getId()!=null && castOther.getId()!=null && this.getId().equals(castOther.getId()) ) )
- && ( (this.getIddepartamento()==castOther.getIddepartamento()) || ( this.getIddepartamento()!=null && castOther.getIddepartamento()!=null && this.getIddepartamento().equals(castOther.getIddepartamento()) ) );
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + ( getId() == null ? 0 : this.getId().hashCode() );
-         result = 37 * result + ( getIddepartamento() == null ? 0 : this.getIddepartamento().hashCode() );
-         return result;
-   }   
-
-
 }
 
 
