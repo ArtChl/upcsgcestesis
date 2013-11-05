@@ -4,7 +4,7 @@
  */
 package pe.com.ega.sgces.sgcespos;
 
-import Imprimir.ImprimirComprobante;
+import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -4,7 +4,7 @@
  */
 package pe.com.ega.sgces.sgcespos;
 
-import Imprimir.ImprimirComprobante;
+import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
