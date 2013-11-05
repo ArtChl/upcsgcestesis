@@ -102,7 +102,7 @@ public class TransaccionLogicaImpl implements TransaccionLogica {
             logger.error("Mensaje:\n" + e.getMessage());
             session.getCurrentSession().getTransaction().rollback();
         } finally {
-            session.getCurrentSession().getTransaction().commit();
+//            session.getCurrentSession().getTransaction().commit();
         }
     }
 
