@@ -25,10 +25,10 @@ import pe.com.ega.sgces.util.Formato;
  *
  * @author sistemas
  */
-public class CierreLogicaImpl implements CierreLogica{
+public class CierreLogicaImpl implements CierreLogica {
 
     private final static Logger logger = Logger.getLogger(CierreLogicaImpl.class);
-    SessionFactory session; 
+    private SessionFactory session;
     private TransaccionLogica transaccionLogica;
     private DespachoLogica despachoLogica;
     private TurnopuntoventacajaLogica turnopuntoventacajaLogica;
@@ -37,17 +37,17 @@ public class CierreLogicaImpl implements CierreLogica{
     private ImprimirComprobante imprimircomprobante;
 
     public CierreLogicaImpl() {
-            imprimircomprobante = new ImprimirComprobante();
+        imprimircomprobante = new ImprimirComprobante();
     }
-    
+
     public void setSession(SessionFactory session) {
-        this.session=session;
+        this.session = session;
     }
 
     public void setTurnoLogica(TurnoLogica turnoLogica) {
         this.turnoLogica = turnoLogica;
     }
-    
+
     public void setTransaccionLogica(TransaccionLogica transaccionLogica) {
         this.transaccionLogica = transaccionLogica;
     }
@@ -63,79 +63,76 @@ public class CierreLogicaImpl implements CierreLogica{
     public void setTurnopuntoventacajaLogica(TurnopuntoventacajaLogica turnopuntoventacajaLogica) {
         this.turnopuntoventacajaLogica = turnopuntoventacajaLogica;
     }
-    
+
     //TODO Lanzar errores personalizados en lugar de cadenas REGLAS DE NEGOCIO
     @Override
     public String cierreTurno(Turno turno) {
-              List<Despacho> despachos=null;
-              ArrayList<Arqueo> arqueos=null;
-              String resultado=null;
-              Turno turno2=null;
-              try {
-                turno2=turnoLogica.buscarPorCodigo("N");
-                despachos=(List<Despacho>) despachoLogica.buscarTodos();  
-                arqueos=arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
-                } catch (Exception e) {
-                    logger.error("Mensaje:\n"+e.getMessage());
-               }
-              
-              if(despachos.isEmpty()){
-               if(Formato.redondear(arqueos.get(0).getCantidad())==0 &&Formato.redondear(arqueos.get(1).getCantidad())==0 && Formato.redondear(arqueos.get(2).getCantidad())==0 && Formato.redondear(arqueos.get(3).getCantidad())==0){            
-                Double total=0.0;
-                ArrayList<Cierre> lista=this.buscarPorCodigo(String.valueOf(turno.getId()));
+        List<Despacho> despachos = null;
+        ArrayList<Arqueo> arqueos = null;
+        String resultado = null;
+        Turno turno2 = null;
+        try {
+            turno2 = turnoLogica.buscarPorCodigo("N");
+            despachos = (List<Despacho>) despachoLogica.buscarTodos();
+            arqueos = arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
+        } catch (Exception e) {
+            logger.error("Mensaje:\n" + e.getMessage());
+        }
+
+        if (despachos.isEmpty()) {
+            if (Formato.redondear(arqueos.get(0).getCantidad()) == 0 && Formato.redondear(arqueos.get(1).getCantidad()) == 0 && Formato.redondear(arqueos.get(2).getCantidad()) == 0 && Formato.redondear(arqueos.get(3).getCantidad()) == 0) {
+                Double total = 0.0;
+                ArrayList<Cierre> lista = this.buscarPorCodigo(String.valueOf(turno.getId()));
                 for (Cierre arqueo1 : lista) {
-                    total=total+arqueo1.getCantidad();
-                }      
-                imprimircomprobante.imprimirTurno("0001", String.valueOf(Formato.redondear(lista.get(0).getCantidad())), String.valueOf(Formato.redondear(lista.get(1).getCantidad())),String.valueOf(Formato.redondear(lista.get(2).getCantidad())),String.valueOf(Formato.redondear(total)),String.valueOf(Formato.redondear(lista.get(3).getCantidad())), "ROSARIO");                
-                
-                  try {
-                       turnoLogica.actualizar(turno2);
-                       resultado="Cierre";
-                   } catch (Exception e) {
-                       logger.error("Mensaje:\n"+e.getMessage());
-                       resultado="Cierre";
-                   }
-                   
+                    total = total + arqueo1.getCantidad();
+                }
+                imprimircomprobante.imprimirTurno("0001", String.valueOf(Formato.redondear(lista.get(0).getCantidad())), String.valueOf(Formato.redondear(lista.get(1).getCantidad())), String.valueOf(Formato.redondear(lista.get(2).getCantidad())), String.valueOf(Formato.redondear(total)), String.valueOf(Formato.redondear(lista.get(3).getCantidad())), "ROSARIO");
+
+                try {
+                    turnoLogica.actualizar(turno2);
+                    resultado = "Cierre";
+                } catch (Exception e) {
+                    logger.error("Mensaje:\n" + e.getMessage());
+                    resultado = "Cierre";
+                }
+
                 this.turno();
                 this.turnoCaja();
-                }else{
-                   resultado="Caja No Cuadrada";
-                }                    
-            }else{
-                resultado="Despachos Pendientes por Facturar";
+            } else {
+                resultado = "Caja No Cuadrada";
             }
-              return resultado;
+        } else {
+            resultado = "Despachos Pendientes por Facturar";
+        }
+        return resultado;
     }
-    
-    private void turno() 
-    {
-        Turno x=new Turno();
-        x.setEstacionservicio(new  Estacionservicio(1));
+
+    private void turno() {
+        Turno x = new Turno();
+        x.setEstacionservicio(new Estacionservicio(1));
         x.setFechaapertura(new Date());
         x.setEstado("N");
         try {
             turnoLogica.insertar(x);
         } catch (Exception e) {
-            logger.error("Mensaje:\n"+e.getMessage());
+            logger.error("Mensaje:\n" + e.getMessage());
         }
-        
-           
     }
-     
-    private void turnoCaja(){ 
-        Turnopuntoventacaja cajax= new Turnopuntoventacaja();
-        int turno2=0;
+
+    private void turnoCaja() {
+        Turnopuntoventacaja cajax = new Turnopuntoventacaja();
+        int turno2 = 0;
         try {
-            turno2= turnoLogica.buscarPorCodigo("N").getId();
+            turno2 = turnoLogica.buscarPorCodigo("N").getId();
         } catch (Exception e) {
-            logger.error("Mensaje:\n"+e.getMessage());
+            logger.error("Mensaje:\n" + e.getMessage());
         }
-        
+
         TurnopuntoventacajaId turnoPuntoVentaCajaId = new TurnopuntoventacajaId();
         turnoPuntoVentaCajaId.setIdcaja(1);
         turnoPuntoVentaCajaId.setIdturno(turno2);
         turnoPuntoVentaCajaId.setIdpuntoventa(1);
-        
+
         cajax.setId(turnoPuntoVentaCajaId);
         Caja caja = new Caja();
         caja.setId(1);
@@ -143,33 +140,30 @@ public class CierreLogicaImpl implements CierreLogica{
         cajax.setPuntoventa(new Puntoventa(1));
         cajax.setTurno(turnoLogica.buscarPorCodigo("N"));
         cajax.setFecharegistro(new Date());
-        
+
         try {
             turnopuntoventacajaLogica.insertar(cajax);
         } catch (Exception e) {
-            logger.error("Mensaje:\n"+e.getMessage());
+            logger.error("Mensaje:\n" + e.getMessage());
         }
-        
-     }
-    
+    }
+
     @Override
     public ArrayList<Cierre> buscarPorCodigo(String turno) {
-         System.out.println("Entro a Buscar");
-         ArrayList<Cierre> cierres= new ArrayList<>();
-         ArrayList<String> lista= new ArrayList<>();
-         lista.add("GASOLINA 84");
-         lista.add("GASOLINA 90");
-         lista.add("GASOLINA 94");
-         lista.add("DIESEL");
-         System.out.println("Cierre Cero"+lista.size());
-         for (int i = 0; i < lista.size(); i++) {
+        ArrayList<Cierre> cierres = new ArrayList<>();
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add("GASOLINA 84");
+        lista.add("GASOLINA 90");
+        lista.add("GASOLINA 94");
+        lista.add("DIESEL");
+        for (int i = 0; i < lista.size(); i++) {
             String string = lista.get(i);
-            Cierre cierre=new Cierre();
+            Cierre cierre = new Cierre();
             cierre.setProducto(string);
-            Double mov=transaccionLogica.buscarMonto(string, turno);
+            Double mov = transaccionLogica.buscarMonto(string, turno);
             cierre.setCantidad(mov);
-            cierres.add(cierre);           
+            cierres.add(cierre);
         }
-         return cierres;
+        return cierres;
     }
 }

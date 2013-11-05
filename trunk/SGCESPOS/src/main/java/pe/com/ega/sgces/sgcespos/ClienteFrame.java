@@ -4,7 +4,6 @@
  */
 package pe.com.ega.sgces.sgcespos;
 
-import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
@@ -15,7 +14,6 @@ import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
-import pe.com.ega.sgces.model.Transaccion;
 
 /**
  *
@@ -23,24 +21,17 @@ import pe.com.ega.sgces.model.Transaccion;
  */
 public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
-    private Despacho desp;
     private ClienteLogicaImpl clienteDao;
-    private Cliente cliente;
-    private Cliente temporal;
-    private ImprimirComprobante comprobante;
-    private Transaccion transaccion;
     private TransaccionLogicaImpl transaccionDao;
     private DespachoLogicaImpl despachoDao;
-    
+
     public ClienteFrame(Despacho despacho) {
         initComponents();
-        desp=despacho;
-        clienteDao=new ClienteLogicaImpl();
+        clienteDao = new ClienteLogicaImpl();
         clienteDao.setClienteDao(new ClienteDaoImpl());
-        transaccion=new Transaccion();
-        transaccionDao =new TransaccionLogicaImpl();
+        transaccionDao = new TransaccionLogicaImpl();
         transaccionDao.setTransaccionDao(new TransaccionDaoImpl());
-        despachoDao=new DespachoLogicaImpl();
+        despachoDao = new DespachoLogicaImpl();
         despachoDao.setDespachoDao(new DespachoDaoImpl());
     }
 
@@ -108,7 +99,6 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrucClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrucClienteActionPerformed
-        
     }//GEN-LAST:event_jrucClienteActionPerformed
 
     private void jrucClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusGained
@@ -118,37 +108,34 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
 
-           Cliente temporal1 = new Cliente();
-           //temporal1.setId(Integer.parseInt(jrucCliente.getText()));
-           temporal1.setNumerodocumento(jrucCliente.getText());
-           temporal1.setRazonsocial(jrazonCliente.getText());
-           if(clienteDao.buscarPorCodigo(jrucCliente.getText())!=null)
-           {    
+        Cliente temporal1 = new Cliente();
+        temporal1.setNumerodocumento(jrucCliente.getText());
+        temporal1.setRazonsocial(jrazonCliente.getText());
+        if (clienteDao.buscarPorCodigo(jrucCliente.getText()) != null) {
             JOptionPane.showMessageDialog(null, "Cliente Ya existe", "Error", JOptionPane.ERROR_MESSAGE);
-                         }else{
-               if (jrucCliente.getText().isEmpty() || jrazonCliente.getText().isEmpty()){
-                   JOptionPane.showMessageDialog(null, "Faltan Datos", "Error", JOptionPane.ERROR_MESSAGE);
-                   
-           
-           }  else{
-                   try {
-               clienteDao.grabar(temporal1);
-               limpiar();
-               salir(evt);
-           } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al Grabar", "Error", JOptionPane.ERROR_MESSAGE);
-                     
-           }
-               }            
-           }
-           
-       
+        } else {
+            if (jrucCliente.getText().isEmpty() || jrazonCliente.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Faltan Datos", "Error", JOptionPane.ERROR_MESSAGE);
+
+
+            } else {
+                try {
+                    clienteDao.grabar(temporal1);
+                    limpiar();
+                    salir(evt);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error al Grabar", "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
+            }
+        }
+
+
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         salir(evt);
     }//GEN-LAST:event_cancelarActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Registrar;
     private javax.swing.JButton cancelar;
@@ -158,26 +145,19 @@ public class ClienteFrame extends org.openswing.swing.mdi.client.InternalFrame {
     private javax.swing.JTextField jrazonCliente;
     private javax.swing.JTextField jrucCliente;
     // End of variables declaration//GEN-END:variables
-    private void salir (java.awt.event.ActionEvent evt){
-       actionPerformed(evt);
-   }
+
+    private void salir(java.awt.event.ActionEvent evt) {
+        actionPerformed(evt);
+    }
 
     private void actionPerformed(ActionEvent evt) {
         setVisible(false);
         dispose();
     }
-    
-    public double Redondear(double numero)
-{
-       int cifras=(int) Math.pow(10,2);
-        return Math.rint(numero*cifras)/cifras;
-}
-    
-    public void limpiar(){
+
+    public void limpiar() {
         jrucCliente.setText("");
         jrazonCliente.setText("");
-    
-    }
-   
 
+    }
 }

@@ -16,19 +16,17 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuarioLogicaImpl implements UsuarioLogica {
 
-    public UsuarioLogicaImpl()
-    {
+    public UsuarioLogicaImpl() {
         session = HibernateUtil.getSessionFactory().openSession();
     }
-    
-    Session session; 
-    UsuarioDao usuarioDao;
-    
+    private Session session;
+    private UsuarioDao usuarioDao;
+
     public void setTransaccionDao(UsuarioDao usuarioDao) {
-        this.usuarioDao = usuarioDao;   
+        this.usuarioDao = usuarioDao;
         this.usuarioDao.setSession(session);
     }
-    
+
     @Override
     public Usuario buscarPorUsuario(Usuario usuario) {
         return usuarioDao.buscarPorUsuario(usuario);
@@ -37,11 +35,9 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
     @Override
     public void grabar(Usuario usuario) {
         session.beginTransaction();
-        if(usuario.getId() == 0)
-        {
+        if (usuario.getId() == 0) {
             usuarioDao.insertar(usuario);
-        }
-        else{
+        } else {
             usuarioDao.actualizar(usuario);
         }
         session.getTransaction().commit();
@@ -56,5 +52,4 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
     public List<Usuario> buscarTodos() {
         return usuarioDao.buscarTodos();
     }
-    
 }

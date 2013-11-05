@@ -14,9 +14,9 @@ public class inicio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      PrincipalFrame frame = new PrincipalFrame();
-      frame.setSize(884, 447);
-      frame.setLocationRelativeTo(null);
-      frame.setVisible(true);
+        PrincipalFrame frame = new PrincipalFrame();
+        frame.setSize(884, 447);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }

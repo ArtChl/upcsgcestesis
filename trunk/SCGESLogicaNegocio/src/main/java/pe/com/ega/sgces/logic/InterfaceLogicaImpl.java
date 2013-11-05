@@ -13,22 +13,22 @@ import pe.com.ega.sgces.model.InterfaceConfig;
  *
  * @author Flopez
  */
-public class InterfaceLogicaImpl implements InterfaceLogica{
+public class InterfaceLogicaImpl implements InterfaceLogica {
 
-    Session session; 
+    private Session session;
     private InterfaceDao interfaceDao;
 
     public InterfaceLogicaImpl() {
         session = HibernateUtil.getSessionFactory().openSession();
     }
-    
+
     @Override
     public void setInterfaceDao(InterfaceDao interfaceDao) {
         this.interfaceDao = interfaceDao;
         this.interfaceDao.setSession(session);
 
     }
-    
+
     @Override
     public void insertar(InterfaceConfig turno) {
         session.beginTransaction();
@@ -47,5 +47,4 @@ public class InterfaceLogicaImpl implements InterfaceLogica{
     public InterfaceConfig buscarPorCodigo(int id) {
         return this.interfaceDao.buscarPorCodigo(id);
     }
-    
 }

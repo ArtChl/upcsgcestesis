@@ -1,5 +1,5 @@
-
 package pe.com.ega.sgces.sgcespos;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -24,10 +24,10 @@ public class ComprobanteFrame extends JFrame {
 
     public ComprobanteFrame(TurnoLogica turnoLogica, TransaccionLogica transaccionLogica) {
         initComponents();
-        this.turnoLogica =turnoLogica;
+        this.turnoLogica = turnoLogica;
         this.transaccionLogica = transaccionLogica;
-        transaccions=new ArrayList<>(); 
-        pintarTabla();            
+        transaccions = new ArrayList<>();
+        pintarTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -72,64 +72,63 @@ public class ComprobanteFrame extends JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
-   private void salir (MouseEvent evt){
-       actionPerformed(evt);
-   }
 
-   private void actionPerformed(MouseEvent evt) {
+    private void salir(MouseEvent evt) {
+        actionPerformed(evt);
+    }
+
+    private void actionPerformed(MouseEvent evt) {
         setVisible(false);
         dispose();
-   }
-   
-  private void pintarTabla(){
-  String[] titulo=new String[]{"Cod","Numero","Tipo","Producto","Monto","Fecha"};
+    }
 
-  try {
-      int turno2=turnoLogica.buscarPorCodigo("N").getId();
-      transaccions=(ArrayList<Transaccion>) transaccionLogica.buscarTurno(turno2);
-  } catch (Exception ex) {
-logger.error("Mensaje:\n"+ex.getMessage());
-  }
+    private void pintarTabla() {
+        String[] titulo = new String[]{"Cod", "Numero", "Tipo", "Producto", "Monto", "Fecha"};
 
-  Object[][] arre=new Object[transaccions.size()][6];
-  int i=0;
-  for(Transaccion t:transaccions){
-      arre[i][0]=t.getId();
-      arre[i][1]=t.getNumerovale();
-      arre[i][2]=t.getIdtipotransaccion();
-      arre[i][3]=t.getProducto();
-      arre[i][4]=t.getMontototal();
-      arre[i][5]=t.getFecharegistro();
-      i++;
-  }
+        try {
+            int turno2 = turnoLogica.buscarPorCodigo("N").getId();
+            transaccions = (ArrayList<Transaccion>) transaccionLogica.buscarTurno(turno2);
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
+        }
+
+        Object[][] arre = new Object[transaccions.size()][6];
+        int i = 0;
+        for (Transaccion t : transaccions) {
+            arre[i][0] = t.getId();
+            arre[i][1] = t.getNumerovale();
+            arre[i][2] = t.getIdtipotransaccion();
+            arre[i][3] = t.getProducto();
+            arre[i][4] = t.getMontototal();
+            arre[i][5] = t.getFecharegistro();
+            i++;
+        }
 
 
-  tabla.addMouseListener(new SelectListener());
-  DefaultTableModel modelo=new DefaultTableModel(arre, titulo);
-  tabla.setModel(modelo);
-  int anchos[] = {1, 50, 20, 50, 50, 50, 50};
-  tabla.getColumnModel().getColumn(0).setMaxWidth(0);
-  tabla.getColumnModel().getColumn(0).setMinWidth(0);
-  tabla.getColumnModel().getColumn(0).setPreferredWidth(0);
-  for (int x = 1; x < tabla.getColumnCount(); x++) {
-    tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
-    tabla.getColumnModel().getColumn(x).setResizable(false);
-  }
-  jScrollPane1.setViewportView(tabla); 
-}
+        tabla.addMouseListener(new SelectListener());
+        DefaultTableModel modelo = new DefaultTableModel(arre, titulo);
+        tabla.setModel(modelo);
+        int anchos[] = {1, 50, 20, 50, 50, 50, 50};
+        tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        tabla.getColumnModel().getColumn(0).setMinWidth(0);
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(0);
+        for (int x = 1; x < tabla.getColumnCount(); x++) {
+            tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
+            tabla.getColumnModel().getColumn(x).setResizable(false);
+        }
+        jScrollPane1.setViewportView(tabla);
+    }
 
-  class SelectListener extends MouseAdapter {
+    class SelectListener extends MouseAdapter {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-          
         }
 
         @Override
@@ -142,37 +141,34 @@ logger.error("Mensaje:\n"+ex.getMessage());
             throw new UnsupportedOperationException("Not supported yet.");
         }
 
-       
-
-         private void select(MouseEvent e){
-            int row=tabla.getSelectedRow();
+        private void select(MouseEvent e) {
+            int row = tabla.getSelectedRow();
             String txt[] = new String[tabla.getColumnCount()];
-            
+
             for (int i = 0; i < tabla.getColumnCount(); i++) {
-                txt[i]=String.valueOf(tabla.getValueAt(row, 0));
-                
+                txt[i] = String.valueOf(tabla.getValueAt(row, 0));
+
             }
-             if (JOptionPane.showConfirmDialog(new JFrame(),"Desea Eliminar Comprobante?", "Confirmacion",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-                 Transaccion tr= buscar(txt[0]);
-                 tr.setAnulado(true);
-                 transaccionLogica.actualizar(tr);  
-                 pintarTabla();
-                 salir(e);       
-             }
+            if (JOptionPane.showConfirmDialog(new JFrame(), "Desea Eliminar Comprobante?", "Confirmacion", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                Transaccion tr = buscar(txt[0]);
+                tr.setAnulado(true);
+                transaccionLogica.actualizar(tr);
+                pintarTabla();
+                salir(e);
+            }
         }
-       
-  }
-  
-  private Transaccion buscar(String codigo){
-      int cod= Integer.parseInt(codigo);
-      Transaccion desp=null;
-      for(Transaccion t:transaccions){
-            if(cod==t.getId()){
-                desp=t;
+    }
+
+    private Transaccion buscar(String codigo) {
+        int cod = Integer.parseInt(codigo);
+        Transaccion desp = null;
+        for (Transaccion t : transaccions) {
+            if (cod == t.getId()) {
+                desp = t;
                 break;
             }
-  } 
-      desp.setAnulado(true);
-      return desp;
-  }
+        }
+        desp.setAnulado(true);
+        return desp;
+    }
 }

@@ -25,7 +25,7 @@ public class transaccionBean implements Serializable{
 
     private Transaccion transaccion;
     private List<Transaccion> transaccions;
-    TransaccionLogicaImpl transacciondao;
+    private TransaccionLogicaImpl transacciondao;
     @ManagedProperty("#{loginBean}")
     private LoginBean loginBean;
     private Float totalSoles;

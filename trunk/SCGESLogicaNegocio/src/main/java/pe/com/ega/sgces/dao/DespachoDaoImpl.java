@@ -8,11 +8,12 @@ import java.util.List;
 import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Despacho;
+
 /**
  *
  * @author Flopez
  */
-public class DespachoDaoImpl implements DespachoDao{
+public class DespachoDaoImpl implements DespachoDao {
 
     private SessionFactory session;
 
@@ -20,7 +21,7 @@ public class DespachoDaoImpl implements DespachoDao{
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-        
+
     @Override
     public void insertar(Despacho despacho) {
         session.getCurrentSession().save(despacho);
@@ -28,8 +29,8 @@ public class DespachoDaoImpl implements DespachoDao{
 
     @Override
     public void actualizar(Despacho despacho) {
-        String query = "update despacho set idestado=0 where id="+ despacho.getId();
-        SQLQuery s=session.openSession().createSQLQuery(query);
+        String query = "update despacho set idestado=0 where id=" + despacho.getId();
+        SQLQuery s = session.openSession().createSQLQuery(query);
         s.executeUpdate();
     }
 
@@ -45,10 +46,9 @@ public class DespachoDaoImpl implements DespachoDao{
 
     @Override
     public List<Despacho> buscarTodos() {
-         session.getCurrentSession().beginTransaction();
-         List<Despacho> lista=session.openSession().createQuery("from Despacho where idestado=1").list();
-         session.getCurrentSession().flush();
-         return lista;
+        session.getCurrentSession().beginTransaction();
+        List<Despacho> lista = session.openSession().createQuery("from Despacho where idestado=1").list();
+        session.getCurrentSession().flush();
+        return lista;
     }
-    
 }

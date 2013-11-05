@@ -22,25 +22,25 @@ public class Ticket{
         public static void AddFinItem(String line){subCabezaLineas1.add(line);}
         public static void AddItem(String cantidad,String item,String price,String total){
             OrderItem newItem = new OrderItem(' ');
-            items.add(newItem.GeneraItem(cantidad,item,price,total));
+            items.add(newItem.generaItem(cantidad,item,price,total));
         }
         public static void AddItemBoleta(String cantidad,String item,String price,String total){
             OrderItem newItem = new OrderItem(' ');
-            items.add(newItem.GeneraItemBoleta(cantidad,item,price,total));
+            items.add(newItem.generaItemBoleta(cantidad,item,price,total));
         }
        public static void AddTotal(String name,String price){
            OrderTotal newTotal = new OrderTotal(' ');
-           totales.add(newTotal.GeneraTotal(name, price));
+           totales.add(newTotal.generaTotal(name, price));
        }
        
        public static void AddTotalBoleta(String name,String price){
            OrderTotal newTotal = new OrderTotal(' ');
-           totales.add(newTotal.GeneraTotalBoleta(name, price));
+           totales.add(newTotal.generaTotalBoleta(name, price));
        }
        
         public static void AddCabecera(String name,String price){
            OrderTotal newTotal = new OrderTotal(' ');
-           totales.add(newTotal.GeneraTotalBoleta(name, price));
+           totales.add(newTotal.generaTotalBoleta(name, price));
        }
        
        public static void AddPieLinea(String line){LineasPie.add(line);}

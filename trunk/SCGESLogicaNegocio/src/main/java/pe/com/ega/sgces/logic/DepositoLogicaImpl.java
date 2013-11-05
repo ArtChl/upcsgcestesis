@@ -15,28 +15,28 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
 import org.apache.log4j.Logger;
 
-public class DepositoLogicaImpl implements DepositoLogica{
+public class DepositoLogicaImpl implements DepositoLogica {
 
     private final static Logger logger = Logger.getLogger(DepositoLogicaImpl.class);
-    private SessionFactory session; 
+    private SessionFactory session;
     private DepositoDao depositoDao;
     private TurnoLogica turnoLogica;
     private Deposito deposito;
     private ImprimirComprobante imprimircomprobante;
 
     public DepositoLogicaImpl() {
-        deposito=new Deposito();
+        deposito = new Deposito();
         imprimircomprobante = new ImprimirComprobante();
     }
-    
+
     public void setTurnoLogica(TurnoLogica turnoLogica) {
         this.turnoLogica = turnoLogica;
     }
-    
+
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-    
+
     public void setDepositoDao(DepositoDao depositoDao) {
         this.depositoDao = depositoDao;
     }
@@ -45,27 +45,27 @@ public class DepositoLogicaImpl implements DepositoLogica{
     public void insertar(Deposito deposito) {
         session.getCurrentSession().beginTransaction();
         depositoDao.insertar(deposito);
-        session.getCurrentSession().getTransaction().commit(); 
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
     public void actualizar(Deposito deposito) {
         session.getCurrentSession().beginTransaction();
         depositoDao.actualizar(deposito);
-        session.getCurrentSession().getTransaction().commit(); 
-        
+        session.getCurrentSession().getTransaction().commit();
+
     }
 
     @Override
     public void eliminar(Deposito deposito) {
         session.getCurrentSession().beginTransaction();
         depositoDao.eliminar(deposito);
-        session.getCurrentSession().getTransaction().commit(); 
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
     public Deposito buscarPorCodigo(Integer id) {
-       return depositoDao.buscarPorCodigo(id);
+        return depositoDao.buscarPorCodigo(id);
     }
 
     @Override
@@ -76,39 +76,37 @@ public class DepositoLogicaImpl implements DepositoLogica{
     @Override
     public Double buscarMonto(String tipo, String turno) {
         Double monto;
-        try{
-            List lis=depositoDao.buscarMonto(tipo, turno); 
-            monto=Util.recuperarNumero(lis);
+        try {
+            List lis = depositoDao.buscarMonto(tipo, turno);
+            monto = Util.recuperarNumero(lis);
         } catch (Exception ex) {
-            logger.error("Mensaje:\n"+ex.getMessage());
-            monto=0.00;
+            logger.error("Mensaje:\n" + ex.getMessage());
+            monto = 0.00;
         }
         return monto;
     }
 
     @Override
-    public String depositar(String monto, String pago) 
-    {
-        String mensaje=null;
-        
+    public String depositar(String monto, String pago) {
+        String mensaje = null;
+
         TurnopuntoventacajaId turnoPuntoVentaCajaId = new TurnopuntoventacajaId();
         turnoPuntoVentaCajaId.setIdcaja(1);
         turnoPuntoVentaCajaId.setIdturno(turnoLogica.buscarPorCodigo("N").getId());
         turnoPuntoVentaCajaId.setIdpuntoventa(1);
-        
-        Turnopuntoventacaja caja= new Turnopuntoventacaja();
-        caja.setId(turnoPuntoVentaCajaId);            
+
+        Turnopuntoventacaja caja = new Turnopuntoventacaja();
+        caja.setId(turnoPuntoVentaCajaId);
         deposito.setTurnopuntoventacaja(caja);
-        Double dos=Double.parseDouble(monto);
+        Double dos = Double.parseDouble(monto);
         deposito.setMontototal(dos);
         deposito.setFecharegistro(new Date());
-        deposito.setIdtipopago(pago);     
+        deposito.setIdtipopago(pago);
         deposito.setTurno(String.valueOf(turnoLogica.buscarPorCodigo("N").getId()));
         deposito.setCerrado("N");
         this.insertar(deposito);
         //TODO Borrar el nombre en duro
-        imprimircomprobante.imprimirTirada("0001","1", pago,monto, "ROSA MARIA DAVILA");
+        imprimircomprobante.imprimirTirada("0001", "1", pago, monto, "ROSA MARIA DAVILA");
         return mensaje;
-    }  
- }    
-
+    }
+}

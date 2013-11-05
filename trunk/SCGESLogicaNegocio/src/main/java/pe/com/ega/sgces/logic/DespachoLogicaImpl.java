@@ -15,33 +15,29 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class DespachoLogicaImpl implements DespachoLogica {
 
-    private SessionFactory session;    
+    private SessionFactory session;
     private DespachoDao despachoDao;
-    
-    public DespachoLogicaImpl()
-    {
-      
+
+    public DespachoLogicaImpl() {
     }
-       
+
     @Override
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-    
+
     @Override
     public void setDespachoDao(DespachoDao despachoDao) {
-       this.despachoDao= despachoDao;
+        this.despachoDao = despachoDao;
     }
-    
+
     @Override
     public void grabar(Despacho despacho) {
         session.getCurrentSession().beginTransaction();
-        if(despacho.getId() == 0) 
-        {
-           despachoDao.insertar(despacho);
-        }
-        else{
-           despachoDao.actualizar(despacho);
+        if (despacho.getId() == 0) {
+            despachoDao.insertar(despacho);
+        } else {
+            despachoDao.actualizar(despacho);
         }
         session.getCurrentSession().getTransaction().commit();
     }
@@ -59,8 +55,8 @@ public class DespachoLogicaImpl implements DespachoLogica {
     }
 
     @Override
-    public List<Despacho> buscarTodos() {      
-        return despachoDao.buscarTodos();     
+    public List<Despacho> buscarTodos() {
+        return despachoDao.buscarTodos();
     }
 
     @Override
@@ -69,7 +65,4 @@ public class DespachoLogicaImpl implements DespachoLogica {
         despachoDao.actualizar(despacho);
         session.getCurrentSession().getTransaction().commit();
     }
-
-   
-
 }

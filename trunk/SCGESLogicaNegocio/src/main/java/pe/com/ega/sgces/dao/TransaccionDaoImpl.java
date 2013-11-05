@@ -13,7 +13,7 @@ import pe.com.ega.sgces.model.Transaccion;
  *
  * @author Flopez
  */
-public class TransaccionDaoImpl implements TransaccionDao{
+public class TransaccionDaoImpl implements TransaccionDao {
 
     private SessionFactory session;
 
@@ -21,7 +21,7 @@ public class TransaccionDaoImpl implements TransaccionDao{
     public void setSession(SessionFactory session) {
         this.session = session;
     }
-        
+
     @Override
     public void insertar(Transaccion transaccion) {
         transaccion.setFacturado(false);
@@ -46,41 +46,41 @@ public class TransaccionDaoImpl implements TransaccionDao{
 
     @Override
     public List<Transaccion> buscarTodos() {
-         session.getCurrentSession().beginTransaction();
-         List<Transaccion> lista;
-         lista = session.getCurrentSession().createQuery("from Transaccion").list();
-         return  lista;
+        session.getCurrentSession().beginTransaction();
+        List<Transaccion> lista;
+        lista = session.getCurrentSession().createQuery("from Transaccion").list();
+        return lista;
     }
 
     @Override
     public List<Transaccion> buscarListaId(String id) {
         session.getCurrentSession().beginTransaction();
         List<Transaccion> lista;
-        lista = session.getCurrentSession().createQuery("from Transaccion where idcliente='"+id+"' and idtipotransaccion='NDES' and facturado=false and anulado=false").list();
-        return  lista;
+        lista = session.getCurrentSession().createQuery("from Transaccion where idcliente='" + id + "' and idtipotransaccion='NDES' and facturado=false and anulado=false").list();
+        return lista;
     }
 
     @Override
     public List<Transaccion> buscarTodosDoc(String documento) {
         session.getCurrentSession().beginTransaction();
-        List<Transaccion> lista= session.getCurrentSession().createQuery("from Transaccion where idtipotransaccion='"+documento+"'").list();
+        List<Transaccion> lista = session.getCurrentSession().createQuery("from Transaccion where idtipotransaccion='" + documento + "'").list();
         return lista;
     }
 
     @Override
     public List buscarMonto(String tipo, String turno) {
-       session.getCurrentSession().beginTransaction();
-       Query query;
-        query = session.getCurrentSession().createQuery("select sum(montototal) from Transaccion where producto='"+tipo+"' and idestado='"+turno+"'");
-       List results = query.list();
-       return results;
+        session.getCurrentSession().beginTransaction();
+        Query query;
+        query = session.getCurrentSession().createQuery("select sum(montototal) from Transaccion where producto='" + tipo + "' and idestado='" + turno + "'");
+        List results = query.list();
+        return results;
     }
 
     @Override
     public List<Transaccion> buscarTurno(int turno) {
         session.getCurrentSession().beginTransaction();
         List<Transaccion> lista;
-        lista = session.getCurrentSession().createQuery("from Transaccion where idestado="+turno+" and anulado=false").list();
+        lista = session.getCurrentSession().createQuery("from Transaccion where idestado=" + turno + " and anulado=false").list();
         return lista;
     }
 
@@ -88,8 +88,7 @@ public class TransaccionDaoImpl implements TransaccionDao{
     public Transaccion buscarPorNumero(String numero) {
         session.getCurrentSession().beginTransaction();
         Transaccion trans;
-        trans = (Transaccion)session.getCurrentSession().createQuery("from Transaccion where numerovale='"+numero+"'").uniqueResult();
+        trans = (Transaccion) session.getCurrentSession().createQuery("from Transaccion where numerovale='" + numero + "'").uniqueResult();
         return trans;
     }
-    
 }

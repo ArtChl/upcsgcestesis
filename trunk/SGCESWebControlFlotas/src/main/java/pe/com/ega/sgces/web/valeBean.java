@@ -31,8 +31,8 @@ public class valeBean implements Serializable{
 
     private Vale vale;
     private List<Vale> vales;
-    ValeLogicaImpl valedao;
-    NumComprobanteLogicaImpl numdao;
+    private ValeLogicaImpl valedao;
+    private NumComprobanteLogicaImpl numdao;
     @ManagedProperty("#{loginBean}")
     private LoginBean loginBean;
     private Float totalSoles;
