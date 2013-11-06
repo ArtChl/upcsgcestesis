@@ -19,14 +19,14 @@
         <property name="pago" type="string">
             <column name="pago" />
         </property>
-        <property name="montorecibido" type="java.lang.Double">
-            <column name="montorecibido" precision="17" scale="17" />
+        <property name="montorecibido" type="java.math.BigDecimal">
+            <column name="montorecibido" precision="17" scale="2" />
         </property>
-        <property name="montototal" type="java.lang.Double">
-            <column name="montototal" precision="17" scale="17" />
+        <property name="montototal" type="java.math.BigDecimal">
+            <column name="montototal" precision="17" scale="2" />
         </property>
-        <property name="montodevuelto" type="java.lang.Double">
-            <column name="montodevuelto" precision="17" scale="17" />
+        <property name="montodevuelto" type="java.math.BigDecimal">
+            <column name="montodevuelto" precision="17" scale="2" />
         </property>
         <property name="fecharegistro" type="date">
             <column name="fecharegistro" length="13" />

@@ -227,7 +227,7 @@ public class NotaFrame extends JFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-
+/*
         if (desp.getMontosoles() == Double.parseDouble(montovale.getText())) {
             comprobante = new ImprimirComprobante();
             if (temporal.getId() == 1) {
@@ -247,8 +247,8 @@ public class NotaFrame extends JFrame {
                     valeTemporal.setHoradespacho(format.format(now));
                     valeTemporal.setEstado(0);
                     valedao.actualizar(valeTemporal);
-                    comprobante.imprimirNotaDespacho(jkilometrajes.getText(), jplaca.getText(), jchofer.getText(), cliente.getRazonsocial(),
-                            String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Formato.redondear(desp.getMontosoles() * 0.82)), String.valueOf(Formato.redondear(desp.getMontosoles() * 0.18)), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
+                   // comprobante.imprimirNotaDespacho(jkilometrajes.getText(), jplaca.getText(), jchofer.getText(), cliente.getRazonsocial(),
+                     //       String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Formato.redondear(desp.getMontosoles() * 0.82)), String.valueOf(Formato.redondear(desp.getMontosoles() * 0.18)), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
                     limpiar();
                     salir(evt);
                 } catch (Exception e) {
@@ -273,7 +273,7 @@ public class NotaFrame extends JFrame {
             final JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(panel, "No coincide los Montos", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
+*/
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed

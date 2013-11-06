@@ -2,6 +2,7 @@ package pe.com.ega.sgces.model;
 // Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,9 +24,9 @@ public class Transaccion  implements java.io.Serializable {
      private String numerovale;
      private String numerotiket;
      private String producto;
-     private Double montototal;
-     private Double nrogalones;
-     private Double preciounitario;
+     private BigDecimal montototal;
+     private BigDecimal nrogalones;
+     private BigDecimal preciounitario;
      private Date fecharegistro;
      private Boolean facturado;
      private Boolean anulado;
@@ -114,25 +115,25 @@ public class Transaccion  implements java.io.Serializable {
     public void setProducto(String producto) {
         this.producto = producto;
     }
-    public Double getMontototal() {
+    public BigDecimal getMontototal() {
         return this.montototal;
     }
     
-    public void setMontototal(Double montototal) {
+    public void setMontototal(BigDecimal montototal) {
         this.montototal = montototal;
     }
-    public Double getNrogalones() {
+    public BigDecimal getNrogalones() {
         return this.nrogalones;
     }
     
-    public void setNrogalones(Double nrogalones) {
+    public void setNrogalones(BigDecimal nrogalones) {
         this.nrogalones = nrogalones;
     }
-    public Double getPreciounitario() {
+    public BigDecimal getPreciounitario() {
         return this.preciounitario;
     }
     
-    public void setPreciounitario(Double preciounitario) {
+    public void setPreciounitario(BigDecimal preciounitario) {
         this.preciounitario = preciounitario;
     }
     public Date getFecharegistro() {
