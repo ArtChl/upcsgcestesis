@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
+import java.math.BigDecimal;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;

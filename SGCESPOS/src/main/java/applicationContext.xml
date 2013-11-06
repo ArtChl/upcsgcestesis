@@ -159,7 +159,7 @@
                 <prop key="hibernate.c3p0.max_statement">50</prop>
                 <prop key="hibernate.c3p0.testConnectionOnCheckout">false</prop>
                 <prop key="hibernate.current_session_context_class">thread</prop>
-
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 </props>
             </property>
         </bean>

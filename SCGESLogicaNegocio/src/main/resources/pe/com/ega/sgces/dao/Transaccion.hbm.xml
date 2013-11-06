@@ -38,14 +38,14 @@
         <property name="producto" type="string">
             <column name="producto" length="20" />
         </property>
-        <property name="montototal" type="java.lang.Double">
-            <column name="montototal" precision="17" scale="17" />
+        <property name="montototal" type="java.math.BigDecimal">
+            <column name="montototal" precision="17" scale="2" />
         </property>
-        <property name="nrogalones" type="java.lang.Double">
-            <column name="nrogalones" precision="17" scale="17" />
+        <property name="nrogalones" type="java.math.BigDecimal">
+            <column name="nrogalones" precision="17" scale="2" />
         </property>
-        <property name="preciounitario" type="java.lang.Double">
-            <column name="preciounitario" precision="17" scale="17" />
+        <property name="preciounitario" type="java.math.BigDecimal">
+            <column name="preciounitario" precision="17" scale="2" />
         </property>
         <property name="fecharegistro" type="date">
             <column name="fecharegistro" length="13" />

@@ -2,6 +2,7 @@ package pe.com.ega.sgces.model;
 // Generated 17/10/2013 09:33:40 AM by Hibernate Tools 3.2.1.GA
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -14,9 +15,9 @@ public class Movimiento  implements java.io.Serializable {
      private Turnopuntoventacaja turnopuntoventacaja;
      private Transaccion transaccion;
      private String pago;
-     private Double montorecibido;
-     private Double montototal;
-     private Double montodevuelto;
+     private BigDecimal montorecibido;
+     private BigDecimal montototal;
+     private BigDecimal montodevuelto;
      private Date fecharegistro;
      private String nrooperacion;
      private String tipo;
@@ -57,27 +58,27 @@ public class Movimiento  implements java.io.Serializable {
         this.pago = pago;
     }
 
-    public Double getMontorecibido() {
+    public BigDecimal getMontorecibido() {
         return montorecibido;
     }
 
-    public void setMontorecibido(Double montorecibido) {
+    public void setMontorecibido(BigDecimal montorecibido) {
         this.montorecibido = montorecibido;
     }
 
-    public Double getMontototal() {
+    public BigDecimal getMontototal() {
         return montototal;
     }
 
-    public void setMontototal(Double montototal) {
+    public void setMontototal(BigDecimal montototal) {
         this.montototal = montototal;
     }
 
-    public Double getMontodevuelto() {
+    public BigDecimal getMontodevuelto() {
         return montodevuelto;
     }
 
-    public void setMontodevuelto(Double montodevuelto) {
+    public void setMontodevuelto(BigDecimal montodevuelto) {
         this.montodevuelto = montodevuelto;
     }
 

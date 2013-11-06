@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -168,44 +169,44 @@ public class MonedaFrame extends JFrame {
 
     private void solesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solesActionPerformed
         System.out.println("documento" + moneda);
-        if (desp.getMontosoles() < Double.parseDouble(pago.getText())) {
+      //  if (desp.getMontosoles() < BigDecimal.valueOf(Double.parseDouble(pago.getText()))) {
             if ("BOL".equals(moneda)) {
                 imprimirBoleta(desp, evt);
-                llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText()), "", "SOLES");
+                llenarMovimiento(transaccion, moneda, BigDecimal.valueOf(Double.parseDouble(pago.getText())), "", "SOLES");
             } else {
                 imprimirFactura(desp, cliente, evt);
-                llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText()), "", "SOLES");
+                llenarMovimiento(transaccion, moneda, BigDecimal.valueOf(Double.parseDouble(pago.getText())), "", "SOLES");
             }
-        } else {
+      /*  } else {
             final JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(panel, "Monto Pagado Menor al Despacho", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
 
 
     }//GEN-LAST:event_solesActionPerformed
 
     private void dolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresActionPerformed
-        if (desp.getMontosoles() < Double.parseDouble(pago.getText()) * 2.65) {
+     /*   if (desp.getMontosoles().co < Double.parseDouble(pago.getText()) * 2.65) {*/
             if ("BOL".equals(moneda)) {
                 imprimirBoleta(desp, evt);
-                llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText()) * 2.65, "", "DOLARES");
+                llenarMovimiento(transaccion, moneda, BigDecimal.valueOf(Double.parseDouble(pago.getText())).multiply(new BigDecimal("2.65")), "", "DOLARES");
             } else {
                 imprimirFactura(desp, cliente, evt);
-                llenarMovimiento(transaccion, moneda, Double.parseDouble(pago.getText()) * 2.65, "", "DOLARES");
+                llenarMovimiento(transaccion, moneda, BigDecimal.valueOf(Double.parseDouble(pago.getText())).multiply(new BigDecimal("2.65")), "", "DOLARES");
             }
-        } else {
+        /*} else {
             final JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(panel, "Monto Pagado Menor al Despacho", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_dolaresActionPerformed
 
     private void tarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetaActionPerformed
         if ("BOL".equals(moneda)) {
             imprimirBoleta(desp, evt);
-            llenarMovimiento(transaccion, moneda, 0.0, numtarjeta.getText(), "TARJETA");
+            llenarMovimiento(transaccion, moneda, BigDecimal.ZERO, numtarjeta.getText(), "TARJETA");
         } else {
             imprimirFactura(desp, cliente, evt);
-            llenarMovimiento(transaccion, moneda, 0.0, numtarjeta.getText(), "TARJETA");
+            llenarMovimiento(transaccion, moneda, BigDecimal.ZERO, numtarjeta.getText(), "TARJETA");
         }
     }//GEN-LAST:event_tarjetaActionPerformed
 
@@ -256,9 +257,9 @@ public class MonedaFrame extends JFrame {
         try {
             transaccionLogica.grabar(transaccion);
             despachoLogica.grabar(desp);
-            comprobante.imprimirFactura(cli.getRazonsocial(),
+          /*  comprobante.imprimirFactura(cli.getRazonsocial(),
                     String.valueOf(cli.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(Math.rint(desp.getMontosoles() * 0.82 * 100) / 100), String.valueOf(Math.rint(desp.getMontosoles() * 0.18 * 100) / 100), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "TBOL");
-            salir(evt);
+            salir(evt);*/
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -311,7 +312,7 @@ public class MonedaFrame extends JFrame {
 
     }
 
-    private void llenarMovimiento(Transaccion transaccion, String pag, Double monto, String tarjeta, String tipo) {
+    private void llenarMovimiento(Transaccion transaccion, String pag, BigDecimal monto, String tarjeta, String tipo) {
         movimiento.setTransaccion(transaccion);
         movimiento.setPago(pag);
         Turnopuntoventacaja caja = new Turnopuntoventacaja();
@@ -327,11 +328,11 @@ public class MonedaFrame extends JFrame {
             movimiento.setNrooperacion(numtarjeta.getText());
             movimiento.setTipo((String) tarjetas.getSelectedItem());
             movimiento.setMontorecibido(desp.getMontosoles());
-            movimiento.setMontodevuelto(0.0);
+            movimiento.setMontodevuelto(BigDecimal.ZERO);
         } else {
             movimiento.setTipo(tipo);
             movimiento.setMontorecibido(monto);
-            movimiento.setMontodevuelto(monto - desp.getMontosoles());
+            movimiento.setMontodevuelto(monto.subtract(desp.getMontosoles()));
 
         }
 
