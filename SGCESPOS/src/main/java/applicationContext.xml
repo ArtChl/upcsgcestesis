@@ -59,6 +59,7 @@
         <bean id="turnoService" class="pe.com.ega.sgces.logic.TurnoLogicaImpl">
 		<property name="turnoDao" ref="turnoDao" />
                 <property name="session" ref="miSessionFactory" />
+                 <property name="interfaceLogica" ref="interfaceService" />
 	</bean>
         
         <bean id="turnoDao" class="pe.com.ega.sgces.dao.TurnoDaoImpl">
@@ -91,6 +92,15 @@
 	</bean>
         
         <bean id="despachoDao" class="pe.com.ega.sgces.dao.DespachoDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="interfaceService" class="pe.com.ega.sgces.logic.InterfaceLogicaImpl">
+		<property name="interfaceDao" ref="interfaceDao" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="interfaceDao" class="pe.com.ega.sgces.dao.InterfaceDaoImpl">
 		<property name="session" ref="miSessionFactory" />
 	</bean>
 	   
