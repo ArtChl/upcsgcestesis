@@ -6,6 +6,7 @@ package pe.com.ega.sgces.logic;
 
 import java.util.List;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.dao.DespachoDao;
 import pe.com.ega.sgces.model.Despacho;
 
@@ -13,6 +14,7 @@ import pe.com.ega.sgces.model.Despacho;
  *
  * @author CHRISTIAN
  */
+@Transactional
 public class DespachoLogicaImpl implements DespachoLogica {
 
     private SessionFactory session;

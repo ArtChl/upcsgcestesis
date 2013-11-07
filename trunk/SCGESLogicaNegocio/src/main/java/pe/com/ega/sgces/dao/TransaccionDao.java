@@ -12,6 +12,7 @@ import pe.com.ega.sgces.model.Transaccion;
  *
  * @author Flopez
  */
+
 public interface TransaccionDao {
     public void insertar(Transaccion transaccion);
     public void actualizar(Transaccion transaccion);

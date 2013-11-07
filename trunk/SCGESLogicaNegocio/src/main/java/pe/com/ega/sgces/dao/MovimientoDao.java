@@ -12,6 +12,7 @@ import pe.com.ega.sgces.model.Movimiento;
  *
  * @author FLOPEZ
  */
+
 public interface MovimientoDao {
     public void insertar(Movimiento movimiento);
     public void actualizar(Movimiento movimiento);

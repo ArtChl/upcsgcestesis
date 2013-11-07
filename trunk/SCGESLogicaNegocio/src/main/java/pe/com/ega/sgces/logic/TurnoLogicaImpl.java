@@ -6,6 +6,7 @@ package pe.com.ega.sgces.logic;
 
 import java.util.Date;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import pe.com.ega.sgces.dao.InterfaceDaoImpl;
 import pe.com.ega.sgces.dao.TurnoDao;
 import pe.com.ega.sgces.model.InterfaceConfig;
@@ -18,12 +19,13 @@ import pe.com.ega.sgces.model.Turno;
 public class TurnoLogicaImpl implements TurnoLogica {
 
     private InterfaceLogica interfaceLogica;
+
+
     private SessionFactory session;
     private TurnoDao turnoDao;
 
     public TurnoLogicaImpl() {
-        interfaceLogica = new InterfaceLogicaImpl();
-        interfaceLogica.setInterfaceDao(new InterfaceDaoImpl());
+
     }
 
     @Override
@@ -35,7 +37,11 @@ public class TurnoLogicaImpl implements TurnoLogica {
     public void setTurnoDao(TurnoDao turnoDao) {
         this.turnoDao = turnoDao;
     }
-
+ 
+    public void setInterfaceLogica(InterfaceLogica interfaceLogica) {
+        this.interfaceLogica = interfaceLogica;
+    }
+        
     @Override
     public void insertar(Turno turno) {
         session.getCurrentSession().beginTransaction();

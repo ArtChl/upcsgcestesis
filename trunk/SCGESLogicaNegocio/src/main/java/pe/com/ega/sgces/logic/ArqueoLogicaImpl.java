@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import pe.com.ega.sgces.model.Arqueo;
 import pe.com.ega.sgces.util.Formato;
 
@@ -13,8 +14,9 @@ import pe.com.ega.sgces.util.Formato;
  * @author sistemas
  */
 public class ArqueoLogicaImpl implements ArqueoLogica {
-
+    @Autowired
     private MovimientoLogica movimientoLogica;
+    @Autowired
     private DepositoLogica depositoLogica;
 
     public ArqueoLogicaImpl(MovimientoLogica movimiento, DepositoLogica deposito) {

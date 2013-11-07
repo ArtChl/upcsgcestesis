@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.List;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.model.Transaccion;
 
@@ -16,6 +17,7 @@ import pe.com.ega.sgces.model.Transaccion;
  *
  * @author CHRISTIAN
  */
+@Transactional(readOnly = true)
 public class TransaccionLogicaImpl implements TransaccionLogica {
 
     private final static Logger logger = Logger.getLogger(TransaccionLogicaImpl.class);

@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.dao;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.InterfaceConfig;
 
 /**
@@ -15,5 +16,5 @@ public interface InterfaceDao {
     public void insertar(InterfaceConfig turno);
     public void actualizar(InterfaceConfig turno);
     public InterfaceConfig buscarPorCodigo(int codigo);  
-    public void setSession(Session session);
+    public void setSession(SessionFactory session);
 }
