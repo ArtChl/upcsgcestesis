@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<bean id="log4jInitialization"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+		<property name="targetMethod" value="initLogging" />
+		<property name="arguments">
+			<list>
+				<value>classpath:log4j.xml</value>
+			</list>
+		</property>
+	</bean>
+        	
+	<bean id="cierreService" class="pe.com.ega.sgces.logic.CierreLogicaImpl">
+		<property name="transaccionLogica" ref="transaccionService" />
+                <property name="despachoLogica" ref="despachoService" />
+                <property name="arqueoLogica" ref="arqueoService" />
+                <property name="turnoLogica" ref="turnoService" />
+                <property name="turnopuntoventacajaLogica" ref="turnopuntoventacajaService" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="arqueoService" class="pe.com.ega.sgces.logic.ArqueoLogicaImpl">
+                <property name="movimientoLogica" ref="movimientoService" />
+                <property name="depositoLogica" ref="depositoService" />
+	</bean>
+        
+        <bean id="turnopuntoventacajaService" class="pe.com.ega.sgces.logic.TurnopuntoventacajaLogicaImpl">
+                <property name="turnopuntoventacajaDao" ref="turnopuntoventacajaDao" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+         <bean id="turnopuntoventacajaDao" class="pe.com.ega.sgces.dao.TurnopuntoventacajaDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="transaccionService" class="pe.com.ega.sgces.logic.TransaccionLogicaImpl">
+		<property name="transaccionDao" ref="transaccionDao" />
+                <property name="despachoLogica" ref="despachoService" />
+                <property name="movimientoLogica" ref="movimientoService" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="transaccionDao" class="pe.com.ega.sgces.dao.TransaccionDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+         <bean id="transacciondetalleDao" class="pe.com.ega.sgces.dao.TransaccionDetalleDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+            
+        <bean id="turnoService" class="pe.com.ega.sgces.logic.TurnoLogicaImpl">
+		<property name="turnoDao" ref="turnoDao" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="turnoDao" class="pe.com.ega.sgces.dao.TurnoDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        
+        <bean id="movimientoService" class="pe.com.ega.sgces.logic.MovimientoLogicaImpl">
+		<property name="movimientoDao" ref="movimientoDao" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="movimientoDao" class="pe.com.ega.sgces.dao.MovimientoDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="depositoService" class="pe.com.ega.sgces.logic.DepositoLogicaImpl">
+		<property name="depositoDao" ref="depositoDao" />
+                <property name="session" ref="miSessionFactory" />
+                <property name="turnoLogica" ref="turnoService" />
+	</bean>
+	
+        <bean id="depositoDao" class="pe.com.ega.sgces.dao.DepositoDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="despachoService" class="pe.com.ega.sgces.logic.DespachoLogicaImpl">
+		<property name="despachoDao" ref="despachoDao" />
+                <property name="session" ref="miSessionFactory" />
+	</bean>
+        
+        <bean id="despachoDao" class="pe.com.ega.sgces.dao.DespachoDaoImpl">
+		<property name="session" ref="miSessionFactory" />
+	</bean>
+	   
+        <bean id="miDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+            <property name="driverClassName" value="org.postgresql.Driver"/>
+            <property name="url" value="jdbc:postgresql://192.168.1.10:5432/cem44"/>
+            <property name="username" value="postgres"/>
+            <property name="password" value="12345678"/>
+        </bean>
+        
+        <bean id="miSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+            <property name="dataSource" ref="miDataSource"/>
+            <property name="mappingResources">
+            <list>
+                <value>pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Tarjeta.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Movimiento.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Caraproducto.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Centroemisor.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Tanque.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Usuario.hbm.xml</value>             
+                <value>pe/com/ega/sgces/dao/Surtidor.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Provincia.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Perfilopcion.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Turnopuntoventacaja.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Producto.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Cliente.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Lista.hbm.xml</value>                
+                <value>pe/com/ega/sgces/dao/Turno.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Transaccion.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Subcuenta.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Transacciondetalle.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Perfil.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Usuarioperfil.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Departamento.hbm.xml</value>               
+                <value>pe/com/ega/sgces/dao/Deposito.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Varillajeajuste.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Trabajador.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Impresora.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Centroemisortipocomprobante.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Cara.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Puntoventa.hbm.xml</value>            
+                <value>pe/com/ega/sgces/dao/Caja.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Listavalor.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Distrito.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Varillaje.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Cuenta.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Puntoacumulado.hbm.xml</value>          
+                <value>pe/com/ega/sgces/dao/Despacho.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Estacionservicio.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Tipocambio.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Opcion.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Vale.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/Numcomprobante.hbm.xml</value>
+                <value>pe/com/ega/sgces/dao/InterfaceConfig.hbm.xml</value>
+            </list>
+            </property>
+                <property name="hibernateProperties">
+                <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.c3p0.minPoolSize">5</prop>
+                <prop key="hibernate.c3p0.maxPoolSize">20</prop>
+                <prop key="hibernate.c3p0.timeout">600</prop>
+                <prop key="hibernate.c3p0.max_statement">50</prop>
+                <prop key="hibernate.c3p0.testConnectionOnCheckout">false</prop>
+                </props>
+            </property>
+        </bean>
+        
+     
+          
+       
+ 
+</beans>
