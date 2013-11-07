@@ -6,12 +6,14 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.Entity;
 import pe.com.ega.sgces.model.Despacho;
 
 /**
  *
  * @author Flopez
  */
+@Entity
 public interface DespachoDao {
     public void insertar(Despacho despacho);
     public void actualizar(Despacho despacho);

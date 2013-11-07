@@ -4,7 +4,7 @@
  */
 package pe.com.ega.sgces.dao;
 
-import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.InterfaceConfig;
 
 /**
@@ -13,25 +13,25 @@ import pe.com.ega.sgces.model.InterfaceConfig;
  */
 public class InterfaceDaoImpl implements InterfaceDao {
 
-    private Session session;
+    private SessionFactory session;
 
     @Override
     public void insertar(InterfaceConfig turno) {
-        session.save(turno);
+        session.getCurrentSession().save(turno);
     }
 
     @Override
     public void actualizar(InterfaceConfig turno) {
-        session.update(turno);
+        session.getCurrentSession().update(turno);
     }
 
     @Override
     public InterfaceConfig buscarPorCodigo(int id) {
-        return (InterfaceConfig) session.load(InterfaceConfig.class, id);
+        return (InterfaceConfig) session.getCurrentSession().load(InterfaceConfig.class, id);
     }
 
     @Override
-    public void setSession(Session session) {
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
 }

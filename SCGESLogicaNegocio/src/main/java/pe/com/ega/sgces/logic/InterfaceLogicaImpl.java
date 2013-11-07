@@ -5,7 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import org.hibernate.Session;
-import pe.com.ega.sgces.dao.HibernateUtil;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.InterfaceDao;
 import pe.com.ega.sgces.model.InterfaceConfig;
 
@@ -15,32 +15,35 @@ import pe.com.ega.sgces.model.InterfaceConfig;
  */
 public class InterfaceLogicaImpl implements InterfaceLogica {
 
-    private Session session;
+    private SessionFactory session;
     private InterfaceDao interfaceDao;
 
     public InterfaceLogicaImpl() {
-        session = HibernateUtil.getSessionFactory().openSession();
+        
     }
 
     @Override
     public void setInterfaceDao(InterfaceDao interfaceDao) {
         this.interfaceDao = interfaceDao;
-        this.interfaceDao.setSession(session);
 
     }
 
     @Override
     public void insertar(InterfaceConfig turno) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         this.interfaceDao.insertar(turno);
-        session.getTransaction().commit();
+        session.getCurrentSession().getTransaction().commit();
+    }
+
+    public void setSession(SessionFactory session) {
+        this.session = session;
     }
 
     @Override
     public void actualizar(InterfaceConfig turno) {
-        session.beginTransaction();
+        session.getCurrentSession().beginTransaction();
         this.interfaceDao.actualizar(turno);
-        session.getTransaction().commit();
+        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override

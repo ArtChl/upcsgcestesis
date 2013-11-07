@@ -5,12 +5,14 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.model.Transaccion;
 
 /**
  *
  * @author CHRISTIAN
  */
+
 public interface TransaccionLogica {
     public void grabar(Transaccion transaccion);
     public void actualizar(Transaccion transaccion);

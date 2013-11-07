@@ -10,11 +10,13 @@ import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.dao.MovimientoDao;
 import pe.com.ega.sgces.model.Movimiento;
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author FLOPEZ
  */
+@Transactional
 public class MovimientoLogicaImpl implements MovimientoLogica {
 
     private final static Logger logger = Logger.getLogger(MovimientoLogicaImpl.class);

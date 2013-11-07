@@ -5,11 +5,13 @@
 package pe.com.ega.sgces.dao;
 
 import org.hibernate.Session;
+import org.hibernate.annotations.Entity;
 
 /**
  *
  * @author Flopez
  */
+@Entity
 public interface CierreDao {
     
     public void cierreTurno();
