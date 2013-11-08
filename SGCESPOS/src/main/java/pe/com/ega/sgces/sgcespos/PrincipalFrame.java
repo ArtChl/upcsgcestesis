@@ -6,7 +6,6 @@ package pe.com.ega.sgces.sgcespos;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.FocusAdapter;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -22,6 +21,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pe.com.ega.sgces.logic.ArqueoLogica;
@@ -42,48 +42,48 @@ import pe.com.ega.sgces.model.Arqueo;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 
-
 /**
  *
  * @author sistemas
  */
 public class PrincipalFrame extends javax.swing.JFrame {
 
-  private MovimientoLogica movimientoLogica;
-  private DepositoLogica depositoLogica;
-  private DespachoLogica despachoLogica;
-  private TurnoLogica turnoLogica;
-  private TransaccionLogica transaccionLogica;
-  private CierreLogica cierreLogica;
-  private ArrayList<Despacho> transaccions;
-  private ArqueoLogica arqueoLogica;
- // private DespachoLogica despachoLogica;
-  private String numero;
-  
+    private final static Logger logger = Logger.getLogger(PrincipalFrame.class);
+    
+    private MovimientoLogica movimientoLogica;
+    private DepositoLogica depositoLogica;
+    private DespachoLogica despachoLogica;
+    private TurnoLogica turnoLogica;
+    private TransaccionLogica transaccionLogica;
+    private CierreLogica cierreLogica;
+    private ArrayList<Despacho> transaccions;
+    private ArqueoLogica arqueoLogica;
+    private String numero;
+
     public PrincipalFrame() {
         initComponents();
         this.setSize(554, 424);
-        transaccions=new ArrayList<>();       
-        
+        transaccions = new ArrayList<>();
+
         ApplicationContext context = new ClassPathXmlApplicationContext(
-				"applicationContext.xml");
-		this.movimientoLogica =  context.getBean("movimientoService",
-				MovimientoLogicaImpl.class);
-                this.depositoLogica =  context.getBean("depositoService",
-				DepositoLogicaImpl.class);
-                this.despachoLogica =  context.getBean("despachoService",
-				DespachoLogicaImpl.class);
-                this.turnoLogica =  context.getBean("turnoService",
-				TurnoLogicaImpl.class);
-                this.transaccionLogica =  context.getBean("transaccionService",
-				TransaccionLogicaImpl.class);
-                this.cierreLogica =  context.getBean("cierreService",
-				CierreLogicaImpl.class);
-         pintarTabla();
-         arqueoLogica =new ArqueoLogicaImpl(movimientoLogica, depositoLogica);
-         this.getRootPane().setDefaultButton(boleta);
-         boleta.requestFocus();
-       
+                "applicationContext.xml");
+        this.movimientoLogica = context.getBean("movimientoService",
+                MovimientoLogicaImpl.class);
+        this.depositoLogica = context.getBean("depositoService",
+                DepositoLogicaImpl.class);
+        this.despachoLogica = context.getBean("despachoService",
+                DespachoLogicaImpl.class);
+        this.turnoLogica = context.getBean("turnoService",
+                TurnoLogicaImpl.class);
+        this.transaccionLogica = context.getBean("transaccionService",
+                TransaccionLogicaImpl.class);
+        this.cierreLogica = context.getBean("cierreService",
+                CierreLogicaImpl.class);
+        pintarTabla();
+        arqueoLogica = new ArqueoLogicaImpl(movimientoLogica, depositoLogica);
+        this.getRootPane().setDefaultButton(boleta);
+        boleta.requestFocus();
+
     }
 
     /**
@@ -318,49 +318,43 @@ public class PrincipalFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void arqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arqueoActionPerformed
-        Double total=0.0;
-            ArrayList<Arqueo> lista=arqueoLogica.buscarPorCodigo(String.valueOf(turnoLogica.buscarPorCodigo("N").getId()));
-            for (Arqueo arqueo1 : lista) {
-            total=total+arqueo1.getCantidad();
-            }
-            ImprimirComprobante comprobante = new ImprimirComprobante();
-            comprobante.imprimirArqueo("0001", String.valueOf(redondear(lista.get(1).getCantidad()))
-                    , String.valueOf(redondear(lista.get(0).getCantidad())),String.valueOf(redondear(lista.get(2).getCantidad())),
-                     String.valueOf(redondear(total))
-                    , String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");
+        Double total = 0.0;
+        ArrayList<Arqueo> lista = arqueoLogica.buscarPorCodigo(String.valueOf(turnoLogica.buscarPorCodigo("N").getId()));
+        for (Arqueo arqueo1 : lista) {
+            total = total + arqueo1.getCantidad();
+        }
+        ImprimirComprobante comprobante = new ImprimirComprobante();
+        comprobante.imprimirArqueo("0001", String.valueOf(redondear(lista.get(1).getCantidad())), String.valueOf(redondear(lista.get(0).getCantidad())), String.valueOf(redondear(lista.get(2).getCantidad())),
+                String.valueOf(redondear(total)), String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");
     }//GEN-LAST:event_arqueoActionPerformed
 
     private void tiradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiradaActionPerformed
         TiradaFrame f = new TiradaFrame(depositoLogica);
-        f.setSize(509,325);
+        f.setSize(509, 325);
         f.setTitle("Tirada");
         f.setLocationRelativeTo(null);
         f.setVisible(true);
     }//GEN-LAST:event_tiradaActionPerformed
 
     private void cierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierreActionPerformed
-        String mensaje=cierreLogica.cierreTurno(turnoLogica.buscarPorCodigo("N"));
-              if(mensaje.equalsIgnoreCase("Cierre"))
-              {
-                  final JPanel panel = new JPanel();
-                  JOptionPane.showMessageDialog(panel,"Cierre Realizado con Existo", "Informacion", JOptionPane.OK_OPTION);
-                  
-              }else{
+        String mensaje = cierreLogica.cierreTurno(turnoLogica.buscarPorCodigo("N"));
+        if (mensaje.equalsIgnoreCase("Cierre")) {
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "Cierre Realizado con Existo", "Informacion", JOptionPane.OK_OPTION);
 
-                  if(mensaje.equalsIgnoreCase("Caja no Cuadrada"))
-                  {
-                       final JPanel panel = new JPanel();
-                       new OkCancelDialog(this,true,mensaje).setVisible(true);
-                  }else{
-                        final JPanel panel = new JPanel();
-                        new OkCancelDialog(this,true,mensaje).setVisible(true);
-                  }
-              }
+        } else {
+
+            if (mensaje.equalsIgnoreCase("Caja no Cuadrada")) {
+                new OkCancelDialog(this, true, mensaje).setVisible(true);
+            } else {
+                new OkCancelDialog(this, true, mensaje).setVisible(true);
+            }
+        }
     }//GEN-LAST:event_cierreActionPerformed
 
     private void anularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anularActionPerformed
-        ComprobanteFrame f = new ComprobanteFrame(turnoLogica,transaccionLogica);
-        f.setSize(857,489);
+        ComprobanteFrame f = new ComprobanteFrame(turnoLogica, transaccionLogica);
+        f.setSize(857, 489);
         f.setTitle("ANULAR COMPROBANTE");
         f.setLocationRelativeTo(null);
         f.setVisible(true);
@@ -379,29 +373,29 @@ public class PrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_boleta1ActionPerformed
 
     private void notaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notaActionPerformed
-        try{
-        NotaFrame f=new NotaFrame(buscar(numero));
-        f.setSize(573,553);
-        f.setTitle("NOTA DE DESPACHO");
-        f.setLocationRelativeTo(null);
-        f.setVisible(true);
+        try {
+            NotaFrame f = new NotaFrame(buscar(numero));
+            f.setSize(573, 553);
+            f.setTitle("NOTA DE DESPACHO");
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
         } catch (Exception e) {
-            new OkDialog(this,true,"No ha Seleccionado Despacho !!!").setVisible(true);
+            new OkDialog(this, true, "No ha Seleccionado Despacho !!!").setVisible(true);
         }
-       
+
     }//GEN-LAST:event_notaActionPerformed
 
     private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
-        try{
-        FacturaFrame f=new FacturaFrame(buscar(numero),despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
-        f.setSize(627,301);
-        f.setTitle("EMISION DE FACTURA");
-        f.setLocationRelativeTo(null);
-        f.setVisible(true);
+        try {
+            FacturaFrame f = new FacturaFrame(buscar(numero), despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
+            f.setSize(627, 301);
+            f.setTitle("EMISION DE FACTURA");
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
         } catch (Exception e) {
-            new OkDialog(this,true,"No ha Seleccionado Despacho !!!").setVisible(true);
+            new OkDialog(this, true, "No ha Seleccionado Despacho !!!").setVisible(true);
         }
-       
+
     }//GEN-LAST:event_facturaActionPerformed
 
     private void boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletaActionPerformed
@@ -414,15 +408,15 @@ public class PrincipalFrame extends javax.swing.JFrame {
             f.setLocationRelativeTo(null);
             f.setVisible(true);
         } catch (Exception e) {
-            new OkDialog(this,true,"No ha Seleccionado Despacho !!!").setVisible(true);
+            new OkDialog(this, true, "No ha Seleccionado Despacho !!!").setVisible(true);
         }
-       
+
     }//GEN-LAST:event_boletaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-   public static void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -451,64 +445,61 @@ public class PrincipalFrame extends javax.swing.JFrame {
             @Override
             public void run() {
                 new PrincipalFrame().setVisible(true);
-               
-                 try {
-            UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+
+                try {
+                    UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                }
+            }
+        });
+    }
+
+    private void pintarTabla() {
+        String[] titulo = new String[]{"Codigo", "Fecha", "Producto", "Precio", "Galones", "Monto"};
+
+        try {
+            transaccions = (ArrayList<Despacho>) despachoLogica.buscarTodos();
+        } catch (Exception ex) {
+              logger.error("Mensaje:\n" + ex.getMessage());
         }
+
+        Object[][] arre = new Object[transaccions.size()][7];
+        int i = 0;
+        for (Despacho t : transaccions) {
+            arre[i][0] = t.getId();
+            arre[i][1] = t.getFecharegistro();
+            arre[i][2] = t.getProducto().getNombre();
+            arre[i][3] = t.getPreciounitario();
+            arre[i][4] = t.getNrogalones();
+            arre[i][5] = t.getMontosoles();
+            i++;
+        }
+
+        tabla.addMouseListener(new SelectListener());
+        DefaultTableModel modelo = new DefaultTableModel(arre, titulo);
+        tabla.setModel(modelo);
+        int anchos[] = {50, 100, 200, 50, 50, 50};
+        tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        tabla.getColumnModel().getColumn(0).setMinWidth(0);
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tabla.getColumnModel().getColumn(1).setMaxWidth(0);
+        tabla.getColumnModel().getColumn(1).setMinWidth(0);
+        tabla.getColumnModel().getColumn(1).setPreferredWidth(0);
+        tabla.getColumnModel().getColumn(0).setHeaderRenderer(new MyRenderer(Color.orange, Color.orange));
+        for (int x = 2; x < tabla.getColumnCount(); x++) {
+            tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
+            tabla.getColumnModel().getColumn(x).setResizable(false);
+            if (x > 2) {
+                tabla.getColumnModel().getColumn(x).setCellRenderer(render);
             }
         }
-);
+        jScrollPane1.setViewportView(tabla);
     }
-    
-  private void pintarTabla(){
-  System.out.println("se llamo a pintar tabla");
-  String[] titulo=new String[]{"Codigo","Fecha","Producto","Precio","Galones","Monto"};
 
-  try {
-  transaccions=(ArrayList<Despacho>) despachoLogica.buscarTodos();
-  } catch (Exception ex) {
-//TODO Agregar log de errores.
-  }
-
-  Object[][] arre=new Object[transaccions.size()][7];
-  int i=0;
-  for(Despacho t:transaccions){
-      arre[i][0]=t.getId();
-      arre[i][1]=t.getFecharegistro();
-      arre[i][2]=t.getProducto().getNombre();
-      arre[i][3]=t.getPreciounitario();
-      arre[i][4]=t.getNrogalones();
-      arre[i][5]=t.getMontosoles();
-      i++;
-  }
-
-  tabla.addMouseListener(new SelectListener());
-  DefaultTableModel modelo=new DefaultTableModel(arre, titulo);
-  tabla.setModel(modelo);
-  int anchos[] = {50, 100, 200, 50, 50, 50};
-  tabla.getColumnModel().getColumn(0).setMaxWidth(0);
-  tabla.getColumnModel().getColumn(0).setMinWidth(0);
-  tabla.getColumnModel().getColumn(0).setPreferredWidth(0);
-  tabla.getColumnModel().getColumn(1).setMaxWidth(0);
-  tabla.getColumnModel().getColumn(1).setMinWidth(0);
-  tabla.getColumnModel().getColumn(1).setPreferredWidth(0);
-  tabla.getColumnModel().getColumn(0).setHeaderRenderer(new MyRenderer(Color.orange,Color.orange));
-  for (int x = 2; x < tabla.getColumnCount(); x++) {
-    tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
-    tabla.getColumnModel().getColumn(x).setResizable(false);
-    if(x>2) {
-          tabla.getColumnModel().getColumn(x).setCellRenderer(render);
-      }
-  }
-  jScrollPane1.setViewportView(tabla); 
-}
-     
-  class SelectListener extends MouseAdapter {
+    class SelectListener extends MouseAdapter {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-           // select(e);
         }
 
         @Override
@@ -516,45 +507,32 @@ public class PrincipalFrame extends javax.swing.JFrame {
             select(e);
         }
 
-       
-        private void select(MouseEvent e){
-            int row=tabla.getSelectedRow();
+        private void select(MouseEvent e) {
+            int row = tabla.getSelectedRow();
             String txt[] = new String[tabla.getColumnCount()];
             for (int i = 0; i < tabla.getColumnCount(); i++) {
-                txt[i]=String.valueOf(tabla.getValueAt(row, 0));           
+                txt[i] = String.valueOf(tabla.getValueAt(row, 0));
             }
-            numero=txt[0];
-            System.out.println("Numero"+numero);          
-        }      
-  }
-     
-  private Despacho buscar(String codigo){
-      int cod= Integer.parseInt(codigo);
-      Despacho desp=null;
-      for(Despacho t:transaccions){
-            if(cod==t.getId()){
-                desp=t;
+            numero = txt[0];
+        }
+    }
+
+    private Despacho buscar(String codigo) {
+        int cod = Integer.parseInt(codigo);
+        Despacho desp = null;
+        for (Despacho t : transaccions) {
+            if (cod == t.getId()) {
+                desp = t;
                 break;
             }
-  }
+        }
         return desp;
-  }
-     
-  private void salir (MouseEvent evt){
-       actionPerformed(evt);
-   }
+    }
 
-  private void actionPerformed(MouseEvent evt) {
-        setVisible(false);
-        dispose();
-   }
-  
-  
-    public static double redondear(double numero) 
-       {        
-           return Math.rint(numero*100)/100; 
-       }
-
+    public static double redondear(double numero) {
+        return Math.rint(numero * 100) / 100;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anular;
     private javax.swing.JButton arqueo;
@@ -574,21 +552,18 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JTable tabla;
     private javax.swing.JButton tirada;
     // End of variables declaration//GEN-END:variables
-TableCellRenderer render = new DefaultTableCellRenderer() { 
-@Override 
-public Component getTableCellRendererComponent(JTable table, Object value, 
-boolean isSelected, boolean hasFocus, int row, int column) {  
-JLabel l = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); 
-l.setHorizontalAlignment(SwingConstants.RIGHT); 
-if(hasFocus) {
-        l.setForeground(Color.RED);
-    } 
-else {
-        l.setForeground(Color.BLACK);
-    } 
-return l; 
-} 
-}; 
-
-
+    TableCellRenderer render = new DefaultTableCellRenderer() {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            JLabel l = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            l.setHorizontalAlignment(SwingConstants.RIGHT);
+            if (hasFocus) {
+                l.setForeground(Color.RED);
+            } else {
+                l.setForeground(Color.BLACK);
+            }
+            return l;
+        }
+    };
 }

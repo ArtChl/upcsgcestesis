@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
@@ -31,6 +31,8 @@ import pe.com.ega.sgces.util.ImprimirComprobante;
  */
 public class MonedaFrame extends JFrame {
 
+    private final static Logger logger = Logger.getLogger(MonedaFrame.class);
+    
     private Despacho desp;
     private ImprimirComprobante comprobante;
     private Transaccion transaccion;
@@ -43,6 +45,7 @@ public class MonedaFrame extends JFrame {
     private Cliente cliente;
     private NumComprobanteLogicaImpl numdao;
 
+    //TODO El constructor tiene muchos aprametros
     public MonedaFrame(Despacho codigo, String tipo, Cliente cli, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica) {
         initComponents();
         desp = codigo;
@@ -168,7 +171,7 @@ public class MonedaFrame extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void solesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solesActionPerformed
-        System.out.println("documento" + moneda);
+        
       //  if (desp.getMontosoles() < BigDecimal.valueOf(Double.parseDouble(pago.getText()))) {
             if ("BOL".equals(moneda)) {
                 imprimirBoleta(desp, evt);
@@ -236,23 +239,21 @@ public class MonedaFrame extends JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void imprimirBoleta(Despacho desp, java.awt.event.ActionEvent evt) {
-        System.out.println("Cliente");
+        
         llenardatos(desp, cliente);
         try {
-            System.out.println("hola imprimir");
+            
             transaccionLogica.grabar(transaccion);
             despachoLogica.grabar(desp);
             comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "TBOL");
             salir(evt);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-
-        } finally {
-        }
+        } 
     }
 
     public void imprimirFactura(Despacho desp, Cliente cli, java.awt.event.ActionEvent evt) {
-        System.out.println("Cliente" + cliente.getId());
+        
         llenardatos(desp, cli);
         try {
             transaccionLogica.grabar(transaccion);
@@ -263,8 +264,6 @@ public class MonedaFrame extends JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-
     }
 
     private void salir(java.awt.event.ActionEvent evt) {
@@ -286,7 +285,7 @@ public class MonedaFrame extends JFrame {
         try {
             codigo = turnoLogica.buscarPorCodigo("N").getId();
         } catch (Exception e) {
-            System.out.println("TurnoCodigo" + e.toString());
+            logger.error("Mensaje:\n" + e.getMessage());
         }
 
         transaccion.setIdestado(codigo);
@@ -303,7 +302,6 @@ public class MonedaFrame extends JFrame {
         numdao.actualizar(comprobantes);
 
         if (cliente.getId() == 2) {
-            System.out.println("Cliente" + cliente.getId());
             transaccion.setCliente(cliente);
 
         } else {
@@ -342,7 +340,7 @@ public class MonedaFrame extends JFrame {
         try {
             movimientoLogica.grabar(movimiento);
         } catch (Exception e) {
-            System.out.println(e);
+            logger.error("Mensaje:\n" + e.getMessage());
         }
 
     }
