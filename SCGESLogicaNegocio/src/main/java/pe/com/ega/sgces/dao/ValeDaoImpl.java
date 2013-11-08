@@ -6,6 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import pe.com.ega.sgces.model.Vale;
 
@@ -15,45 +16,45 @@ import pe.com.ega.sgces.model.Vale;
  */
 public class ValeDaoImpl implements ValeDao {
 
-    private Session session;
+    private SessionFactory session;
 
     @Override
     public void insertar(Vale usuario) {
         Transaction tx;
-        tx = session.beginTransaction();
+        tx = session.getCurrentSession().beginTransaction();
         usuario.setEstado(1);
-        session.save(usuario);
+        session.getCurrentSession().save(usuario);
         tx.commit();
 
     }
 
     @Override
     public void actualizar(Vale usuario) {
-        session.update(usuario);
+        session.getCurrentSession().update(usuario);
     }
 
     @Override
     public void eliminar(Vale usuario) {
-        session.delete(usuario);
+        session.getCurrentSession().delete(usuario);
     }
 
     @Override
     public Vale buscarPorCodigo(Integer id) {
-        return (Vale) session.load(Vale.class, id);
+        return (Vale) session.getCurrentSession().load(Vale.class, id);
     }
 
     @Override
     public List<Vale> buscarTodos(String cliente) {
-        return session.createQuery("from Vale where cliente='" + cliente + "' and estado='1'").list();
+        return session.getCurrentSession().createQuery("from Vale where cliente='" + cliente + "' and estado='1'").list();
     }
 
     @Override
     public List<Vale> buscarConsumo(String cliente) {
-        return session.createQuery("from Vale where cliente='" + cliente + "'").list();
+        return session.getCurrentSession().createQuery("from Vale where cliente='" + cliente + "'").list();
     }
 
     @Override
-    public void setSession(Session session) {
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
 }

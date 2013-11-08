@@ -4,14 +4,13 @@
  */
 package pe.com.ega.sgces.logic;
 
-import pe.com.ega.sgces.util.Util;
-import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.List;
-import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.model.Transaccion;
+import pe.com.ega.sgces.util.ImprimirComprobante;
+import pe.com.ega.sgces.util.Util;
 
 /**
  *

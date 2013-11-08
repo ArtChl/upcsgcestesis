@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.dao;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.annotations.Entity;
 
 /**
@@ -16,6 +17,6 @@ public interface CierreDao {
     
     public void cierreTurno();
     public void cierreDia();
-    public void setSession(Session session);
+    public void setSession(SessionFactory session);
     
 }

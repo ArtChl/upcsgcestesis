@@ -6,7 +6,8 @@ package pe.com.ega.sgces.sgcespos;
 
 import java.awt.Color;
 import java.awt.Component;
-import pe.com.ega.sgces.util.ImprimirComprobante;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -34,6 +35,8 @@ import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
 import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogicaImpl;
+import pe.com.ega.sgces.logic.NumComprobanteLogica;
+import pe.com.ega.sgces.logic.NumComprobanteLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogica;
@@ -41,6 +44,7 @@ import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.model.Arqueo;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
+import pe.com.ega.sgces.util.ImprimirComprobante;
 
 /**
  *
@@ -56,12 +60,26 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private TurnoLogica turnoLogica;
     private TransaccionLogica transaccionLogica;
     private CierreLogica cierreLogica;
-    private ArrayList<Despacho> transaccions;
     private ArqueoLogica arqueoLogica;
+    private NumComprobanteLogica numcomprobanteLogica;
     private String numero;
+    private ArrayList<Despacho> transaccions;
 
     public PrincipalFrame() {
         initComponents();
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().
+                addKeyEventDispatcher(new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent e) {
+                if (e.getID() == java.awt.event.KeyEvent.KEY_RELEASED &&
+                    e.getKeyCode() == java.awt.event.KeyEvent.VK_F5) {
+                    System.out.println("F5");
+                    pintarTabla();
+                }
+                return false;
+            }
+        });
+
         this.setSize(554, 424);
         transaccions = new ArrayList<>();
 
@@ -79,9 +97,12 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 TransaccionLogicaImpl.class);
         this.cierreLogica = context.getBean("cierreService",
                 CierreLogicaImpl.class);
-        pintarTabla();
-        arqueoLogica = context.getBean("arqueoService",
+        this.numcomprobanteLogica= context.getBean("numComprobanteService",
+                NumComprobanteLogicaImpl.class);
+        this.arqueoLogica = context.getBean("arqueoService",
                 ArqueoLogicaImpl.class);
+        pintarTabla();
+        
         this.getRootPane().setDefaultButton(boleta);
         boleta.requestFocus();
 
@@ -387,7 +408,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
     private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
         try {
-            FacturaFrame f = new FacturaFrame(buscar(numero), despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
+            FacturaFrame f = new FacturaFrame(buscar(numero), despachoLogica, movimientoLogica, turnoLogica, transaccionLogica, numcomprobanteLogica);
             f.setSize(627, 301);
             f.setTitle("EMISION DE FACTURA");
             f.setLocationRelativeTo(null);
@@ -402,7 +423,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         try {
             Cliente cliente = new Cliente();
             cliente.setId(2);
-            MonedaFrame f = new MonedaFrame(buscar(numero), "BOL", cliente, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
+            MonedaFrame f = new MonedaFrame(buscar(numero), "BOL", cliente, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica, numcomprobanteLogica);
             f.setSize(528, 395);
             f.setTitle("TIPO DE PAGO");
             f.setLocationRelativeTo(null);
@@ -514,6 +535,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 txt[i] = String.valueOf(tabla.getValueAt(row, 0));
             }
             numero = txt[0];
+            System.out.println("Numero"+numero);
         }
     }
 

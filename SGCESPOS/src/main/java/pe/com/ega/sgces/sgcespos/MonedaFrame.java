@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
+import pe.com.ega.sgces.logic.NumComprobanteLogica;
 import pe.com.ega.sgces.logic.NumComprobanteLogicaImpl;
 import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TurnoLogica;
@@ -43,10 +44,10 @@ public class MonedaFrame extends JFrame {
     private TurnoLogica turnoLogica;
     private String moneda;
     private Cliente cliente;
-    private NumComprobanteLogicaImpl numdao;
+    private NumComprobanteLogica numdao;
 
     //TODO El constructor tiene muchos aprametros
-    public MonedaFrame(Despacho codigo, String tipo, Cliente cli, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica) {
+    public MonedaFrame(Despacho codigo, String tipo, Cliente cli, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica, NumComprobanteLogica numComprobanteLogica) {
         initComponents();
         desp = codigo;
         moneda = tipo;
@@ -57,8 +58,7 @@ public class MonedaFrame extends JFrame {
         this.despachoLogica = despachoLogica;
         this.movimientoLogica = movimientoLogica;
         this.turnoLogica = turnoLogica;
-        numdao = new NumComprobanteLogicaImpl();
-        numdao.setValeDao(new NumComprobanteDaoImpl());
+        this.numdao = numComprobanteLogica;
         comprobante = new ImprimirComprobante();
     }
 
@@ -278,7 +278,7 @@ public class MonedaFrame extends JFrame {
     private void llenardatos(Despacho desp, Cliente cliente) {
 
         Numcomprobante comprobantes = numdao.buscarPorCodigo(2);
-
+        System.out.println("numero"+comprobantes.getNumero());
         transaccion.setDespacho(desp);
         transaccion.setIdtipotransaccion("TBOL");
         int codigo = 0;
@@ -290,16 +290,18 @@ public class MonedaFrame extends JFrame {
 
         transaccion.setIdestado(codigo);
         transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumerovale("325-" + agregarCeros(String.valueOf(comprobantes.getNumero()), 8));
-        transaccion.setNumero(comprobantes.getNumero());
+       /* transaccion.setNumerovale("325-" + agregarCeros(String.valueOf(comprobantes.getNumero()), 8));
+        transaccion.setNumero(comprobantes.getNumero());*/
+        transaccion.setNumerovale("325-");
+        transaccion.setNumero(3250);
         transaccion.setNrogalones(desp.getNrogalones());
         transaccion.setPreciounitario(desp.getPreciounitario());
         transaccion.setProducto(desp.getProducto().getNombre());
         transaccion.setMontototal(desp.getMontosoles());
         transaccion.setFecharegistro(desp.getFecharegistro());
         transaccion.setTurno(desp.getTurno());
-        comprobantes.setNumero(comprobantes.getNumero() + 1);
-        numdao.actualizar(comprobantes);
+        //comprobantes.setNumero(comprobantes.getNumero() + 1);
+      //  numdao.actualizar(comprobantes);
 
         if (cliente.getId() == 2) {
             transaccion.setCliente(cliente);

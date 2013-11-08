@@ -6,6 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Cliente;
 
 /**
@@ -18,5 +19,5 @@ public interface ClienteDao {
     public void eliminar(Cliente cliente);
     public Cliente buscarPorCodigo(Integer id);
     public List<Cliente> buscarTodos();   
-    public void setSession(Session session);
+    public void setSession(SessionFactory session);
 }

@@ -6,6 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Cliente;
 
 /**
@@ -14,35 +15,35 @@ import pe.com.ega.sgces.model.Cliente;
  */
 public class ClienteDaoImpl implements ClienteDao {
 
-    private Session session;
+    private SessionFactory session;
 
     @Override
-    public void setSession(Session session) {
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
 
     @Override
     public void insertar(Cliente cliente) {
-        session.save(cliente);
+        session.getCurrentSession().save(cliente);
     }
 
     @Override
     public void actualizar(Cliente cliente) {
-        session.update(cliente);
+        session.getCurrentSession().update(cliente);
     }
 
     @Override
     public void eliminar(Cliente cliente) {
-        session.delete(cliente);
+        session.getCurrentSession().delete(cliente);
     }
 
     @Override
     public Cliente buscarPorCodigo(Integer id) {
-        return (Cliente) session.load(Cliente.class, id);
+        return (Cliente) session.getCurrentSession().load(Cliente.class, id);
     }
 
     @Override
     public List<Cliente> buscarTodos() {
-        return session.createQuery("from Cliente").list();
+        return session.getCurrentSession().createQuery("from Cliente").list();
     }
 }

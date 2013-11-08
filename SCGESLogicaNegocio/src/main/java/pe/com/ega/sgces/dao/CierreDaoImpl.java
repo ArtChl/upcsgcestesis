@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.dao;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -12,23 +13,23 @@ import org.hibernate.Session;
  */
 public class CierreDaoImpl implements CierreDao {
 
-    private Session session;
+    private SessionFactory session;
 
     @Override
-    public void setSession(Session session) {
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
 
     @Override
     public void cierreTurno() {
         String sql = "update InterfaceConfig set cambioturno=1 where codigo=1";
-        session.createQuery(sql).executeUpdate();
+        session.getCurrentSession().createQuery(sql).executeUpdate();
 
     }
 
     @Override
     public void cierreDia() {
         String sql = "update InterfaceConfig set cierredia=1 where codigo=1";
-        session.createQuery(sql).executeUpdate();
+        session.getCurrentSession().createQuery(sql).executeUpdate();
     }
 }

@@ -7,6 +7,7 @@ package pe.com.ega.sgces.dao;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Usuario;
 
 /**
@@ -15,17 +16,17 @@ import pe.com.ega.sgces.model.Usuario;
  */
 public class UsuariodaoImpl implements UsuarioDao {
 
-    private Session session;
+    private SessionFactory session;
 
     @Override
-    public void setSession(Session session) {
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
 
     @Override
     public Usuario buscarPorUsuario(Usuario usuario) {
         String sql = "select u from Usuario u where login=:user and clave=:pass";
-        Query query = session.createQuery(sql);
+        Query query = session.getCurrentSession().createQuery(sql);
         query.setString("user", usuario.getLogin());
         query.setString("pass", usuario.getClave());
         return (Usuario) query.uniqueResult();
@@ -33,26 +34,26 @@ public class UsuariodaoImpl implements UsuarioDao {
 
     @Override
     public void insertar(Usuario usuario) {
-        session.save(usuario);
+        session.getCurrentSession().save(usuario);
     }
 
     @Override
     public void actualizar(Usuario usuario) {
-        session.update(usuario);
+        session.getCurrentSession().update(usuario);
     }
 
     @Override
     public void eliminar(Usuario usuario) {
-        session.delete(usuario);
+        session.getCurrentSession().delete(usuario);
     }
 
     @Override
     public Usuario buscarPorCodigo(Integer id) {
-        return (Usuario) session.load(Usuario.class, id);
+        return (Usuario) session.getCurrentSession().load(Usuario.class, id);
     }
 
     @Override
     public List<Usuario> buscarTodos() {
-        return session.createQuery("from Usuario").list();
+        return session.getCurrentSession().createQuery("from Usuario").list();
     }
 }
