@@ -64,7 +64,7 @@ public class NotaFrame extends JFrame {
         turnoLogica = new TurnoLogicaImpl();
         turnoLogica.setTurnoDao(new TurnoDaoImpl());
         numdao = new NumComprobanteLogicaImpl();
-        numdao.setValeDao(new NumComprobanteDaoImpl());
+        numdao.setNumcomprobanteDao(new NumComprobanteDaoImpl());
     }
 
     @SuppressWarnings("unchecked")

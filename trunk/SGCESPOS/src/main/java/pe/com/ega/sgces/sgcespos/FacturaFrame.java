@@ -13,6 +13,7 @@ import pe.com.ega.sgces.logic.ClienteLogica;
 import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
+import pe.com.ega.sgces.logic.NumComprobanteLogica;
 import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.model.Cliente;
@@ -31,8 +32,9 @@ public class FacturaFrame extends JFrame {
     private DespachoLogica despachoLogica;
     private MovimientoLogica movimientoLogica;
     private TurnoLogica turnoLogica;
+    private NumComprobanteLogica numComprobanteLogica;
 
-    public FacturaFrame(Despacho despacho, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica) {
+    public FacturaFrame(Despacho despacho, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica, NumComprobanteLogica numComprobanteLogica) {
         initComponents();
         desp = despacho;
         clienteLogica = new ClienteLogicaImpl();
@@ -41,6 +43,7 @@ public class FacturaFrame extends JFrame {
         this.despachoLogica = despachoLogica;
         this.movimientoLogica = movimientoLogica;
         this.turnoLogica = turnoLogica;
+        this.numComprobanteLogica = numComprobanteLogica;
         limpiar();
     }
 
@@ -167,7 +170,7 @@ public class FacturaFrame extends JFrame {
             temporal1.setNumerodocumento(jrucCliente.getText());
             temporal1.setRazonsocial(jrazonCliente.getText());
             clienteLogica.grabar(temporal1);
-            MonedaFrame f = new MonedaFrame(desp, "TFAC", temporal1, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
+            MonedaFrame f = new MonedaFrame(desp, "TFAC", temporal1, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica, numComprobanteLogica);
             f.setSize(528, 395);
             f.setTitle("TIPO DE PAGO");
             f.setLocationRelativeTo(null);
@@ -175,7 +178,7 @@ public class FacturaFrame extends JFrame {
             salir(evt);
 
         } else {
-            MonedaFrame f = new MonedaFrame(desp, "TFAC", cliente, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica);
+            MonedaFrame f = new MonedaFrame(desp, "TFAC", cliente, despachoLogica, movimientoLogica, turnoLogica, transaccionLogica, numComprobanteLogica);
             f.setSize(528, 395);
             f.setTitle("TIPO DE PAGO");
             f.setLocationRelativeTo(null);

@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author FLOPEZ
  */
+
 @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 public class MovimientoLogicaImpl implements MovimientoLogica {
 

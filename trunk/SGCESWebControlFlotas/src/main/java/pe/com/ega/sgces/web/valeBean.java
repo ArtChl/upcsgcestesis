@@ -40,7 +40,7 @@ public class valeBean implements Serializable{
         valedao = new ValeLogicaImpl();
         valedao.setValeDao(new ValeDaoImpl());
         numdao = new NumComprobanteLogicaImpl();
-        numdao.setValeDao(new NumComprobanteDaoImpl()); 
+        numdao.setNumcomprobanteDao(new NumComprobanteDaoImpl()); 
     }
     
     public LoginBean getLoginBean() {

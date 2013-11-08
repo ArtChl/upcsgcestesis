@@ -4,7 +4,6 @@
  */
 package pe.com.ega.sgces.logic;
 
-import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +19,7 @@ import pe.com.ega.sgces.model.Turno;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
 import pe.com.ega.sgces.util.Formato;
+import pe.com.ega.sgces.util.ImprimirComprobante;
 
 /**
  *
@@ -30,7 +30,7 @@ public class CierreLogicaImpl implements CierreLogica {
 
     private TransaccionLogica transaccionLogica;
     private DespachoLogica despachoLogica;
-    private TurnoPuntoVentaCajaLogica turnopuntoventacajaLogica;
+    private TurnopuntoventacajaLogica turnopuntoventacajaLogica;
     private ArqueoLogica arqueoLogica;
     private TurnoLogica turnoLogica;
     private ImprimirComprobante imprimircomprobante;
@@ -55,7 +55,7 @@ public class CierreLogicaImpl implements CierreLogica {
         this.despachoLogica = despachoLogica;
     }
 
-    public void setTurnopuntoventacajaLogica(TurnoPuntoVentaCajaLogica turnopuntoventacajaLogica) {
+    public void setTurnopuntoventacajaLogica(TurnopuntoventacajaLogica turnopuntoventacajaLogica) {
         this.turnopuntoventacajaLogica = turnopuntoventacajaLogica;
     }
 

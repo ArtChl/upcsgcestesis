@@ -17,11 +17,12 @@ import pe.com.ega.sgces.model.Usuario;
 @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class UsuarioLogicaImpl implements UsuarioLogica {
 
+    private UsuarioDao usuarioDao;
+    
     public UsuarioLogicaImpl() {
     }
     
-    private UsuarioDao usuarioDao;
-
+   
     public void setUsuarioDao(UsuarioDao usuarioDao) {
         this.usuarioDao = usuarioDao;
     }

@@ -6,6 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Numcomprobante;
 
 /**
@@ -18,5 +19,5 @@ public interface NumComprobanteDao {
     public void eliminar(Numcomprobante comp);
     public Numcomprobante buscarPorCodigo(int tipo);
     public List<Numcomprobante> buscarConsumo(String cliente);
-    public void setSession(Session session);
+    public void setSession(SessionFactory session);
 }

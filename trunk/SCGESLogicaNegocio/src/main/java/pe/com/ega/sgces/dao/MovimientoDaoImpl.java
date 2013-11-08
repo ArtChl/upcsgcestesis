@@ -20,7 +20,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 
     @Override
     public void insertar(Movimiento movimiento) {
-        session.getCurrentSession().save(movimiento);
+        session.openSession().save(movimiento);
     }
 
     @Override

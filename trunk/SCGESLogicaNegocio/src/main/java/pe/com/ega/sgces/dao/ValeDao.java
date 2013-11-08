@@ -6,6 +6,7 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import pe.com.ega.sgces.model.Vale;
 
 /**
@@ -19,5 +20,5 @@ public interface ValeDao {
     public Vale buscarPorCodigo(Integer id);
     public List<Vale> buscarTodos(String cliente);
     public List<Vale> buscarConsumo(String cliente);
-    public void setSession(Session session);
+    public void setSession(SessionFactory session);
 }

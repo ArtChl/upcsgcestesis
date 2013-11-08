@@ -6,43 +6,56 @@ package pe.com.ega.sgces.dao;
 
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 import pe.com.ega.sgces.model.Numcomprobante;
 
 /**
  *
  * @author FLOPEZ
  */
+@Repository
 public class NumComprobanteDaoImpl implements NumComprobanteDao {
 
-    private Session session;
+    private SessionFactory session;
 
     @Override
     public void insertar(Numcomprobante usuario) {
-        session.save(usuario);
+        session.getCurrentSession().save(usuario);
     }
 
     @Override
     public void actualizar(Numcomprobante usuario) {
-        session.update(usuario);
+        session.getCurrentSession().update(usuario);
     }
 
     @Override
     public void eliminar(Numcomprobante usuario) {
-        session.delete(usuario);
+        session.getCurrentSession().delete(usuario);
     }
 
     @Override
     public Numcomprobante buscarPorCodigo(int id) {
-        return (Numcomprobante) session.load(Numcomprobante.class, id);
+        session.getCurrentSession().beginTransaction();
+        Numcomprobante num;
+        num = (Numcomprobante) session.openSession().load(Numcomprobante.class, id);
+        session.close();
+        return num;
+     
     }
 
     @Override
     public List<Numcomprobante> buscarConsumo(String cliente) {
-        return session.createQuery("from Vale where cliente='" + cliente + "' and estado=1").list();
+        return session.getCurrentSession().createQuery("from Vale where cliente='" + cliente + "' and estado=1").list();
     }
 
     @Override
-    public void setSession(Session session) {
+    public void setSession(SessionFactory session) {
         this.session = session;
     }
+    
+    public SessionFactory getSession() {
+        return session;
+    }
+
 }
