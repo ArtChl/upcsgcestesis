@@ -13,7 +13,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.logic.ArqueoLogica;
 import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;

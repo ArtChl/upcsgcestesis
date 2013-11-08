@@ -8,17 +8,16 @@ import pe.com.ega.sgces.util.Util;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.Date;
 import java.util.List;
-import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.dao.DepositoDao;
 import pe.com.ega.sgces.model.Deposito;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
-import org.apache.log4j.Logger;
 
+@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 public class DepositoLogicaImpl implements DepositoLogica {
 
-    private final static Logger logger = Logger.getLogger(DepositoLogicaImpl.class);
-    private SessionFactory session;
     private DepositoDao depositoDao;
     private TurnoLogica turnoLogica;
     private Deposito deposito;
@@ -33,56 +32,45 @@ public class DepositoLogicaImpl implements DepositoLogica {
         this.turnoLogica = turnoLogica;
     }
 
-    public void setSession(SessionFactory session) {
-        this.session = session;
-    }
-
     public void setDepositoDao(DepositoDao depositoDao) {
         this.depositoDao = depositoDao;
     }
 
     @Override
     public void insertar(Deposito deposito) {
-        session.getCurrentSession().beginTransaction();
         depositoDao.insertar(deposito);
-        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
     public void actualizar(Deposito deposito) {
-        session.getCurrentSession().beginTransaction();
         depositoDao.actualizar(deposito);
-        session.getCurrentSession().getTransaction().commit();
 
     }
 
     @Override
     public void eliminar(Deposito deposito) {
-        session.getCurrentSession().beginTransaction();
         depositoDao.eliminar(deposito);
-        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Deposito buscarPorCodigo(Integer id) {
         return depositoDao.buscarPorCodigo(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Deposito> buscarTodos() {
         return depositoDao.buscarTodos();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Double buscarMonto(String tipo, String turno) {
         Double monto;
-        try {
             List lis = depositoDao.buscarMonto(tipo, turno);
             monto = Util.recuperarNumero(lis);
-        } catch (Exception ex) {
-            logger.error("Mensaje:\n" + ex.getMessage());
-            monto = 0.00;
-        }
+        
         return monto;
     }
 

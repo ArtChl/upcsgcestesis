@@ -14,5 +14,5 @@ import pe.com.ega.sgces.model.Turno;
  */
 public interface CierreLogica {
     public ArrayList<Cierre> buscarPorCodigo(String turno);
-    public String cierreTurno(Turno turno);
+    public void cierreTurno(Turno turno);
 }

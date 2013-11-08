@@ -29,7 +29,7 @@ public class LoginBean implements Serializable{
 
     public LoginBean() {
         usuariodao = new UsuarioLogicaImpl();
-        usuariodao.setTransaccionDao(new UsuariodaoImpl());
+        usuariodao.setUsuarioDao(new UsuariodaoImpl());
     }
     
     public void login(ActionEvent actionEvent) {  

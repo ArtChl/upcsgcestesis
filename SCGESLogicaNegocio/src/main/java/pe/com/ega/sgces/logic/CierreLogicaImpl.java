@@ -8,8 +8,8 @@ import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.apache.log4j.Logger;
-import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.model.Arqueo;
 import pe.com.ega.sgces.model.Caja;
 import pe.com.ega.sgces.model.Cierre;
@@ -25,12 +25,12 @@ import pe.com.ega.sgces.util.Formato;
  *
  * @author sistemas
  */
+@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class CierreLogicaImpl implements CierreLogica {
 
-    private final static Logger logger = Logger.getLogger(CierreLogicaImpl.class);
     private TransaccionLogica transaccionLogica;
     private DespachoLogica despachoLogica;
-    private TurnopuntoventacajaLogica turnopuntoventacajaLogica;
+    private TurnoPuntoVentaCajaLogica turnopuntoventacajaLogica;
     private ArqueoLogica arqueoLogica;
     private TurnoLogica turnoLogica;
     private ImprimirComprobante imprimircomprobante;
@@ -55,24 +55,20 @@ public class CierreLogicaImpl implements CierreLogica {
         this.despachoLogica = despachoLogica;
     }
 
-    public void setTurnopuntoventacajaLogica(TurnopuntoventacajaLogica turnopuntoventacajaLogica) {
+    public void setTurnopuntoventacajaLogica(TurnoPuntoVentaCajaLogica turnopuntoventacajaLogica) {
         this.turnopuntoventacajaLogica = turnopuntoventacajaLogica;
     }
 
-    //TODO Lanzar errores personalizados en lugar de cadenas REGLAS DE NEGOCIO
     @Override
-    public String cierreTurno(Turno turno) {
+    @Transactional(readOnly = false)
+    public void cierreTurno(Turno turno) {
         List<Despacho> despachos = null;
         ArrayList<Arqueo> arqueos = null;
-        String resultado = null;
         Turno turno2 = null;
-        try {
-            turno2 = turnoLogica.buscarPorCodigo("N");
-            despachos = (List<Despacho>) despachoLogica.buscarTodos();
-            arqueos = arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
-        } catch (Exception e) {
-            logger.error("Mensaje:\n" + e.getMessage());
-        }
+
+        turno2 = turnoLogica.buscarPorCodigo("N");
+        despachos = (List<Despacho>) despachoLogica.buscarTodos();
+        arqueos = arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
 
         if (despachos.isEmpty()) {
             if (Formato.redondear(arqueos.get(0).getCantidad()) == 0 && Formato.redondear(arqueos.get(1).getCantidad()) == 0 && Formato.redondear(arqueos.get(2).getCantidad()) == 0 && Formato.redondear(arqueos.get(3).getCantidad()) == 0) {
@@ -83,64 +79,50 @@ public class CierreLogicaImpl implements CierreLogica {
                 }
                 imprimircomprobante.imprimirTurno("0001", String.valueOf(Formato.redondear(lista.get(0).getCantidad())), String.valueOf(Formato.redondear(lista.get(1).getCantidad())), String.valueOf(Formato.redondear(lista.get(2).getCantidad())), String.valueOf(Formato.redondear(total)), String.valueOf(Formato.redondear(lista.get(3).getCantidad())), "ROSARIO");
 
-                try {
-                    turnoLogica.actualizar(turno2);
-                    resultado = "Cierre";
-                } catch (Exception e) {
-                    logger.error("Mensaje:\n" + e.getMessage());
-                    resultado = "Cierre";
-                }
+                turnoLogica.actualizar(turno2);
 
                 this.turno();
                 this.turnoCaja();
             } else {
-                resultado = "Caja No Cuadrada";
+                throw new RuntimeException("Caja No Cuadrada");
             }
         } else {
-            resultado = "Despachos Pendientes por Facturar";
+            throw new RuntimeException("Despachos Pendientes por Facturar");
         }
-        return resultado;
     }
-
+    
+    @Transactional(readOnly = false)
     private void turno() {
         Turno x = new Turno();
         x.setEstacionservicio(new Estacionservicio(1));
         x.setFechaapertura(new Date());
         x.setEstado("N");
-        try {
-            turnoLogica.insertar(x);
-        } catch (Exception e) {
-            logger.error("Mensaje:\n" + e.getMessage());
-        }
+
+        turnoLogica.insertar(x);
     }
 
+    @Transactional(readOnly = false)
     private void turnoCaja() {
         Turnopuntoventacaja cajax = new Turnopuntoventacaja();
-        int turno2 = 0;
-        try {
-            turno2 = turnoLogica.buscarPorCodigo("N").getId();
-        } catch (Exception e) {
-            logger.error("Mensaje:\n" + e.getMessage());
-        }
+        int turno = turnoLogica.buscarPorCodigo("N").getId();
 
         TurnopuntoventacajaId turnoPuntoVentaCajaId = new TurnopuntoventacajaId();
+        //TODO El id caja no puede estar en duro
         turnoPuntoVentaCajaId.setIdcaja(1);
-        turnoPuntoVentaCajaId.setIdturno(turno2);
+        turnoPuntoVentaCajaId.setIdturno(turno);
         turnoPuntoVentaCajaId.setIdpuntoventa(1);
 
         cajax.setId(turnoPuntoVentaCajaId);
         Caja caja = new Caja();
+        //TODO El id caja no puede estar en duro
         caja.setId(1);
         cajax.setCaja(caja);
+        //TODO El id caja no puede estar en duro
         cajax.setPuntoventa(new Puntoventa(1));
         cajax.setTurno(turnoLogica.buscarPorCodigo("N"));
         cajax.setFecharegistro(new Date());
 
-        try {
-            turnopuntoventacajaLogica.insertar(cajax);
-        } catch (Exception e) {
-            logger.error("Mensaje:\n" + e.getMessage());
-        }
+        turnopuntoventacajaLogica.insertar(cajax);
     }
 
     @Override

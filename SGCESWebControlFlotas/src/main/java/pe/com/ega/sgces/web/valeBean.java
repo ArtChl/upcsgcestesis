@@ -35,7 +35,6 @@ public class valeBean implements Serializable{
     private NumComprobanteLogicaImpl numdao;
     @ManagedProperty("#{loginBean}")
     private LoginBean loginBean;
-    private Float totalSoles;
     
     public valeBean() {
         valedao = new ValeLogicaImpl();
@@ -70,27 +69,7 @@ public class valeBean implements Serializable{
 
     public void setVales(List<Vale> vales) {
         this.vales = vales;
-    }
-  
-    public Float getTotalSoles() {
-        return totalSoles=this.sumaSoles();
-    }
-
-    public void setTotalSoles(Float totalSoles) {
-        this.totalSoles = totalSoles;
-    }
-    
-     private Float sumaSoles() {
-        Double total = 0.0;
-        Double nim;
-        vales=valedao.buscarConsumo(String.valueOf(loginBean.getUsuario().getId()));
-        for (Vale string : vales) {
-            nim = Double.parseDouble(String.valueOf(string.getMonto()));
-            total = total+nim;
-            System.out.println("Suma"+total);
-        }
-        return Float.parseFloat(String.valueOf(total));
-    }
+    }   
     
     public void prepararVale(Integer id) {
         vale= valedao.buscarPorCodigo(id);
@@ -105,7 +84,6 @@ public class valeBean implements Serializable{
         Numcomprobante comprobantes= numdao.buscarPorCodigo(1);
         try {
             vale.setCliente(loginBean.getUsuario().getTrabajador().getDni());
-            Formatter fmt = new Formatter();
             vale.setNumero(agregarCeros(String.valueOf(comprobantes.getNumero()),6));
             comprobantes.setNumero(comprobantes.getNumero()+1);
             numdao.actualizar(comprobantes);
@@ -137,8 +115,7 @@ public class valeBean implements Serializable{
             vale = new Vale();
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage("Datos No se han eliminado", "Eliminados"));
-        }
-    
+        }    
     }
     
     private static String agregarCeros(String string, int largo)

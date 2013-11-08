@@ -80,7 +80,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
         this.cierreLogica = context.getBean("cierreService",
                 CierreLogicaImpl.class);
         pintarTabla();
-        arqueoLogica = new ArqueoLogicaImpl(movimientoLogica, depositoLogica);
+        arqueoLogica = context.getBean("arqueoService",
+                ArqueoLogicaImpl.class);
         this.getRootPane().setDefaultButton(boleta);
         boleta.requestFocus();
 
@@ -337,18 +338,17 @@ public class PrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tiradaActionPerformed
 
     private void cierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierreActionPerformed
-        String mensaje = cierreLogica.cierreTurno(turnoLogica.buscarPorCodigo("N"));
-        if (mensaje.equalsIgnoreCase("Cierre")) {
+        
+        try {
+            cierreLogica.cierreTurno(turnoLogica.buscarPorCodigo("N"));
             final JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(panel, "Cierre Realizado con Existo", "Informacion", JOptionPane.OK_OPTION);
-
-        } else {
-
-            if (mensaje.equalsIgnoreCase("Caja no Cuadrada")) {
-                new OkCancelDialog(this, true, mensaje).setVisible(true);
-            } else {
-                new OkCancelDialog(this, true, mensaje).setVisible(true);
-            }
+        } catch (RuntimeException exCierre) {
+            new OkCancelDialog(this, true, exCierre.getMessage()).setVisible(true);
+        }
+        catch(Exception ex){
+            logger.error("Mensaje:\n" + ex.getMessage());
+            new OkDialog(this, true, "Ocurrio un error intentelo de nuevo").setVisible(true);
         }
     }//GEN-LAST:event_cierreActionPerformed
 

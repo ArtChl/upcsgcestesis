@@ -5,10 +5,10 @@
 package pe.com.ega.sgces.logic;
 
 import pe.com.ega.sgces.util.Util;
-import org.apache.log4j.Logger;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 import java.util.List;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.dao.TransaccionDao;
 import pe.com.ega.sgces.model.Transaccion;
@@ -17,11 +17,9 @@ import pe.com.ega.sgces.model.Transaccion;
  *
  * @author CHRISTIAN
  */
-@Transactional(readOnly = true)
+@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class TransaccionLogicaImpl implements TransaccionLogica {
 
-    private final static Logger logger = Logger.getLogger(TransaccionLogicaImpl.class);
-    private SessionFactory session;
     private TransaccionDao transaccionDao;
     private DespachoLogica despachoLogica;
     private MovimientoLogica movimientoLogica;
@@ -29,10 +27,6 @@ public class TransaccionLogicaImpl implements TransaccionLogica {
 
     public TransaccionLogicaImpl() {
         this.comprobante = new ImprimirComprobante();
-    }
-
-    public void setSession(SessionFactory session) {
-        this.session = session;
     }
 
     public void setDespachoLogica(DespachoLogica despachoLogica) {
@@ -48,10 +42,9 @@ public class TransaccionLogicaImpl implements TransaccionLogica {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void grabar(Transaccion transaccion) {
-        session.getCurrentSession().beginTransaction();
         transaccionDao.insertar(transaccion);
-        session.getCurrentSession().getTransaction().commit();
     }
 
     @Override
@@ -77,34 +70,23 @@ public class TransaccionLogicaImpl implements TransaccionLogica {
     @Override
     public Double buscarMonto(String tipo, String turno) {
         Double monto;
-        try {
-            List lis = transaccionDao.buscarMonto(tipo, turno);
-            monto = Util.recuperarNumero(lis);
-        } catch (Exception ex) {
-            logger.error("Mensaje:\n" + ex.getMessage());
-            monto = 0.00;
-        }
+
+        List lis = transaccionDao.buscarMonto(tipo, turno);
+        monto = Util.recuperarNumero(lis);
+
         return monto;
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void actualizar(Transaccion transaccion) {
-        try {
-            session.getCurrentSession().beginTransaction();
-            transaccionDao.actualizar(transaccion);
+        transaccionDao.actualizar(transaccion);
 
-            if (transaccion.getAnulado() == true) {
-                transaccion.getDespacho().setIdestado(1);
-                despachoLogica.actualizar(transaccion.getDespacho());
-                movimientoLogica.eliminar(movimientoLogica.buscarTransaccion(String.valueOf(transaccion.getId())));
-                comprobante.imprimirAnular(transaccion.getIdtipotransaccion() + "-" + transaccion.getNumerovale(), String.valueOf(transaccion.getMontototal()), "Lopez Cordova");
-            }
-
-        } catch (Exception e) {
-            logger.error("Mensaje:\n" + e.getMessage());
-            session.getCurrentSession().getTransaction().rollback();
-        } finally {
-//            session.getCurrentSession().getTransaction().commit();
+        if (transaccion.getAnulado() == true) {
+            transaccion.getDespacho().setIdestado(1);
+            despachoLogica.actualizar(transaccion.getDespacho());
+            movimientoLogica.eliminar(movimientoLogica.buscarTransaccion(String.valueOf(transaccion.getId())));
+            comprobante.imprimirAnular(transaccion.getIdtipotransaccion() + "-" + transaccion.getNumerovale(), String.valueOf(transaccion.getMontototal()), "Lopez Cordova");
         }
     }
 

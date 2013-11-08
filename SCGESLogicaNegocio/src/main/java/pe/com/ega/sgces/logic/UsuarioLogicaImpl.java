@@ -5,8 +5,8 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
-import org.hibernate.Session;
-import pe.com.ega.sgces.dao.HibernateUtil;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.dao.UsuarioDao;
 import pe.com.ega.sgces.model.Usuario;
 
@@ -14,17 +14,16 @@ import pe.com.ega.sgces.model.Usuario;
  *
  * @author CHRISTIAN
  */
+@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class UsuarioLogicaImpl implements UsuarioLogica {
 
     public UsuarioLogicaImpl() {
-        session = HibernateUtil.getSessionFactory().openSession();
     }
-    private Session session;
+    
     private UsuarioDao usuarioDao;
 
-    public void setTransaccionDao(UsuarioDao usuarioDao) {
+    public void setUsuarioDao(UsuarioDao usuarioDao) {
         this.usuarioDao = usuarioDao;
-        this.usuarioDao.setSession(session);
     }
 
     @Override
@@ -33,14 +32,13 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public void grabar(Usuario usuario) {
-        session.beginTransaction();
         if (usuario.getId() == 0) {
             usuarioDao.insertar(usuario);
         } else {
             usuarioDao.actualizar(usuario);
         }
-        session.getTransaction().commit();
     }
 
     @Override
