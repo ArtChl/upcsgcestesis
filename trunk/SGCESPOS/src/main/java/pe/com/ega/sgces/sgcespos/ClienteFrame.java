@@ -5,14 +5,16 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
-import java.math.BigDecimal;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
+import pe.com.ega.sgces.logic.ClienteLogica;
 import pe.com.ega.sgces.logic.ClienteLogicaImpl;
+import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.DespachoLogicaImpl;
+import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
@@ -23,18 +25,18 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class ClienteFrame extends JFrame {
 
-    private ClienteLogicaImpl clienteDao;
-    private TransaccionLogicaImpl transaccionDao;
-    private DespachoLogicaImpl despachoDao;
+    private ClienteLogica clienteLogica;
+    private TransaccionLogica transaccionLogica;
+    private DespachoLogica despachoLogic;
 
     public ClienteFrame(Despacho despacho) {
         initComponents();
-        clienteDao = new ClienteLogicaImpl();
-        clienteDao.setClienteDao(new ClienteDaoImpl());
-        transaccionDao = new TransaccionLogicaImpl();
-        transaccionDao.setTransaccionDao(new TransaccionDaoImpl());
-        despachoDao = new DespachoLogicaImpl();
-        despachoDao.setDespachoDao(new DespachoDaoImpl());
+        clienteLogica = new ClienteLogicaImpl();
+        ((ClienteLogicaImpl)clienteLogica).setClienteDao(new ClienteDaoImpl());
+        transaccionLogica = new TransaccionLogicaImpl();
+        ((TransaccionLogicaImpl)transaccionLogica).setTransaccionDao(new TransaccionDaoImpl());
+        despachoLogic = new DespachoLogicaImpl();
+        despachoLogic.setDespachoDao(new DespachoDaoImpl());
     }
 
     /**
@@ -128,7 +130,7 @@ public class ClienteFrame extends JFrame {
         Cliente temporal1 = new Cliente();
         temporal1.setNumerodocumento(jrucCliente.getText());
         temporal1.setRazonsocial(jrazonCliente.getText());
-        if (clienteDao.buscarPorCodigo(jrucCliente.getText()) != null) {
+        if (clienteLogica.buscarPorCodigo(jrucCliente.getText()) != null) {
             JOptionPane.showMessageDialog(null, "Cliente Ya existe", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             if (jrucCliente.getText().isEmpty() || jrazonCliente.getText().isEmpty()) {
@@ -137,7 +139,7 @@ public class ClienteFrame extends JFrame {
 
             } else {
                 try {
-                    clienteDao.grabar(temporal1);
+                    clienteLogica.grabar(temporal1);
                     limpiar();
                     salir(evt);
                 } catch (Exception e) {

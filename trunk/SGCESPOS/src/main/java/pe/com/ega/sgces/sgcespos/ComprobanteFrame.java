@@ -38,7 +38,7 @@ public class ComprobanteFrame extends JFrame {
         this.transaccionLogica = transaccionLogica;
         transaccions = new ArrayList<>();
         pintarTabla();
-        numero="0";
+        numero = "0";
     }
 
     @SuppressWarnings("unchecked")
@@ -128,26 +128,23 @@ public class ComprobanteFrame extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-                salir(evt);
+        salir(evt);
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        if("0".equals(numero))
-            {
-                        new OkDialog(this,true,"No ha Seleccionado Comprobante !!!").setVisible(true);
-            }
-        else {
+        if ("0".equals(numero)) {
+            new OkDialog(this, true, "No ha Seleccionado Comprobante !!!").setVisible(true);
+        } else {
 
             if (JOptionPane.showConfirmDialog(new JFrame(), "Desea Eliminar Comprobante?", "Confirmacion", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 Transaccion tr = buscar(numero);
                 tr.setAnulado(true);
                 transaccionLogica.actualizar(tr);
                 this.salir(evt);
+            }
         }
-        }
-        
-    }//GEN-LAST:event_aceptarActionPerformed
 
+    }//GEN-LAST:event_aceptarActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
@@ -184,7 +181,7 @@ public class ComprobanteFrame extends JFrame {
             arre[i][2] = t.getIdtipotransaccion();
             arre[i][3] = t.getProducto();
             arre[i][4] = t.getMontototal();
-           // arre[i][5] = t.getFecharegistro();
+            // arre[i][5] = t.getFecharegistro();
             i++;
         }
 
@@ -199,11 +196,10 @@ public class ComprobanteFrame extends JFrame {
         for (int x = 1; x < tabla.getColumnCount(); x++) {
             tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
             tabla.getColumnModel().getColumn(x).setResizable(false);
-            if(x==4) {
-          tabla.getColumnModel().getColumn(x).setCellRenderer(render);
-      }
+            if (x == 4) {
+                tabla.getColumnModel().getColumn(x).setCellRenderer(render);
+            }
         }
-        //jScrollPane1.setViewportView(tabla);
     }
 
     class SelectListener extends MouseAdapter {
@@ -217,8 +213,6 @@ public class ComprobanteFrame extends JFrame {
             select(e);
         }
 
-       
-
         private void select(MouseEvent e) {
             int row = tabla.getSelectedRow();
             String txt[] = new String[tabla.getColumnCount()];
@@ -226,9 +220,7 @@ public class ComprobanteFrame extends JFrame {
             for (int i = 0; i < tabla.getColumnCount(); i++) {
                 txt[i] = String.valueOf(tabla.getValueAt(row, 0));
             }
-             numero=txt[0];
-            System.out.println("Numero"+numero); 
-            
+            numero = txt[0];
         }
     }
 
@@ -244,22 +236,18 @@ public class ComprobanteFrame extends JFrame {
         desp.setAnulado(true);
         return desp;
     }
-    
-    
-    
-    TableCellRenderer render = new DefaultTableCellRenderer() { 
-@Override 
-public Component getTableCellRendererComponent(JTable table, Object value, 
-boolean isSelected, boolean hasFocus, int row, int column) {  
-JLabel l = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); 
-l.setHorizontalAlignment(SwingConstants.RIGHT); 
-if(hasFocus) {
-        l.setForeground(Color.RED);
-    } 
-else {
-        l.setForeground(Color.BLACK);
-    } 
-return l; 
-} 
-}; 
+    TableCellRenderer render = new DefaultTableCellRenderer() {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            JLabel l = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            l.setHorizontalAlignment(SwingConstants.RIGHT);
+            if (hasFocus) {
+                l.setForeground(Color.RED);
+            } else {
+                l.setForeground(Color.BLACK);
+            }
+            return l;
+        }
+    };
 }

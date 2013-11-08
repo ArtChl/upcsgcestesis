@@ -37,7 +37,6 @@ public class OkCancelDialog extends javax.swing.JDialog {
         this.setSize(485, 130);
         this.mensaje.setText(mensaje);
         this.setTitle("ALERTA");
-        // Close the dialog when Esc is pressed
         String cancelName = "cancel";
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), cancelName);
@@ -137,26 +136,6 @@ public class OkCancelDialog extends javax.swing.JDialog {
         dispose();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-   
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                OkCancelDialog dialog = new OkCancelDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel1;

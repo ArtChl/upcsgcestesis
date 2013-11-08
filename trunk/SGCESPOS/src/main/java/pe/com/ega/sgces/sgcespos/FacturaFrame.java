@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.openswing.swing.mdi.client.MDIFrame;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
+import pe.com.ega.sgces.logic.ClienteLogica;
 import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
@@ -24,7 +25,7 @@ import pe.com.ega.sgces.model.Despacho;
 public class FacturaFrame extends JFrame {
 
     private Despacho desp;
-    private ClienteLogicaImpl clienteLogica;
+    private ClienteLogica clienteLogica;
     private Cliente cliente;
     private TransaccionLogica transaccionLogica;
     private DespachoLogica despachoLogica;
@@ -35,7 +36,7 @@ public class FacturaFrame extends JFrame {
         initComponents();
         desp = despacho;
         clienteLogica = new ClienteLogicaImpl();
-        clienteLogica.setClienteDao(new ClienteDaoImpl());
+        ((ClienteLogicaImpl)clienteLogica).setClienteDao(new ClienteDaoImpl());
         this.transaccionLogica = transaccionLogica;
         this.despachoLogica = despachoLogica;
         this.movimientoLogica = movimientoLogica;

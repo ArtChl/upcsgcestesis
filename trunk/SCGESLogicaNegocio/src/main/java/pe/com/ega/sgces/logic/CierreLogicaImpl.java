@@ -28,7 +28,6 @@ import pe.com.ega.sgces.util.Formato;
 public class CierreLogicaImpl implements CierreLogica {
 
     private final static Logger logger = Logger.getLogger(CierreLogicaImpl.class);
-    private SessionFactory session;
     private TransaccionLogica transaccionLogica;
     private DespachoLogica despachoLogica;
     private TurnopuntoventacajaLogica turnopuntoventacajaLogica;
@@ -38,10 +37,6 @@ public class CierreLogicaImpl implements CierreLogica {
 
     public CierreLogicaImpl() {
         imprimircomprobante = new ImprimirComprobante();
-    }
-
-    public void setSession(SessionFactory session) {
-        this.session = session;
     }
 
     public void setTurnoLogica(TurnoLogica turnoLogica) {
