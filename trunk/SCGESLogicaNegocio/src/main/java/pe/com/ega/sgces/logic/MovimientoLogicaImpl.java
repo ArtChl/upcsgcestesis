@@ -43,11 +43,12 @@ public class MovimientoLogicaImpl implements MovimientoLogica {
     @Override
     @Transactional(readOnly = true)
     public Double buscarMonto(String tipo, String turno) {
-        Double monto;
-
+        Double monto = null;
+        System.out.println("Monto"+monto);
         List lis = movimientoDao.buscarMonto(tipo, turno);
+        System.out.println("Monto"+lis.toString());
         monto = Util.recuperarNumero(lis);
-
+        System.out.println("Monto"+monto);
         return monto;
     }
 
@@ -65,11 +66,11 @@ public class MovimientoLogicaImpl implements MovimientoLogica {
     @Override
     @Transactional(readOnly = true)
     public Double buscarMontoVuelto(String tipo, String turno) {
-        Double monto;
-
+        Double monto = null;
+        System.out.println("Monto Vuelto"+monto);
         List lis = movimientoDao.buscarMontoVuelto(tipo, turno);
+        System.out.println("Monto Vuelto"+lis.toString());
         monto = Util.recuperarNumero(lis);
-
         return monto;
     }
 }

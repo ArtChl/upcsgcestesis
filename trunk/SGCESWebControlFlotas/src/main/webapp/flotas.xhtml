@@ -31,7 +31,7 @@
     <!--Tabla donde se contiene la informacion de todos los registros--> 
      <h:form id="frmPrincipal">  
         <p:growl id="principal"/> 
-        <p:dataTable id="datatable" var="Transaccion" value="#{transsaccionBean.transaccions}"  paginator="true" rows="10"
+        <p:dataTable id="datatable" var="Transaccion" value="#{transaccionBean.transaccions}"  paginator="true" rows="10"
                      sortBy="#{Transaccion.facturado}" sortOrder="descending" >  
             
             <f:facet name="header">  

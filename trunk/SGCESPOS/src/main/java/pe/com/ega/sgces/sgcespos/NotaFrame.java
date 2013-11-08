@@ -5,31 +5,25 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import pe.com.ega.sgces.dao.ClienteDaoImpl;
-import pe.com.ega.sgces.dao.DespachoDaoImpl;
-import pe.com.ega.sgces.dao.NumComprobanteDaoImpl;
-import pe.com.ega.sgces.dao.TransaccionDaoImpl;
-import pe.com.ega.sgces.dao.TurnoDaoImpl;
-import pe.com.ega.sgces.dao.ValeDaoImpl;
 import pe.com.ega.sgces.logic.ClienteLogica;
-import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
-import pe.com.ega.sgces.logic.DespachoLogicaImpl;
-import pe.com.ega.sgces.logic.NumComprobanteLogicaImpl;
+import pe.com.ega.sgces.logic.NumComprobanteLogica;
 import pe.com.ega.sgces.logic.TransaccionLogica;
-import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogica;
-import pe.com.ega.sgces.logic.TurnoLogicaImpl;
 import pe.com.ega.sgces.logic.ValeLogica;
-import pe.com.ega.sgces.logic.ValeLogicaImpl;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Numcomprobante;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Vale;
+import pe.com.ega.sgces.util.Formato;
+import pe.com.ega.sgces.util.ImprimirComprobante;
 
 /**
  *
@@ -46,25 +40,25 @@ public class NotaFrame extends JFrame {
     private TurnoLogica turnoLogica;
     private ValeLogica valeLogica;
     ArrayList<Vale> lista;
-    private NumComprobanteLogicaImpl numdao;
+    private NumComprobanteLogica numComprobanteLogica;
+    private ImprimirComprobante comprobante;
+    private Despacho desp;
+    private Formato f;
+    private Vale valeTemporal;
 
-    public NotaFrame(Despacho despacho) {
+    public NotaFrame(Despacho despacho, TransaccionLogica transaccionLogica, DespachoLogica despachoLogica, TurnoLogica turnoLogica, NumComprobanteLogica numComprobanteLogica,ValeLogica valeLogica, ClienteLogica clienteLogica ) {
         initComponents();
         cliente = new Cliente();
         lista = new ArrayList<>();
-        clienteLogica = new ClienteLogicaImpl();
-        ((ClienteLogicaImpl) clienteLogica).setClienteDao(new ClienteDaoImpl());
         transaccion = new Transaccion();
-        transaccionLogica = new TransaccionLogicaImpl();
-        ((TransaccionLogicaImpl) transaccionLogica).setTransaccionDao(new TransaccionDaoImpl());
-        despachoLogica = new DespachoLogicaImpl();
-        despachoLogica.setDespachoDao(new DespachoDaoImpl());
-        valeLogica = new ValeLogicaImpl();
-        ((ValeLogicaImpl) valeLogica).setValeDao(new ValeDaoImpl());
-        turnoLogica = new TurnoLogicaImpl();
-        turnoLogica.setTurnoDao(new TurnoDaoImpl());
-        numdao = new NumComprobanteLogicaImpl();
-        numdao.setNumcomprobanteDao(new NumComprobanteDaoImpl());
+        desp=despacho;
+        valeTemporal=new Vale();
+        this.clienteLogica = clienteLogica;
+        this.transaccionLogica = transaccionLogica;
+        this.despachoLogica = despachoLogica;
+        this.valeLogica = valeLogica;
+        this.turnoLogica = turnoLogica;
+        this.numComprobanteLogica = numComprobanteLogica;
     }
 
     @SuppressWarnings("unchecked")
@@ -222,6 +216,51 @@ public class NotaFrame extends JFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
+            // if (desp.getMontosoles() == Double.parseDouble(montovale.getText())) {
+            comprobante = new ImprimirComprobante();
+            if (temporal.getId() == 1) {
+
+                Cliente temporal1 = new Cliente();
+
+                temporal1.setNumerodocumento(jrucCliente.getText());
+                temporal1.setRazonsocial(jrazonCliente.getText());
+                try {
+                    llenardatos(desp, cliente);
+                    transaccionLogica.grabar(transaccion);
+                    despachoLogica.grabar(desp);
+
+                    SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+                    Date now = new Date();
+                    valeTemporal.setFechadespacho(now);
+                    valeTemporal.setHoradespacho(format.format(now));
+                    valeTemporal.setEstado(0);
+                    valeLogica.actualizar(valeTemporal);
+                    comprobante.imprimirNotaDespacho(jkilometrajes.getText(), jplaca.getText(), jchofer.getText(), cliente.getRazonsocial(),
+                            String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.82"))), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.18"))), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
+                    limpiar();
+                    salir(evt);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "No se puede imprimir", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                llenardatos(desp, cliente);
+                transaccionLogica.grabar(transaccion);
+                despachoLogica.grabar(desp);
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+                Date now = new Date();
+                valeTemporal.setFechadespacho(now);
+                valeTemporal.setHoradespacho(format.format(now));
+                valeTemporal.setEstado(0);
+                valeLogica.actualizar(valeTemporal);
+                comprobante.imprimirNotaDespacho(jkilometrajes.getText(), jplaca.getText(), jchofer.getText(), cliente.getRazonsocial(),
+                        String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.82"))), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.18"))), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
+                limpiar();
+                salir(evt);
+            }
+      //  } else {
+      //      final JPanel panel = new JPanel();
+      //  }
+
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -241,6 +280,7 @@ public class NotaFrame extends JFrame {
                 jplaca.setText(vale.getPlaca());
                 transaccion.setNumerotiket(vale.getNumero());
                 montovale.setText(String.valueOf(vale.getMonto()));
+                valeTemporal=vale;
             }
         }
     }//GEN-LAST:event_comboValeActionPerformed
@@ -290,4 +330,41 @@ public class NotaFrame extends JFrame {
             JOptionPane.showMessageDialog(null, "No se Encontro Vales", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    private void llenardatos(Despacho desp, Cliente nuevo) {
+        Numcomprobante comprobantes = numComprobanteLogica.buscarPorCodigo(4);
+
+        transaccion.setDespacho(desp);
+        transaccion.setIdtipotransaccion("NDES");
+        transaccion.setIdestado(turnoLogica.buscarPorCodigo("N").getId());
+        transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
+        transaccion.setNumerovale("325-" + agregarCeros(String.valueOf(comprobantes.getNumero()), 8));
+        transaccion.setNumero(comprobantes.getNumero());
+        transaccion.setNrogalones(desp.getNrogalones());
+        transaccion.setPreciounitario(desp.getPreciounitario());
+        transaccion.setProducto(desp.getProducto().getNombre());
+        transaccion.setMontototal(desp.getMontosoles());
+        transaccion.setNumeroplaca(jplaca.getText());
+        transaccion.setFecharegistro(desp.getFecharegistro());
+        transaccion.setCliente(nuevo);
+        transaccion.setTurno(desp.getTurno());
+
+        comprobantes.setNumero(comprobantes.getNumero() + 1);
+        numComprobanteLogica.actualizar(comprobantes);
+
+    }
+    private static String agregarCeros(String string, int largo) {
+        String ceros = "";
+        int cantidad = largo - string.length();
+        if (cantidad >= 1) {
+            for (int i = 0; i < cantidad; i++) {
+                ceros += "0";
+            }
+            return (ceros + string);
+        } else {
+            return string;
+        }
+    }
+
+    
 }
