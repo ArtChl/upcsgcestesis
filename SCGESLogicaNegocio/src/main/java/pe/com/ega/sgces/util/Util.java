@@ -13,8 +13,12 @@ import java.util.List;
 public class Util {
 
     public static Double recuperarNumero(List lista) {
-        Double monto = 0.00;
-        if (lista != null) {
+        Double monto;
+        System.out.println("Monto VueltoConvert"+lista.toString());
+        if ("[null]".equals(lista.toString())) {
+            monto=0.00;
+        }else{
+            System.out.println("Monto VueltoConvertNumber"+lista.toString());
             String numero = lista.toString().replace("[", "");
             numero = numero.replace("]", "");
             monto = Double.parseDouble(numero);

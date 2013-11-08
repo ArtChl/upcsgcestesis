@@ -22,7 +22,7 @@ import pe.com.ega.sgces.model.Transaccion;
  *
  * @author Flopez
  */
-@ManagedBean(name="transsaccionBean")
+@ManagedBean(name="transaccionBean")
 @SessionScoped
 public class transaccionBean implements Serializable{
 

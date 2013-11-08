@@ -168,6 +168,7 @@ public class ComprobanteFrame extends JFrame {
 
         try {
             int turno2 = turnoLogica.buscarPorCodigo("N").getId();
+            System.out.println("hola"+turno2);
             transaccions = (ArrayList<Transaccion>) transaccionLogica.buscarTurno(turno2);
         } catch (Exception ex) {
             logger.error("Mensaje:\n" + ex.getMessage());

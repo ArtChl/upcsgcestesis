@@ -33,12 +33,12 @@ public class FacturaFrame extends JFrame {
     private MovimientoLogica movimientoLogica;
     private TurnoLogica turnoLogica;
     private NumComprobanteLogica numComprobanteLogica;
+    
 
-    public FacturaFrame(Despacho despacho, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica, NumComprobanteLogica numComprobanteLogica) {
+    public FacturaFrame(Despacho despacho, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica, NumComprobanteLogica numComprobanteLogica, ClienteLogica clienteLogica) {
         initComponents();
         desp = despacho;
-        clienteLogica = new ClienteLogicaImpl();
-        ((ClienteLogicaImpl)clienteLogica).setClienteDao(new ClienteDaoImpl());
+        this.clienteLogica = clienteLogica;
         this.transaccionLogica = transaccionLogica;
         this.despachoLogica = despachoLogica;
         this.movimientoLogica = movimientoLogica;

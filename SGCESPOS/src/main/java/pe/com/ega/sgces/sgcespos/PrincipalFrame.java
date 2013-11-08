@@ -29,6 +29,8 @@ import pe.com.ega.sgces.logic.ArqueoLogica;
 import pe.com.ega.sgces.logic.ArqueoLogicaImpl;
 import pe.com.ega.sgces.logic.CierreLogica;
 import pe.com.ega.sgces.logic.CierreLogicaImpl;
+import pe.com.ega.sgces.logic.ClienteLogica;
+import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.logic.DepositoLogica;
 import pe.com.ega.sgces.logic.DepositoLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
@@ -41,6 +43,8 @@ import pe.com.ega.sgces.logic.TransaccionLogica;
 import pe.com.ega.sgces.logic.TransaccionLogicaImpl;
 import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.logic.TurnoLogicaImpl;
+import pe.com.ega.sgces.logic.ValeLogica;
+import pe.com.ega.sgces.logic.ValeLogicaImpl;
 import pe.com.ega.sgces.model.Arqueo;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
@@ -62,6 +66,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private CierreLogica cierreLogica;
     private ArqueoLogica arqueoLogica;
     private NumComprobanteLogica numcomprobanteLogica;
+    private ClienteLogica clienteLogica;
+    private ValeLogica valeLogica;
     private String numero;
     private ArrayList<Despacho> transaccions;
 
@@ -101,6 +107,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 NumComprobanteLogicaImpl.class);
         this.arqueoLogica = context.getBean("arqueoService",
                 ArqueoLogicaImpl.class);
+        this.clienteLogica = context.getBean("clienteService",
+                ClienteLogicaImpl.class);
+        this.valeLogica = context.getBean("valeService",
+                ValeLogicaImpl.class);
+        
         pintarTabla();
         
         this.getRootPane().setDefaultButton(boleta);
@@ -395,7 +406,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
     private void notaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notaActionPerformed
         try {
-            NotaFrame f = new NotaFrame(buscar(numero));
+            NotaFrame f = new NotaFrame(buscar(numero),transaccionLogica,despachoLogica,turnoLogica,numcomprobanteLogica,valeLogica,clienteLogica);
             f.setSize(573, 553);
             f.setTitle("NOTA DE DESPACHO");
             f.setLocationRelativeTo(null);
@@ -408,7 +419,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
     private void facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaActionPerformed
         try {
-            FacturaFrame f = new FacturaFrame(buscar(numero), despachoLogica, movimientoLogica, turnoLogica, transaccionLogica, numcomprobanteLogica);
+            FacturaFrame f = new FacturaFrame(buscar(numero), despachoLogica, movimientoLogica, turnoLogica, transaccionLogica, numcomprobanteLogica, clienteLogica);
             f.setSize(627, 301);
             f.setTitle("EMISION DE FACTURA");
             f.setLocationRelativeTo(null);

@@ -20,7 +20,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 
     @Override
     public void insertar(Movimiento movimiento) {
-        session.openSession().save(movimiento);
+        session.getCurrentSession().save(movimiento);
     }
 
     @Override
@@ -45,27 +45,33 @@ public class MovimientoDaoImpl implements MovimientoDao {
 
     @Override
     public List buscarMonto(String tipo, String turno) {
+        System.out.println("Monto VueltoDao");
         session.getCurrentSession().beginTransaction();
         Query query = session.openSession().createQuery("select sum(montorecibido) from Movimiento where tipo='" + tipo + "' and idturno='" + turno + "'");
         List results = query.list();
-        session.getCurrentSession().flush();
+        System.out.println("Monto Vuelto"+results.toString());
+        session.close();
         return results;
     }
 
     @Override
     public Movimiento buscarTransaccion(String transaccion) {
+        System.out.println("MovimientoTrans"+transaccion);
         session.getCurrentSession().beginTransaction();
         Movimiento movimiento = (Movimiento) session.openSession().createQuery("from Movimiento where idtransaccion=" + transaccion).uniqueResult();
-        session.getCurrentSession().flush();
+        System.out.println("Movimiento"+movimiento.getId());
+        session.close();
         return movimiento;
     }
 
     @Override
     public List buscarMontoVuelto(String tipo, String turno) {
+        System.out.println("MontoDao");
         session.getCurrentSession().beginTransaction();
         Query query = session.openSession().createQuery("select sum(montodevuelto) from Movimiento where tipo='" + tipo + "' and idturno='" + turno + "'");
         List results = query.list();
-        session.getCurrentSession().flush();
+        System.out.println("Monto"+results.toString());
+        session.close();
         return results;
     }
 }
