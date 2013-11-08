@@ -1,119 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+    <bean id="log4jInitialization"
+          class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+        <property name="targetMethod" value="initLogging" />
+        <property name="arguments">
+            <list>
+                <value>classpath:log4j.xml</value>
+            </list>
+        </property>
+    </bean>       	
+                
+    <bean id="arqueoService" class="pe.com.ega.sgces.logic.ArqueoLogicaImpl">
+        <property name="movimientoLogica" ref="movimientoService" />
+        <property name="depositoLogica" ref="depositoService" />
+    </bean>
+                
+    <bean id="cierreService" class="pe.com.ega.sgces.logic.CierreLogicaImpl">
+        <property name="transaccionLogica" ref="transaccionService" />
+        <property name="despachoLogica" ref="despachoService" />
+        <property name="arqueoLogica" ref="arqueoService" />
+        <property name="turnoLogica" ref="turnoService" />
+        <property name="turnopuntoventacajaLogica" ref="turnopuntoventacajaService" />
+    </bean>    
+    
+    <bean id="clienteService" class="pe.com.ega.sgces.logic.ClienteLogicaImpl">
+        <property name="clienteDao" ref="clienteDao" />
+    </bean>     
+    
+    <bean id="depositoService" class="pe.com.ega.sgces.logic.DepositoLogicaImpl">
+        <property name="depositoDao" ref="depositoDao" />
+        <property name="turnoLogica" ref="turnoService" />
+    </bean>
+        
+    <bean id="despachoService" class="pe.com.ega.sgces.logic.DespachoLogicaImpl">
+        <property name="despachoDao" ref="despachoDao" />
+    </bean>
+                
+    <bean id="interfaceService" class="pe.com.ega.sgces.logic.InterfaceLogicaImpl">
+        <property name="interfaceDao" ref="interfaceDao" />
+    </bean>    
+    
+    <bean id="movimientoService" class="pe.com.ega.sgces.logic.MovimientoLogicaImpl">
+        <property name="movimientoDao" ref="movimientoDao" />
+    </bean>
+    
+    <bean id="nroComprobanteService" class="pe.com.ega.sgces.logic.NumComprobanteLogicaImpl">
+        <property name="valeDao" ref="valeDaoDao" />
+    </bean>
+    
+    <bean id="transaccionService" class="pe.com.ega.sgces.logic.TransaccionLogicaImpl">
+        <property name="transaccionDao" ref="transaccionDao" />
+        <property name="despachoLogica" ref="despachoService" />
+        <property name="movimientoLogica" ref="movimientoService" />
+    </bean>
+                
+    <bean id="turnoService" class="pe.com.ega.sgces.logic.TurnoLogicaImpl">
+        <property name="turnoDao" ref="turnoDao" />
+        <property name="interfaceLogica" ref="interfaceService" />
+    </bean>     
+    
+    <bean id="turnopuntoventacajaService" class="pe.com.ega.sgces.logic.TurnoPuntoVentaCajaLogicaImpl">
+        <property name="turnoPuntoVentaCajaDao" ref="turnopuntoventacajaDao" />
+    </bean>
+        
+    <bean id="usuarioService" class="pe.com.ega.sgces.logic.UsuarioLogicaImpl">
+        <property name="usuarioDao" ref="usuarioDao" />
+    </bean>
+             
+    <bean id="valeService" class="pe.com.ega.sgces.logic.ValeLogicaImpl">
+        <property name="valeDao" ref="valeDao" />
+    </bean>
+    <!--DAO-->
+        
+    <bean id="cierreDao" class="pe.com.ega.sgces.dao.CierreDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>
+    
+    <bean id="clienteDao" class="pe.com.ega.sgces.dao.ClienteDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>
+    
+    <bean id="depositoDao" class="pe.com.ega.sgces.dao.DepositoDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>
+    
+    <bean id="despachoDao" class="pe.com.ega.sgces.dao.DespachoDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>
+    
+    <bean id="interfaceDao" class="pe.com.ega.sgces.dao.InterfaceDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>
+    
+    <bean id="movimientoDao" class="pe.com.ega.sgces.dao.MovimientoDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean> 
+    
+    <bean id="numComprobanteDao" class="pe.com.ega.sgces.dao.NumComprobanteDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>
+    
+    <bean id="transaccionDao" class="pe.com.ega.sgces.dao.TransaccionDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean> 
 
+    <bean id="transacciondetalleDao" class="pe.com.ega.sgces.dao.TransaccionDetalleDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>   
 
-	<bean id="log4jInitialization"
-		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
-		<property name="targetMethod" value="initLogging" />
-		<property name="arguments">
-			<list>
-				<value>classpath:log4j.xml</value>
-			</list>
-		</property>
-	</bean>
-        	
-	<bean id="cierreService" class="pe.com.ega.sgces.logic.CierreLogicaImpl">
-		<property name="transaccionLogica" ref="transaccionService" />
-                <property name="despachoLogica" ref="despachoService" />
-                <property name="arqueoLogica" ref="arqueoService" />
-                <property name="turnoLogica" ref="turnoService" />
-                <property name="turnopuntoventacajaLogica" ref="turnopuntoventacajaService" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="arqueoService" class="pe.com.ega.sgces.logic.ArqueoLogicaImpl">
-                <property name="movimientoLogica" ref="movimientoService" />
-                <property name="depositoLogica" ref="depositoService" />
-	</bean>
-        
-        <bean id="turnopuntoventacajaService" class="pe.com.ega.sgces.logic.TurnopuntoventacajaLogicaImpl">
-                <property name="turnopuntoventacajaDao" ref="turnopuntoventacajaDao" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-        
-         <bean id="turnopuntoventacajaDao" class="pe.com.ega.sgces.dao.TurnopuntoventacajaDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="transaccionService" class="pe.com.ega.sgces.logic.TransaccionLogicaImpl">
-		<property name="transaccionDao" ref="transaccionDao" />
-                <property name="despachoLogica" ref="despachoService" />
-                <property name="movimientoLogica" ref="movimientoService" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="transaccionDao" class="pe.com.ega.sgces.dao.TransaccionDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
-        
-         <bean id="transacciondetalleDao" class="pe.com.ega.sgces.dao.TransaccionDetalleDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
-            
-        <bean id="turnoService" class="pe.com.ega.sgces.logic.TurnoLogicaImpl">
-		<property name="turnoDao" ref="turnoDao" />
-                <property name="session" ref="miSessionFactory" />
-                 <property name="interfaceLogica" ref="interfaceService" />
-	</bean>
-        
-        <bean id="turnoDao" class="pe.com.ega.sgces.dao.TurnoDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        
-        <bean id="movimientoService" class="pe.com.ega.sgces.logic.MovimientoLogicaImpl">
-		<property name="movimientoDao" ref="movimientoDao" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="movimientoDao" class="pe.com.ega.sgces.dao.MovimientoDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="depositoService" class="pe.com.ega.sgces.logic.DepositoLogicaImpl">
-		<property name="depositoDao" ref="depositoDao" />
-                <property name="session" ref="miSessionFactory" />
-                <property name="turnoLogica" ref="turnoService" />
-	</bean>
-	
-        <bean id="depositoDao" class="pe.com.ega.sgces.dao.DepositoDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="despachoService" class="pe.com.ega.sgces.logic.DespachoLogicaImpl">
-		<property name="despachoDao" ref="despachoDao" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="despachoDao" class="pe.com.ega.sgces.dao.DespachoDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="interfaceService" class="pe.com.ega.sgces.logic.InterfaceLogicaImpl">
-		<property name="interfaceDao" ref="interfaceDao" />
-                <property name="session" ref="miSessionFactory" />
-	</bean>
-        
-        <bean id="interfaceDao" class="pe.com.ega.sgces.dao.InterfaceDaoImpl">
-		<property name="session" ref="miSessionFactory" />
-	</bean>
+    <bean id="turnoDao" class="pe.com.ega.sgces.dao.TurnoDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean> 
+
+    <bean id="turnopuntoventacajaDao" class="pe.com.ega.sgces.dao.TurnoPuntoVentaCajaDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>
+           
+    <bean id="usuarioDao" class="pe.com.ega.sgces.dao.UsuarioDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean>     
+    
+    <bean id="valeDao" class="pe.com.ega.sgces.dao.ValeDaoImpl">
+        <property name="session" ref="miSessionFactory" />
+    </bean> 
 	   
-        <bean id="miDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-            <property name="driverClassName" value="org.postgresql.Driver"/>
-            <property name="url" value="jdbc:postgresql://192.168.1.10:5432/cem44"/>
-            <property name="username" value="postgres"/>
-            <property name="password" value="12345678"/>
-        </bean>
+    <bean id="miDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://192.168.1.10:5432/cem44"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="12345678"/>
+    </bean>
         
-        <bean id="miSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-            <property name="dataSource" ref="miDataSource"/>
-            <property name="mappingResources">
+    <bean id="miSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="miDataSource"/>
+        <property name="mappingResources">
             <list>
                 <value>pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml</value>
                 <value>pe/com/ega/sgces/dao/Tarjeta.hbm.xml</value>
@@ -157,9 +184,9 @@
                 <value>pe/com/ega/sgces/dao/Numcomprobante.hbm.xml</value>
                 <value>pe/com/ega/sgces/dao/InterfaceConfig.hbm.xml</value>
             </list>
-            </property>
-                <property name="hibernateProperties">
-                <props>
+        </property>
+        <property name="hibernateProperties">
+            <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
                 <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
                 <prop key="hibernate.show_sql">true</prop>
@@ -170,12 +197,7 @@
                 <prop key="hibernate.c3p0.testConnectionOnCheckout">false</prop>
                 <prop key="hibernate.current_session_context_class">thread</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                </props>
-            </property>
-        </bean>
-        
-     
-          
-       
- 
+            </props>
+        </property>
+    </bean>
 </beans>

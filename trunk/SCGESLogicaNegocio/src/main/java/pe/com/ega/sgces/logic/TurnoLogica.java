@@ -16,6 +16,5 @@ public interface TurnoLogica {
     public void actualizar(Turno turno);
     public void eliminar(Turno turno);
     public Turno buscarPorCodigo(String estado); 
-    public void setSession(SessionFactory session);
     public void setTurnoDao(TurnoDao turnoDao);
 }

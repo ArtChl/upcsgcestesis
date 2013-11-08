@@ -5,7 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.ArrayList;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.model.Arqueo;
 import pe.com.ega.sgces.util.Formato;
 
@@ -13,16 +13,11 @@ import pe.com.ega.sgces.util.Formato;
  *
  * @author sistemas
  */
+@Transactional(readOnly = true)
 public class ArqueoLogicaImpl implements ArqueoLogica {
-    @Autowired
+    
     private MovimientoLogica movimientoLogica;
-    @Autowired
     private DepositoLogica depositoLogica;
-
-    public ArqueoLogicaImpl(MovimientoLogica movimiento, DepositoLogica deposito) {
-        this.movimientoLogica = movimiento;
-        this.depositoLogica = deposito;
-    }
 
     public ArqueoLogicaImpl() {
     }
@@ -61,7 +56,6 @@ public class ArqueoLogicaImpl implements ArqueoLogica {
                 solesDolares = vuelto;
             } else {
                 arqueo.setCantidad(soles - dep);
-
             }
             arqueos.add(arqueo);
         }
