@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
 import pe.com.ega.sgces.logic.ClienteLogica;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.NumComprobanteLogica;
@@ -31,6 +32,7 @@ import pe.com.ega.sgces.util.ImprimirComprobante;
  */
 public class NotaFrame extends JFrame {
 
+    private final static Logger logger = Logger.getLogger(ClienteFrame.class);
     private ClienteLogica clienteLogica;
     private Cliente cliente;
     private Cliente temporal;
@@ -46,13 +48,13 @@ public class NotaFrame extends JFrame {
     private Formato f;
     private Vale valeTemporal;
 
-    public NotaFrame(Despacho despacho, TransaccionLogica transaccionLogica, DespachoLogica despachoLogica, TurnoLogica turnoLogica, NumComprobanteLogica numComprobanteLogica,ValeLogica valeLogica, ClienteLogica clienteLogica ) {
+    public NotaFrame(Despacho despacho, TransaccionLogica transaccionLogica, DespachoLogica despachoLogica, TurnoLogica turnoLogica, NumComprobanteLogica numComprobanteLogica, ValeLogica valeLogica, ClienteLogica clienteLogica) {
         initComponents();
         cliente = new Cliente();
         lista = new ArrayList<>();
         transaccion = new Transaccion();
-        desp=despacho;
-        valeTemporal=new Vale();
+        desp = despacho;
+        valeTemporal = new Vale();
         this.clienteLogica = clienteLogica;
         this.transaccionLogica = transaccionLogica;
         this.despachoLogica = despachoLogica;
@@ -204,7 +206,8 @@ public class NotaFrame extends JFrame {
             llenarcombo(cliente.getNumerodocumento());
             temporal = new Cliente();
             temporal.setId(0);
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
             temporal.setId(1);
         }
@@ -216,36 +219,18 @@ public class NotaFrame extends JFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-            // if (desp.getMontosoles() == Double.parseDouble(montovale.getText())) {
-            comprobante = new ImprimirComprobante();
-            if (temporal.getId() == 1) {
+        comprobante = new ImprimirComprobante();
+        if (temporal.getId() == 1) {
 
-                Cliente temporal1 = new Cliente();
+            Cliente temporal1 = new Cliente();
 
-                temporal1.setNumerodocumento(jrucCliente.getText());
-                temporal1.setRazonsocial(jrazonCliente.getText());
-                try {
-                    llenardatos(desp, cliente);
-                    transaccionLogica.grabar(transaccion);
-                    despachoLogica.grabar(desp);
-
-                    SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-                    Date now = new Date();
-                    valeTemporal.setFechadespacho(now);
-                    valeTemporal.setHoradespacho(format.format(now));
-                    valeTemporal.setEstado(0);
-                    valeLogica.actualizar(valeTemporal);
-                    comprobante.imprimirNotaDespacho(jkilometrajes.getText(), jplaca.getText(), jchofer.getText(), cliente.getRazonsocial(),
-                            String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.82"))), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.18"))), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
-                    limpiar();
-                    salir(evt);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "No se puede imprimir", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
+            temporal1.setNumerodocumento(jrucCliente.getText());
+            temporal1.setRazonsocial(jrazonCliente.getText());
+            try {
                 llenardatos(desp, cliente);
                 transaccionLogica.grabar(transaccion);
                 despachoLogica.grabar(desp);
+
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                 Date now = new Date();
                 valeTemporal.setFechadespacho(now);
@@ -256,11 +241,25 @@ public class NotaFrame extends JFrame {
                         String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.82"))), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.18"))), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
                 limpiar();
                 salir(evt);
+            } catch (Exception ex) {
+                logger.error("Mensaje:\n" + ex.getMessage());
+                JOptionPane.showMessageDialog(null, "No se puede imprimir", "Error", JOptionPane.ERROR_MESSAGE);
             }
-      //  } else {
-      //      final JPanel panel = new JPanel();
-      //  }
-
+        } else {
+            llenardatos(desp, cliente);
+            transaccionLogica.grabar(transaccion);
+            despachoLogica.grabar(desp);
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            Date now = new Date();
+            valeTemporal.setFechadespacho(now);
+            valeTemporal.setHoradespacho(format.format(now));
+            valeTemporal.setEstado(0);
+            valeLogica.actualizar(valeTemporal);
+            comprobante.imprimirNotaDespacho(jkilometrajes.getText(), jplaca.getText(), jchofer.getText(), cliente.getRazonsocial(),
+                    String.valueOf(cliente.getNumerodocumento()), "LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.82"))), String.valueOf(desp.getMontosoles().multiply(new BigDecimal("0.18"))), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "NDES");
+            limpiar();
+            salir(evt);
+        }
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -280,7 +279,7 @@ public class NotaFrame extends JFrame {
                 jplaca.setText(vale.getPlaca());
                 transaccion.setNumerotiket(vale.getNumero());
                 montovale.setText(String.valueOf(vale.getMonto()));
-                valeTemporal=vale;
+                valeTemporal = vale;
             }
         }
     }//GEN-LAST:event_comboValeActionPerformed
@@ -326,11 +325,12 @@ public class NotaFrame extends JFrame {
             for (Vale vale : lista) {
                 comboVale.addItem(vale.getNumero());
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
             JOptionPane.showMessageDialog(null, "No se Encontro Vales", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     private void llenardatos(Despacho desp, Cliente nuevo) {
         Numcomprobante comprobantes = numComprobanteLogica.buscarPorCodigo(4);
 
@@ -338,7 +338,7 @@ public class NotaFrame extends JFrame {
         transaccion.setIdtipotransaccion("NDES");
         transaccion.setIdestado(turnoLogica.buscarPorCodigo("N").getId());
         transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumerovale("325-" + agregarCeros(String.valueOf(comprobantes.getNumero()), 8));
+        transaccion.setNumerovale("325-" + Formato.agregarCeros(String.valueOf(comprobantes.getNumero()), 8));
         transaccion.setNumero(comprobantes.getNumero());
         transaccion.setNrogalones(desp.getNrogalones());
         transaccion.setPreciounitario(desp.getPreciounitario());
@@ -351,20 +351,5 @@ public class NotaFrame extends JFrame {
 
         comprobantes.setNumero(comprobantes.getNumero() + 1);
         numComprobanteLogica.actualizar(comprobantes);
-
     }
-    private static String agregarCeros(String string, int largo) {
-        String ceros = "";
-        int cantidad = largo - string.length();
-        if (cantidad >= 1) {
-            for (int i = 0; i < cantidad; i++) {
-                ceros += "0";
-            }
-            return (ceros + string);
-        } else {
-            return string;
-        }
-    }
-
-    
 }
