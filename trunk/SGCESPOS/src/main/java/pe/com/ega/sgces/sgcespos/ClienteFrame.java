@@ -7,6 +7,7 @@ package pe.com.ega.sgces.sgcespos;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
 import pe.com.ega.sgces.dao.ClienteDaoImpl;
 import pe.com.ega.sgces.dao.DespachoDaoImpl;
 import pe.com.ega.sgces.dao.TransaccionDaoImpl;
@@ -25,6 +26,8 @@ import pe.com.ega.sgces.model.Despacho;
  */
 public class ClienteFrame extends JFrame {
 
+    private final static Logger logger = Logger.getLogger(ClienteFrame.class);
+    
     private ClienteLogica clienteLogica;
     private TransaccionLogica transaccionLogica;
     private DespachoLogica despachoLogic;
@@ -135,16 +138,14 @@ public class ClienteFrame extends JFrame {
         } else {
             if (jrucCliente.getText().isEmpty() || jrazonCliente.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Faltan Datos", "Error", JOptionPane.ERROR_MESSAGE);
-
-
             } else {
                 try {
                     clienteLogica.grabar(temporal1);
                     limpiar();
                     salir(evt);
-                } catch (Exception e) {
+                } catch (Exception ex) {
+                    logger.error("Mensaje:\n" + ex.getMessage());
                     JOptionPane.showMessageDialog(null, "Error al Grabar", "Error", JOptionPane.ERROR_MESSAGE);
-
                 }
             }
         }
@@ -177,6 +178,5 @@ public class ClienteFrame extends JFrame {
     public void limpiar() {
         jrucCliente.setText("");
         jrazonCliente.setText("");
-
     }
 }

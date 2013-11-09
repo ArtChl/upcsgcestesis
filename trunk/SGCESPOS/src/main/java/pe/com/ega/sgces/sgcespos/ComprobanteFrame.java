@@ -168,38 +168,36 @@ public class ComprobanteFrame extends JFrame {
 
         try {
             int turno2 = turnoLogica.buscarPorCodigo("N").getId();
-            System.out.println("hola"+turno2);
             transaccions = (ArrayList<Transaccion>) transaccionLogica.buscarTurno(turno2);
-        } catch (Exception ex) {
-            logger.error("Mensaje:\n" + ex.getMessage());
-        }
 
-        Object[][] arre = new Object[transaccions.size()][6];
-        int i = 0;
-        for (Transaccion t : transaccions) {
-            arre[i][0] = t.getId();
-            arre[i][1] = t.getNumerovale();
-            arre[i][2] = t.getIdtipotransaccion();
-            arre[i][3] = t.getProducto();
-            arre[i][4] = t.getMontototal();
-            // arre[i][5] = t.getFecharegistro();
-            i++;
-        }
-
-
-        tabla.addMouseListener(new SelectListener());
-        DefaultTableModel modelo = new DefaultTableModel(arre, titulo);
-        tabla.setModel(modelo);
-        int anchos[] = {1, 100, 20, 50, 50, 50, 50};
-        tabla.getColumnModel().getColumn(0).setMaxWidth(0);
-        tabla.getColumnModel().getColumn(0).setMinWidth(0);
-        tabla.getColumnModel().getColumn(0).setPreferredWidth(0);
-        for (int x = 1; x < tabla.getColumnCount(); x++) {
-            tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
-            tabla.getColumnModel().getColumn(x).setResizable(false);
-            if (x == 4) {
-                tabla.getColumnModel().getColumn(x).setCellRenderer(render);
+            Object[][] arre = new Object[transaccions.size()][6];
+            int i = 0;
+            for (Transaccion t : transaccions) {
+                arre[i][0] = t.getId();
+                arre[i][1] = t.getNumerovale();
+                arre[i][2] = t.getIdtipotransaccion();
+                arre[i][3] = t.getProducto();
+                arre[i][4] = t.getMontototal();
+                i++;
             }
+
+            tabla.addMouseListener(new SelectListener());
+            DefaultTableModel modelo = new DefaultTableModel(arre, titulo);
+            tabla.setModel(modelo);
+            int anchos[] = {1, 100, 20, 50, 50, 50, 50};
+            tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+            tabla.getColumnModel().getColumn(0).setMinWidth(0);
+            tabla.getColumnModel().getColumn(0).setPreferredWidth(0);
+            for (int x = 1; x < tabla.getColumnCount(); x++) {
+                tabla.getColumnModel().getColumn(x).setPreferredWidth(anchos[x]);
+                tabla.getColumnModel().getColumn(x).setResizable(false);
+                if (x == 4) {
+                    tabla.getColumnModel().getColumn(x).setCellRenderer(render);
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "No se encontro el turno", "Error", JOptionPane.ERROR_MESSAGE);
+            logger.error("Mensaje:\n" + ex.getMessage());
         }
     }
 

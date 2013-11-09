@@ -7,10 +7,8 @@ package pe.com.ega.sgces.sgcespos;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import org.openswing.swing.mdi.client.MDIFrame;
-import pe.com.ega.sgces.dao.ClienteDaoImpl;
+import org.apache.log4j.Logger;
 import pe.com.ega.sgces.logic.ClienteLogica;
-import pe.com.ega.sgces.logic.ClienteLogicaImpl;
 import pe.com.ega.sgces.logic.DespachoLogica;
 import pe.com.ega.sgces.logic.MovimientoLogica;
 import pe.com.ega.sgces.logic.NumComprobanteLogica;
@@ -23,8 +21,9 @@ import pe.com.ega.sgces.model.Despacho;
  *
  * @author FLOPEZ
  */
-public class FacturaFrame extends JFrame {
+public final class FacturaFrame extends JFrame {
 
+    private final static Logger logger = Logger.getLogger(FacturaFrame.class);
     private Despacho desp;
     private ClienteLogica clienteLogica;
     private Cliente cliente;
@@ -140,7 +139,8 @@ public class FacturaFrame extends JFrame {
         try {
             cliente = clienteLogica.buscarPorCodigo(rucCliente);
             jrazonCliente.setText(cliente.getRazonsocial());
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
             JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
             cliente = new Cliente();
             cliente.setId(0);
@@ -148,15 +148,6 @@ public class FacturaFrame extends JFrame {
     }//GEN-LAST:event_jrucClienteActionPerformed
 
     private void jrucClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusLost
-        String rucCliente = jrucCliente.getText();
-        try {
-            cliente = clienteLogica.buscarPorCodigo(rucCliente);
-            jrazonCliente.setText(cliente.getRazonsocial());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se Encontro Cliente", "Error", JOptionPane.ERROR_MESSAGE);
-            cliente = new Cliente();
-            cliente.setId(0);
-        }
     }//GEN-LAST:event_jrucClienteFocusLost
 
     private void jrucClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jrucClienteFocusGained

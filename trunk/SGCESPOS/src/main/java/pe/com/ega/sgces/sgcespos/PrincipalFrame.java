@@ -48,6 +48,7 @@ import pe.com.ega.sgces.logic.ValeLogicaImpl;
 import pe.com.ega.sgces.model.Arqueo;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
+import pe.com.ega.sgces.util.Formato;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 
 /**
@@ -75,15 +76,16 @@ public class PrincipalFrame extends javax.swing.JFrame {
         initComponents();
         KeyboardFocusManager.getCurrentKeyboardFocusManager().
                 addKeyEventDispatcher(new KeyEventDispatcher() {
+                    
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
                 if (e.getID() == java.awt.event.KeyEvent.KEY_RELEASED &&
                     e.getKeyCode() == java.awt.event.KeyEvent.VK_F5) {
-                    System.out.println("F5");
                     pintarTabla();
                 }
                 return false;
             }
+            
         });
 
         this.setSize(554, 424);
@@ -357,8 +359,12 @@ public class PrincipalFrame extends javax.swing.JFrame {
             total = total + arqueo1.getCantidad();
         }
         ImprimirComprobante comprobante = new ImprimirComprobante();
-        comprobante.imprimirArqueo("0001", String.valueOf(redondear(lista.get(1).getCantidad())), String.valueOf(redondear(lista.get(0).getCantidad())), String.valueOf(redondear(lista.get(2).getCantidad())),
-                String.valueOf(redondear(total)), String.valueOf(redondear(lista.get(3).getCantidad())), "ROSARIO");
+        comprobante.imprimirArqueo("0001", 
+                Formato.redondearCadena(lista.get(1).getCantidad()), 
+                Formato.redondearCadena(lista.get(0).getCantidad()), 
+                Formato.redondearCadena(lista.get(2).getCantidad()),
+                Formato.redondearCadena(total), 
+                Formato.redondearCadena(lista.get(3).getCantidad()), "ROSARIO");
     }//GEN-LAST:event_arqueoActionPerformed
 
     private void tiradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiradaActionPerformed
@@ -376,6 +382,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
             final JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(panel, "Cierre Realizado con Existo", "Informacion", JOptionPane.OK_OPTION);
         } catch (RuntimeException exCierre) {
+            logger.error("Mensaje:\n" + exCierre.getMessage());
             new OkCancelDialog(this, true, exCierre.getMessage()).setVisible(true);
         }
         catch(Exception ex){
@@ -411,7 +418,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
             f.setTitle("NOTA DE DESPACHO");
             f.setLocationRelativeTo(null);
             f.setVisible(true);
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
             new OkDialog(this, true, "No ha Seleccionado Despacho !!!").setVisible(true);
         }
 
@@ -424,7 +432,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
             f.setTitle("EMISION DE FACTURA");
             f.setLocationRelativeTo(null);
             f.setVisible(true);
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
             new OkDialog(this, true, "No ha Seleccionado Despacho !!!").setVisible(true);
         }
 
@@ -439,7 +448,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
             f.setTitle("TIPO DE PAGO");
             f.setLocationRelativeTo(null);
             f.setVisible(true);
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error("Mensaje:\n" + ex.getMessage());
             new OkDialog(this, true, "No ha Seleccionado Despacho !!!").setVisible(true);
         }
 
@@ -480,7 +490,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
                 try {
                     UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                    logger.error("Mensaje:\n" + ex.getMessage());
                 }
             }
         });
@@ -490,9 +501,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
         String[] titulo = new String[]{"Codigo", "Fecha", "Producto", "Precio", "Galones", "Monto"};
 
         try {
-            transaccions = (ArrayList<Despacho>) despachoLogica.buscarTodos();
+            transaccions = (ArrayList<Despacho>) despachoLogica.buscarTodos();            
         } catch (Exception ex) {
               logger.error("Mensaje:\n" + ex.getMessage());
+              JOptionPane.showMessageDialog(null, "No se encontro la ransación.", "Error", JOptionPane.ERROR_MESSAGE);
+              return;
         }
 
         Object[][] arre = new Object[transaccions.size()][7];
@@ -546,7 +559,6 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 txt[i] = String.valueOf(tabla.getValueAt(row, 0));
             }
             numero = txt[0];
-            System.out.println("Numero"+numero);
         }
     }
 
@@ -560,10 +572,6 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         }
         return desp;
-    }
-
-    public static double redondear(double numero) {
-        return Math.rint(numero * 100) / 100;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

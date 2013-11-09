@@ -37,13 +37,11 @@ public class TurnoLogicaImpl implements TurnoLogica {
     @Override
     public void insertar(Turno turno) {
         turnoDao.insertar(turno);
-        this.cem44();
+        this.enviarComandoCierreCem44();
     }
 
     @Override
     public void actualizar(Turno turno) {
-        turno.setEstado("S");
-        turno.setFechacierre(new Date());
         turnoDao.actualizar(turno);
     }
 
@@ -58,7 +56,7 @@ public class TurnoLogicaImpl implements TurnoLogica {
         return turnoDao.buscarPorCodigo(estado);
     }
 
-    private void cem44() {
+    private void enviarComandoCierreCem44() {
         InterfaceConfig cierre = interfaceLogica.buscarPorCodigo(1);
         cierre.setCambioturno(1);
         cierre.setFechaTotalizadoresElectronicos(new Date());

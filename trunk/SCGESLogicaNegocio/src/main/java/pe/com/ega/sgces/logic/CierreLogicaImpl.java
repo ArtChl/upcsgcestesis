@@ -64,25 +64,36 @@ public class CierreLogicaImpl implements CierreLogica {
     public void cierreTurno(Turno turno) {
         List<Despacho> despachos = null;
         ArrayList<Arqueo> arqueos = null;
-        Turno turno2 = null;
+        Turno turnoRegistrado = null;
 
-        turno2 = turnoLogica.buscarPorCodigo("N");
+        turnoRegistrado = turnoLogica.buscarPorCodigo("N");
         despachos = (List<Despacho>) despachoLogica.buscarTodos();
         arqueos = arqueoLogica.buscarPorCodigo(String.valueOf(turno.getId()));
 
         if (despachos.isEmpty()) {
-            if (Formato.redondear(arqueos.get(0).getCantidad()) == 0 && Formato.redondear(arqueos.get(1).getCantidad()) == 0 && Formato.redondear(arqueos.get(2).getCantidad()) == 0 && Formato.redondear(arqueos.get(3).getCantidad()) == 0) {
+            if (Formato.redondear(arqueos.get(0).getCantidad()) == 0
+                    && Formato.redondear(arqueos.get(1).getCantidad()) == 0
+                    && Formato.redondear(arqueos.get(2).getCantidad()) == 0
+                    && Formato.redondear(arqueos.get(3).getCantidad()) == 0) {
                 Double total = 0.0;
                 ArrayList<Cierre> lista = this.buscarPorCodigo(String.valueOf(turno.getId()));
                 for (Cierre arqueo1 : lista) {
                     total = total + arqueo1.getCantidad();
                 }
-                imprimircomprobante.imprimirTurno("0001", String.valueOf(Formato.redondear(lista.get(0).getCantidad())), String.valueOf(Formato.redondear(lista.get(1).getCantidad())), String.valueOf(Formato.redondear(lista.get(2).getCantidad())), String.valueOf(Formato.redondear(total)), String.valueOf(Formato.redondear(lista.get(3).getCantidad())), "ROSARIO");
+                imprimircomprobante.imprimirTurno("0001",
+                        Formato.redondearCadena(lista.get(0).getCantidad()),
+                        Formato.redondearCadena(lista.get(1).getCantidad()),
+                        Formato.redondearCadena(lista.get(2).getCantidad()),
+                        Formato.redondearCadena(total),
+                        Formato.redondearCadena(lista.get(3).getCantidad()),
+                        "ROSARIO");
 
-                turnoLogica.actualizar(turno2);
+                turnoRegistrado.setEstado("S");
+                turnoRegistrado.setFechacierre(new Date());
+                turnoLogica.actualizar(turnoRegistrado);
 
                 this.turno();
-                this.turnoCaja();
+                this.aperturaTurnoCaja();
             } else {
                 throw new RuntimeException("Caja No Cuadrada");
             }
@@ -90,7 +101,7 @@ public class CierreLogicaImpl implements CierreLogica {
             throw new RuntimeException("Despachos Pendientes por Facturar");
         }
     }
-    
+
     @Transactional(readOnly = false)
     private void turno() {
         Turno x = new Turno();
@@ -102,7 +113,7 @@ public class CierreLogicaImpl implements CierreLogica {
     }
 
     @Transactional(readOnly = false)
-    private void turnoCaja() {
+    private void aperturaTurnoCaja() {
         Turnopuntoventacaja cajax = new Turnopuntoventacaja();
         int turno = turnoLogica.buscarPorCodigo("N").getId();
 

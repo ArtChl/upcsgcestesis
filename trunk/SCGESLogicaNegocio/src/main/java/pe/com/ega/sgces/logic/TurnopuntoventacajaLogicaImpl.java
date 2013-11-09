@@ -5,6 +5,8 @@
 package pe.com.ega.sgces.logic;
 
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import pe.com.ega.sgces.dao.TurnopuntoventacajaDao;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 
@@ -12,16 +14,12 @@ import pe.com.ega.sgces.model.Turnopuntoventacaja;
  *
  * @author Flopez
  */
+@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 public class TurnopuntoventacajaLogicaImpl implements TurnopuntoventacajaLogica {
 
-    private SessionFactory session;
     private TurnopuntoventacajaDao turnopuntoventacajaDao;
 
     public TurnopuntoventacajaLogicaImpl() {
-    }
-
-    public void setSession(SessionFactory session) {
-        this.session = session;
     }
 
     public void setTurnopuntoventacajaDao(TurnopuntoventacajaDao turnopuntoventacajaDao) {
@@ -30,8 +28,6 @@ public class TurnopuntoventacajaLogicaImpl implements TurnopuntoventacajaLogica 
 
     @Override
     public void insertar(Turnopuntoventacaja turno) {
-        session.getCurrentSession().beginTransaction();
         this.turnopuntoventacajaDao.insertar(turno);
-        session.getCurrentSession().getTransaction().commit();
     }
 }

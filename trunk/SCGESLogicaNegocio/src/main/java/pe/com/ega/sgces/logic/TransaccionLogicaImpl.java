@@ -85,7 +85,9 @@ public class TransaccionLogicaImpl implements TransaccionLogica {
             transaccion.getDespacho().setIdestado(1);
             despachoLogica.actualizar(transaccion.getDespacho());
             movimientoLogica.eliminar(movimientoLogica.buscarTransaccion(String.valueOf(transaccion.getId())));
-            comprobante.imprimirAnular(transaccion.getIdtipotransaccion() + "-" + transaccion.getNumerovale(), String.valueOf(transaccion.getMontototal()), "Lopez Cordova");
+            comprobante.imprimirAnular(transaccion.getIdtipotransaccion() + "-" + 
+                    transaccion.getNumerovale(), 
+                    String.valueOf(transaccion.getMontototal()), "Lopez Cordova");
         }
     }
 
