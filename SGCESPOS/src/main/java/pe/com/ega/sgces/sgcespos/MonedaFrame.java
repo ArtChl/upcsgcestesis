@@ -5,7 +5,9 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -18,9 +20,11 @@ import pe.com.ega.sgces.logic.TurnoLogica;
 import pe.com.ega.sgces.model.Cliente;
 import pe.com.ega.sgces.model.Despacho;
 import pe.com.ega.sgces.model.Movimiento;
+import pe.com.ega.sgces.model.Numcomprobante;
 import pe.com.ega.sgces.model.Transaccion;
 import pe.com.ega.sgces.model.Turnopuntoventacaja;
 import pe.com.ega.sgces.model.TurnopuntoventacajaId;
+import pe.com.ega.sgces.util.Formato;
 import pe.com.ega.sgces.util.ImprimirComprobante;
 
 /**
@@ -40,7 +44,7 @@ public class MonedaFrame extends JFrame {
     private TurnoLogica turnoLogica;
     private String moneda;
     private Cliente cliente;
-    private NumComprobanteLogica numdao;
+    private NumComprobanteLogica numComprobanteLogica;
 
     //TODO El constructor tiene muchos aprametros
     public MonedaFrame(Despacho codigo, String tipo, Cliente cli, DespachoLogica despachoLogica, MovimientoLogica movimientoLogica, TurnoLogica turnoLogica, TransaccionLogica transaccionLogica, NumComprobanteLogica numComprobanteLogica) {
@@ -54,7 +58,7 @@ public class MonedaFrame extends JFrame {
         this.despachoLogica = despachoLogica;
         this.movimientoLogica = movimientoLogica;
         this.turnoLogica = turnoLogica;
-        this.numdao = numComprobanteLogica;
+        this.numComprobanteLogica = numComprobanteLogica;
         comprobante = new ImprimirComprobante();
     }
 
@@ -80,6 +84,7 @@ public class MonedaFrame extends JFrame {
 
         soles.setBackground(new java.awt.Color(51, 153, 255));
         soles.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        soles.setMnemonic(KeyEvent.VK_S);
         soles.setText("SOLES");
         soles.setMaximumSize(new java.awt.Dimension(123, 37));
         soles.setMinimumSize(new java.awt.Dimension(123, 37));
@@ -94,6 +99,7 @@ public class MonedaFrame extends JFrame {
 
         dolares.setBackground(new java.awt.Color(133, 238, 75));
         dolares.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        dolares.setMnemonic(KeyEvent.VK_D);
         dolares.setText("DOLARES");
         dolares.setMaximumSize(new java.awt.Dimension(123, 37));
         dolares.setMinimumSize(new java.awt.Dimension(123, 37));
@@ -108,6 +114,7 @@ public class MonedaFrame extends JFrame {
 
         tarjeta.setBackground(new java.awt.Color(255, 235, 90));
         tarjeta.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        tarjeta.setMnemonic(KeyEvent.VK_T);
         tarjeta.setText("TARJETA");
         tarjeta.setMaximumSize(new java.awt.Dimension(123, 37));
         tarjeta.setMinimumSize(new java.awt.Dimension(123, 37));
@@ -226,10 +233,10 @@ public class MonedaFrame extends JFrame {
 
         llenardatos(desp, cliente);
         try {
-
+            DecimalFormat f = new DecimalFormat("##.00"); 
             transaccionLogica.grabar(transaccion);
             despachoLogica.grabar(desp);
-            comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(desp.getMontosoles()), String.valueOf(desp.getPreciounitario()), desp.getProducto().getNombre(), String.valueOf(desp.getNrogalones()), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "TBOL");
+            comprobante.imprimirBoleta("LOPEZ CORDOVA", String.valueOf(f.format(desp.getMontosoles())), String.valueOf(f.format(desp.getPreciounitario())), desp.getProducto().getNombre(), String.valueOf(f.format(desp.getNrogalones())), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "TBOL");
             salir(evt);
         } catch (Exception ex) {
             logger.error("Mensaje:\n" + ex.getMessage());
@@ -241,8 +248,11 @@ public class MonedaFrame extends JFrame {
 
         llenardatos(desp, cli);
         try {
+            DecimalFormat f = new DecimalFormat("##.00"); 
             transaccionLogica.grabar(transaccion);
             despachoLogica.grabar(desp);
+            comprobante.imprimirFactura(cli.getNumerodocumento(),cli.getRazonsocial(),"FRANK LOPEZ",String.valueOf(f.format(desp.getMontosoles())), String.valueOf(f.format(desp.getMontosoles().multiply(new BigDecimal(0.82)))),String.valueOf(f.format(desp.getMontosoles().multiply(new BigDecimal(0.18)))),String.valueOf(f.format(desp.getPreciounitario())), desp.getProducto().getNombre(), String.valueOf(f.format(desp.getNrogalones())), String.valueOf(transaccion.getNumero()), "325", "10419492421", "FF9G151648", "FACT");
+            salir(evt);
         } catch (Exception ex) {
             logger.error("Mensaje:\n" + ex.getMessage());
             JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
@@ -260,7 +270,6 @@ public class MonedaFrame extends JFrame {
 
     private void llenardatos(Despacho desp, Cliente cliente) {
         transaccion.setDespacho(desp);
-        transaccion.setIdtipotransaccion("TBOL");
         int codigo = 0;
         try {
             codigo = turnoLogica.buscarPorCodigo("N").getId();
@@ -272,8 +281,7 @@ public class MonedaFrame extends JFrame {
 
         transaccion.setIdestado(codigo);
         transaccion.setNumerotransaccion(String.valueOf(desp.getId()));
-        transaccion.setNumerovale("325-");
-        transaccion.setNumero(3250);
+
         transaccion.setNrogalones(desp.getNrogalones());
         transaccion.setPreciounitario(desp.getPreciounitario());
         transaccion.setProducto(desp.getProducto().getNombre());
@@ -284,9 +292,21 @@ public class MonedaFrame extends JFrame {
         //TODO Luego que se hace con el objeto transaccion?
         if (cliente.getId() == 2) {
             transaccion.setCliente(cliente);
-
+            transaccion.setIdtipotransaccion("TBOL");
+            Numcomprobante comprobantes = numComprobanteLogica.buscarPorCodigo(2);
+            transaccion.setNumerovale("325-" + Formato.agregarCeros(String.valueOf(comprobantes.getNumero()), 8));
+            transaccion.setNumero(comprobantes.getNumero());
+            comprobantes.setNumero(comprobantes.getNumero()+1);
+            numComprobanteLogica.actualizar(comprobantes);
         } else {
             transaccion.setCliente(cliente);
+            transaccion.setIdtipotransaccion("FACT");
+            Numcomprobante comprobantes = numComprobanteLogica.buscarPorCodigo(3);
+            transaccion.setNumerovale("325-" + Formato.agregarCeros(String.valueOf(comprobantes.getNumero()), 8));
+            transaccion.setNumero(comprobantes.getNumero());
+            comprobantes.setNumero(comprobantes.getNumero()+1);
+            numComprobanteLogica.actualizar(comprobantes);
+            
         }
 
     }

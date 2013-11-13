@@ -23,6 +23,7 @@ public class UsuarioLogicaImpl implements UsuarioLogica {
     }
     
    
+    @Override
     public void setUsuarioDao(UsuarioDao usuarioDao) {
         this.usuarioDao = usuarioDao;
     }

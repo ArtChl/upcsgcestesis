@@ -21,36 +21,36 @@ public class ValeDaoImpl implements ValeDao {
     @Override
     public void insertar(Vale usuario) {
         Transaction tx;
-        tx = session.getCurrentSession().beginTransaction();
+        tx = session.openSession().beginTransaction();
         usuario.setEstado(1);
-        session.getCurrentSession().save(usuario);
+        session.openSession().save(usuario);
         tx.commit();
 
     }
 
     @Override
     public void actualizar(Vale usuario) {
-        session.getCurrentSession().update(usuario);
+        session.openSession().update(usuario);
     }
 
     @Override
     public void eliminar(Vale usuario) {
-        session.getCurrentSession().delete(usuario);
+        session.openSession().delete(usuario);
     }
 
     @Override
     public Vale buscarPorCodigo(Integer id) {
-        return (Vale) session.getCurrentSession().load(Vale.class, id);
+        return (Vale) session.openSession().load(Vale.class, id);
     }
 
     @Override
     public List<Vale> buscarTodos(String cliente) {
-        return session.getCurrentSession().createQuery("from Vale where cliente='" + cliente + "' and estado='1'").list();
+        return session.openSession().createQuery("from Vale where cliente='" + cliente + "' and estado='1'").list();
     }
 
     @Override
     public List<Vale> buscarConsumo(String cliente) {
-        return session.getCurrentSession().createQuery("from Vale where cliente='" + cliente + "'").list();
+        return session.openSession().createQuery("from Vale where cliente='" + cliente + "'").list();
     }
 
     @Override

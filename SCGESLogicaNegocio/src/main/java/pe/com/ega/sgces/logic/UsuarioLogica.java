@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
+import pe.com.ega.sgces.dao.UsuarioDao;
 import pe.com.ega.sgces.model.Usuario;
 
 /**
@@ -16,4 +17,5 @@ public interface UsuarioLogica {
     public void grabar(Usuario usuario);
     public Usuario buscarPorCodigo(Integer id);
     public List<Usuario> buscarTodos();
+    public void setUsuarioDao(UsuarioDao usuarioDao);
 }

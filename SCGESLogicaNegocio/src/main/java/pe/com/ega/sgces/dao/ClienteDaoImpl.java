@@ -44,6 +44,9 @@ public class ClienteDaoImpl implements ClienteDao {
 
     @Override
     public List<Cliente> buscarTodos() {
-        return session.getCurrentSession().createQuery("from Cliente").list();
+        session.getCurrentSession().beginTransaction();
+        List<Cliente> lista = session.openSession().createQuery("from Cliente").list();
+        session.getCurrentSession().flush();
+        return lista;
     }
 }
