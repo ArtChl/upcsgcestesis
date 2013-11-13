@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.logic;
 
 import java.util.List;
+import pe.com.ega.sgces.dao.ValeDao;
 import pe.com.ega.sgces.model.Vale;
 
 /**
@@ -18,4 +19,5 @@ public interface ValeLogica {
     public Vale buscarPorCodigo(Integer id);
     public List<Vale> buscarTodos(String cliente);
     public List<Vale> buscarConsumo(String cliente);
+    public void setValeDao(ValeDao valeDao);
 }

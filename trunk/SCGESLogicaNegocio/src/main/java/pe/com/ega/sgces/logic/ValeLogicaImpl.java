@@ -22,6 +22,7 @@ public class ValeLogicaImpl implements ValeLogica {
     public ValeLogicaImpl() {
     }
 
+    @Override
     public void setValeDao(ValeDao valeDao) {
         this.valeDao = valeDao;
     }

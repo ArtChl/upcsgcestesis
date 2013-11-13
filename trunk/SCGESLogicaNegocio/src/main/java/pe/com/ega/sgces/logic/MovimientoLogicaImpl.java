@@ -4,12 +4,12 @@
  */
 package pe.com.ega.sgces.logic;
 
-import pe.com.ega.sgces.util.Util;
 import java.util.List;
-import pe.com.ega.sgces.dao.MovimientoDao;
-import pe.com.ega.sgces.model.Movimiento;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import pe.com.ega.sgces.dao.MovimientoDao;
+import pe.com.ega.sgces.model.Movimiento;
+import pe.com.ega.sgces.util.Util;
 
 /**
  *

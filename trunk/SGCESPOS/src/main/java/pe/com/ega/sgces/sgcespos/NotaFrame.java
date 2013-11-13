@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -120,6 +121,7 @@ public class NotaFrame extends JFrame {
         imprimir.setBackground(new java.awt.Color(133, 238, 75));
         imprimir.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         imprimir.setForeground(new java.awt.Color(51, 51, 51));
+        imprimir.setMnemonic(KeyEvent.VK_A);
         imprimir.setText("ACEPTAR");
         imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +134,7 @@ public class NotaFrame extends JFrame {
         cancelar.setBackground(new java.awt.Color(255, 62, 79));
         cancelar.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         cancelar.setForeground(new java.awt.Color(51, 51, 51));
+        cancelar.setMnemonic(KeyEvent.VK_C);
         cancelar.setText("CANCELAR");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

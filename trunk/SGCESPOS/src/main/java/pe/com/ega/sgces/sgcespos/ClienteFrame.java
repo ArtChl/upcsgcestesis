@@ -30,16 +30,13 @@ public class ClienteFrame extends JFrame {
     
     private ClienteLogica clienteLogica;
     private TransaccionLogica transaccionLogica;
-    private DespachoLogica despachoLogic;
+    private DespachoLogica despachoLogica;
 
-    public ClienteFrame(Despacho despacho) {
+    public ClienteFrame(Despacho despacho, ClienteLogica clienteLogica, TransaccionLogica transaccionLogica, DespachoLogica despachoLogica) {
         initComponents();
-        clienteLogica = new ClienteLogicaImpl();
-        ((ClienteLogicaImpl)clienteLogica).setClienteDao(new ClienteDaoImpl());
-        transaccionLogica = new TransaccionLogicaImpl();
-        ((TransaccionLogicaImpl)transaccionLogica).setTransaccionDao(new TransaccionDaoImpl());
-        despachoLogic = new DespachoLogicaImpl();
-        despachoLogic.setDespachoDao(new DespachoDaoImpl());
+        this.clienteLogica = clienteLogica;
+        this.transaccionLogica = transaccionLogica;
+        this.despachoLogica = despachoLogica;
     }
 
     /**
@@ -60,7 +57,6 @@ public class ClienteFrame extends JFrame {
         cancelar = new javax.swing.JButton();
 
         setResizable(false);
-        setEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);

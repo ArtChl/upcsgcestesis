@@ -11,8 +11,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.primefaces.context.RequestContext;
+import pe.com.ega.sgces.dao.HibernateUtil;
+import pe.com.ega.sgces.dao.UsuarioDao;
 import pe.com.ega.sgces.dao.UsuariodaoImpl;
+import pe.com.ega.sgces.logic.UsuarioLogica;
 import pe.com.ega.sgces.logic.UsuarioLogicaImpl;
 import pe.com.ega.sgces.model.Usuario;
 
@@ -25,18 +30,24 @@ import pe.com.ega.sgces.model.Usuario;
 public class LoginBean implements Serializable{
 
     private Usuario usuario;
-    private UsuarioLogicaImpl usuariodao;
+    private UsuarioLogica usuarioLogica;
+    private UsuarioDao usuariodao;
+    private static SessionFactory sessionFactory;
+
 
     public LoginBean() {
-        usuariodao = new UsuarioLogicaImpl();
-        usuariodao.setUsuarioDao(new UsuariodaoImpl());
+        sessionFactory = HibernateUtil.getSessionFactory();
+        usuarioLogica=new UsuarioLogicaImpl();
+        usuariodao=new UsuariodaoImpl();
+        usuariodao.setSession(sessionFactory);
+        usuarioLogica.setUsuarioDao(usuariodao);        
     }
     
     public void login(ActionEvent actionEvent) {  
         RequestContext context = RequestContext.getCurrentInstance();  
         FacesMessage msg = null;  
         boolean loggedIn = false;       
-        usuario=usuariodao.buscarPorUsuario(usuario);
+        usuario=usuarioLogica.buscarPorUsuario(usuario);
         if(usuario != null) {  
             loggedIn = true;  
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", "Usuario");  

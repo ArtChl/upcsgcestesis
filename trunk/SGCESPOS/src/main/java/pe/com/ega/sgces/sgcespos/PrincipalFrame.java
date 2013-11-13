@@ -164,7 +164,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         boleta.setBackground(new java.awt.Color(133, 238, 75));
         boleta.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         boleta.setForeground(new java.awt.Color(51, 51, 51));
-        boleta.setMnemonic(KeyEvent.VK_B);
+        boleta.setMnemonic(KeyEvent.VK_F1);
         boleta.setText("BOLETA");
         boleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

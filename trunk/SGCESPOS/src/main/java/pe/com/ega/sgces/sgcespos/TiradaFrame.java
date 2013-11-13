@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import org.openswing.swing.mdi.client.InternalFrame;
 import pe.com.ega.sgces.logic.DepositoLogica;
@@ -41,6 +42,7 @@ public class TiradaFrame extends JFrame {
 
         master.setBackground(new java.awt.Color(255, 235, 90));
         master.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        master.setMnemonic(KeyEvent.VK_M);
         master.setText("MASTER");
         master.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +54,7 @@ public class TiradaFrame extends JFrame {
 
         dolares.setBackground(new java.awt.Color(133, 238, 75));
         dolares.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        dolares.setMnemonic(KeyEvent.VK_D);
         dolares.setText("DOLARES");
         dolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +76,7 @@ public class TiradaFrame extends JFrame {
 
         soles.setBackground(new java.awt.Color(51, 153, 255));
         soles.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        soles.setMnemonic(KeyEvent.VK_S);
         soles.setText("SOLES");
         soles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +88,7 @@ public class TiradaFrame extends JFrame {
 
         visa.setBackground(new java.awt.Color(255, 235, 90));
         visa.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        visa.setMnemonic(KeyEvent.VK_V);
         visa.setText("VISA");
         visa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +100,7 @@ public class TiradaFrame extends JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 255));
         jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(230, 110, 50, 160);
+        jSeparator1.setBounds(230, 110, 0, 160);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents

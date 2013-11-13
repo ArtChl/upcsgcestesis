@@ -6,6 +6,7 @@ package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 import pe.com.ega.sgces.logic.ClienteLogica;
@@ -99,6 +100,7 @@ public final class FacturaFrame extends JFrame {
 
         imprimir.setBackground(new java.awt.Color(133, 238, 75));
         imprimir.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        imprimir.setMnemonic(KeyEvent.VK_A);
         imprimir.setText("ACEPTAR");
         imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +112,7 @@ public final class FacturaFrame extends JFrame {
 
         cancelar.setBackground(new java.awt.Color(255, 235, 90));
         cancelar.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        cancelar.setMnemonic(KeyEvent.VK_C);
         cancelar.setText("CANCELAR");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,8 +124,8 @@ public final class FacturaFrame extends JFrame {
 
         bcliente.setBackground(new java.awt.Color(51, 153, 255));
         bcliente.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        bcliente.setMnemonic(KeyEvent.VK_N);
         bcliente.setText("NUEVO");
-        bcliente.setEnabled(false);
         bcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bclienteActionPerformed(evt);
@@ -183,7 +186,7 @@ public final class FacturaFrame extends JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void bclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclienteActionPerformed
-        ClienteFrame f = new ClienteFrame(desp);
+        ClienteFrame f = new ClienteFrame(desp,clienteLogica,transaccionLogica, despachoLogica);
         f.setSize(658, 343);
         f.setTitle("CLIENTE TEMPORAL");
         f.setLocationRelativeTo(null);
