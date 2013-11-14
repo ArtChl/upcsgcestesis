@@ -84,10 +84,16 @@ public class TransaccionLogicaImpl implements TransaccionLogica {
         if (transaccion.getAnulado() == true) {
             transaccion.getDespacho().setIdestado(1);
             despachoLogica.actualizar(transaccion.getDespacho());
-            movimientoLogica.eliminar(movimientoLogica.buscarTransaccion(String.valueOf(transaccion.getId())));
-            comprobante.imprimirAnular(transaccion.getIdtipotransaccion() + "-" + 
+            if(transaccion.getIdtipotransaccion().equals("NDES")){
+                comprobante.imprimirAnular(transaccion.getIdtipotransaccion() + "-" + 
                     transaccion.getNumerovale(), 
                     String.valueOf(transaccion.getMontototal()), "Lopez Cordova");
+            }else{
+                movimientoLogica.eliminar(movimientoLogica.buscarTransaccion(String.valueOf(transaccion.getId())));
+                comprobante.imprimirAnular(transaccion.getIdtipotransaccion() + "-" + 
+                    transaccion.getNumerovale(), 
+                    String.valueOf(transaccion.getMontototal()), "Lopez Cordova");
+            }
         }
     }
 

@@ -7,6 +7,7 @@ package pe.com.ega.sgces.dao;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import pe.com.ega.sgces.model.Numcomprobante;
 
@@ -27,6 +28,7 @@ public class NumComprobanteDaoImpl implements NumComprobanteDao {
     @Override
     public void actualizar(Numcomprobante usuario) {
         session.getCurrentSession().update(usuario);
+        
     }
 
     @Override
@@ -58,4 +60,20 @@ public class NumComprobanteDaoImpl implements NumComprobanteDao {
         return session;
     }
 
+    
+    public void insertarVale(Numcomprobante usuario) {
+        Transaction tx=session.getCurrentSession().beginTransaction();
+        tx.begin();
+        session.getCurrentSession().save(usuario);
+        tx.commit();
+    }
+
+
+    public void actualizarVale(Numcomprobante usuario) {
+        Transaction tx=session.getCurrentSession().beginTransaction();
+        tx.begin();
+        session.getCurrentSession().update(usuario);
+        tx.commit();
+        
+    }
 }
