@@ -21,4 +21,5 @@ public interface ValeDao {
     public List<Vale> buscarTodos(String cliente);
     public List<Vale> buscarConsumo(String cliente);
     public void setSession(SessionFactory session);
+    public void actualizarVale(Vale usuario);
 }

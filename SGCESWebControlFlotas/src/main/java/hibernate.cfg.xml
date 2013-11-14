@@ -7,7 +7,7 @@
     <property name="hibernate.connection.url">jdbc:postgresql://192.168.1.10:5432/cem44</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">12345678</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="current_session_context_class">thread</property>
     <mapping resource="pe/com/ega/sgces/dao/Impresorapuntoventa.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Tarjeta.hbm.xml"/>
     <mapping resource="pe/com/ega/sgces/dao/Movimiento.hbm.xml"/>
