@@ -5,6 +5,7 @@
 package pe.com.ega.sgces.sgcespos;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
@@ -92,6 +93,7 @@ public class ClienteFrame extends JFrame {
         Registrar.setBackground(new java.awt.Color(133, 238, 75));
         Registrar.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         Registrar.setForeground(new java.awt.Color(51, 51, 51));
+        Registrar.setMnemonic(KeyEvent.VK_A);
         Registrar.setText("ACEPTAR");
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +106,7 @@ public class ClienteFrame extends JFrame {
         cancelar.setBackground(new java.awt.Color(255, 62, 79));
         cancelar.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         cancelar.setForeground(new java.awt.Color(51, 51, 51));
+        cancelar.setMnemonic(KeyEvent.VK_C);
         cancelar.setText("CANCELAR");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
