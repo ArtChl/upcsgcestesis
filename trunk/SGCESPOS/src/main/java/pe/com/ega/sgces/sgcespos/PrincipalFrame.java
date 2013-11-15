@@ -164,7 +164,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         boleta.setBackground(new java.awt.Color(133, 238, 75));
         boleta.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
         boleta.setForeground(new java.awt.Color(51, 51, 51));
-        boleta.setMnemonic(KeyEvent.VK_F1);
+        boleta.setMnemonic(KeyEvent.VK_B);
         boleta.setText("BOLETA");
         boleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,23 +309,22 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 "Codigo", "Transaccion", "Surtidor", "Producto", "Precio", "Galones", "Monto"
             }
         ));
-        tabla.setAutoscrolls(false);
         tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabla.setFocusTraversalPolicyProvider(true);
-        tabla.setFocusable(false);
         tabla.setMaximumSize(new java.awt.Dimension(200, 290));
         tabla.setMinimumSize(new java.awt.Dimension(200, 290));
         tabla.setPreferredSize(new java.awt.Dimension(452, 190));
         tabla.setRowHeight(36);
         tabla.setSelectionBackground(new java.awt.Color(255, 255, 0));
         tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tabla.setSurrendersFocusOnKeystroke(true);
         tabla.getTableHeader().setResizingAllowed(false);
         tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla);
         tabla.getAccessibleContext().setAccessibleParent(tabla);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 30, 700, 230);
+        jScrollPane1.setBounds(10, 40, 700, 230);
 
         panel4.setBackground(new java.awt.Color(255, 255, 255));
         panel4.setLayout(null);

@@ -174,24 +174,34 @@ public class MonedaFrame extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void solesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solesActionPerformed
-
-        if ("BOL".equals(moneda)) {
-            imprimirBoleta(desp, evt);
+      if (desp.getMontosoles().doubleValue()<=Double.parseDouble(pago.getText())) {
+          if ("BOL".equals(moneda)) {
+            this.imprimirBoleta(desp, evt);
             llenarMovimiento(transaccion, moneda, BigDecimal.valueOf(Double.parseDouble(pago.getText())), "", "SOLES");
         } else {
             imprimirFactura(desp, cliente, evt);
             llenarMovimiento(transaccion, moneda, BigDecimal.valueOf(Double.parseDouble(pago.getText())), "", "SOLES");
         }
+      }else{
+          JOptionPane.showMessageDialog(null, "Pago menor al Monto Despachado", "Error", JOptionPane.ERROR_MESSAGE);
+      }
+        
     }//GEN-LAST:event_solesActionPerformed
 
     private void dolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dolaresActionPerformed
-        if ("BOL".equals(moneda)) {
+        if (desp.getMontosoles().doubleValue()<=Double.parseDouble(pago.getText())*2.65) {
+            if ("BOL".equals(moneda)) {
             imprimirBoleta(desp, evt);
             llenarMovimiento(transaccion, moneda, BigDecimal.valueOf(Double.parseDouble(pago.getText())).multiply(new BigDecimal("2.65")), "", "DOLARES");
         } else {
             imprimirFactura(desp, cliente, evt);
             llenarMovimiento(transaccion, moneda, BigDecimal.valueOf(Double.parseDouble(pago.getText())).multiply(new BigDecimal("2.65")), "", "DOLARES");
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "Pago menor al Monto Despachado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+       
     }//GEN-LAST:event_dolaresActionPerformed
 
     private void tarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetaActionPerformed

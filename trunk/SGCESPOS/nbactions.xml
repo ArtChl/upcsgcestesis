@@ -10,6 +10,7 @@
                 <exec.args>-classpath %classpath pe.com.ega.sgces.sgcespos.inicio</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.classpathScope>runtime</exec.classpathScope>
+                <exec.workingdir>C:\PI3\SGCESPOS</exec.workingdir>
             </properties>
         </action>
         <action>
@@ -23,6 +24,7 @@
                 <exec.executable>java</exec.executable>
                 <exec.classpathScope>runtime</exec.classpathScope>
                 <jpda.listen>true</jpda.listen>
+                <exec.workingdir>C:\PI3\SGCESPOS</exec.workingdir>
             </properties>
         </action>
         <action>
@@ -34,6 +36,7 @@
             <properties>
                 <exec.args>${profiler.args} -classpath %classpath pe.com.ega.sgces.sgcespos.inicio</exec.args>
                 <exec.executable>${profiler.java}</exec.executable>
+                <exec.workingdir>C:\PI3\SGCESPOS</exec.workingdir>
             </properties>
         </action>
     </actions>

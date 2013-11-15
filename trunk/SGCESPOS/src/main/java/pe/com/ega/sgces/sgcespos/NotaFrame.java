@@ -222,7 +222,9 @@ public class NotaFrame extends JFrame {
     }//GEN-LAST:event_jrucClienteFocusGained
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-        comprobante = new ImprimirComprobante();
+
+        if (String.valueOf(desp.getMontosoles()).equals(montovale.getText())) {
+            comprobante = new ImprimirComprobante();
         if (temporal.getId() == 1) {
 
             Cliente temporal1 = new Cliente();
@@ -263,6 +265,10 @@ public class NotaFrame extends JFrame {
             limpiar();
             salir(evt);
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "No coincide el monto del Despacho", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
