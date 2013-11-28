@@ -36,7 +36,9 @@ public class DespachoDaoImpl implements DespachoDao {
 
     @Override
     public void eliminar(Despacho despacho) {
-        session.getCurrentSession().delete(despacho);
+        String query = "update despacho set idestado=1 where id=" + despacho.getId();
+        SQLQuery s = session.openSession().createSQLQuery(query);
+        s.executeUpdate();
     }
 
     @Override

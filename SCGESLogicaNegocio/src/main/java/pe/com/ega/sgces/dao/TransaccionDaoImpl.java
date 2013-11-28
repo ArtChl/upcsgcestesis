@@ -38,7 +38,9 @@ public class TransaccionDaoImpl implements TransaccionDao {
 
     @Override
     public void eliminar(Transaccion transaccion) {
+        session.getCurrentSession().beginTransaction();
         session.getCurrentSession().delete(transaccion);
+        session.getCurrentSession().flush();
     }
 
     @Override

@@ -21,10 +21,7 @@ public class ValeDaoImpl implements ValeDao {
     @Override
     public void insertar(Vale usuario) {
         usuario.setEstado(1);
-        Transaction tx=session.getCurrentSession().beginTransaction();
-        tx.begin();
         session.getCurrentSession().save(usuario);
-        tx.commit();
     }
 
     @Override
@@ -34,10 +31,7 @@ public class ValeDaoImpl implements ValeDao {
 
     @Override
     public void eliminar(Vale usuario) {
-        Transaction tx=session.getCurrentSession().beginTransaction();
-        tx.begin();
         session.getCurrentSession().delete(usuario);
-        tx.commit();
     }
 
     @Override
@@ -63,9 +57,14 @@ public class ValeDaoImpl implements ValeDao {
     
     @Override
     public void actualizarVale(Vale usuario) {
-        Transaction tx=session.getCurrentSession().beginTransaction();
-        tx.begin(); 
         session.getCurrentSession().update(usuario);
-        tx.commit();
+    }
+
+    @Override
+    public Vale buscarPorNumero(String numero) {
+        session.getCurrentSession().beginTransaction();
+        Vale vale;
+        vale = (Vale) session.getCurrentSession().createQuery("from Vale where numero='" + numero + "'").uniqueResult();
+        return vale;
     }
 }
