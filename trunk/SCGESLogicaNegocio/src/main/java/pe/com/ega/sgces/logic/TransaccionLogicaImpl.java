@@ -77,6 +77,11 @@ public class TransaccionLogicaImpl implements TransaccionLogica {
     }
 
     @Override
+    public Transaccion buscarPorNumero(String numero) {
+        return transaccionDao.buscarPorNumero(numero);
+    }
+    
+    @Override
     @Transactional(readOnly = false)
     public void actualizar(Transaccion transaccion) {
         transaccionDao.actualizar(transaccion);
@@ -100,5 +105,10 @@ public class TransaccionLogicaImpl implements TransaccionLogica {
     @Override
     public List<Transaccion> buscarTurno(int turno) {
         return transaccionDao.buscarTurno(turno);
+    }
+
+    @Override
+    public void eliminar(Transaccion transaccion) {
+        transaccionDao.eliminar(transaccion);
     }
 }

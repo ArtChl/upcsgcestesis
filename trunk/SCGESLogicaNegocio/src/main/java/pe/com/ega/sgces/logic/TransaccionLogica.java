@@ -16,10 +16,12 @@ import pe.com.ega.sgces.model.Transaccion;
 public interface TransaccionLogica {
     public void grabar(Transaccion transaccion);
     public void actualizar(Transaccion transaccion);
+    public void eliminar(Transaccion transaccion);
     public Transaccion buscarPorCodigo(Integer id);
     public List<Transaccion> buscarListaId(String id);
     public List<Transaccion> buscarTodo();
     public List<Transaccion> buscarTurno(int turno);
     public List<Transaccion> buscarTodoDoc(String documento);
-    public Double buscarMonto(String tipo, String turno);     
+    public Double buscarMonto(String tipo, String turno);
+    public Transaccion buscarPorNumero(String numero);
 }

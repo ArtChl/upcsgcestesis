@@ -59,4 +59,9 @@ public class ValeLogicaImpl implements ValeLogica {
     public List<Vale> buscarConsumo(String cliente) {
         return valeDao.buscarConsumo(cliente);
     }
+
+    @Override
+    public Vale buscarPorNumero(String numero) {
+        return valeDao.buscarPorNumero(numero);
+    }
 }

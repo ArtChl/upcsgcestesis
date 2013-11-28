@@ -30,7 +30,9 @@ public class MovimientoDaoImpl implements MovimientoDao {
 
     @Override
     public void eliminar(Movimiento movimiento) {
+        session.getCurrentSession().beginTransaction();
         session.getCurrentSession().delete(movimiento);
+        session.getCurrentSession().flush();
     }
 
     @Override
@@ -56,10 +58,8 @@ public class MovimientoDaoImpl implements MovimientoDao {
 
     @Override
     public Movimiento buscarTransaccion(String transaccion) {
-        System.out.println("MovimientoTrans"+transaccion);
         session.getCurrentSession().beginTransaction();
         Movimiento movimiento = (Movimiento) session.openSession().createQuery("from Movimiento where idtransaccion=" + transaccion).uniqueResult();
-        System.out.println("Movimiento"+movimiento.getId());
         session.close();
         return movimiento;
     }
