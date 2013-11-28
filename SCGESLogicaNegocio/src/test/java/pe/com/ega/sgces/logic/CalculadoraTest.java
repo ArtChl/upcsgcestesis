@@ -56,6 +56,14 @@ public class CalculadoraTest extends TestCase {
         Assert.assertEquals(2, valor);
     }
     
+    public void testSumaAyA() {
+        int a = 1;
+        
+        int valor = a * a;
+        
+        Assert.assertEquals(2, valor);
+    }
+    
     public void testSumaError() {
         int a = 1;
         int b = 2;
