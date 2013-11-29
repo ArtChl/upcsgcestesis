@@ -55,11 +55,11 @@ public class DespachoTest {
         this.valeLogica = context.getBean("valeService",
                 ValeLogicaImpl.class);
     }
-    
+    /*
     @Test
     public void buscarDespacho(){       
         ArrayList<Despacho> transaccions = (ArrayList<Despacho>) despachoLogica.buscarTodos(); 
         Assert.assertEquals(3, transaccions.size());
     }
-
+*/
 }

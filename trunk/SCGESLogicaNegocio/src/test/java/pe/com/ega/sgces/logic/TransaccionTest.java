@@ -73,7 +73,7 @@ public class TransaccionTest {
     }
    
   
-    
+    /*
     @Test
     public void test1ingresarBoleta(){   
         ArrayList<Despacho> transaccions = (ArrayList<Despacho>) despachoLogica.buscarTodos(); 
@@ -191,5 +191,5 @@ public class TransaccionTest {
         numcomprobanteLogica.actualizar(comprobantes);
         Assert.assertEquals(String.valueOf(numero-1), String.valueOf(numcomprobanteLogica.buscarPorCodigo(2).getNumero()));
     }
-    
+    */
 }

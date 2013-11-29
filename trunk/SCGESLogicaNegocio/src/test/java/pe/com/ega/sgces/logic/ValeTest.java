@@ -70,7 +70,7 @@ public class ValeTest {
     }
     
    
-    @Test
+    /*@Test
     public void test1registrarVale(){
         String numero=null;
         Vale vale=new Vale();
@@ -127,5 +127,5 @@ public class ValeTest {
 
         Assert.assertEquals(String.valueOf(numero-1), String.valueOf(numcomprobanteLogica.buscarPorCodigo(1).getNumero()));
     }
-    
+    */
 }
