@@ -7,7 +7,6 @@ package pe.com.ega.sgces.sgcespos;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
-import org.openswing.swing.mdi.client.InternalFrame;
 import pe.com.ega.sgces.logic.DepositoLogica;
 
 /**
