@@ -164,7 +164,7 @@
      <artifactId>SCGESLogicaNegocio</artifactId>
      <version>1.0</version>
      <scope>system</scope>
-  <systemPath>${PROJECT_HOME}/SCGESLogicaNegocio/target/SCGESLogicaNegocio-1.0.jar</systemPath>
+  <systemPath>${project.build.directory}/SCGESLogicaNegocio/target/SCGESLogicaNegocio-1.0.jar</systemPath>
 </dependency>
     <dependency>
 	<groupId>mysql</groupId>
